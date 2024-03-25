@@ -5,11 +5,12 @@
 .tabWrapper {
   display: flex;
   text-align: center;
+  gap: 2%;
 }
 
 .tabItem {
-  width: 25%;
   padding: 32px 12px;
+  flex: 1;
 }
 
 .tabDescription {
@@ -26,4 +27,8 @@
   background-color: rgba(178, 221, 255, 1);
   padding: 18px 30px;
   /* height: 900px; */
+}
+
+.tabChild {
+  width: 100%;
 }
