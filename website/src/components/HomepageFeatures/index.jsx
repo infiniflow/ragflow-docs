@@ -59,7 +59,7 @@ const Features = () => {
         <section key={idx} className={styles.featuresItem}>
           <div className={styles.featuresSubLabel}>Features</div>
           <div className={styles.featuresTitle}>{x.title}</div>
-          <Tabs></Tabs>
+          <Tabs items={x.items}></Tabs>
         </section>
       ))}
     </section>

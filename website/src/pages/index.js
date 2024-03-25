@@ -4,25 +4,20 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
-import Heading from "@theme/Heading";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx(styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
+        <div className={styles.title}>
           Build Generative AI into your business
-        </Heading>
-        <p className="hero__subtitle">
+        </div>
+        <p className={styles.subtitle}>
           Retrieval-Augmented Generation engine to unleash your full potential
         </p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
+          <Link to="/docs/intro" className={styles.mainButton}>
             Try RagFlow
           </Link>
         </div>
@@ -37,6 +32,7 @@ export default function Home() {
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
+      className={styles.mainSection}
     >
       <HomepageHeader />
       <main>
