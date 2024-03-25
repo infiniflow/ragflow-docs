@@ -1,0 +1,29 @@
+.background {
+  background-color: rgba(178, 221, 255, 1);
+}
+
+.tabWrapper {
+  display: flex;
+  text-align: center;
+}
+
+.tabItem {
+  width: 25%;
+  padding: 32px 12px;
+}
+
+.tabDescription {
+  color: #475467;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.tabChildren {
+  background-color: rgba(178, 221, 255, 1);
+  padding: 18px 30px;
+  /* height: 900px; */
+}

@@ -9,3 +9,36 @@
   height: 200px;
   width: 200px;
 }
+
+.featuresWrapper {
+  text-align: center;
+}
+
+.featuresItem {
+  padding-top: 130px;
+  text-align: center;
+}
+
+.featuresTitle {
+  color: #101828;
+  text-align: center;
+
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: -0.72px;
+  padding-bottom: 32px;
+}
+
+.featuresSubLabel {
+  color: #175cd3;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
