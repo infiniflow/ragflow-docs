@@ -75,6 +75,16 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          {
+            href: 'https://github.com/infiniflow/infinity',
+            'aria-label': 'GitHub repo',
+            position: 'right',
+            className: 'header-github-link',
+          },
+          {
+            type: 'custom-github-stars',
+            position: 'right',
+          },
           // {
           //   type: 'docSidebar',
           //   sidebarId: 'tutorialSidebar',
