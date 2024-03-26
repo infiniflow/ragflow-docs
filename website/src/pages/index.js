@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 function HomepageHeader() {
   return (
     <header className={clsx(styles.heroBanner)}>
-      <div className="container">
+      <div className={`container ${styles.headerContainer}`}>
         <div className={styles.title}>
           Build Generative AI into your business
         </div>
