@@ -67,6 +67,10 @@
   line-height: 155%;
 }
 
+.mainButton:hover {
+  color: #fff;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

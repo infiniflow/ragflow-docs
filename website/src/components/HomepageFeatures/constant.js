@@ -7,7 +7,8 @@ export const featureList = [
         description:
           "Streamlined RAG orchestration catered to both personal and large businesses",
         icon: require("@site/static/img/tab.svg").default,
-        children: require("@site/static/img/tab-content-01.svg").default,
+        // children: require("@site/static/img/tab-content-01.svg").default,
+        children: "image1",
       },
       {
         key: 2,

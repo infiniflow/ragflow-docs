@@ -19,10 +19,8 @@ const Tabs = ({ items = [] }) => {
           return (
             <div
               key={x.key}
-              onClick={handleClick(x.key)}
-              className={clsx(styles.tabItem, {
-                [styles.background]: selectedKey === x.key,
-              })}
+              // onClick={handleClick(x.key)}
+              className={clsx(styles.tabItem)}
             >
               <div>
                 <Icon></Icon>
