@@ -9,7 +9,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "RagFlow",
-  tagline: "Dinosaurs are cool",
+  tagline:
+    "Retrieval-Augmented Generation engine to unleash your full potential",
   favicon: "img/logo.svg",
 
   // Set the production url of your site here

@@ -1,41 +1,29 @@
-import { useState } from "react";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-const Tabs = ({ items = [] }) => {
-  const [selectedKey, setSelectedKey] = useState(1);
-  const Child = items.find((x) => x.key === selectedKey)?.children;
-
-  const handleClick = (key) => () => {
-    setSelectedKey(key);
-  };
-
+const Tabs = ({ items = [], img = "" }) => {
   return (
     <section>
       <section className={styles.tabWrapper}>
         {items.map((x) => {
           const Icon = x.icon;
           return (
-            <div
-              key={x.key}
-              // onClick={handleClick(x.key)}
-              className={clsx(styles.tabItem)}
-            >
-              <div>
+            <div key={x.key} className={clsx(styles.tabItem)}>
+              <div
+                className={clsx(styles.tabIcon, {
+                  [styles.tabIconLeft]: items.length === 4,
+                })}
+              >
                 <Icon></Icon>
               </div>
-              <p>{x.description}</p>
+              <p className={styles.tabDescription}>{x.description}</p>
             </div>
           );
         })}
       </section>
       <section className={styles.tabChildren}>
-        {typeof Child === "string" ? (
-          Child
-        ) : (
-          <Child className={styles.tabChild} width="100%"></Child>
-        )}
+        <img src={require(`@site/static/img/${img}`).default} alt="" />
       </section>
     </section>
   );
