@@ -17,7 +17,7 @@ function HomepageHeader() {
           Retrieval-Augmented Generation engine to unleash your full potential
         </p>
         <div className={styles.buttons}>
-          <Link to="/docs/intro" className={styles.mainButton}>
+          <Link to="https://demo.ragflow.io" className={styles.mainButton}>
             Try RagFlow
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
       className={styles.mainSection}
     >

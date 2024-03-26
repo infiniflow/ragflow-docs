@@ -6,11 +6,20 @@
   display: flex;
   text-align: center;
   gap: 2%;
+  padding-bottom: 64px;
 }
 
 .tabItem {
-  padding: 32px 12px;
   flex: 1;
+  padding: 24px;
+  background: #f9fafb;
+}
+
+.tabIcon {
+  padding-bottom: 50px;
+}
+.tabIconLeft {
+  text-align: left;
 }
 
 .tabDescription {
@@ -24,9 +33,12 @@
 }
 
 .tabChildren {
-  background-color: rgba(178, 221, 255, 1);
-  padding: 18px 30px;
-  /* height: 900px; */
+  border-radius: 12px;
+  border: 8px solid #101828;
+}
+
+.tabDescription {
+  text-align: left;
 }
 
 .tabChild {

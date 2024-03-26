@@ -16,8 +16,11 @@
 }
 
 .featuresItem {
-  padding-top: 130px;
+  padding: 96px 0;
   text-align: center;
+}
+.featuresItemBorder {
+  border-top: 1px solid #d0d5dd;
 }
 
 .featuresTitle {
@@ -30,16 +33,22 @@
   font-weight: 600;
   line-height: 44px;
   letter-spacing: -0.72px;
-  padding-bottom: 32px;
+  padding-bottom: 62px;
 }
 
 .featuresSubLabel {
-  color: #175cd3;
+  display: inline-flex;
+  padding: 4px 12px;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid #b2ccff;
+  background: #eff4ff;
+  color: #004eeb;
   text-align: center;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  padding-bottom: 10px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 16px;
 }
