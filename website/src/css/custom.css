@@ -69,7 +69,7 @@ html[data-theme="dark"] .header-github-link:before {
 }
 #__docusaurus {
   background-image: url("@site/static/img/header-background.png");
-  background-size: 100% auto;
+  /* background-size: 100% auto; */
   background-repeat: no-repeat;
   background-position: top;
 }

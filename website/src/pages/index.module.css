@@ -15,6 +15,14 @@
   background-color: transparent;
 }
 
+.headerContainer {
+  height: 86vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(-10vh);
+}
+
 .title {
   color: #0d0d12;
   text-align: center;
