@@ -11,7 +11,7 @@ function HomepageHeader() {
     <header className={clsx(styles.heroBanner)}>
       <div className={`container ${styles.headerContainer}`}>
         <div className={styles.title}>
-          Build Generative AI into your business
+          Build Generative AI into Your Business
         </div>
         <p className={styles.subtitle}>
           Retrieval-Augmented Generation engine to unleash your full potential

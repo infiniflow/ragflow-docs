@@ -1,6 +1,6 @@
 export const featureList = [
   {
-    title: "From 'garbage in, garbage out' to 'quality in, quality out'",
+    title: `From "garbage in, garbage out" to "quality in, quality out"`,
     img: "phase2.gif",
     items: [
       {
@@ -19,8 +19,7 @@ export const featureList = [
       },
       {
         key: 3,
-        description:
-          "Finds 'needle in a data haystack' of literally unlimited tokens",
+        description: `Finds "needle in a data haystack" of literally unlimited tokens`,
         icon: require("@site/static/img/tab.svg").default,
         children: "image3",
       },
