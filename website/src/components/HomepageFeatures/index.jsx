@@ -14,7 +14,6 @@ const Features = () => {
             [styles.featuresItemBorder]: idx > 0,
           })}
         >
-          <div className={styles.featuresSubLabel}>Features</div>
           <div className={styles.featuresTitle}>{x.title}</div>
           <Tabs items={x.items} img={x.img}></Tabs>
         </section>
