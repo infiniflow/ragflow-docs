@@ -5,6 +5,9 @@
  */
 
 /* You can override the default Infima variables here. */
+
+@import url("./inter.css");
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -27,6 +30,10 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: "Inter";
 }
 
 /* github */
