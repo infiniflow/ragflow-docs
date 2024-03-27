@@ -33,8 +33,6 @@
 }
 
 .tabChildren {
-  border-radius: 12px;
-  border: 8px solid #101828;
 }
 
 .tabDescription {
@@ -43,4 +41,17 @@
 
 .tabChild {
   width: 100%;
+}
+
+.arrowButton {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+}
+.arrowButton::before {
+  font-size: 40px !important;
+  content: " " !important;
+}
+.preButton {
+  transform: rotate(180deg);
 }
