@@ -15,7 +15,7 @@ const Features = () => {
           })}
         >
           <div className={styles.featuresTitle}>{x.title}</div>
-          <Tabs items={x.items} img={x.img}></Tabs>
+          {/* <Tabs items={x.items} img={x.img}></Tabs> */}
         </section>
       ))}
     </section>
