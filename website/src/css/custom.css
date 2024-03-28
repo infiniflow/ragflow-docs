@@ -67,8 +67,8 @@ html[data-theme="dark"] .header-github-link:before {
   box-shadow: none;
   background-color: transparent;
 }
-/* #__docusaurus {
-  background-image: url("@site/static/img/header-background.png");
+#__docusaurus {
+  background-image: url("https://www.freeimg.cn/i/2024/03/28/66053a378a6a8.png");
   background-repeat: no-repeat;
   background-position: -10px -10px;
-} */
+}
