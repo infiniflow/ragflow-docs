@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Tabs from "./tabs";
 import { featureList } from "./constant";
+import Carousel from "../Carousel";
 
 import styles from "./styles.module.css";
 
@@ -26,7 +27,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <Features></Features>
+        <Carousel></Carousel>
       </div>
     </section>
   );
