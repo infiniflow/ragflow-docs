@@ -1,0 +1,49 @@
+.background {
+  background-color: rgba(178, 221, 255, 1);
+}
+
+.tabItem {
+  flex: 1;
+  padding: 24px;
+  background: #f9fafb;
+}
+
+.tabIcon {
+  padding-bottom: 50px;
+}
+.tabIconLeft {
+  text-align: left;
+}
+
+.tabDescription {
+  color: #475467;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.tabDescription {
+  text-align: left;
+}
+
+.tabChild {
+  width: 100%;
+}
+
+.arrowButton {
+  width: 40px !important;
+  height: 40px !important;
+}
+.arrowButton::before {
+  font-size: 40px !important;
+  content: " " !important;
+}
+.preButton {
+  transform: rotate(180deg);
+}
+.slick-dots li.slick-active button:before {
+  background: #1570ef !important;
+}

@@ -70,5 +70,25 @@ html[data-theme="dark"] .header-github-link:before {
 #__docusaurus {
   background-image: url("https://www.freeimg.cn/i/2024/03/28/66053a378a6a8.png");
   background-repeat: no-repeat;
-  background-position: -10px -10px;
+  background-position: -20px -20px;
+  background-size: cover;
+}
+.slick-dots {
+  bottom: -30px !important;
+}
+.slick-dots li button:before {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #1570ef !important;
+  opacity: 1 !important;
+}
+
+.footer {
+  background-image: url("/img/carousel-background.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
