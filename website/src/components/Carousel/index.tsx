@@ -54,10 +54,10 @@ const settings = {
 };
 
 const items = [
-  { icon: "carousel-001.svg" },
-  { icon: "carousel-002.svg" },
-  { icon: "carousel-003.svg" },
-  { icon: "carousel-004.svg" },
+  { icon: "6607e46c1e90d.png" },
+  { icon: "6607e47804c07.png" },
+  { icon: "6607e47ece9db.png" },
+  { icon: "6607e48ae4bb4.png" },
 ];
 
 const HomeCarousel = () => {
@@ -65,7 +65,12 @@ const HomeCarousel = () => {
     <section>
       <Slider {...settings} className={styles.carousel}>
         {items.map((x, idx) => {
-          return <img key={idx} src={`/img/${x.icon}`}></img>;
+          return (
+            <img
+              key={idx}
+              src={`https://www.freeimg.cn/i/2024/03/30/${x.icon}`}
+            ></img>
+          );
         })}
       </Slider>
     </section>
