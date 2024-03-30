@@ -54,10 +54,10 @@ const settings = {
 };
 
 const items = [
-  { icon: "carousel-001.svg" },
-  { icon: "carousel-002.svg" },
-  { icon: "carousel-003.svg" },
-  { icon: "carousel-004.svg" },
+  { icon: "carousel-001.png" },
+  { icon: "carousel-002.png" },
+  { icon: "carousel-003.png" },
+  { icon: "carousel-004.png" },
 ];
 
 const HomeCarousel = () => {

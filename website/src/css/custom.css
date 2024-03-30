@@ -87,7 +87,7 @@ html[data-theme="dark"] .header-github-link:before {
 }
 
 .footer {
-  background-image: url("/img/carousel-background.svg");
+  background-image: url("/img/carousel-background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
