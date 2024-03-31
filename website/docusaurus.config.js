@@ -8,7 +8,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RagFlow",
+  title: "RAGFlow",
   tagline:
     "Retrieval-Augmented Generation engine to unleash your full potential",
   favicon: "img/logo.svg",
@@ -71,7 +71,7 @@ const config = {
       },
       navbar: {
         hideOnScroll: true,
-        title: "RagFlow",
+        title: "RAGFlow",
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",

@@ -20,7 +20,7 @@ function HomepageHeader() {
         </p>
         <div className={styles.buttons}>
           <Link to="https://demo.ragflow.io" className={styles.mainButton}>
-            Try RagFlow
+            Try RAGFlow
           </Link>
         </div>
       </div>
