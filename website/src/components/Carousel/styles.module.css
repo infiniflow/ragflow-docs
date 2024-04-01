@@ -34,8 +34,8 @@
 }
 
 .arrowButton {
-  width: 40px !important;
-  height: 40px !important;
+  width: 56px !important;
+  height: 56px !important;
 }
 .arrowButton::before {
   font-size: 40px !important;
