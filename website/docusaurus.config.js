@@ -78,15 +78,15 @@ const config = {
         },
         items: [
           {
-            href: "https://github.com/infiniflow/infinity",
+            href: "https://github.com/infiniflow/ragflow",
             "aria-label": "GitHub repo",
             position: "right",
             className: "header-github-link",
           },
-          {
-            type: "custom-github-stars",
-            position: "right",
-          },
+          // {
+          //   type: "custom-github-stars",
+          //   position: "right",
+          // },
           // {
           //   type: 'docSidebar',
           //   sidebarId: 'tutorialSidebar',
