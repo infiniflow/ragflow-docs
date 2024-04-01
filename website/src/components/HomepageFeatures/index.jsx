@@ -16,9 +16,6 @@ function JoinUs() {
   return (
     <section className={styles.joinUsWrapper}>
       <div className={styles.joinUsTitle}>Join Our Community</div>
-      <p className={styles.joinUsDescription}>
-        We have a vibrant tech community eagerly waiting for you here.
-      </p>
       <section className={clsx(styles.joinUsConnection, "container")}>
         {connectionList.map((x) => (
           <div className={styles.joinUsConnectionItem} key={x.label}>
