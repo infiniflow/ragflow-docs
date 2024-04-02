@@ -83,10 +83,10 @@ const config = {
             position: "right",
             className: "header-github-link",
           },
-          // {
-          //   type: "custom-github-stars",
-          //   position: "right",
-          // },
+          {
+            type: "custom-github-stars",
+            position: "right",
+          },
           // {
           //   type: 'docSidebar',
           //   sidebarId: 'tutorialSidebar',
