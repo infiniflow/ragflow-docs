@@ -87,8 +87,18 @@ html[data-theme="dark"] .header-github-link:before {
 }
 
 .footer {
+  padding-top: 50px;
   background-image: url("https://www.freeimg.cn/i/2024/03/30/6607e44b9911c.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.footer__links {
+  margin-bottom: 4px;
+}
+.footer__title {
+  display: none;
+}
+.footer__item {
+  text-align: center;
 }
