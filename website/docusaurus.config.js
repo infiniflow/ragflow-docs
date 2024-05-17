@@ -86,12 +86,12 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Docs',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Docs',
+          // },
           {
             href: "https://github.com/infiniflow/ragflow",
             "aria-label": "GitHub repo",
