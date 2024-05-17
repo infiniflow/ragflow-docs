@@ -76,8 +76,8 @@ const config = {
         sidebar: {
           hideable: false,
           autoCollapseCategories: false,
-        }
-      }
+        },
+      },
       navbar: {
         hideOnScroll: true,
         title: "RAGFlow",
