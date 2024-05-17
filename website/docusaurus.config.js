@@ -41,14 +41,14 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          disableVersioning: true,
-          sidebarPath: "./sidebars.js",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/infiniflow/ragflow-docs/tree/main/website",
-        },
+        // docs: {
+        //   disableVersioning: true,
+        //   sidebarPath: "./sidebars.js",
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     "https://github.com/infiniflow/ragflow-docs/tree/main/website",
+        // },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
@@ -72,12 +72,12 @@ const config = {
         defaultMode: 'light',
         disableSwitch: true,
       },
-      docs: {
-        sidebar: {
-          hideable: false,
-          autoCollapseCategories: false,
-        },
-      },
+      // docs: {
+      //   sidebar: {
+      //     hideable: false,
+      //     autoCollapseCategories: false,
+      //   },
+      // },
       navbar: {
         hideOnScroll: true,
         title: "RAGFlow",
@@ -86,12 +86,12 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Docs',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Docs',
+          // },
           {
             href: "https://github.com/infiniflow/ragflow",
             "aria-label": "GitHub repo",
