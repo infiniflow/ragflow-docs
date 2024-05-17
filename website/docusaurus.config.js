@@ -95,12 +95,24 @@ const config = {
           {
             href: "https://github.com/infiniflow/ragflow",
             "aria-label": "GitHub repo",
-            position: "right",
+            position: "left",
             className: "header-github-link",
           },
           {
             type: "custom-github-stars",
-            position: "right",
+            position: "left",
+          },
+          {
+            href: 'https://twitter.com/infiniflowai',
+            'aria-label': 'Twitter',
+            position: 'right',
+            className: 'header-twitter-link',
+          },
+          {
+            href: 'https://discord.gg/4XxujFgUN7',
+            'aria-label': 'RAGFlow on Discord',
+            position: 'right',
+            className: 'header-discord-link',
           },
           // {
           //   type: 'docSidebar',
