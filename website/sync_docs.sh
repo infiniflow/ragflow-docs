@@ -12,9 +12,9 @@ then
 
   for version in $(cat versions.json | jq -r '.[]'); do
     cd $RAGFLOW_WEBSITE/website
-    ./sync_version.sh $version
+    sh ./sync_version.sh $version
   done
 fi
 
 cd $RAGFLOW_WEBSITE/website
-./sync_version.sh main
+sh ./sync_version.sh main
