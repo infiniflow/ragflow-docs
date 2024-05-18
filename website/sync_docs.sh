@@ -17,5 +17,4 @@ then
 fi
 
 cd $RAGFLOW_WEBSITE/website
-sudo chmod +x ./sync_version.sh
 ./sync_version.sh main
