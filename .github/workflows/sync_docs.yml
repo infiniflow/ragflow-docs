@@ -40,8 +40,7 @@ jobs:
       - name: Sync and stage changes
         run: |
           cd $RAGFLOW_MAIN && git fetch --tags
-          cd $RAGFLOW_WEBSITE/website && sudo chmod +x ./sync_docs.sh
-          sudo ./sync_docs.sh
+          cd $RAGFLOW_WEBSITE/website && ./sync_docs.sh
 
       - name: Create a Pull Request
         id: create-pr
