@@ -20,7 +20,7 @@ This quick start guide describes a general process from:
 
 ## Start up the server
 
-1. Ensure `vm.max_map_count` >= 262144:
+1. Ensure `vm.max_map_count` >= 262144 ([more](./docs/max_map_count.md)):
 
    > To check the value of `vm.max_map_count`:
    >
