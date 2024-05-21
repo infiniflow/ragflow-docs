@@ -67,6 +67,23 @@ html[data-theme="dark"] .header-github-link:before {
   box-shadow: none;
   background-color: transparent;
 }
+
+html[class~="docs-wrapper"] #__docusaurus {
+  background-image: none;
+}
+
+html[class~="docs-wrapper"] a[class^="sidebarLogo"] {
+  visibility: hidden !important;
+}
+
+html[class~="docs-wrapper"] footer {
+  background-image: none;
+}
+
+aside.theme-doc-sidebar-container {
+  border-right: 0;
+}
+
 #__docusaurus {
   background-image: url("https://www.freeimg.cn/i/2024/03/28/66053a378a6a8.png");
   background-repeat: no-repeat;
