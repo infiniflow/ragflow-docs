@@ -148,3 +148,8 @@ html[data-theme='dark'] .header-twitter-link:before {
 html[data-theme='dark'] .header-discord-link:before {
   filter: invert(100%);
 }
+
+/* Remove banner for earlier versions.*/
+.alert.alert--warning.margin-bottom--md {
+  display: none;
+}
