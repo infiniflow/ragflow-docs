@@ -48,10 +48,11 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/infiniflow/ragflow-docs/tree/main/website",
+          lastVersion: 'current',
           versions:{
             current: {
-              label: 'Latest',
-              path: 'latest',
+              label: 'DEV',
+              path: 'dev',
             },
           },
           admonitions: {
