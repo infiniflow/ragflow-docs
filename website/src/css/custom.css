@@ -109,3 +109,42 @@ aside.theme-doc-sidebar-container {
   background-position: center;
   background-size: cover;
 }
+
+/* twitter */
+.header-twitter-link:hover {
+  opacity: 0.6;
+}
+
+.header-twitter-link:before {
+  content: url('/img/twitter.svg');
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+html[data-theme='dark'] .header-twitter-link:before {
+  filter: invert(100);
+}
+
+.header-twitter-link,
+.header-discord-link {
+  padding-left: 0;
+}
+
+/* discord */
+.header-discord-link:hover {
+  opacity: 0.6;
+}
+
+.header-discord-link:before {
+  content: url('/img/discord.svg');
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+html[data-theme='dark'] .header-discord-link:before {
+  filter: invert(100%);
+}
