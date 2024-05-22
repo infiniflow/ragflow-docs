@@ -1,7 +1,7 @@
 
 ## Set Before Starting The System
 
-In **user_default_llm** of [service_conf.yaml](./docker/service_conf.yaml), you need to specify LLM factory and your own _API_KEY_. 
+In **user_default_llm** of [service_conf.yaml](https://github.com/infiniflow/ragflow/blob/main/docker/service_conf.yaml), you need to specify LLM factory and your own _API_KEY_. 
 RagFlow supports the flowing LLM factory, and with more coming in the pipeline:
 
 > [OpenAI](https://platform.openai.com/login?launch), [Tongyi-Qianwen](https://dashscope.console.aliyun.com/model), 
