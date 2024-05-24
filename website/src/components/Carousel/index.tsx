@@ -46,11 +46,11 @@ function SamplePrevArrow(props) {
 const settings = {
   dots: true,
   infinite: true,
-  speed: 4000,
+  speed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 6000,
+  autoplaySpeed: 3000,
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
 };
