@@ -5,16 +5,14 @@ set -x
 version=$1
 
 # Does not switch branch and proceed regardless. 
-if [ ! -z "$version" ]
-then
+if [ ! -z "$version" ]; then
   echo $version
   cd $RAGFLOW_MAIN
   git checkout $version
 fi
 
 prefixPath="docs"
-if [ ! -z "$version" && "$version" != "main" ]
-then
+if [ ! -z "$version" ] && [ "$version" != "main" ]; then
   cd $RAGFLOW_WEBSITE/website
   prefixPath="versioned_docs/version-$version"
   cp ./versioned_sidebars/default.json ./versioned_sidebars/version-$version-sidebars.json
