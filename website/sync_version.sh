@@ -5,7 +5,7 @@ set -x
 version=$1
 
 # Does not switch branch and proceed regardless. 
-if [[ ! -z "$version" ]]
+if [ ! -z "$version" ]
 then
   echo $version
   cd $RAGFLOW_MAIN
@@ -13,7 +13,7 @@ then
 fi
 
 prefixPath="docs"
-if [[ ! -z "$version" && "$version" != "main" ]]
+if [ ! -z "$version" && "$version" != "main" ]
 then
   cd $RAGFLOW_WEBSITE/website
   prefixPath="versioned_docs/version-$version"
