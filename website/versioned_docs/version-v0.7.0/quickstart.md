@@ -1,4 +1,9 @@
-# Quickstart
+---
+sidebar_position: 1
+slug: /
+---
+
+# Quick start
 
 RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding. When integrated with LLMs, it is capable of providing truthful question-answering capabilities, backed by well-founded citations from various complex formatted data.
 
@@ -20,7 +25,9 @@ This quick start guide describes a general process from:
 
 ## Start up the server
 
-1. Ensure `vm.max_map_count` >= 262144 ([more](./docs/max_map_count.md)):
+This section provides instructions on setting up the RAGFlow server on Linux. If you are on a different operating system, no worries. Most steps are alike. 
+
+1. Ensure `vm.max_map_count` >= 262144:
 
    > To check the value of `vm.max_map_count`:
    >
@@ -40,6 +47,7 @@ This quick start guide describes a general process from:
    > ```bash
    > vm.max_map_count=262144
    > ```
+   > See [this guide](./guides/max_map_count.md) for instructions on permanently setting `vm.max_map_count` on an operating system other than Linux. 
 
 2. Clone the repo:
 
@@ -49,7 +57,7 @@ This quick start guide describes a general process from:
 
 3. Build the pre-built Docker images and start up the server:
 
-   > Running the following commands automatically downloads the *dev* version RAGFlow Docker image. To download and run a specified Docker version, update `RAGFLOW_VERSION` in **docker/.env** to the intended version, for example `RAGFLOW_VERSION=v0.6.0`, before running the following commands.
+   > Running the following commands automatically downloads the *dev* version RAGFlow Docker image. To download and run a specified Docker version, update `RAGFLOW_VERSION` in **docker/.env** to the intended version, for example `RAGFLOW_VERSION=v0.7.0`, before running the following commands.
 
    ```bash
    $ cd ragflow/docker
@@ -93,8 +101,11 @@ RAGFlow is a RAG engine, and it needs to work with an LLM to offer grounded, hal
 
 - OpenAI
 - Tongyi-Qianwen
+- ZHIPU-AI
 - Moonshot
 - DeepSeek-V2
+- Baichuan
+- VolcEngine
 
 >  RAGFlow also supports deploying LLMs locally using Ollama or Xinference, but this part is not covered in this quick start guide. 
 
@@ -122,7 +133,7 @@ To add and configure an LLM:
 
    ![system model settings](https://github.com/infiniflow/ragflow/assets/93570324/cdcc1da5-4494-44cd-ad5b-1222ed6acc3f)
 
-> Some of the models, such as the image-to-text model **qwen-vl-max**, are subsidiary to a particular LLM. And you may need to update your API key accordingly to use these models. 
+> Some models, such as the image-to-text model **qwen-vl-max**, are subsidiary to a specific LLM. And you may need to update your API key to access these models. 
 
 ## Create your first knowledge base
 
