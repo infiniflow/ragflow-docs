@@ -50,8 +50,8 @@ jobs:
           token: ${{ secrets.FLOW_PAT }}
           path: target
           commit-message: Synchronize documentation.
-          committer: Infinity Curator <infinitydocs.curator@outlook.com>
-          author: Infinity Curator <infinitydocs.curator@users.noreply.github.com>
+          committer: RAGFlow Curator <infinitydocs.curator@outlook.com>
+          author: RAGFlow Curator <infinitydocs.curator@users.noreply.github.com>
           signoff: false
           base: main
           branch: sync-documentation
