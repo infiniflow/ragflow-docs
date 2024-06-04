@@ -80,6 +80,18 @@ html[class~="docs-wrapper"] footer {
   background-image: none;
 }
 
+html[class~="blog-wrapper"] #__docusaurus {
+  background-image: none;
+}
+
+html[class~="blog-wrapper"] a[class^="sidebarLogo"] {
+  visibility: hidden !important;
+}
+
+html[class~="blog-wrapper"] footer {
+  background-image: none;
+}
+
 aside.theme-doc-sidebar-container {
   border-right: 0;
 }
@@ -88,7 +100,7 @@ aside.theme-doc-sidebar-container {
   background-image: url("https://www.freeimg.cn/i/2024/03/28/66053a378a6a8.png");
   background-repeat: no-repeat;
   background-position: -10px -10px;
-  background-size: 102% 50%;
+  background-size: 102% 80%;
 }
 .slick-dots {
   bottom: -30px !important;
