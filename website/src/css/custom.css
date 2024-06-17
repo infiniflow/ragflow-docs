@@ -165,3 +165,7 @@ html[data-theme='dark'] .header-discord-link:before {
 .alert.alert--warning.margin-bottom--md {
   display: none;
 }
+
+.hidden {
+  display: none !important;
+}
