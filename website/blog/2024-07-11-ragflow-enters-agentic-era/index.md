@@ -66,4 +66,4 @@ Now, let's address the initial question how RAGFlow's no-code orchestration diff
 
 ![](./rag20_platform.png)
 
-The envisioned future for RAGFlow is an Agentic RAG 2.0 platform, and our ultimate vision is to let RAG 'flow' in enterprise scenarios. If you share the same vision, please follow and star our project on [GitHub](https://github.com/infiniflow/ragflow[1).
+The envisioned future for RAGFlow is an Agentic RAG 2.0 platform, and our ultimate vision is to let RAG 'flow' in enterprise scenarios. If you share the same vision, please follow and star our project on [GitHub](https://github.com/infiniflow/ragflow).
