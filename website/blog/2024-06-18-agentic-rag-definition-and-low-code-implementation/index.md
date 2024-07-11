@@ -1,5 +1,5 @@
 ---
-slug: agentic-rag-definition-low-code-implementation
+slug: agentic-rag-definition-and-low-code-implementation
 title: Agentic RAG - Definition and Low-code Implementation
 authors: [yingfeng]
 tags: [RAG, Agentic, Agent, Graph, LLM]
