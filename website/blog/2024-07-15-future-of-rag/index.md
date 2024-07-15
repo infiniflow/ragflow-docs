@@ -1,6 +1,6 @@
 ---
 slug: future-of-rag
-title: The Future of RAG — Reflections on RAGFlow's 10,000 GitHub Stars Milestone
+title: From RAG 1.0 to RAG 2.0, What Goes Around Comes Around
 authors: [yingfeng]
 tags: [RAG, Agentic, Agent, Graph, LLM]
 ---
