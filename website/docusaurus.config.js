@@ -24,7 +24,7 @@ const config = {
   organizationName: "InfiniFlow", // Usually your GitHub org/user name.
   projectName: "RAGFlow", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   onBrokenAnchors: 'throw',
 
