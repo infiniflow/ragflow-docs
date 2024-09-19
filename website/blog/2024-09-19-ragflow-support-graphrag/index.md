@@ -27,7 +27,7 @@ During the document parsing stage, users can choose "Knowledge Graph" as the chu
 
 ![](./knowledge_graph.png)
 
-![](./entity_types.png)
+
 
 After selecting the chunking method, you can trigger the LLM to extract entities and construct the knowledge graph. RAGFlow visually displays these knowledge graphs, including node names, node descriptions, and "communities":
 
