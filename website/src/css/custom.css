@@ -169,3 +169,8 @@ html[data-theme='dark'] .header-discord-link:before {
 .hidden {
   display: none !important;
 }
+
+img {
+  width: auto;
+  height: auto;
+}
