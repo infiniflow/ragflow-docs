@@ -10,7 +10,7 @@ tags: [RAG, knowledge graph, GraphRAG]
 - **Data Extraction**: Utilize various document models to ensure high-quality data for indexing, thereby avoiding the "Garbage In, Garbage Out" issue.
 - **Document Preprocessing**: Before the extracted data is sent to the database, optional preprocessing steps can be implemented, such as document clustering and knowledge graph construction. These steps primarily enhance multi-hop question answering and cross-document queries. While GraphRAG is indeed advanced, it is just one part of the RAG 2.0 pipeline.
 
-![](./rag20.png)
+![](./rag2.png)
 
 From version v0.9 onwards, this part is integrated into RAGFlow. Below, we will explore the reasons for this addition and how it compares to Microsoft's GraphRAG.
 
@@ -25,7 +25,7 @@ Below is a demonstration of the RAGFlow version of GraphRAG:
 
 During the document parsing stage, users can choose "Knowledge Graph" as the chunking method for a specific knowledge base. They must also define the types of named entities that they wish the LLM to extract, such as "organization," "person," and "location," as shown in the figure below:
 
-![](./knowledge_graph_method.PNG)
+![](./knowledge_graph.png)
 
 ![](./entity_types.png)
 
@@ -45,7 +45,7 @@ At present, RAGFlow's knowledge graph generation is at the document level, meani
 
 The following image juxtaposes dialogues generated from *Game of Thrones*. The dialogue on the left, generated using GraphRAG, demonstrates that GraphRAG provides more in-depth and comprehensive answers for multi-hop queries involving nested logic. The dialogue on the right, which is based on document parsed using the GENERAL parsing method, shows no result. 
 
-![](./graphrag_dialogue.png)
+![](./graphrag_based_dialogue.png)
 
 To summarize, RAGFlow's implementation of GraphRAG aims to automate the construction of knowledge graphs for RAG. While GraphRAG removes many complexities associated with traditional knowledge graph algorithms, it is not the final solution for using knowledge graphs in RAG applications. In real enterprise scenarios, a significant portion of data is unsuitable for knowledge graph construction, or it may not be cost-effective to construct knowledge graphs for all data. Indeed, knowledge graphs have many more applications, such as using knowledge graphs to rewrite queries. RAGFlow plans to support these features in near future.
 
