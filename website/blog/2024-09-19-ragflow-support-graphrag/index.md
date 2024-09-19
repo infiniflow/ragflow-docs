@@ -10,7 +10,7 @@ tags: [RAG, knowledge graph, GraphRAG]
 - **Data Extraction**: Utilize various document models to ensure high-quality data for indexing, thereby avoiding the "Garbage In, Garbage Out" issue.
 - **Document Preprocessing**: Before the extracted data is sent to the database, optional preprocessing steps can be implemented, such as document clustering and knowledge graph construction. These steps primarily enhance multi-hop question answering and cross-document queries. While GraphRAG is indeed advanced, it is just one part of the RAG 2.0 pipeline.
 
-![](./rag2.0.png)
+![](./rag20.png)
 
 From version v0.9 onwards, this part is integrated into RAGFlow. Below, we will explore the reasons for this addition and how it compares to Microsoft's GraphRAG.
 
