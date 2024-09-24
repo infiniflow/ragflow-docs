@@ -1,8 +1,8 @@
 ---
 slug: implementing-text2sql-with-ragflow
-title: How Our GraphRAG Reveals the Hidden Relationships of Jon Snow and the Mother of Dragons
+title: Implementing Text2SQL with RAGFlow
 authors: [yingfeng]
-tags: [RAG, knowledge graph, GraphRAG]
+tags: [RAG, text2sql, agent]
 ---
 
 [RAGFlow](https://github.com/infiniflow/ragflow) introduces the Text2SQL feature in response to community demand. Traditional Text2SQL requires model fine-tuning, which can significantly increase deployment and maintenance costs when used in enterprise settings alongside RAG or Agent components. RAGFlow’s RAG-based Text2SQL leverages the existing (connected) large language model (LLM), enabling seamless integration with other RAG/Agent components without the need for additional fine-tuned models.<!--truncate-->
