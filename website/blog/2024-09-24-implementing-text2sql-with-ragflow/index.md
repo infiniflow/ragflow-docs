@@ -11,7 +11,7 @@ tags: [RAG, text2sql, agent]
 
 The following pipeline explains how to implement Text2SQL capabilities based on RAG:
 
-![](./rag2.png)
+![](./text2sql.png)
 
 General speaking, you need to prepare a knowledge base for generating Text2SQL prompts, which contains various examples of natural language being converted to SQL statements. A user query is first sent to this knowledge base to retrieve similar examples. The retrieved examples are then concatenated into prompts for the LLM to generate the final SQL statement. The generated SQL is used directly to query the database. If the returned result is incorrect or if, even worse, nothing is retrieved, the generated SQL will be considered incorrect, and the LLM will be called again to regenerate a SQL statement until the predefined upper limit is reached.
 
@@ -55,7 +55,7 @@ Example: https://huggingface.co/datasets/InfiniFlow/text2sql/tree/main
 
 The **DB Description** knowledge base: This knowledge base contains accurate information about the queried database, including but not limited to the meanings of database tables and the significance of different fields within those tables. With detailed descriptions from the database, the large language model can more accurately convert user questions into SQL statements. It is recommended to configure the DB Description knowledge base parsing settings as follows:
 
-![](./text2sql.png)
+![](./db_description_kb.png)
 
 Example: https://huggingface.co/datasets/InfiniFlow/text2sql/tree/main
 
