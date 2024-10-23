@@ -23,7 +23,7 @@ export const GithubStars = () => {
           if (data.stargazers_count) {
             stars = (data.stargazers_count / 1000).toFixed(1) + "k";
           } else {
-            stars = "20k";
+            stars = "25k";
           }
           globalstars = stars;
           setStar(stars);
