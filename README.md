@@ -1,1 +1,1 @@
-Repo for Ragflow front page.
+Repo for RAGFlow's official site.
