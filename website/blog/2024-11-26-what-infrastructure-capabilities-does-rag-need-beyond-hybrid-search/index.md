@@ -2,7 +2,7 @@
 slug: what-infrastructure-capabilities-does-rag-need-beyond-hybrid-search
 title: What Infrastructure Capabilities does RAG Need beyond Hybrid Search
 authors: [yingfeng]
-tags: [RAG, GraphRAG, LLM, agent, multi-agent, HybridRAG, KAG]
+tags: [RAG, GraphRAG, LLM, agent, HybridRAG, KAG]
 ---
 
 Infinity is a database specifically designed for Retrieval-Augmented Generation (RAG), excelling in both functionality and performance. It provides high-performance capabilities for dense and sparse vector searches, as well as full-text searches, along with efficient range filtering for these data types. Additionally, it features tensor-based reranking, enabling the implementation of powerful multi-modal RAG and integrating ranking capabilities comparable to Cross Encoders. <!--truncate-->
