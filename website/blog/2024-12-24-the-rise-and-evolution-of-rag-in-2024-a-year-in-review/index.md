@@ -287,4 +287,10 @@ The above content summarizes the main development trends and future outlook for 
 37. Jina ColBERT v2 https://huggingface.co/jinaai/jina-colbert-v2
 38. Awesome-RAG 2024:  https://github.com/awesome-rag/awesome-rag 
 39. Self RAG https://arxiv.org/abs/2310.11511
-
+40. LangGraph https://github.com/langchain-ai/langgraph/
+41. TCAF: a Multi-Agent Approach of Thought Chain for Retrieval Augmented Generation, SIGKDD 2024
+42. RARE-Retrieval-Augmented Reasoning Enhancement for Large Language Models https://arxiv.org/abs/2412.02830
+43. PaliGemma https://huggingface.co/spaces/big-vision/paligemma-hf
+44. ColPali: Efficient Document Retrieval with Vision Language Models, https://arxiv.org/abs/2407.01449
+45. Meta-Chunking: Learning Efficient Text Segmentation via Logical Perception https://arxiv.org/abs/2410.12788
+46. Mix-of-Granularity-Optimize the Chunking Granularity for Retrieval-Augmented Generation https://arxiv.org/abs/2406.00456
