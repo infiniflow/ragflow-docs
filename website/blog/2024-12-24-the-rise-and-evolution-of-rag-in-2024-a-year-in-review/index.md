@@ -21,13 +21,13 @@ In the first half of 2024, one of the most significant impacts on industry was t
 
 | Long-context                                                 | RAG                                                          |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Accuracy decreases as the context length increases.          |                                                              |
-| The longer the context window, the more likely it is to miss distant "needles". |                                                              |
-| Introduces noises if the retrieved content is semantically similar but irrelevant to the answer. |                                                              |
-| LLM is "indefinite" by nature.                               |                                                              |
-| Difficult to consolidate the enterprise data with long context alone. |                                                              |
-| Long context significantly increases both the cost of reasoning and delay. |                                                              |
-|                                                              | Not smart enough: capable only of searching, unable to reason or make decisions. |
+| 👎Accuracy decreases as the context length increases.          |                                                              |
+| 👎The longer the context window, the more likely it is to miss distant "needles". |                                                              |
+|👎Introduces noises if the retrieved content is semantically similar but irrelevant to the answer. |                                                              |
+| 👎LLM is "indefinite" by nature.                               |                                                              |
+| 👎Difficult to consolidate the enterprise data with long context alone. |                                                              |
+| 👎Long context significantly increases both the cost of reasoning and delay. |                                                              |
+|                                                              | 👎Not smart enough: capable only of searching, unable to reason or make decisions. |
 
 Additionally, the maturation of architectures like LLMOps enabled businesses and individuals to quickly set up their own custom systems using components such as vector databases, embedding/reranking models, LLM itself, chunking tools, and prompt management techniques connected via arrows indicating data flow ensuring system usability. 
 
