@@ -1,6 +1,6 @@
 ---
 slug: the-rise-and-evolution-of-rag-in-2024-a-year-in-review
-title: The Rise and Evolution of RAG in 2024: A Year in Review
+title: The Rise and Evolution of RAG in 2024 - A Year in Review
 authors: [yingfeng]
 tags: [RAG, GraphRAG, reranking, agent, tensor, full-text, multimodal, hybrid-search]
 ---
@@ -46,8 +46,6 @@ Therefore, the following landmark events revolve around the technical challenges
 - The rise of multimodal document parsing tools.
 - The emergence of BM25 and hybrid search, rendering pure vector databases unnecessary as a separate category.
 
-### RAGFlow: Pioneering Innovations in RAG Technology
-
 On April 1, 2024, we open-sourced the complete RAG engine, RAGFlow, which has since garnered over 26,000 stars on GitHub by the end of the year. The initial two design highlights of RAGFlow have become universal design principles for RAG architecture:
 
 First, while naive RAG systems only provided text-based chunking tools, RAGFlow introduced a semantic chunking step for unstructured data to ensure the input data quality. This involves using specially trained models to parse document layouts, avoiding the interference caused by simple text chunking tools on different data layouts. As the open-source community increasingly uses these models to parse various documents, this approach has gained widespread acceptance.
@@ -56,13 +54,15 @@ Second, from the outset, we firmly adopted enterprise-level search engines to pr
 
 RAGFlow can be considered one of the key drivers behind these two events.
 
-### The Rise of  GraphRAG
+### The Rise of GraphRAG
 
 Microsoft's mid-year open-sourcing of GraphRAG was a groundbreaking event. As a library rather than an end-to-end solution, GraphRAG's rapid rise in popularity underscores its ability to tackle key issues with Retrieval-Augmented Generation (RAG), particularly the semantic gap. This issue has long been a challenge for search system developers, as queries and answers often fail to align perfectly. When search systems evolved into RAG models, this problem was amplified: while traditional search queries are defined by a few keywords, RAG queries are user questions. The shift from keywords to questions makes user intent even harder to discern, thereby exacerbating this semantic gap. GraphRAG is one design aimed at bridging this gap.
 
-### The Emergence of Latency Interaction Models Like Col-xxx vs. Multimodal RAG built on VLM and late Interaction Models
+### The Emergence of Latency Interaction Models Like Col-xxx 
 
-Both of these major events involve upgrades to reranking models and require native tensor support at the database level. For the first event, adopting a delayed interaction model effectively provides capabilities similar to reranking models at the database level. For the second event, this approach unlocks greater commercial value for more complex documents (such as magazines and pie charts) within enterprises. Based on this observation, we fully implemented these capabilities in [Infinity](https://github.com/infiniflow/infinity), our database designed specifically for RAG open-sourced earlier this year. Although these features have not yet been applied to RAGFlow, their impact is already beginning to spread from the forefront to the wider industry.
+### Multimodal RAG built on VLM and late Interaction Models
+
+Both of these major events involve upgrades to ranking models and require native tensor support at the database level. For the first event, adopting a late interaction model effectively provides capabilities similar to reranking models at the database level. For the second event, this approach unlocks greater commercial value for more complex documents (such as magazines and pie charts) within enterprises. Based on this observation, we fully implemented these capabilities in [Infinity](https://github.com/infiniflow/infinity), our database designed specifically for RAG open-sourced earlier this year. Although these features have not yet been applied to RAGFlow, their impact is already beginning to spread from the forefront to the wider industry.
 
 The following is a summary of the technological developments in RAG throughout 2024 from both industrial and academic perspectives. RAG has been a hot topic in this year's research. Since the beginning of the year, the frequency of preprints on the topic of RAG has reached over ten papers per week, with some weeks seeing as many as several dozen. These papers primarily focus on experiments related to the applications, tuning, and evaluation of RAG, leading to various conclusions. This article is not intended as a comprehensive academic survey of RAG; there are already many such works [Reference 27] [Reference 28], including the recent summary of RAG 72 by Ant Group [Reference 38]. This article takes a perspective that combines industry and academia, summarizing the year’s representative work based on practical applications. Many of these contributions are not strictly covered by papers focused on RAG. We believe that RAG is not merely a simple application; rather, it is a complex system centered around search, integrating various data types, foundational components, and a range of large and small models working in synergy. Each subproblem has corresponding work, so it is essential to review not only RAG itself but also to maintain a broader perspective.
 
@@ -81,7 +81,7 @@ Methodologically, document intelligence models can be divided into two generatio
 
 First Generation: This includes past similar works and current mainstream open-source projects, such as the RAGFlow DeepDoc module. These efforts are built on traditional visual models. While they can run on CPUs, their generalization ability across different scenarios is limited. Because they require separate training for different contexts and data, this technology has been colloquially termed "emboidering".
 
-Second Generation: Current OCR technologies are evolving towards generative model architectures. Early examples include Meta's Nougat [Reference 4], along with the latest OCR 2.0 [Reference 5], employ a unified Transformer-based Encoder-Decoder architecture to generate text results from image recognition. These developments share many similarities with the multi-modal VLMs mentioned later. For instance, StructEqTable [Reference 6] directly applies similar network structures to table reconstruction. The enterprise version of RAGFlow also uses this architecture for document processing. Although generative models cannot reason on CPUs, their generalization ability across various scenarios has significantly improved compared to traditional visual models. Another advantage of using multimodal models for document intelligence is the ability to incorporate textual information into document layouts. A representative work this year, M2Doc [Reference 23], integrates BERT into a vision-based Encoder-Decoder architecture, enhancing the identification of semantic boundaries for text and paragraphs.
+Second Generation: Current OCR technologies are evolving towards generative AI architectures. Early examples include Meta's Nougat [Reference 4], along with the latest OCR 2.0 [Reference 5], employ a unified Transformer-based Encoder-Decoder architecture to generate text results from image recognition. These developments share many similarities with the multi-modal VLMs mentioned later. For instance, StructEqTable [Reference 6] directly applies similar network structures to table reconstruction. The enterprise version of RAGFlow also uses this architecture for document processing. Although generative AI model inference cannot run on CPUs, their generalization ability across various scenarios has significantly improved compared to traditional visual models. Another advantage of using multimodal models for document intelligence is the ability to incorporate textual information into document layouts. A representative work this year, M2Doc [Reference 23], integrates BERT into a vision-based Encoder-Decoder architecture, enhancing the identification of semantic boundaries for text and paragraphs.
 
 In the upcoming year of 2025, research based on Encoder-Decoder architectures is expected to advance further. We can anticipate the potential development of a unified multi-modal document parsing model capable of accurately converting various unstructured documents into text content.
 
@@ -143,13 +143,13 @@ However, cross-encoders also have their drawbacks: for encoders, document embedd
 
 When evaluating embedding models and reranker models, the MTEB leaderboard is often referenced. In the first half of 2024, the reranking leaderboard was primarily dominated by various cross-encoders, while in the second half, it was increasingly occupied by reranking models based on large language models (LLMs). For instance, the current top-ranking model, gte-Qwen2-7B [Reference 31], is fine-tuned from the Qwen2 7B base model. This approach no longer uses a traditional encoder architecture but instead employs a standard LLM decoder architecture, resulting in a larger parameter count and higher reasoning costs.
 
-Considering both ranking effectiveness and cost, a reranking solution known as the delayed interaction model has gained attention; this involves tensor-based reranking, as illustrated in the diagram below.
+Considering both ranking effectiveness and cost, a reranking solution known as the late interaction model has gained attention; this involves tensor-based reranking, as illustrated in the diagram below.
 
 ![](./reranking_delayed_interaction.jpg)
 
 The specific approach is as follows: during the indexing phase, embeddings generated by the encoder for each token are stored. Thus, a document can be represented by a tensor (or multiple vectors). During querying, embeddings for each token in the query are generated, and the pairwise similarity between all tokens in the query and the text chunks is calculated. The final document score is obtained by summing these similarities. This reranking method also captures the interaction information between tokens, allowing it to theoretically achieve performance comparable to that of a cross-encoder.
 
-On the other hand, because complex model reasoning is not involved during querying, the cost is significantly lower than that of cross-encoders or LLM-based rerankers. This can even enable sorting to be performed within the database itself. The benefits include the ability to rerank more results, which increases the likelihood of compensating for previous recall shortcomings, even if the initial filtering results are not ideal. The following figure compares the evaluation results of applying tensor reranking based on single-recall, dual-recall, and triple-recall using the Infinity database.
+On the other hand, because complex model reference is not involved during querying, the cost is significantly lower than that of cross-encoders or LLM-based rerankers. This can even enable ranking to be performed within the database itself. The benefits include the ability to rerank more results, which increases the likelihood of compensating for previous recall shortcomings, even if the initial filtering results are not ideal. The following figure compares the evaluation results of applying tensor reranking based on single-recall, dual-recall, and triple-recall using the Infinity database.
 
 ![](./mldr2.jpg)
 
@@ -236,7 +236,7 @@ The entire retrieval process is illustrated in the diagram below. It requires a 
 
 ![](./Infinity_reranking.png)
 
-The diagram below shows a leaderboard for multimodal RAG retrieval, highlighting that tensor-based series of delayed interaction models have secured many leading positions.
+The diagram below shows a leaderboard for multimodal RAG retrieval, highlighting that tensor-based series of late interaction models have secured many leading positions.
 
 ![](./vidore.png)
 
