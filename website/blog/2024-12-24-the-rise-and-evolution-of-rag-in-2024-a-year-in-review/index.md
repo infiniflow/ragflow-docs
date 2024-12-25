@@ -1,8 +1,8 @@
 ---
 slug: the-rise-and-evolution-of-rag-in-2024-a-year-in-review
-title: The Rise and Evolution of RAG in 2024 - A Year in Review
+title: The Rise and Evolution of RAG in 2024 A Year in Review
 authors: [yingfeng]
-tags: [RAG, GraphRAG, reranking, agent, tensor, full-text, multimodal, hybrid-search]
+tags: [RAG, GraphRAG, reranking, agent, tensor, full-text, multimodal]
 ---
 
 As 2024 comes to a close, the development of Retrieval-Augmented Generation (RAG) has been nothing short of turbulent. Let's take a comprehensive look back at the year's progress from various perspectives. <!--truncate-->
