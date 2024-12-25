@@ -13,9 +13,7 @@ As 2024 comes to a close, the development of Retrieval-Augmented Generation (RAG
 
 ### The Debate: "RAG is Dead, Long Live RAG!"
 
-At the beginning of 2024, the year was dubbed "The Year of RAG" by some, though this wasn't a universally accepted label. However, the progress made throughout the year certainly justified this title. In scenarios involving Large Language Models (LLMs), RAG has consistently proven to be an indispensable role. Yet, since its inception, debates about RAG have never ceased. As seen in the graph above, the term "RAG" was not widely used in 2023; instead, temporary terms such as "external memory" or "external knowledge base" were more prevalent. The main debate at that time centered around whether to use temporary external solutions or permanent fine-tuning. By early 2024, this debate had mostly settled: RAG offered a clear advantage in terms of cost and real-time performance, with only minor differences in effectiveness compared to fine-tuning. Even in scenarios requiring fine-tuning, RAG often remained essential. 
-
-### The Impact of Open Source LLMs on Industry
+At the beginning of 2024, the year was dubbed "The Year of RAG" by some, though this wasn't a universally accepted label. However, the progress made throughout the year certainly justified this title. In scenarios involving Large Language Models (LLMs), RAG has consistently proven to be an indispensable role. Yet, since its inception, debates about RAG have never ceased. As seen in the graph above, the term "RAG" was not widely used in 2023; instead, temporary terms such as "external memory" or "external knowledge base" were more prevalent. The main debate at that time centered around whether to use temporary external solutions or permanent fine-tuning. By early 2024, this debate had mostly settled: RAG offered a clear advantage in terms of cost and real-time performance, with only minor differences in effectiveness compared to fine-tuning. Even in scenarios requiring fine-tuning, RAG often remained essential.
 
 In the first half of 2024, one of the most significant impacts on industry was the gradual convergence of open-source LLMs with commercial LLMs led by OpenAI. This meant that capabilities such as summarization and instruction following had significantly improved compared to 2023. This progress enabled widespread adoption of basic RAG applications such as question answering, customer service, and knowledge bases. Another notable advancement in LLMs during this period was long context windows—a feature that sparked controversy throughout the first half of the year but gradually subsided by mid-year. Similar to previous debates, it was concluded that both long context windows and traditional methods had their strengths and were best used together. 
 
@@ -29,7 +27,7 @@ In the first half of 2024, one of the most significant impacts on industry was t
 | 👎Long context significantly increases both the cost of reasoning and delay. |                                                              |
 |                                                              | 👎Not smart enough: capable only of searching, unable to reason or make decisions. |
 
-Additionally, the maturation of architectures like LLMOps enabled businesses and individuals to quickly set up their own custom systems using components such as vector databases, embedding/reranking models, LLM itself, chunking tools, and prompt management techniques connected via arrows indicating data flow ensuring system usability. 
+Additionally, the maturation of architectures like LLMOps enabled businesses and individuals to quickly set up their own custom systems using components such as vector databases, embedding/reranking models, LLM itself, chunking tools, and prompt management techniques connected via arrows indicating data flow ensuring system usability.
 
 ![](./rag.jpg)
 
@@ -41,10 +39,13 @@ However, applying it in broader scenarios and enterprises, and aligning its deve
 
 3. The fundamental challenge of search: At its core, RAG relies on search capabilities. It works only if it can "search" for the answer based on a user's query. However, this prerequisite often fails with vague or ambiguous queries lacking clear intent or 'multi-hop' questions requiring synthesis from multiple sub-questions. In such scenarios, there is a significant semantic gap between the question posed and the answer retrieved, making traditional search methods ineffective.
 
-Therefore, the following landmark events revolve around the technical challenges of RAG:
+Therefore, the following landmark events revolve around the technical challenges of RAG.
 
-- The rise of multimodal document parsing tools.
-- The emergence of BM25 and hybrid search, rendering pure vector databases unnecessary as a separate category.
+### The rise of multimodal document parsing tools
+
+### The emergence of BM25 and hybrid search
+
+The rise of BM25 and hybrid search renders pure vector databases unnecessary as a separate category.
 
 On April 1, 2024, we open-sourced the complete RAG engine, RAGFlow, which has since garnered over 26,000 stars on GitHub by the end of the year. The initial two design highlights of RAGFlow have become universal design principles for RAG architecture:
 
@@ -131,7 +132,7 @@ The following figure shows the results of evaluations using Infinity on a public
 
 In June 2024, OpenAI acquired the database startup Rockset. Following the release of GPT-4 Turbo at the end of 2023, the well-known vector database Qdrant also came into focus, but just a few months later, Rockset was acquired. One important consideration behind this acquisition is that Rockset is one of the few viable alternatives to Elasticsearch, which is closely related to its cloud-native architecture. Therefore, as a data infrastructure component, Rockset's integration with OpenAI can conveniently provide various users with RAG-based SaaS services.
 
-### Ranking models
+## Ranking models
 
 Ranking is the core of any search system. In the context of RAG, ranking involves two components: one is the part used for coarse filtering, which is the embedding model for vector search; the other is the reranker model used in the fine-tuning stage. The training of reranker models often shares much of the work with embedding models. The embedding model typically employs an encoder architecture, with the training objective of bringing semantically similar texts closer together in vector space. In contrast, the reranker uses a cross-encoder architecture, aiming to predict the score between a query and a document.
 
@@ -157,7 +158,7 @@ Tensor-based reranking originated from early works such as ColBERT [Reference 32
 
 Currently, tensor-based reranking systems are not widely used in the industry; this is partly due to insufficient infrastructure components and a lack of supporting models. However, since the summer of 2024, there has been a noticeable acceleration in this area. For instance, JaColBERT [Reference 36] for Japanese and Jina's Jina-colbert-v2 [Reference 37] multilingual model both offer capabilities for generating tensors from text data. We will also mention later that these models significantly promote multimodal RAG. It is anticipated that with more models becoming available, tensor-based reranking will see widespread application in 2025.
 
-### Semantic Gap
+## Semantic Gap
 
 In the first half of 2024, Microsoft published a paper on GraphRAG [Reference 8] and officially open-sourced it mid-year, quickly garnering over ten thousand stars on GitHub. What accounts for GraphRAG's popularity? This relates closely to the third pain point of RAG that we previously mentioned: the semantic gap.
 
@@ -190,7 +191,7 @@ A fully functional full-text index should not only provide similarity score calc
 
 From the data schema, it is evident that by simply adding a type field, the original text chunks can be stored in the same table as other information, effectively combining GraphRAG with RAG into a HybridRAG [Reference 22]. Clearly, using a database with rich indexing capabilities can significantly reduce the engineering challenges of implementing GraphRAG. Even works that modify graph structures, such as KG-Retriever and Mixture-of-PageRanks, can be easily supported by adjusting index formats and enhancing specific search methods. This is one of our primary motivations for building a database specifically designed to serve RAG from the ground up.
 
-### Agentic and Memory
+## Agentic and Memory
 
 Agentic is a popular term in the RAG industry for 2024, with many media outlets declaring it the year of the agent. Regardless of this designation, agents significantly influence the LLM ecosystem. This article is not a retrospective on agents, but it is clear that there is an inseparable relationship between agents and RAG: RAG itself is a crucial component for agents, enabling them to access internal data; conversely, agents can enhance RAG capabilities, leading to what is termed Agentic RAG, such as Self RAG [Reference 39] and Adaptive RAG.
 
@@ -210,7 +211,7 @@ As this reasoning capability develops, the relationship between RAG and agents b
 
 At this point, many may wonder whether the future evolution will see RAG transforming into an agent platform or various agent platforms enhancing their RAG capabilities. This trend is difficult to predict. Just as in the digital age, one might question whether to focus on data warehousing while also addressing mid-platform business needs or to deepen business capabilities to improve data warehousing—both approaches have their precedents. In this era of LLM intelligence, there is an opportunity for a transformative reshaping of the software ecosystem; thus, RAG can effectively parallel the role of traditional databases, while agents have the potential to become standard products at the application layer due to reduced customisation requirements. Future developments will dynamically evolve under the dual support of technical depth and rapid product iteration, with tighter integration across various software ecosystems. For instance, towards the end of the year, LangGraph released an LLM-based agent interoperability protocol, enabling greater potential for ecological upstream and downstream relationships among different agents.
 
-### Multimodal RAG
+## Multimodal RAG
 
 Multimodal RAG is another area we believe will experience rapid growth in 2025, as key related technologies emerge and start to be applied in 2024.
 
