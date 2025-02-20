@@ -56,10 +56,10 @@ const settings = {
 };
 
 const items = [
-  { icon: "https://www.freeimg.cn/i/2024/03/30/6607e46c1e90d.png" },
-  { icon: "https://www.freeimg.cn/i/2024/03/30/6607e47804c07.png" },
-  { icon: "https://www.freeimg.cn/i/2024/03/30/6607e47ece9db.png" },
-  { icon: "https://www.freeimg.cn/i/2024/04/01/660a47c472f11.png" },
+  { icon: "https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-001.png" },
+  { icon: "https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-002.png" },
+  { icon: "https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-003.png" },
+  { icon: "https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-004.png" },
 ];
 
 const HomeCarousel = () => {

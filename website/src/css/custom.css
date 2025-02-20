@@ -97,7 +97,7 @@ aside.theme-doc-sidebar-container {
 }
 
 #__docusaurus {
-  background-image: url("https://www.freeimg.cn/i/2024/03/28/66053a378a6a8.png");
+  background-image: url("https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-background.png");
   background-repeat: no-repeat;
   background-position: -10px -10px;
   background-size: 102% 80%;
@@ -116,7 +116,7 @@ aside.theme-doc-sidebar-container {
 }
 
 .footer {
-  background-image: url("https://www.freeimg.cn/i/2024/03/30/6607e44b9911c.png");
+  background-image: url("https://raw.githubusercontent.com/infiniflow/ragflow-docs/image/image/carousel-background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
