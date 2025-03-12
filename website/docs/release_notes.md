@@ -3,9 +3,122 @@ sidebar_position: 2
 slug: /release_notes
 ---
 
-# Release notes
+# Releases
 
 Key features, improvements and bug fixes in the latest releases.
+
+## v0.17.0
+
+Released on March 3, 2025.
+
+### New features
+
+- AI chat: Implements Deep Research for agentic reasoning. To activate this, enable the **Reasoning** toggle under the **Prompt Engine** tab of your chat assistant dialogue.
+- AI chat: Leverages Tavily-based web search to enhance contexts in agentic reasoning. To activate this, enter the correct Tavily API key under the **Assistant Setting** tab of your chat assistant dialogue.
+- AI chat: Supports starting a chat without specifying knowledge bases.
+- AI chat: HTML files can also be previewed and referenced, in addition to PDF files.
+- Dataset: Adds a **Document parser** dropdown menu to dataset configurations. This includes a DeepDoc model option, which is time-consuming, a much faster **naive** option (plain text), which skips DLA (Document Layout Analysis), OCR (Optical Character Recognition), and TSR (Table Structure Recognition) tasks, and several currently *experimental* large model options.
+- Agent component: **(x)** or a forward slash `/` can be used to insert available keys (variables) in the system prompt field of the **Generate** or **Template** component.
+- Object storage: Supports using Aliyun OSS (Object Storage Service) as a file storage option.
+- Models: Updates the supported model list for Tongyi-Qianwen, adding DeepSeek-specific models; adds ModelScope as a model provider.
+- APIs: Document metadata can be updated through an API.
+
+The following diagram illustrates the workflow of RAGFlow's Deep Research:
+
+![Image](https://github.com/user-attachments/assets/f65d4759-4f09-4d9d-9549-c0e1fe907525)
+
+The following is a screenshot of a conversation that integrates Deep Research:
+
+![Image](https://github.com/user-attachments/assets/165b88ff-1f5d-4fb8-90e2-c836b25e32e9)
+
+### Related APIs
+
+#### HTTP APIs
+
+Adds a body parameter `"meta_fields"` to the [Update document](./references/http_api_reference.md#update-document) method.
+
+#### Python APIs
+
+Adds a key option `"meta_fields"` to the [Update document](./references/python_api_reference.md#update-document) method.
+
+### Documentation
+
+#### Added documents
+
+[Run retrieval test](./guides/dataset/run_retrieval_test.md)
+
+## v0.16.0
+
+Released on February 6, 2025.
+
+### New features
+
+- Supports DeepSeek R1 and DeepSeek V3.
+- GraphRAG refactor: Knowledge graph is dynamically built on an entire knowledge base (dataset) rather than on an individual file, and automatically updated when a newly uploaded file starts parsing. See [here](https://ragflow.io/docs/dev/construct_knowledge_graph).
+- Adds an **Iteration** agent component and a **Research report generator** agent template. See [here](./guides/agent/agent_component_reference/iteration.mdx).
+- New UI language: Portuguese.
+- Allows setting metadata for a specific file in a knowledge base to enhance AI-powered chats. See [here](./guides/dataset/set_metadata.md).
+- Upgrades RAGFlow's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.6.0.dev3.
+- Supports GPU acceleration for DeepDoc (see [docker-compose-gpu.yml](https://github.com/infiniflow/ragflow/blob/main/docker/docker-compose-gpu.yml)).
+- Supports creating and referencing a **Tag** knowledge base as a key milestone towards bridging the semantic gap between query and response.
+
+:::danger IMPORTANT
+The **Tag knowledge base** feature is *unavailable* on the [Infinity](https://github.com/infiniflow/infinity) document engine.
+:::
+
+### Documentation
+
+#### Added documents
+
+- [Construct knowledge graph](./guides/dataset/construct_knowledge_graph.md)
+- [Set metadata](./guides/dataset/set_metadata.md)
+- [Begin component](./guides/agent/agent_component_reference/begin.mdx)
+- [Generate component](./guides/agent/agent_component_reference/generate.mdx)
+- [Interact component](./guides/agent/agent_component_reference/interact.mdx)
+- [Retrieval component](./guides/agent/agent_component_reference/retrieval.mdx)
+- [Categorize component](./guides/agent/agent_component_reference/categorize.mdx)
+- [Keyword component](./guides/agent/agent_component_reference/keyword.mdx)
+- [Message component](./guides/agent/agent_component_reference/message.mdx)
+- [Rewrite component](./guides/agent/agent_component_reference/rewrite.mdx)
+- [Switch component](./guides/agent/agent_component_reference/switch.mdx)
+- [Concentrator component](./guides/agent/agent_component_reference/concentrator.mdx)
+- [Template component](./guides/agent/agent_component_reference/template.mdx)
+- [Iteration component](./guides/agent/agent_component_reference/iteration.mdx)
+- [Note component](./guides/agent/agent_component_reference/note.mdx)
+
+## v0.15.1
+
+Released on December 25, 2024.
+
+### Upgrades
+
+- Upgrades RAGFlow's document engine [Infinity](https://github.com/infiniflow/infinity) to v0.5.2.
+- Enhances the log display of document parsing status.
+
+### Fixed issues
+
+This release fixes the following issues:
+
+- The `SCORE not found` and `position_int` errors returned by [Infinity](https://github.com/infiniflow/infinity).
+- Once an embedding model in a specific knowledge base is changed, embedding models in other knowledge bases can no longer be changed.
+- Slow response in question-answering and AI search due to repetitive loading of the embedding model.
+- Fails to parse documents with RAPTOR.
+- Using the **Table** parsing method results in information loss.
+- Miscellaneous API issues.
+
+### Related APIs
+
+#### HTTP APIs
+
+Adds an optional parameter `"user_id"` to the following APIs:
+
+- [Create session with chat assistant](https://ragflow.io/docs/dev/http_api_reference#create-session-with-chat-assistant)
+- [Update chat assistant's session](https://ragflow.io/docs/dev/http_api_reference#update-chat-assistants-session)
+- [List chat assistant's sessions](https://ragflow.io/docs/dev/http_api_reference#list-chat-assistants-sessions)
+- [Create session with agent](https://ragflow.io/docs/dev/http_api_reference#create-session-with-agent)
+- [Converse with chat assistant](https://ragflow.io/docs/dev/http_api_reference#converse-with-chat-assistant)
+- [Converse with agent](https://ragflow.io/docs/dev/http_api_reference#converse-with-agent)
+- [List agent sessions](https://ragflow.io/docs/dev/http_api_reference#list-agent-sessions)
 
 ## v0.15.0
 
@@ -26,7 +139,7 @@ Released on December 18, 2024.
 
 ### Improvements
 
-- Upgrades the Document Layout Analysis model in Deepdoc.
+- Upgrades the Document Layout Analysis model in DeepDoc.
 - Significantly enhances the retrieval performance when using [Infinity](https://github.com/infiniflow/infinity) as document engine.
 
 ### Related APIs
@@ -132,9 +245,9 @@ pip install ragflow-sdk==0.13.0
 
 #### Added documents
 
-- [Acquire a RAGFlow API key](https://ragflow.io/docs/dev/acquire_ragflow_api_key)
-- [HTTP API Reference](https://ragflow.io/docs/dev/http_api_reference)
-- [Python API Reference](https://ragflow.io/docs/dev/python_api_reference)
+- [Acquire a RAGFlow API key](./develop/acquire_ragflow_api_key.md)
+- [HTTP API Reference](./references/http_api_reference.md)
+- [Python API Reference](./references/python_api_reference.md)
 
 ## v0.12.0
 
@@ -147,7 +260,7 @@ Released on September 30, 2024.
 - Enables users to remove added LLM vendors.
 - Adds support for **OpenTTS** and **SparkTTS** models.
 - Implements an **Excel to HTML** toggle in the **General** chunk method, allowing users to parse a spreadsheet into either HTML tables or key-value pairs by row.
-- Adds agent tools **YahooFance** and **Jin10**.
+- Adds agent tools **YahooFinance** and **Jin10**.
 - Adds an investment advisor agent template.
 
 ### Compatibility changes
@@ -199,7 +312,7 @@ Released on August 26, 2024.
 - Incorporates monitoring for the task executor.
 - Introduces Agent tools **GitHub**, **DeepL**, **BaiduFanyi**, **QWeather**, and **GoogleScholar**.
 - Supports chunking of EML files.
-- Supports more LLMs or model services: **GPT-4o-mini**, **PerfXCloud**, **TogetherAI**, **Upstage**, **Novita.AI**, **01.AI**, **SiliconFlow**, **XunFei Spark**, **Baidu Yiyan**, and **Tencent Hunyuan**.
+- Supports more LLMs or model services: **GPT-4o-mini**, **PerfXCloud**, **TogetherAI**, **Upstage**, **Novita.AI**, **01.AI**, **SiliconFlow**, **PPIO**, **XunFei Spark**, **Baidu Yiyan**, and **Tencent Hunyuan**.
 
 ## v0.9.0
 
@@ -208,7 +321,7 @@ Released on August 6, 2024.
 ### New features
 
 - Supports GraphRAG as a chunk method.
-- Introduces Agent component **Keyword** and search tools, including **Baidu**, **DduckDuckGo**, **PubMed**, **Wikipedia**, **Bing**, and **Google**.
+- Introduces Agent component **Keyword** and search tools, including **Baidu**, **DuckDuckGo**, **PubMed**, **Wikipedia**, **Bing**, and **Google**.
 - Supports speech-to-text recognition for audio files.
 - Supports model vendors **Gemini** and **Groq**.
 - Supports inference frameworks, engines, and services including **LM studio**, **OpenRouter**, **LocalAI**, and **Nvidia API**.
@@ -240,9 +353,9 @@ Released on May 31, 2024.
 - Supports ARM64 platforms.
 
 :::danger IMPORTANT
-While we also test RAGFlow on ARM64 platforms, we do not plan to maintain RAGFlow Docker images for ARM.
+While we also test RAGFlow on ARM64 platforms, we do not maintain RAGFlow Docker images for ARM.
 
-If you are on an ARM platform, follow [this guide](https://ragflow.io/docs/dev/build_docker_image) to build a RAGFlow Docker image.
+If you are on an ARM platform, follow [this guide](./develop/build_docker_image.mdx) to build a RAGFlow Docker image.
 :::
 
 ### Related APIs
