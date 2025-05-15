@@ -125,7 +125,7 @@ const config = {
             className: 'header-twitter-link',
           },
           {
-            href: 'https://discord.gg/4XxujFgUN7',
+            href: 'https://discord.gg/NjYzJD3GM3',
             'aria-label': 'RAGFlow on Discord',
             position: 'right',
             className: 'header-discord-link',
