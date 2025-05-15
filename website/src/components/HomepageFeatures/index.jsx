@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 const connectionList = [
   { label: "Twitter", link: "https://twitter.com/infiniflowai" },
   { label: "Github", link: "https://github.com/infiniflow/ragflow" },
-  { label: "Discord", link: "https://discord.gg/4XxujFgUN7" },
+  { label: "Discord", link: "https://discord.gg/NjYzJD3GM3" },
 ];
 
 function JoinUs() {
