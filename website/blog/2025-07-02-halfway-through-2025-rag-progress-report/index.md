@@ -1,6 +1,6 @@
 ---
-slug: halfway-through-2025-rag-progress-report
-title: Halfway Through 2025 - A RAG Progress Report
+slug: rag-at-the-crossroads-mid-2025-reflections-on-ai-evolution
+title: RAG at the Crossroads: Mid-2025 Reflections on AI’s Incremental Evolution
 authors: [yingfeng]
 tags: [RAG, agent, memory, agentic, LLM, workflow]
 ---
