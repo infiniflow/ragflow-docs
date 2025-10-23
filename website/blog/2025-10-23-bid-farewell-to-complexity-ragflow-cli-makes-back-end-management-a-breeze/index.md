@@ -1,7 +1,6 @@
 ---
 slug: 
-title: 
-authors: 
+title:  
 tags: 
 ---
 
