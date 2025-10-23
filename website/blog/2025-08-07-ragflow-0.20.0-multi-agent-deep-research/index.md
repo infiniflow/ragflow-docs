@@ -1,11 +1,10 @@
 ---
 slug: ragflow-0.20.0-multi-agent-deep-research
 title: RAGFlow 0.20.0 - Multi-Agent Deep Research
-authors: InfiniFlow
 tags: [agentic, agents, multi-agent, workflow]
 ---
 
-![](./agentic_workflow.jpg)
+![](./multi-agent.png)
 
 ## Deep Research: The defining capability of the Agent era
 

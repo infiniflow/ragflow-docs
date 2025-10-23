@@ -1,7 +1,6 @@
 ---
-slug: agentic-workflow-whats-inside
-title: Agentic Workflow - What's inside in RAGFlow 0.20.0
-authors: InfiniFlow
+slug: agentic-workflow-whats-inside-ragflow-v0.20.0
+title: Agentic Workflow - What's inside RAGFlow 0.20.0
 tags: [agentic, agents, workflow]
 ---
 

@@ -1,7 +1,6 @@
 ---
 slug: tutorial-build-an-e-commerce-customer-support-agent-using-ragflow
 title: Tutorial - Build an E-Commerce Customer Support Agent Using RAGFlow
-authors: InfiniFlow
 tags: [agentic, agents, multi-agent, workflow]
 ---
 

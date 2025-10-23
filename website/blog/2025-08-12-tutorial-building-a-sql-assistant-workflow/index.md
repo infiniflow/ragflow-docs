@@ -1,7 +1,6 @@
 ---
 slug: tutorial-building-a-sql-assistant-workflow
 title: Tutorial - Building a SQL Assistant Workflow
-authors: InfiniFlow
 tags: [agentic, agents, multi-agent, workflow]
 ---
 
