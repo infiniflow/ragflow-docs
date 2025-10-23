@@ -75,7 +75,7 @@ The CPU has a 16-core specification. To align with the actual device environment
 
 ### Solution 1: Original HNSW + LVQ Quantizer (HnswLvq)
 
-LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer, thereby reducing memory usage to one-fourth of that of the original vectors. 
+LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer[^Reference3], thereby reducing memory usage to one-fourth of that of the original vectors. 
 
 Compared to simple scalar quantization methods (such as mean scalar quantization), LVQ reduces errors by statistically analyzing the residuals of each vector, effectively minimizing information loss in distance calculations for quantized vectors. Consequently, LVQ can accurately estimate the distances between original vectors with only approximately 30% of the original memory footprint.
 
@@ -109,7 +109,7 @@ In summary, HnswLvq significantly reduces memory usage while maintaining excelle
 
 RaBitQ is a binary scalar quantization method that shares a similar core idea with LVQ, both aiming to replace the 32-bit floating-point numbers in original vectors with fewer encoded bits. The difference lies in that RaBitQ employs binary scalar quantization, representing each floating-point number with just 1 bit, thereby achieving an extremely high compression ratio.
 
-However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent.
+However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent[^Reference4].
 
 Nevertheless, binary quantization has obvious limitations in terms of precision, showing a substantial gap compared to LVQ. Indexes built directly using RaBitQ encoding exhibit poor query performance. 
 
@@ -154,7 +154,7 @@ In such scenarios, it is recommended to prioritize the use of the HnswRabitq ind
 
 ### Solution 3: LSG Graph Construction Strategy
 
-LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.). 
+LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.) [Reference5]. 
 
 This strategy scales the distance (e.g., L2 distance, inner product distance, etc.) between any two vectors by statistically analyzing the local information—neighborhood radius—of each vector in the dataset. The scaled distance is referred to as the LS distance. 
 
@@ -220,3 +220,6 @@ Infinity continues to iterate and improve. We welcome ongoing attention and valu
 
 [^Reference1]:https://github.com/nmslib/hnswlib
 [^Reference2]:https://github.com/facebookresearch/faiss
+[^Reference3]:https://arxiv.org/pdf/2304.04759
+[^Reference4]:https://doi.org/10.1145/3654970
+[^Reference5]:https://doi.ieeecomputersociety.org/10.1109/ICDE65448.2025.00032
