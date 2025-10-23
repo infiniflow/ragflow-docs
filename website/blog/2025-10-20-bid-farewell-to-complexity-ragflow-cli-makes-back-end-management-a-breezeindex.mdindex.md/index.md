@@ -1,7 +1,7 @@
 ---
-slug: 
-title:  
-tags: 
+slug: bid-farewell-to-complexity-ragflow-cli-makes-back-end-management-a-breezeindex
+title:  Bid Farewell to Complexity — RAGFlow CLI Makes Back-end Management a Breeze
+tags: [CLI, user, management, system, monitoring]
 ---
 
 ![](./toutu.jpg)
