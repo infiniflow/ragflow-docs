@@ -1,7 +1,7 @@
 ---
 slug: 500%25-faster-vector-retrieval-90%25-memory-savings-three-groundbreaking-technologies-in-infinity-v0.6.0-that-revolutionize-hnsw
 title: 500% Faster Vector Retrieval! 90% Memory Savings! Three Groundbreaking Technologies in Infinity v0.6.0 That Revolutionize HNSW
-tags:
+tags: [RAG, gen, vector, database, tech]
 ---
 
 ![](./toutu.jpg)
