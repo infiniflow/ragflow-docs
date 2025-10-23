@@ -5,7 +5,7 @@ authors:
 tags: 
 ---
 
-![]()
+![](./toutu.jpg)
 
 To meet the refined requirements for system operation and maintenance monitoring as well as user account management, especially addressing practical issues currently faced by RAGFlow users, such as "the inability of users to recover lost passwords on their own" and "difficulty in effectively controlling account statuses," RAGFlow has officially launched a professional back-end management command-line tool.
 
@@ -323,7 +323,7 @@ The user has been successfully disabled. Only users in a **disabled** state can 
 - Before proceeding, ensure that all necessary data such as knowledge bases and files that need to be retained have been transferred to other users.
 - This operation will permanently delete the following user data:
 
-![]()
+![](./2.jpg)
 
 All knowledge bases created by the user, uploaded files, and configured agents, as well as files uploaded by the user in others' knowledge bases, will be permanently deleted. This operation is irreversible, so please proceed with extreme caution.
 
