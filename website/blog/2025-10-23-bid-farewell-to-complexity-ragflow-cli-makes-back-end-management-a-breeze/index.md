@@ -13,7 +13,7 @@ This tool is based on a clear client-server architecture. By adopting the design
 
 The specific architectural design is illustrated in the following diagram: 
 
-![]()
+![](./1.jpg)
 
 Through this tool, RAGFlow users can gain a one-stop overview of the operational status of the RAGFlow Server as well as components such as MySQL, Elasticsearch, Redis, MinIO, and Infinity. It also supports comprehensive user lifecycle management, including account creation, status control, password reset, and data cleanup.
 
