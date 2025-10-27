@@ -140,11 +140,11 @@ Compared to LVQ, RaBitQ can further reduce the memory footprint of encoded vecto
 
 However, it should be noted that on certain datasets (such as sift1M), the quantization process may lead to significant precision loss, making such datasets unsuitable for using HnswRabitq.
 
-![](./infinity-1.png)
+![](./infinity-1.jpg)
 
 ![](./infinity-2.png)
 
-![](./infinity-3.png)
+![](./infinity-3.jpg)
 
 ![](./infinity-4.png)
 
@@ -186,7 +186,7 @@ query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef'
 
 LSG essentially alters the metric space during the index construction process. Therefore, it can not only be applied to the original HNSW but also be combined with quantization methods (such as LVQ or RaBitQ) to form variant indexes like HnswLvqLsg or HnswRabitqLsg. The usage of the user interface remains consistent with that of HnswLvq and HnswRabitq.
 
-![](./infinity-5.png)
+![](./infinity-5.jpg)
 
 ![](./infinity-6.png)
 
