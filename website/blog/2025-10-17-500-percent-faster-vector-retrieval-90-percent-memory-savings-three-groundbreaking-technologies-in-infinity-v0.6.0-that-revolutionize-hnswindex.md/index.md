@@ -160,9 +160,9 @@ This strategy scales the distance (e.g., L2 distance, inner product distance, et
 
 During the graph indexing construction process, LSG uniformly replaces the original distance metric with the LS distance, effectively performing a "local scaling" of the original metric space. Through theoretical proofs and experiments, the paper demonstrates that constructing a graph index in this scaled space can achieve superior query performance in the original space.
 
-LSG optimizes the HNSW index in multiple ways. When the accuracy requirement is relatively lenient (<99%), LSG exhibits higher QPS (Queries Per Second) compared to the original HNSW index. 
+LSG optimizes the HNSW index in multiple ways. When the accuracy requirement is relatively lenient (&lt; 99%), LSG exhibits higher QPS (Queries Per Second) compared to the original HNSW index. 
 
-In high-precision scenarios (>99%), LSG enhances the quality of the graph index, enabling HNSW to surpass its original accuracy limit and achieve retrieval accuracy that is difficult for the original HNSW index to attain. These improvements translate into faster response times and more precise query results for users in real-world applications of RAGFlow.
+In high-precision scenarios (&gt; 99%), LSG enhances the quality of the graph index, enabling HNSW to surpass its original accuracy limit and achieve retrieval accuracy that is difficult for the original HNSW index to attain. These improvements translate into faster response times and more precise query results for users in real-world applications of RAGFlow.
 
 In Infinity, LSG is provided as an optional parameter for HNSW. Users can enable this graph construction strategy by setting build_type=lsg, and we refer to the corresponding index as HnswLsg.
 
