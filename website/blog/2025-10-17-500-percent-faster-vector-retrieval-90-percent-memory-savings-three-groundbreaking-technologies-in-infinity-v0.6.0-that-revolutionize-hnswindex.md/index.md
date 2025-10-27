@@ -8,7 +8,7 @@ tags: [RAG, gen, vector, database, tech]
 
 ## Introduction
 
-In RAG (Retrieval-Augmented Generation) and LLM (Large Language Model) Memory, vector retrieval is widely employed. Among various options, graph-based indexing has become the most common choice due to its high accuracy and performance, with the HNSW (Hierarchical Navigable Small World) index being the most representative one[^1] [^2].
+In RAG (Retrieval-Augmented Generation) and LLM (Large Language Model) Memory, vector retrieval is widely employed. Among various options, graph-based indexing has become the most common choice due to its high accuracy and performance, with the HNSW (Hierarchical Navigable Small World) index being the most representative one[1] [2].
 
 However, during our practical application of HNSW in RAGFlow, we encountered the following two major bottlenecks:
 
@@ -27,7 +27,7 @@ Its structure consists of two parts:
 A set of original vector data, along with a graph structure jointly constructed by a skip list and an adjacency list. Taking the Python interface as an example, the index can be constructed and utilized in the following manner:
 
 ```
-## 创建索引
+## Create index
 table_obj.create_index(
     "hnsw_index",
     index.IndexInfo(
@@ -39,7 +39,7 @@ table_obj.create_index(
         },
     )
 )
-## 向量检索
+## Vector retrieval
 query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef': 200})
 ```
 
@@ -51,10 +51,10 @@ To address the issues of high memory consumption and accuracy bottlenecks, Infin
 To facilitate users in testing the performance of different indexes locally, Infinity provides a benchmark script. You can follow the tutorial provided by Infinity on GitHub to set up the environment and prepare the dataset, and then test different indexing schemes using the benchmark.
 
 ```
-######################   编译 benchmark  ######################
+######################   compile benchmark  ######################
 cmake --build cmake-build-release --target hnsw_benchmark
 
-###################### 构建索引 & 执行查询 ######################
+###################### build index & execute query ######################
 #           mode : build, query
 # benchmark_type : sift, gist, msmarco
 #     build_type : plain, lvq, crabitq, lsg, lvq_lsg, crabitq_lsg
@@ -75,14 +75,14 @@ The CPU has a 16-core specification. To align with the actual device environment
 
 ### Solution 1: Original HNSW + LVQ Quantizer (HnswLvq)
 
-LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer[^3], thereby reducing memory usage to one-fourth of that of the original vectors. 
+LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer[3], thereby reducing memory usage to one-fourth of that of the original vectors. 
 
 Compared to simple scalar quantization methods (such as mean scalar quantization), LVQ reduces errors by statistically analyzing the residuals of each vector, effectively minimizing information loss in distance calculations for quantized vectors. Consequently, LVQ can accurately estimate the distances between original vectors with only approximately 30% of the original memory footprint.
 
 In the HNSW algorithm, original vectors are utilized for distance calculations, which enables LVQ to be directly integrated with HNSW. We refer to this combined approach as HnswLvq. In Infinity, users can enable LVQ encoding by setting the parameter `"encode"`: `"lvq"`:
 
 ```
-## 创建索引
+## Create index
 table_obj.create_index(
     "hnsw_index",
     index.IndexInfo(
@@ -95,7 +95,7 @@ table_obj.create_index(
         },
     )
 )
-## 向量检索
+## Vector retrieval
 query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef': 200})
 ```
 
@@ -109,7 +109,7 @@ In summary, HnswLvq significantly reduces memory usage while maintaining excelle
 
 RaBitQ is a binary scalar quantization method that shares a similar core idea with LVQ, both aiming to replace the 32-bit floating-point numbers in original vectors with fewer encoded bits. The difference lies in that RaBitQ employs binary scalar quantization, representing each floating-point number with just 1 bit, thereby achieving an extremely high compression ratio.
 
-However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent[^4].
+However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent[4].
 
 Nevertheless, binary quantization has obvious limitations in terms of precision, showing a substantial gap compared to LVQ. Indexes built directly using RaBitQ encoding exhibit poor query performance. 
 
@@ -118,7 +118,7 @@ Therefore, the HnswRabitq scheme implemented in Infinity involves first construc
 During the query process, the system initially uses quantized vectors for preliminary retrieval and then re-ranks the ef candidate results specified by the user using the original vectors.
 
 ```
-## 创建索引
+## Create index
 table_obj.create_index(
     "hnsw_index",
     index.IndexInfo(
@@ -130,9 +130,9 @@ table_obj.create_index(
         },
     )
 )
-## 构建 RaBitQ 编码
+## Construct RaBitQ coding
 table_obj.optimize("hnsw_index", {"compress_to_rabitq": "true"})
-## 向量检索
+## Vector retrieval
 query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef': 200})
 ```
 
@@ -154,7 +154,7 @@ In such scenarios, it is recommended to prioritize the use of the HnswRabitq ind
 
 ### Solution 3: LSG Graph Construction Strategy
 
-LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.) [^5]. 
+LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.) [5]. 
 
 This strategy scales the distance (e.g., L2 distance, inner product distance, etc.) between any two vectors by statistically analyzing the local information—neighborhood radius—of each vector in the dataset. The scaled distance is referred to as the LS distance. 
 
@@ -167,7 +167,7 @@ In high-precision scenarios (>99%), LSG enhances the quality of the graph index,
 In Infinity, LSG is provided as an optional parameter for HNSW. Users can enable this graph construction strategy by setting build_type=lsg, and we refer to the corresponding index as HnswLsg.
 
 ```
-## 创建索引
+## Create index
 table_obj.create_index(
     "hnsw_index",
     index.IndexInfo(
@@ -180,7 +180,7 @@ table_obj.create_index(
         },
     )
 )
-## 向量检索
+## Vector retrieval
 query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef': 200})
 ```
 
@@ -218,8 +218,8 @@ Based on the above experimental results, we offer the following practical recomm
 
 Infinity continues to iterate and improve. We welcome ongoing attention and valuable feedback and suggestions from everyone.
 
-[^1]:https://github.com/nmslib/hnswlib
-[^2]:https://github.com/facebookresearch/faiss
-[^3]:https://arxiv.org/pdf/2304.04759
-[^4]:https://doi.org/10.1145/3654970
-[^5]:https://doi.ieeecomputersociety.org/10.1109/ICDE65448.2025.00032
+[1]:https://github.com/nmslib/hnswlib
+[2]:https://github.com/facebookresearch/faiss
+[3]:https://arxiv.org/pdf/2304.04759
+[4]:https://doi.org/10.1145/3654970
+[5]:https://doi.ieeecomputersociety.org/10.1109/ICDE65448.2025.00032
