@@ -10,8 +10,6 @@ tags: [ingestion pipeline, long-context, cli, etl]
 
 This release shifts focus from enhancing online Agent capabilities to strengthening the data foundation, prioritising usability and dialogue quality from the ground up. Directly addressing common RAG pain points—from data preparation to long-document understanding—version 0.21.0 brings crucial upgrades: a flexible, orchestratable Ingestion Pipeline, long-context RAG to close semantic gaps in complex files, and a new admin CLI for smoother operations. Taken together, these elements establish RAGFlow’s refreshed data-pipeline core, providing a more solid foundation for building robust and effective RAG applications.
 
-![Image](./planning.PNG)
-
 ## Orchestratable Ingestion Pipeline
 
 If earlier Agents primarily tackled the orchestration of online data—as seen in Workflow and Agentic Workflow—the Ingestion Pipeline mirrors this capability by applying the same technical architecture to orchestrate offline data ingestion. Its introduction enables users to construct highly customized RAG data pipelines within a unified framework. This not only streamlines bespoke development but also more fully embodies the "Flow" in RAGFlow.
