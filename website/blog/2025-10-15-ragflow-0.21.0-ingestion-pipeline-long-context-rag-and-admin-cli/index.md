@@ -35,20 +35,27 @@ The following diagram illustrates this architectural analogy:
 ![Image](./etl.PNG)
 
 Specifically, while the Extract phase in ETL/ELT is responsible for pulling data from diverse sources, the RAGFlow Ingestion Pipeline augments this with a dedicated Parsing stage to extract information from unstructured data. This stage integrates multiple parsing models, led by DeepDoc, to convert multimodal documents (for example, text and images) into a unimodal representation suitable for processing.
+
 In the Transform phase, where traditional ETL/ELT focuses on data cleansing and business logic, RAGFlow instead constructs a series of LLM-centric Agent components. These are optimized to address semantic gaps in retrieval, with a core mission that can be summarized as: to enhance recall and ranking accuracy.
+
 For data loading, ETL/ELT writes results to a data warehouse or data lake, while RAGFlow uses an Indexer component to build the processed content into a retrieval-optimised index format. This reflects the RAG engine’s hybrid retrieval architecture, which must support full-text, vector, and future tensor-based retrieval to ensure optimal recall.
+
 Thus, the modern data stack serves business analytics for structured data, whereas a RAG engine with an Ingestion Pipeline specializes in the intelligent retrieval of unstructured data—providing high-quality context for LLMs. Each occupies an equivalent ecological niche in its domain.
+
 Regarding processing structured data, this is not the RAG engine’s core duty. It is handled by a Context Layer built atop the engine. This layer leverages the MCP (Model Context Protocol)—described as “TCP/IP for the AI era” —and accompanying Context Engineering to automate the population of all context types. This is a key focus area for RAGFlow’s next development phase.
+
 Below is a preliminary look at the Ingestion Pipeline in v0.21.0; a more detailed guide will follow. We have introduced components for parsing, chunking, and other unstructured data processing tasks into the Agent Canvas, enabling users to freely orchestrate their parsing workflows.
 
 ![](./ingestion_pipeline_common.png)
 
 Orchestrating an Ingestion Pipeline automates the process of parsing files and chunking them by length. It then leverages a large language model to generate summaries, keywords, questions, and even metadata. Previously, this metadata had to be entered manually. Now, a single configuration dramatically reduces maintenance overhead.
+
 Furthermore, the pipeline process is fully observable, recording and displaying complete processing logs for each file.
 
 ![Image](./observable_ingestion_pipeline.png)
 
 The implementation of the Ingestion Pipeline in version 0.21.0 is a foundational step. In the next release, we plan to significantly enhance it by:
+
 - Adding support for more data sources.
 - Providing a wider selection of Parsers.
 - Introducing more flexible Transformer components to facilitate orchestration of a richer set of semantic-enhancement templates.
@@ -56,18 +63,22 @@ The implementation of the Ingestion Pipeline in version 0.21.0 is a foundational
 ## Long-context RAG
 
 As we enter 2025, Retrieval-Augmented Generation (RAG) faces notable challenges driven by two main factors.
+
 Fundamental limitations of traditional RAG
+
 Traditional RAG architectures often fail to guarantee strong dialogue performance because they rely on a retrieval mechanism built around text chunks as the primary unit. This makes them highly sensitive to chunk quality and can yield degraded results due to insufficient context. For example:
 
 - If a coherent semantic unit is split across chunks, retrieval can be incomplete.
 - If a chunk lacks global context, the information presented to the LLM is weakened.
 
 While strategies such as automatically detecting section headers and attaching them to chunks can help with global semantics, they are constrained by header-identification accuracy and the header’s own completeness.
+
 Cost-efficiency concerns with advanced pre-processing techniques
+
 Modern pre-processing methods—GraphRAG, RAPTOR, and Context Retrieval—aim to inject additional semantic information into raw data to boost search hit rates and accuracy for complex queries. They, however, share issues of high cost and unpredictable effectiveness.
 
-GraphRAG: This approach often consumes many times more tokens than the original text, and the automatically generated knowledge graphs are frequently unsatisfactory. Its effectiveness in complex multi-hop reasoning is limited by uncontrollable reasoning paths. As a supplementary retrieval outside the original chunks, the knowledge graph also loses some granular context from the source.
-RAPTOR: This technique produces clustered summaries that are recalled as independent chunks but naturally lack the detail of the source text, reintroducing the problem of insufficient context.
+- GraphRAG: This approach often consumes many times more tokens than the original text, and the automatically generated knowledge graphs are frequently unsatisfactory. Its effectiveness in complex multi-hop reasoning is limited by uncontrollable reasoning paths. As a supplementary retrieval outside the original chunks, the knowledge graph also loses some granular context from the source.
+- RAPTOR: This technique produces clustered summaries that are recalled as independent chunks but naturally lack the detail of the source text, reintroducing the problem of insufficient context.
 
 Context Retrieval: This method enriches original chunks with extra semantics such as keywords or potential questions. It presents a clear trade-off:
 
@@ -99,8 +110,11 @@ This upgrade underlines RAGFlow’s commitment to robust functionality and found
 ## Finale
 
 RAGFlow 0.21.0 marks a significant milestone, building on prior progress and outlining future developments. It introduces the first integration of Retrieval (RAG) with orchestration (Flow), forming an intelligent engine to support the LLM context layer, underpinned by unstructured data ELT and a robust RAG capability set.
+
 From the user-empowered Ingestion Pipeline to long-context RAG that mitigates semantic fragmentation, and the management backend that ensures reliable operation, every new feature is designed to make the RAG system smarter, more flexible, and enterprise-ready. This is not merely a feature tally but an architectural evolution, establishing a solid foundation for future growth.
+
 Our ongoing focus remains the LLM context layer: building a powerful, reliable data foundation for LLMs and effectively serving all Agents. This remains RAGFlow’s core aim.
+
 We invite you to continue following and starring our project as we grow together.
 
 GitHub: https://github.com/infiniflow/ragflow
