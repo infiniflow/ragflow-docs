@@ -28,7 +28,7 @@ The following sections will provide a detailed introduction to the implementatio
 
 The dataset required for this example can be downloaded from *Hugging Face Datasets*[^1].
 
-![]()
+![](./2.png)
 
 Create an "Internal Stock Research Report" knowledge base and import the corresponding dataset documents.
 
