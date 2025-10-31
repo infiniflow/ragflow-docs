@@ -26,7 +26,7 @@ The following sections will provide a detailed introduction to the implementatio
 
 ## 1.1 Create a knowledge base
 
-The dataset required for this example can be downloaded from *Hugging Face Datasets*[^1].
+The dataset required for this example can be downloaded from *Hugging Face Datasets*[1].
 
 ![](./2.png)
 
@@ -256,3 +256,6 @@ We have also received requests from everyone expressing a preference not to extr
 ## 2.7
 
 # Summary and Outlook
+
+
+[1]: https://huggingface.co/datasets/InfiniFlow/company_financial_research_agent
