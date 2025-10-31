@@ -16,7 +16,7 @@ When an analyst poses a question, the system identifies the company name or abbr
 
 The workflow after orchestration is as follows:
 
-![]()
+![](/1.png)
 
 This case utilizes RAGFlow to implement a complete workflow, ranging from stock code extraction, to the generation of company financial statements, and finally to the integration and output of research report information.
 
@@ -32,13 +32,13 @@ The dataset required for this example can be downloaded from *Hugging Face Datas
 
 Create an "Internal Stock Research Report" knowledge base and import the corresponding dataset documents.
 
-![]()
+![](/3.PNG)
 
 ## 1.2 Parse documents
 
 For the documents in the "Internal Stock Research Report" knowledge base, we have selected the parsing and slicing method called Paper.
 
-![]()
+![](/4.png)
 
 Research report documents typically include modules such as abstracts, core viewpoints, thematic analyses, financial forecast tables, and risk warnings. The overall structure follows a more thesis-like logical progression rather than a strictly hierarchical table of contents. If sliced based on the lowest-level headings, it can easily disrupt the coherence between paragraphs and tables.
 
@@ -46,7 +46,7 @@ Therefore, RAGFlow is better suited to adopt the "Paper" slicing approach, using
 
 The preview of the sliced financial report is as follows:
 
-![]()
+![](/5.png)
 
 # 2. Building the Intelligent Agent
 
@@ -54,17 +54,17 @@ The preview of the sliced financial report is as follows:
 
 After successful creation, the system will automatically generate a "Start" node on the canvas.
 
-![]()
+![](/6.png)
 
 In the "Start" node, you can set the initial greeting of the assistant, for example: "Hello! I'm your stock research assistant."
 
-![]()
+![](/7.png)
 
 ## 2.2 Build the function of "Extract Stock Codes"
 
 ### 2.2.1 Agent extracts stock codes
 
-![]()
+![](/8.png)
 
 Use an Agent node and attach a TavilySearch tool to identify stock names or abbreviations from the user's natural language input and return a unique standard stock code. When no match is found, uniformly output "Not Found."
 
@@ -122,20 +122,20 @@ User input: “How is the Shanghai Composite Index performing today?” → Outp
 
 ### 2.2.2 Conditional node for identifying stock codes
 
-![]()
+![](/9.png)
 
 Use a conditional node to evaluate the output result of the previous Agent node and guide the process flow based on different outcomes:
 
 - If the output is a stock code: It indicates successful identification of the stock, and the process will proceed to the "Case1" branch.
 - If the output contains "Not Found": It indicates that no valid stock name was identified from the user's input, and the process will proceed to the "Else" branch, where it will execute a node for replying with an irrelevant message, outputting "Your query is not supported."
 
-![]()
+![](/10.png)
 
 ## 2.3 Build the "Company Financial Statements" feature
 
 The data for this feature is sourced from financial data provided by Yahoo Finance. By calling this API, we obtain core financial data for specified stocks, including operating revenue, net profit, etc., which drives the generation of the "Company Financial Statements."
 
-![]()
+![](/11.png)
 
 ### 2.3.1 Yahoo Finance Tools: Request for Financial Data
 
@@ -143,13 +143,13 @@ By using the "Yahoo Finance Tools" node, select "Balance sheet" and pass the `st
 
 The returned results contain key data such as total assets, total equity, and tangible book value, which are used to generate the "Company Financial Statements" feature.
 
-![]()
+![](/12.png)
 
 ### 2.3.2 Financial table generation by Code node
 
 Utilize the Code node to perform field mapping and numerical formatting on the financial data returned by Yahoo Finance Tools through Python scripts, ultimately generating a Markdown table with bilingual indicator comparisons, enabling a clear and intuitive display of the "Company Financial Statements."
 
-![]()
+![](/13.png)
 
 Code:
 
