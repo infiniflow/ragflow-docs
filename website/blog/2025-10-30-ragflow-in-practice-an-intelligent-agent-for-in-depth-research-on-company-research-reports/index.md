@@ -132,9 +132,111 @@ The data for this feature is sourced from financial data provided by Yahoo Finan
 
 ![]()
 
-### 2.3.1
+### 2.3.1 Yahoo Finance Tools: Request for Financial Data
 
-### 2.3.2
+By using the "Yahoo Finance Tools" node, select "Balance sheet" and pass the `stockCode` output by the upstream Agent as a parameter. This allows you to fetch the core financial indicators of the corresponding company.
+
+The returned results contain key data such as total assets, total equity, and tangible book value, which are used to generate the "Company Financial Statements" feature.
+
+![]()
+
+### 2.3.2 Financial table generation by Code node
+
+Utilize the Code node to perform field mapping and numerical formatting on the financial data returned by Yahoo Finance Tools through Python scripts, ultimately generating a Markdown table with bilingual indicator comparisons, enabling a clear and intuitive display of the "Company Financial Statements."
+
+![]()
+
+Code:
+
+```
+import re
+
+def format_number(value: str) -> str:
+    """Convert scientific notation or float to formatted number with commas."""
+    try:
+        num = float(value)
+        if num.is_integer():
+            return f"{int(num):,}"
+        else:
+            return f"{num:,.2f}"
+    except:
+        return value  # Return as is if not a number (e.g., — or empty)
+
+def extract_md_table_single_column(input_text: str) -> str:
+    # Core financial indicators (English only)
+    indicators = [
+        "Total Assets",
+        "Total Equity",
+        "Tangible Book Value",
+        "Total Debt",
+        "Net Debt",
+        "Cash And Cash Equivalents",
+        "Working Capital",
+        "Long Term Debt",
+        "Common Stock Equity",
+        "Ordinary Shares Number"
+    ]
+
+    # Units for each indicator
+    unit_map = {
+        "Total Assets": "USD",
+        "Total Equity": "USD",
+        "Tangible Book Value": "USD",
+        "Total Debt": "USD",
+        "Net Debt": "USD",
+        "Cash And Cash Equivalents": "USD",
+        "Working Capital": "USD",
+        "Long Term Debt": "USD",
+        "Common Stock Equity": "USD",
+        "Ordinary Shares Number": "Shares"
+    }
+
+    lines = input_text.splitlines()
+
+    # Detect header line containing dates
+    date_pattern = r"\d{4}-\d{2}-\d{2}"
+    header_line = ""
+    for line in lines:
+        if re.search(date_pattern, line):
+            header_line = line
+            break
+
+    if not header_line:
+        raise ValueError("No header line with date found.")
+
+    dates = re.findall(date_pattern, header_line)
+    first_date = dates[0]  # Use only the first column (latest or leftmost date)
+    header = f"| Key Indicator | {first_date} |"
+    divider = "|-------------------------|---------------|"
+
+    rows = []
+    for ind in indicators:
+        unit = unit_map.get(ind, "")
+        display_name = f"{ind} ({unit})" if unit else ind
+
+        found = False
+        for line in lines:
+            if ind in line:
+                # Match numeric value (float, int, or scientific)
+                pattern = r"(nan|[0-9\.]+(?:[eE][+-]?\d+)?)"
+                values = re.findall(pattern, line)
+                # Clean up value
+                first_value = values[0].strip() if values and values[0].strip().lower() != "nan" else "—"
+                first_value = format_number(first_value) if first_value != "—" else "—"
+                rows.append(f"| {display_name} | {first_value} |")
+                found = True
+                break
+        if not found:
+            rows.append(f"| {display_name} | — |")
+
+    md_table = "\n".join([header, divider] + rows)
+    return md_table
+
+def main(input_text: str):
+    return extract_md_table_single_column(input_text)
+```
+
+We have also received requests from everyone expressing a preference not to extract JSON fields through coding, and we will gradually provide solutions in future versions.
 
 ## 2.4
 
