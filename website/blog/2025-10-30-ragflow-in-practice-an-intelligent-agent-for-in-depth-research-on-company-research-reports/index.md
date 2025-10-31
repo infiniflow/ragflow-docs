@@ -1,3 +1,8 @@
+---
+slug:ragflow in practice an intelligent agent for in depth research on company research reports
+title:ragflow in practice an intelligent agent for in depth research on company research reports
+tags:
+---
 
 ![]()
 
