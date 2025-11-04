@@ -157,32 +157,25 @@ Code:
 import re
 
 def format_number(value: str) -> str:
-    """Convert scientific notation or float to formatted number with commas."""
+    """Convert scientific notation or floating-point numbers to comma-separated numbers"""
     try:
         num = float(value)
         if num.is_integer():
-            return f"{int(num):,}"
+            return f"{int(num):,}"  # If it's an integer, format without decimal places
         else:
-            return f"{num:,.2f}"
+            return f"{num:,.2f}"  # Otherwise, keep two decimal places and add commas
     except:
-        return value  # Return as is if not a number (e.g., — or empty)
+        return value  # Return the original value if it's not a number (e.g., — or empty)
 
 def extract_md_table_single_column(input_text: str) -> str:
-    # Core financial indicators (English only)
+    # Use English indicators directly
     indicators = [
-        "Total Assets",
-        "Total Equity",
-        "Tangible Book Value",
-        "Total Debt",
-        "Net Debt",
-        "Cash And Cash Equivalents",
-        "Working Capital",
-        "Long Term Debt",
-        "Common Stock Equity",
-        "Ordinary Shares Number"
+        "Total Assets", "Total Equity", "Tangible Book Value", "Total Debt", 
+        "Net Debt", "Cash And Cash Equivalents", "Working Capital", 
+        "Long Term Debt", "Common Stock Equity", "Ordinary Shares Number"
     ]
-
-    # Units for each indicator
+    
+    # Core indicators and their corresponding units
     unit_map = {
         "Total Assets": "USD",
         "Total Equity": "USD",
@@ -198,7 +191,7 @@ def extract_md_table_single_column(input_text: str) -> str:
 
     lines = input_text.splitlines()
 
-    # Detect header line containing dates
+    # Automatically detect the date column, keeping only the first one
     date_pattern = r"\d{4}-\d{2}-\d{2}"
     header_line = ""
     for line in lines:
@@ -207,32 +200,32 @@ def extract_md_table_single_column(input_text: str) -> str:
             break
 
     if not header_line:
-        raise ValueError("No header line with date found.")
+        raise ValueError("Date column header row not found")
 
     dates = re.findall(date_pattern, header_line)
-    first_date = dates[0]  # Use only the first column (latest or leftmost date)
-    header = f"| Key Indicator | {first_date} |"
-    divider = "|-------------------------|---------------|"
+    first_date = dates[0]  # Keep only the first date
+    header = f"| Indicator | {first_date} |"
+    divider = "|------------------------|------------|"
 
     rows = []
     for ind in indicators:
         unit = unit_map.get(ind, "")
-        display_name = f"{ind} ({unit})" if unit else ind
+        display_ind = f"{ind} ({unit})" if unit else ind
 
         found = False
         for line in lines:
             if ind in line:
-                # Match numeric value (float, int, or scientific)
+                # Match numbers and possible units
                 pattern = r"(nan|[0-9\.]+(?:[eE][+-]?\d+)?)"
                 values = re.findall(pattern, line)
-                # Clean up value
+                # Replace 'nan' with '—' and format the number
                 first_value = values[0].strip() if values and values[0].strip().lower() != "nan" else "—"
                 first_value = format_number(first_value) if first_value != "—" else "—"
-                rows.append(f"| {display_name} | {first_value} |")
+                rows.append(f"| {display_ind} | {first_value} |")
                 found = True
                 break
         if not found:
-            rows.append(f"| {display_name} | — |")
+            rows.append(f"| {display_ind} | — |")
 
     md_table = "\n".join([header, divider] + rows)
     return md_table
