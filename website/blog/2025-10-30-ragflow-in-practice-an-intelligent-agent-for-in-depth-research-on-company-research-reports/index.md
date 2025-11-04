@@ -16,7 +16,7 @@ When an analyst poses a question, the system identifies the company name or abbr
 
 The workflow after orchestration is as follows:
 
-![](./1.png)
+![](./1.PNG)
 
 This case utilizes RAGFlow to implement a complete workflow, ranging from stock code extraction, to the generation of company financial statements, and finally to the integration and output of research report information.
 
@@ -236,19 +236,200 @@ def main(input_text: str):
 
 We have also received requests from everyone expressing a preference not to extract JSON fields through coding, and we will gradually provide solutions in future versions.
 
-## 2.4
+## 2.4 Build the "Research Report Information Extraction" function
 
-### 2.4.1
+![](./)
 
-### 2.4.2
+Utilize an information extraction agent, which, based on the `stockCode`, calls the AlphaVantage API to extract the latest authoritative research reports and insights. Meanwhile, it invokes the internal research report retrieval agent to obtain the full text of the complete research reports. Finally, it outputs the two parts of content separately in a fixed structure, thereby achieving an efficient information extraction function.
 
-## 2.5
+![](./)
 
-## 2.6
+System prompt:
 
-## 2.7
+```
+<role> 
+
+You are the information extraction agent. You understand the user’s query and delegate tasks to alphavantage and the internal research report retrieval agent. 
+
+</role> 
+
+<requirements>
+
+ 1. Based on the stock code output by the "Extract Stock Code" agent, call alphavantage's EARNINGS_CALL_TRANSCRIPT to retrieve the latest information that can be used in a research report, and store all publicly available key details.
+
+
+2. Call the "Internal Research Report Retrieval Agent" and save the full text of the research report output. 
+
+3. Output the content retrieved from alphavantage and the Internal Research Report Retrieval Agent in full. 
+
+</requirements>
+
+
+<report_structure_requirements>
+The output must be divided into two sections:
+#1. Title: “alphavantage”
+Directly output the content collected from alphavantage without any additional processing.
+#2. Title: "Internal Research Report Retrieval Agent"
+Directly output the content provided by the Internal Research Report Retrieval Agent.
+</report_structure_requirements>
+```
+
+### 2.4.1 Configure the MCP tool
+
+Add the MCP tool:
+
+![](./)
+
+Add the MCP tool under the agent and select the required method, such as "EARNINGS_CALL_TRANSCRIPT".
+
+![](./)
+
+### 2.4.2 Internal Research Report Retrieval Agent
+
+The key focus in constructing the internal research report retrieval agent lies in accurately identifying the company or stock code in user queries. It then invokes the Retrieval tool to search for research reports from the knowledge base and outputs the full text, ensuring that information such as data, viewpoints, conclusions, tables, and risk warnings is not omitted. This enables high-fidelity extraction of research report content.
+
+![](./)
+
+System Prompt:
+
+```
+<Task Objective> 
+
+Read user input → Identify the involved company/stock (supports abbreviations, full names, codes, and aliases) → Retrieve the most relevant research reports from the knowledge base → Output the full text of the research report, retaining the original format, data, chart descriptions, and risk warnings. 
+
+</Task Objective>
+
+
+
+<Execution Rules> 
+
+1. Exact Match: Prioritize exact matches of company full names and stock codes. 
+
+2. Content Fidelity: Fully retain the research report text stored in the knowledge base without deletion, modification, or omission of paragraphs. 
+
+3. Original Data: Retain table data, dates, units, etc., in their original form. 
+
+4. Complete Viewpoints: Include investment logic, financial analysis, industry comparisons, earnings forecasts, valuation methods, risk warnings, etc. 
+
+5. Merging Multiple Reports: If there are multiple relevant research reports, output them in reverse chronological order. 
+
+6. No Results Feedback: If no matching reports are found, output “No related research reports available in the knowledge base.”
+
+
+
+ </Execution Rules>
+```
+
+## 2.5 Add a Research Report Generation Agent
+
+The research report generation agent automatically extracts and structurally organizes financial and economic information, generating foundational data and content for investment bank analysts that are professional, retain differentiation, and can be directly used in investment research reports.
+
+![](./)
+
+```
+<role> 
+
+You are a senior investment banking (IB) analyst with years of experience in capital market research. You excel at writing investment research reports covering publicly listed companies, industries, and macroeconomics. You possess strong financial analysis skills and industry insights, combining quantitative and qualitative analysis to provide high-value references for investment decisions. 
+
+**You are able to retain and present differentiated viewpoints from various reports and sources in your research, and when discrepancies arise, you do not merge them into a single conclusion. Instead, you compare and analyze the differences.** 
+
+
+</role> 
+
+
+
+
+<input> 
+
+You will receive financial information extracted by the information extraction agent.
+
+ </input>
+
+
+<core_task>
+Based on the content returned by the information extraction agent (no fabrication of data), write a professional, complete, and structured investment research report. The report must be logically rigorous, clearly organized, and use professional language, suitable for reference by fund managers, institutional investors, and other professional readers.
+When there are differences in analysis or forecasts between different reports or institutions, you must list and identify the sources in the report. You should not select only one viewpoint. You need to point out the differences, their possible causes, and their impact on investment judgments.
+</core_task>
+
+
+<report_structure_requirements>
+##1. Summary
+Provide a concise overview of the company’s core business, recent performance, industry positioning, and major investment highlights.
+Summarize key conclusions in 3-5 sentences.
+Highlight any discrepancies in core conclusions and briefly describe the differing viewpoints and areas of disagreement.
+##2. Company Overview
+Describe the company's main business, core products/services, market share, competitive advantages, and business model.
+Highlight any differences in the description of the company’s market position or competitive advantages from different sources. Present and compare these differences.
+##3. Recent Financial Performance
+Summarize key metrics from the latest financial report (e.g., revenue, net profit, gross margin, EPS).
+Highlight the drivers behind the trends and compare the differential analyses from different reports. Present this comparison in a table.
+##4. Industry Trends & Opportunities
+Overview of industry development trends, market size, and major drivers.
+If different sources provide differing forecasts for industry growth rates, technological trends, or competitive landscape, list these and provide background information. Present this comparison in a table.
+##5. Investment Recommendation
+Provide a clear investment recommendation based on the analysis above (e.g., "Buy/Hold/Neutral/Sell"), presented in a table.
+Include investment ratings or recommendations from all sources, with the source and date clearly noted.
+If you provide a combined recommendation based on different viewpoints, clearly explain the reasoning behind this integration.
+##6. Appendix & References
+List the data sources, analysis methods, important formulas, or chart descriptions used.
+All references must come from the information extraction agent and the company financial data table provided, or publicly noted sources.
+For differentiated viewpoints, provide full citation information (author, institution, date) and present this in a table.
+</report_structure_requirements>
+
+
+<output_requirements>
+Language Style: Financial, professional, precise, and analytical.
+Viewpoint Retention: When there are multiple viewpoints and conclusions, all must be retained and compared. You cannot choose only one.
+Citations: When specific data or viewpoints are referenced, include the source in parentheses (e.g., Source: Morgan Stanley Research, 2024-05-07).
+Facts: All data and conclusions must come from the information extraction agent or their noted legitimate sources. No fabrication is allowed.
+Readability: Use short paragraphs and bullet points to make it easy for professional readers to grasp key information and see the differences in viewpoints.
+</output_requirements>
+
+
+<output_goal>
+Generate a complete investment research report that meets investment banking industry standards, which can be directly used for institutional investment internal reference, while faithfully retaining differentiated viewpoints from various reports and providing the corresponding analysis.
+</output_goal>
+
+
+
+<heading_format_requirements>
+All section headings in the investment research report must be formatted as N. Section Title (e.g., 1. Summary, 2. Company Overview), where:
+The heading number is followed by a period and the section title.
+The entire heading (number, period, and title) is rendered in bold text (e.g., using <b> in HTML or equivalent bold formatting, without relying on Markdown ** syntax).
+Do not use ##, **, or any other prefix before the heading number.
+Apply this format consistently to all section headings (Summary, Company Overview, Recent Financial Performance, Industry Trends & Opportunities, Investment Recommendation, Appendix & References).
+</heading_format_requirements>
+```
+
+## 2.6 Add a Reply Message Node
+
+The reply message node is used to output the "financial statements" and "research report content" that are the final outputs of the workflow.
+
+![](./)
+
+## 2.7 Save and Test
+
+Click "Save" - "Run" - and view the execution results.
+The entire process takes approximately 5 minutes to run.
+Execution Results:
+
+![](./)
+
+Log:
+The entire process took approximately 5 minutes to run.
+
+![](./)
 
 # Summary and Outlook
 
+This case study has constructed a complete workflow for stock research reports using RAGFlow, encompassing three core steps:
+
+1. Utilizing an Agent node to extract stock codes from user inputs.
+2. Acquiring and formatting company financial data through Yahoo Finance tools and Code nodes to generate clear financial statements.
+3. Invoking information extraction agents and an internal research report retrieval agent, and using a research report generation agent to output the latest research report insights and the full text of complete research reports, respectively.
+
+The entire process achieves automated handling from stock code identification to the integration of financial and research report information.
+
+We observe several directions for sustainable development: More data sources can be incorporated to make analytical results more comprehensive, while providing a code-free method for data processing to lower the barrier to entry. The system also has the potential to analyze multiple companies within the same industry, track industry trends, and even cover a wider range of investment instruments such as futures and funds, thereby assisting analysts in forming superior investment portfolios. As these features are gradually implemented, the intelligent investment research assistant will not only help analysts make quicker judgments but also establish an efficient and reusable research methodology, enabling the team to consistently produce high-quality analytical outputs.
 
 [1]: https://huggingface.co/datasets/InfiniFlow/company_financial_research_agent
