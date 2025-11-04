@@ -4,7 +4,7 @@ title: ragflow in practice an intelligent agent for in depth research on company
 tags: ragflow
 ---
 
-![]()
+![](./)
 
 # Background
 
@@ -238,11 +238,11 @@ We have also received requests from everyone expressing a preference not to extr
 
 ## 2.4 Build the "Research Report Information Extraction" function
 
-![](./)
+![](./14.png)
 
 Utilize an information extraction agent, which, based on the `stockCode`, calls the AlphaVantage API to extract the latest authoritative research reports and insights. Meanwhile, it invokes the internal research report retrieval agent to obtain the full text of the complete research reports. Finally, it outputs the two parts of content separately in a fixed structure, thereby achieving an efficient information extraction function.
 
-![](./)
+![](./15.png)
 
 System prompt:
 
@@ -278,17 +278,17 @@ Directly output the content provided by the Internal Research Report Retrieval A
 
 Add the MCP tool:
 
-![](./)
+![](./16.png)
 
 Add the MCP tool under the agent and select the required method, such as "EARNINGS_CALL_TRANSCRIPT".
 
-![](./)
+![](./17.png)
 
 ### 2.4.2 Internal Research Report Retrieval Agent
 
 The key focus in constructing the internal research report retrieval agent lies in accurately identifying the company or stock code in user queries. It then invokes the Retrieval tool to search for research reports from the knowledge base and outputs the full text, ensuring that information such as data, viewpoints, conclusions, tables, and risk warnings is not omitted. This enables high-fidelity extraction of research report content.
 
-![](./)
+![](./18.png)
 
 System Prompt:
 
@@ -324,7 +324,7 @@ Read user input → Identify the involved company/stock (supports abbreviations,
 
 The research report generation agent automatically extracts and structurally organizes financial and economic information, generating foundational data and content for investment bank analysts that are professional, retain differentiation, and can be directly used in investment research reports.
 
-![](./)
+![](./19.png)
 
 ```
 <role> 
@@ -405,7 +405,7 @@ Apply this format consistently to all section headings (Summary, Company Overvie
 
 The reply message node is used to output the "financial statements" and "research report content" that are the final outputs of the workflow.
 
-![](./)
+![](./20.png)
 
 ## 2.7 Save and Test
 
@@ -413,12 +413,12 @@ Click "Save" - "Run" - and view the execution results.
 The entire process takes approximately 5 minutes to run.
 Execution Results:
 
-![](./)
+![](./21.png)
 
 Log:
 The entire process took approximately 5 minutes to run.
 
-![](./)
+![](./22.png)
 
 # Summary and Outlook
 
