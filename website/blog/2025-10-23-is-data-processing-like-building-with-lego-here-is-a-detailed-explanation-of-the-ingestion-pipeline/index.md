@@ -51,7 +51,7 @@ This represents a "high-fidelity, structured" extraction strategy. The Parser in
 
 Currently, the Parser operator supports input from 8 major categories encompassing 23 file types, summarized as follows:
 
-![]()
+![](./5.jpg)
 
 When in use, simply click "Add Parser" within the Parser node and select the desired file category (such as PDF, Image, or PPT). When the Ingestion pipeline is running, the Parser node will automatically identify the input file and route it to the corresponding parser for parsing.
 
