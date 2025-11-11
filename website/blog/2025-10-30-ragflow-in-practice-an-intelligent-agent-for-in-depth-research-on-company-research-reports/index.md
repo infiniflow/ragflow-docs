@@ -433,3 +433,6 @@ The entire process achieves automated handling from stock code identification to
 We observe several directions for sustainable development: More data sources can be incorporated to make analytical results more comprehensive, while providing a code-free method for data processing to lower the barrier to entry. The system also has the potential to analyze multiple companies within the same industry, track industry trends, and even cover a wider range of investment instruments such as futures and funds, thereby assisting analysts in forming superior investment portfolios. As these features are gradually implemented, the intelligent investment research assistant will not only help analysts make quicker judgments but also establish an efficient and reusable research methodology, enabling the team to consistently produce high-quality analytical outputs.
 
 [1]: https://huggingface.co/datasets/InfiniFlow/company_financial_research_agent
+
+Annex: 
+Documents and JSON in the knowledge base: https://aao615odquw.feishu.cn/wiki/BmTmwQO40ilOmPk45hIcJBrfnrg#share-Lhu7dr0ImoirGuxSguwcdZZinze
