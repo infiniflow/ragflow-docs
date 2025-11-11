@@ -1,7 +1,7 @@
 ---
 slug: ragflow in practice an intelligent agent for in depth research on company research reports
 title: ragflow in practice an intelligent agent for in depth research on company research reports
-tags: RAGFlow, intelligent assistant, data integration, workflow automation
+tags: [RAGFlow, intelligent assistant, data integration, workflow automation]
 ---
 
 ![](./toutu.jpg)
