@@ -22,21 +22,21 @@ This case utilizes RAGFlow to implement a complete workflow, ranging from stock 
 
 The following sections will provide a detailed introduction to the implementation process of this solution.
 
-# 1. Preparing the Knowledge Base
+# 1. Preparing the Dataset
 
-## 1.1 Create a knowledge base
+## 1.1 Create a dataset
 
 The dataset required for this example can be downloaded from *Hugging Face Datasets*[1].
 
 ![](./2.png)
 
-Create an "Internal Stock Research Report" knowledge base and import the corresponding dataset documents.
+Create an "Internal Stock Research Report" dataset and import the corresponding dataset documents.
 
 ![](./3.PNG)
 
 ## 1.2 Parse documents
 
-For the documents in the "Internal Stock Research Report" knowledge base, we have selected the parsing and slicing method called Paper.
+For the documents in the "Internal Stock Research Report" dataset, we have selected the parsing and slicing method called Paper.
 
 ![](./4.png)
 
@@ -286,7 +286,7 @@ Add the MCP tool under the agent and select the required method, such as "EARNIN
 
 ### 2.4.2 Internal Research Report Retrieval Agent
 
-The key focus in constructing the internal research report retrieval agent lies in accurately identifying the company or stock code in user queries. It then invokes the Retrieval tool to search for research reports from the knowledge base and outputs the full text, ensuring that information such as data, viewpoints, conclusions, tables, and risk warnings is not omitted. This enables high-fidelity extraction of research report content.
+The key focus in constructing the internal research report retrieval agent lies in accurately identifying the company or stock code in user queries. It then invokes the Retrieval tool to search for research reports from the dataset and outputs the full text, ensuring that information such as data, viewpoints, conclusions, tables, and risk warnings is not omitted. This enables high-fidelity extraction of research report content.
 
 ![](./18.png)
 
@@ -295,7 +295,7 @@ System Prompt:
 ```
 <Task Objective> 
 
-Read user input → Identify the involved company/stock (supports abbreviations, full names, codes, and aliases) → Retrieve the most relevant research reports from the knowledge base → Output the full text of the research report, retaining the original format, data, chart descriptions, and risk warnings. 
+Read user input → Identify the involved company/stock (supports abbreviations, full names, codes, and aliases) → Retrieve the most relevant research reports from the dataset → Output the full text of the research report, retaining the original format, data, chart descriptions, and risk warnings. 
 
 </Task Objective>
 
@@ -305,7 +305,7 @@ Read user input → Identify the involved company/stock (supports abbreviations,
 
 1. Exact Match: Prioritize exact matches of company full names and stock codes. 
 
-2. Content Fidelity: Fully retain the research report text stored in the knowledge base without deletion, modification, or omission of paragraphs. 
+2. Content Fidelity: Fully retain the research report text stored in the dataset without deletion, modification, or omission of paragraphs. 
 
 3. Original Data: Retain table data, dates, units, etc., in their original form. 
 
@@ -313,7 +313,7 @@ Read user input → Identify the involved company/stock (supports abbreviations,
 
 5. Merging Multiple Reports: If there are multiple relevant research reports, output them in reverse chronological order. 
 
-6. No Results Feedback: If no matching reports are found, output “No related research reports available in the knowledge base.”
+6. No Results Feedback: If no matching reports are found, output “No related research reports available in the dataset.”
 
 
 
@@ -433,6 +433,3 @@ The entire process achieves automated handling from stock code identification to
 We observe several directions for sustainable development: More data sources can be incorporated to make analytical results more comprehensive, while providing a code-free method for data processing to lower the barrier to entry. The system also has the potential to analyze multiple companies within the same industry, track industry trends, and even cover a wider range of investment instruments such as futures and funds, thereby assisting analysts in forming superior investment portfolios. As these features are gradually implemented, the intelligent investment research assistant will not only help analysts make quicker judgments but also establish an efficient and reusable research methodology, enabling the team to consistently produce high-quality analytical outputs.
 
 [1]: https://huggingface.co/datasets/InfiniFlow/company_financial_research_agent
-
-Annex: 
-Documents and JSON in the knowledge base: https://aao615odquw.feishu.cn/wiki/BmTmwQO40ilOmPk45hIcJBrfnrg#share-Lhu7dr0ImoirGuxSguwcdZZinze
