@@ -1,7 +1,7 @@
 ---
 slug: is-data-processing-like-building-with-lego-here-is-a-detailed-explanation-of-the-ingestion-pipeline
 title: Is data processing like building with lego? Here is a detailed explanation of the ingestion pipeline.
-tags: RAGfolw, ingestion pipeline, index, heterogeneous documents, retrieval accuracy
+tags: [RAGfolw, ingestion pipeline, index, heterogeneous documents, retrieval accuracy]
 ---
 
 ![](./toutu.PNG)
