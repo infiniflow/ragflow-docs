@@ -1,11 +1,5 @@
 # Google Drive Data source Guide
 
-
-
-This documentation explains how to integrate **Google Drive** as a data
-source in an open-source RAGFlow deployment. All images are represented
-by placeholders -- replace them later with real image links.
-
 ------------------------------------------------------------------------
 
 ## 1. Create a Google Cloud Project
@@ -128,12 +122,3 @@ succeed - Select **OK** to add the data source
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image29.png?raw=true)
 
 
-------------------------------------------------------------------------
-
-## ✅ Google Drive Integration Complete
-
-At this point, RAGFlow has permission to read files and metadata from
-Google Drive, enabling document ingestion, parsing, and search.
-
-Replace all placeholder images with real screenshots when preparing for
-release.
