@@ -1,7 +1,7 @@
 ---
-slug: ragflow in practice an intelligent agent for in depth research on company research reports
-title: ragflow in practice an intelligent agent for in depth research on company research reports
-tags: [RAGFlow, intelligent assistant, data integration, workflow automation]
+slug: ragflow-in-practice-building-an-agent-for-deep-dive-analysis-of-company-research-reports
+title: RAGFlow in Practice - Building an Agent for Deep-Dive Analysis of Company Research Reports
+tags: [RAGFlow, agent, deep research, mcp]
 ---
 
 ![](./toutu.jpg)
