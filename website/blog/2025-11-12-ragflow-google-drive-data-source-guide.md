@@ -38,25 +38,24 @@ Google Cloud external project.
 3.  Enter a name for the client
 4.  Add the following **Authorized Redirect URIs**:
 
-```{=html}
-<!-- -->
 ```
-    http://localhost:9380/v1/connector/google-drive/oauth/web/callback
+http://localhost:9380/v1/connector/google-drive/oauth/web/callback
+```
 
 ### If using Docker deployment:
 
 **Authorized JavaScript origin:**
-```{=html}
-<!-- -->
 ```
-    http://localhost:80
+http://localhost:80
+```
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image8.png?raw=true)
 ### If running from source:
 **Authorized JavaScript origin:**
-```{=html}
-<!-- -->
 ```
-    http://localhost:9222
+http://localhost:9222
+```
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image9.png?raw=true)
 5.  After saving, click **Download JSON**. This file will later be
     uploaded into RAGFlow.
@@ -71,13 +70,13 @@ Google Cloud external project.
 
 2.  Paste and add the following entries:
 
-```{=html}
-<!-- -->
 ```
-    https://www.googleapis.com/auth/drive.readonly
-    https://www.googleapis.com/auth/drive.metadata.readonly
-    https://www.googleapis.com/auth/admin.directory.group.readonly
-    https://www.googleapis.com/auth/admin.directory.user.readonly
+https://www.googleapis.com/auth/drive.readonly
+https://www.googleapis.com/auth/drive.metadata.readonly
+https://www.googleapis.com/auth/admin.directory.group.readonly
+https://www.googleapis.com/auth/admin.directory.user.readonly
+```
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image11.jpeg?raw=true)
 3.  Update and Save changes
 
@@ -90,13 +89,24 @@ Google Cloud external project.
 Navigate to the Google API Library:\
 `https://console.cloud.google.com/apis/library`
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image14.png?raw=true)
-Enable the following APIs: - Google Drive API - Admin SDK API - Google
-Sheets API - Google Docs API
+
+Enable the following APIs:
+
+- Google Drive API 
+- Admin SDK API 
+- Google Sheets API 
+- Google Docs API
+    
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image15.png?raw=true)
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image16.png?raw=true)
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image17.png?raw=true)
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image18.png?raw=true)
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image19.png?raw=true)
+
 ![placeholder-image](https://github.com/infiniflow/ragflow-docs/blob/040e4acd4c1eac6dc73dc44e934a6518de78d097/images/google_drive/image21.png?raw=true)
 
 
