@@ -1,0 +1,70 @@
+:root {
+
+  --docsearch-spacing: var(--ragflow-global-spacing);
+  --docsearch-primary-color: rgb(var(--ragflow-color-primary));
+  --docsearch-text-color: rgb(var(--ragflow-text-standard));
+  --docsearch-secondary-text-color: rgb(var(--ragflow-text-secondary));
+  --docsearch-muted-color: rgb(var(--ragflow-text-disabled));
+  --docsearch-container-background: var(--ragflow-bg-surface);
+
+  /* Modal */
+  --docsearch-modal-background: rgb(var(--ragflow-bg-standard));
+  --docsearch-modal-shadow: 0 3px 8px 0 rgb(var(--ragflow-color-black) / 50%);
+
+  /* Search box */
+  --docsearch-searchbox-background: transparent;
+  --docsearch-searchbox-focus-background: transparent;
+
+  /* Hit */
+  --docsearch-hit-color: rgb(var(--ragflow-text-standard));
+  --docsearch-hit-active-color: rgb(var(--ragflow-text-standard));
+  --docsearch-hit-background: transparent;
+  --docsearch-hit-highlight-color: var(--ragflow-bg-surface);
+  --docsearch-highlight-color: rgb(var(--ragflow-color-primary));
+
+  /* Footer */
+  --docsearch-footer-background: var(--ragflow-theme-black);
+
+  /* Icon */
+  --docsearch-icon-stroke-width: 1;
+}
+
+:where(svg[aria-label="Algolia"]) {
+  @apply text-info;
+
+  * {
+    @apply fill-current !important;
+  }
+}
+
+:where(.DocSearch-Modal) {
+  @apply backdrop-blur-xl rounded-2xl;
+}
+
+:where(.DocSearch-Button) {
+  @apply box-border w-full;
+
+  &:focus-visible {
+    @apply outline;
+  }
+}
+
+:where(.DocSearch-Input) {
+  @apply border-0;
+}
+
+:where(.DocSearch-Hit-content-wrapper) {
+  @apply overflow-hidden;
+}
+
+:where(.DocSearch-Hit-icon) {
+  @apply mr-2;
+}
+
+:where(.DocSearch-Hit-action) {
+  @apply ml-2;
+}
+
+:where(.DocSearch-Hit-path) {
+  @apply overflow-hidden text-ellipsis;
+}

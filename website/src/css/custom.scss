@@ -1,0 +1,503 @@
+@layer ragflow {
+  .container {
+    // @apply max-desktop:px-page !important;
+    @apply px-page;
+  }
+
+  :where(:root) {
+    @apply text-secondary;
+
+    accent-color: rgb(var(--ragflow-color-primary));
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    @apply text-standard font-semibold;
+  }
+
+  @for $i from 1 through 6 {
+    :where(h#{$i}) {
+      font-size: var(--ragflow-h#{$i}-font-size);
+    }
+  }
+
+  :where(svg text) {
+    fill: currentColor;
+  }
+
+  :where(
+    input,
+    textarea
+  ) {
+    font-family: var(--ragflow-font-family-base);
+  }
+
+  :where(button) {
+    @apply transition-all text-secondary cursor-pointer;
+
+    font-family: var(--ragflow-font-family-base);
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      @apply text-standard;
+    }
+  }
+
+  :where(
+    input,
+    textarea,
+    select
+  ) {
+    @apply border border-solid border-component;
+  }
+
+  :where(option) {
+    @apply bg-standard text-standard;
+  }
+
+  :where(a) {
+    @apply no-underline transition-all text-secondary;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      @apply text-standard;
+    }
+  }
+
+  :where(table) {
+    @apply inline-block rounded-md border-1 border-solid border-component max-w-full;
+
+    th {
+      @apply font-bold;
+    }
+
+    tr, th, td {
+      @apply border-0 bg-transparent;
+    }
+
+    th:not(:last-child),
+    td:not(:last-child) {
+      @apply border-r-1 border-solid border-component;
+    }
+
+    tbody tr:nth-child(2n) {
+      @apply bg-surface;
+    }
+
+    thead,
+    tbody tr:not(:last-child) {
+      @apply border-0 border-solid border-b-1 border-component;
+    }
+
+    thead {
+      @apply border-b-2;
+    }
+  }
+
+  :where(details) {
+    @apply mb-4;
+
+    &[open]:not(.is-browser) > summary .icon,
+    &[data-collapsed="false"] > summary .icon {
+      @apply rotate-90;
+    }
+  }
+
+  :where(kbd) {
+    @apply bg-surface border-standard text-[inherit] px-1 py-0.5 text-[70%] font-mono align-middle;
+
+    box-shadow: inset 0 -1px 0 var(--ragflow-border-standard);
+
+    + kbd {
+      @apply ml-1;
+    }
+  }
+
+  :where(
+    b,
+    strong
+  ) {
+    @apply font-semibold
+  }
+
+  :where(strong) {
+    @apply text-standard;
+  }
+
+  :where(hr) {
+    @apply my-4;
+
+    background-color: var(--ragflow-border-component);
+    height: var(--ragflow-global-border-width);
+  }
+
+
+  // ----- Styles for specific classes
+
+  :where(:root:has(.navbar .navbar-toggle[aria-expanded="true"])) :where(.theme-layout-navbar-sidebar) {
+    @apply visible translate-x-0 !important;
+  }
+
+  :where(.contains-task-list) {
+    @apply list-none;
+
+    > :where(li.task-list-item) {
+      > input[type="checkbox"] {
+        @apply ml-1.5 mr-2;
+      }
+
+      > :where(ul, ol):not(.contains-task-list) {
+        @apply ml-8;
+      }
+    }
+  }
+
+  :not(.contains-task-list > li) > :where(.contains-task-list) {
+    @apply pl-0;
+  }
+
+  .markdown,
+  .blog-content,
+  .theme-doc-version-banner,
+  .theme-doc-footer {
+    a, .alert a {
+      :where(&) {
+        @apply text-primary-contrast-foreground dark:text-primary;
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+          @apply text-primary dark:text-primary-dark;
+        }
+      }
+
+      :where(&:not(
+        .doc-card,
+        .hash-link,
+        [rel="tag"]
+      )) {
+        @apply underline underline-offset-[.35ex] decoration-[.1ex] decoration-transparent;
+
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+          @apply decoration-current;
+        }
+      }
+    }
+
+  }
+
+  :where(.pagination-nav) a {
+    &:hover,
+    &:focus-visible,
+    &:active {
+      @apply text-primary;
+    }
+  }
+
+  :is(.theme-doc-version-banner a) {
+    @apply text-warning decoration-current;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      @apply text-warning-contrast-foreground;
+    }
+  }
+
+  :where(:not(.table-of-contents-inline) > .table-of-contents) {
+    @apply px-0;
+  }
+
+  :where(.toc-collapsible-content .table-of-contents > li) {
+    @apply mx-0;
+  }
+
+  :where(.table-of-contents-inline .table-of-contents li) {
+    @apply mx-0;
+  }
+
+  :where(
+    .table-of-contents,
+    .markdown,
+    .blog-content
+  ) {
+    :not(pre) > code {
+      @apply rounded-[.35em] border-1 border-solid border-secondary/15;
+      @apply leading-tight align-baseline bg-surface;
+
+      padding: .2em .3em .1em;
+    }
+
+    pre {
+      @apply bg-transparent;
+
+      > code {
+        @apply leading-normal p-4;
+      }
+    }
+  }
+
+  :where(
+    .markdown,
+    .blog-content
+  ) {
+    code {
+      @apply text-standard;
+    }
+
+    a code {
+      color: inherit;
+    }
+
+    h1:first-child {
+      @apply mt-0;
+    }
+
+    .anchor .hash-link {
+      @apply opacity-0 font-normal leading-none ml-1 transition-all text-primary;
+      @apply hover:text-primary-dark focus-visible:text-primary-dark;
+
+      font-size: 1.5rem;
+
+      &::after {
+        content: '#';
+      }
+    }
+
+    .anchor {
+      &:hover,
+      &:focus-within {
+        .hash-link {
+          @apply opacity-100;
+        }
+      }
+    }
+
+    h4 > .hash-link {
+      font-size: 1em;
+    }
+
+    h5, h6 {
+      & > .hash-link {
+        font-size: 1.1em;
+      }
+    }
+
+    & > :last-child {
+      @apply mb-0;
+    }
+  }
+
+  :where(.img) {
+    @apply inline-block p-2 h-auto rounded-2xl bg-surface;
+
+    + .img {
+      @apply mt-8;
+    }
+
+    > img {
+      @apply block h-auto rounded-xl;
+    }
+  }
+
+  :where(.theme-code-block) {
+    @apply my-4;
+
+    &:last-child {
+      @apply mb-0;
+    }
+
+    .has-line-number {
+      .token-line:first-child .line-number {
+        @apply pt-4;
+      }
+
+      .token-line:last-child .line-number {
+        @apply pb-4;
+      }
+    }
+  }
+
+  :where(.theme-code-block-highlighted-line) {
+    @apply block -mx-4 px-4 bg-surface;
+
+    .line-number::before {
+      @apply text-standard/80;
+    }
+  }
+
+  :where(.theme-admonition) {
+    @apply my-4;
+  }
+
+  :where(.theme-doc-toc-desktop, .blog) :where(.table-of-contents) {
+    @apply ml-2 pl-2 border-0 border-l-1 border-solid border-component;
+
+    li {
+      @apply m-0 my-2 pl-2;
+
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+
+    > li:first-child {
+      @apply mt-0;
+    }
+  }
+
+  :where(.markdown, .blog-content) {
+    letter-spacing: -0.02em;
+  }
+
+  // ----- @layer
+
+  @layer icon {
+    :where(
+      .icon,
+      svg.lucide,
+      svg.simple-icon
+    ) {
+      @apply size-[1em] inline-block align-[-.25ex];
+
+      :where(&:first-child:not(:only-child)) {
+        @apply mr-[.25em];
+      }
+
+      :where(&:last-child:not(:only-child)) {
+        @apply ml-[.25em];
+      }
+    }
+
+    :where(.icon.ragflow-icon) {
+      @apply inline-flex text-[1em] justify-center items-center leading-none align-baseline;
+    }
+  }
+
+  @layer override {
+    .table-of-contents-inline {
+      ul {
+        @apply list-disc text-base pt-0;
+      }
+    }
+
+    .toc-collapsible {
+      > ul {
+        @apply px-0 py-1;
+        @apply border-0 border-t-1 border-solid border-component;
+      }
+    }
+
+    :where(
+      .markdown,
+      .blog-content
+    ) {
+      blockquote {
+        @apply my-4;
+      }
+
+      ul,
+      ol {
+        @apply pl-8;
+        padding-left: var(--ragflow-list-indent);
+      }
+
+      li {
+        @apply pl-2;
+      }
+
+      li + li {
+        @apply mt-2;
+      }
+
+      li > p {
+        @apply my-4;
+      }
+
+      li > p:first-child,
+      li > p:only-child {
+        @apply mt-0;
+      }
+
+      li > ul,
+      li > ol {
+        & > li:first-child {
+          @apply mt-2;
+        }
+      }
+
+      li > p:has(+ ul),
+      li > p:only-child {
+        @apply mb-0;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        @apply mt-16 mb-4;
+      }
+    }
+
+    /*
+    .doc-content {
+      :where(
+        p,
+        pre,
+        ul,
+        ol,
+        dl,
+        blockquote,
+        table,
+        hr,
+        fieldset,
+        figure,
+        details,
+        .theme-code-block
+      ) {
+        @apply mt-8;
+        @apply mb-0;
+
+        &:first-child {
+          @apply mt-0;
+        }
+      }
+
+      p + :is(
+        pre,
+        ul,
+        ol,
+        dl,
+        blockquote,
+        table,
+        hr,
+        fieldset,
+        figure,
+        details,
+        .theme-code-block
+      ) {
+        @apply mt-4;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        @apply mt-8;
+
+        + * {
+          @apply mt-4;
+        }
+      }
+
+      li + li,
+      li > ul,
+      li > ol {
+        @apply mt-2;
+      }
+
+      li > p:first-child {
+        margin-top: 0 !important;
+      }
+    }
+    */
+  }
+}

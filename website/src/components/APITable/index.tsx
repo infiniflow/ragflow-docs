@@ -1,10 +1,3 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, {
   type ComponentProps,
   type ReactElement,
@@ -14,19 +7,17 @@ import React, {
   useEffect,
 } from 'react';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
-import {useHistory} from '@docusaurus/router';
-import styles from './styles.module.css';
+import { useHistory } from '@docusaurus/router';
 
 interface Props {
   readonly children: ReactElement<ComponentProps<'table'>>;
   readonly name?: string;
 }
 
-// ReactNode equivalent of HTMLElement#innerText
 function getRowName(node: ReactElement): string {
   let curNode: ReactNode = node;
   while (isValidElement(curNode)) {
-    [curNode] = React.Children.toArray(curNode.props.children);
+    [curNode] = React.Children.toArray((curNode.props as any).children);
   }
   if (typeof curNode !== 'string') {
     throw new Error(
@@ -54,16 +45,20 @@ function APITableRow(
   useBrokenLinks().collectAnchor(id);
   return (
     <tr
+      // outline outline-2 -outline-offset-2 outline-transparent
+      // hover:outline-primary focus:outline-primary
+      className="
+        cursor-pointer outline-0 transition-shadow
+        ring-inset hover:ring-2 focus:ring-2 hover:ring-primary focus:ring-primary
+      "
       id={id}
       tabIndex={0}
       ref={history.location.hash === anchor ? ref : undefined}
       onClick={(e) => {
-        const isTDClick =
-          (e.target as HTMLElement).tagName.toUpperCase() === 'TD';
+        const isTdClick = (e.target as HTMLElement).tagName.toUpperCase() === 'TD';
         const hasSelectedText = !!window.getSelection()?.toString();
 
-        const shouldNavigate = isTDClick && !hasSelectedText;
-        if (shouldNavigate) {
+        if (isTdClick && !hasSelectedText) {
           history.push(anchor);
         }
       }}
@@ -71,7 +66,8 @@ function APITableRow(
         if (e.key === 'Enter') {
           history.push(anchor);
         }
-      }}>
+      }}
+    >
       {children.props.children}
     </tr>
   );
@@ -79,12 +75,7 @@ function APITableRow(
 
 const APITableRowComp = React.forwardRef(APITableRow);
 
-/*
- * Note: this is not a quite robust component since it makes a lot of
- * assumptions about how the children looks; however, those assumptions
- * should be generally correct in the MDX context.
- */
-export default function APITable({children, name}: Props): JSX.Element {
+export default function APITable({children, name}: Props): ReactNode {
   if (children.type !== 'table') {
     throw new Error(
       'Bad usage of APITable component.\nIt is probably that your Markdown table is malformed.\nMake sure to double-check you have the appropriate number of columns for each table row.',
@@ -101,14 +92,17 @@ export default function APITable({children, name}: Props): JSX.Element {
   const rows = React.Children.map(
     tbody.props.children,
     (row: ReactElement<ComponentProps<'tr'>>) => (
-      <APITableRowComp name={name} ref={highlightedRow}>
+      <APITableRowComp
+        name={name}
+        ref={highlightedRow}
+      >
         {row}
       </APITableRowComp>
     ),
   );
 
   return (
-    <table className={styles.apiTable}>
+    <table className="text-sm [&_code]:cursor-text">
       {thead}
       <tbody>{rows}</tbody>
     </table>

@@ -1,0 +1,151 @@
+@use 'sass:color';
+@use 'sass:list';
+
+$primaryColorValue: 0 190 180;
+$secondaryColorValue: 117 120 122;
+$successColorValue: 59 160 92;
+$infoColorValue: 92 150 200;
+$warningColorValue: 250 173 20;
+$dangerColorValue: 216 73 75;
+
+$secondaryColorValueDark: 178 181 183;
+
+@function colorToRgbValueList($color) {
+  $r: round(color.channel($color, "red", $space: rgb));
+  $g: round(color.channel($color, "green", $space: rgb));
+  $b: round(color.channel($color, "blue", $space: rgb));
+
+  @return $r $g $b;
+};
+
+/**
+ * Generates a series of color shades for a given color value.
+ * @param {string} $name - Name of the color to generate the shades for.
+ * @param {list} $colorValue - Space separated RGB color value to generate shades for.
+ */
+@mixin generateColorShades($name, $baseColorValue, $reversed: false) {
+  $colorShadesMap: (
+    darkest: -30%,
+    darker: -20%,
+    dark: -10%,
+    light: 10%,
+    lighter: 20%,
+    lightest: 30%,
+  );
+
+  $colorList: $baseColorValue;
+  $r: list.nth($colorList, 1);
+  $g: list.nth($colorList, 2);
+  $b: list.nth($colorList, 3);
+  $resolvedColorValue: rgb($r, $g, $b);
+
+  @each $shadeName, $shadeAdjustment in $colorShadesMap {
+    $lightness: if($reversed, -$shadeAdjustment, $shadeAdjustment);
+    $shadedColor: color.scale($resolvedColorValue, $lightness: $lightness, $space: hsl);
+
+    --ragflow-#{$name}-#{$shadeName}: #{colorToRgbValueList($shadedColor)};
+  }
+
+  --ragflow-#{$name}: #{$r} #{$g} #{$b};
+  --ragflow-#{$name}-contrast-foreground: #{colorToRgbValueList(color.change($resolvedColorValue, $lightness: if($reversed, 97%, 25%)))};
+  --ragflow-#{$name}-contrast-background: #{colorToRgbValueList(color.change($resolvedColorValue, $lightness: if($reversed, 25%, 97%)))};
+}
+
+@layer ragflow {
+  :root {
+    --ragflow-line-height-base: 1.7;
+    --ragflow-font-family-base: "Poppins", -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, Cantarell, "Noto Sans", "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;;
+    --ragflow-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
+    @supports (font-variation-settings: normal) {
+      font-optical-sizing: auto;
+
+      --ragflow-font-family-base: "Poppins Variable";
+    }
+
+    --ragflow-color-white: 255 255 255;
+    --ragflow-color-black: 0 0 0;
+
+    --ragflow-theme-white: var(--ragflow-color-white);
+    --ragflow-theme-black: var(--ragflow-color-black);
+
+    --ragflow-bg-standard: 255 255 255; /* bg/base */
+    --ragflow-bg-surface-opacity: 5%;
+    --ragflow-bg-surface: rgba(var(--ragflow-theme-black) / var(--ragflow-bg-surface-opacity));
+
+    --ragflow-hover-overlay: rgba(var(--ragflow-theme-black) / 10%);
+
+    /* legacy: bg/accent: use "bg-primary/5" instead */
+    /* --ragflow-bg-primary: rgb(0 190 180 / 0.05); */
+
+    --ragflow-text-standard: 22 22 24; /* text/primary */
+    --ragflow-text-secondary: 117 120 122; /* text/secondary */
+    --ragflow-text-disabled: 178 181 183; /* text/disabled */
+
+    --ragflow-page-padding: 4rem;
+    --ragflow-page-padding-lg: 6rem;
+    --ragflow-navbar-height: 4.5rem;
+
+    --ragflow-border-standard: rgb(var(--ragflow-theme-black) / 20%); /* border/default */
+    --ragflow-border-component: rgba(var(--ragflow-theme-black) / 10%); /* border/button */
+
+    @include generateColorShades("color-primary", $primaryColorValue); /* accent/primary */
+    @include generateColorShades("color-secondary", $secondaryColorValue); /* text/secondary */
+    @include generateColorShades("color-success", $successColorValue); /* state/success */
+    @include generateColorShades("color-warning", $warningColorValue); /* state/warning */
+    @include generateColorShades("color-danger", $dangerColorValue); /* state/error */
+    @include generateColorShades("color-info", $infoColorValue); /* team/member */
+
+    --ragflow-heading-font-size: 2.25rem; // 36px
+    --ragflow-h1-font-size: 2rem; // 32px
+    --ragflow-h2-font-size: 1.5rem; // 24px
+    --ragflow-h3-font-size: 1.25rem; // 20px
+    --ragflow-h4-font-size: 1rem; // 16px
+    --ragflow-h5-font-size: .9rem; // 14.4px
+    --ragflow-h6-font-size: .85rem; // 13.6px
+
+    --ragflow-font-size-base: 16px;
+    --ragflow-global-spacing: 1rem;
+    --ragflow-global-border-width: 0.5px;
+
+    --ragflow-list-indent: 2rem;
+    --ragflow-sidebar-nesting-padding: 1.5rem;
+    --ragflow-markdown-item-spacing: 2rem;
+
+    --ragflow-navbar-sidebar-width: 83vw;
+    --ragflow-sidebar-width: 360px;
+    --ragflow-sidebar-hidden-width: 32px;
+
+    --doc-sidebar-width: 360px;
+    --doc-sidebar-hidden-width: 64px;
+
+    --ragflow-navbar-z-index: 100;
+    --ragflow-navbar-sidebar-z-index: 120;
+    --ragflow-search-overlay-z-index: 150;
+  }
+
+  [data-theme='dark'] {
+    --ragflow-theme-white: var(--ragflow-color-black);
+    --ragflow-theme-black: var(--ragflow-color-white);
+
+    --ragflow-bg-standard: 22 22 24;
+
+    --ragflow-text-standard: 246 246 247;
+    --ragflow-text-secondary: 178 181 183;
+    --ragflow-text-disabled: 117 120 122;
+
+    @include generateColorShades("color-primary", $primaryColorValue, $reversed: true); /* accent/primary */
+    @include generateColorShades("color-secondary", $secondaryColorValueDark, $reversed: true);
+    @include generateColorShades("color-success", $successColorValue, $reversed: true); /* state/success */
+    @include generateColorShades("color-warning", $warningColorValue, $reversed: true); /* state/warning */
+    @include generateColorShades("color-danger", $dangerColorValue, $reversed: true); /* state/error */
+    @include generateColorShades("color-info", $infoColorValue, $reversed: true); /* team/member */
+  }
+
+  @media all and (max-width: 997px) {
+    :root {
+      --ragflow-page-padding: 1.5rem;
+      --ragflow-page-padding-lg: 1.5rem;
+    }
+  }
+}

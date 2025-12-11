@@ -1,0 +1,7 @@
+[data-theme='dark'] .blueskySvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .blueskySvg {
+  fill: var(--dark);
+}

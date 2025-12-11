@@ -1,0 +1,7 @@
+[data-theme='dark'] .linkedinSvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .linkedinSvg {
+  fill: var(--dark);
+}

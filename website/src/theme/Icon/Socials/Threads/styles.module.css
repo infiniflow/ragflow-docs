@@ -1,0 +1,7 @@
+[data-theme='dark'] .threadsSvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .threadsSvg {
+  fill: var(--dark);
+}

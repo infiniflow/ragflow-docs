@@ -1,0 +1,92 @@
+@layer ragflow {
+  .page {
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    ul {
+      @apply list-none p-0;
+
+      > li {
+        @apply mt-2;
+
+        :global(.icon) {
+          @apply mr-2;
+        }
+      }
+    }
+  }
+
+  :where(.btn) {
+    @apply border-0 px-4 py-2 rounded-md;
+    @apply text-standard bg-standard;
+
+    line-height: var(--ragflow-line-height-base);
+    font-size: inherit;
+  }
+
+  :where(
+    .card,
+    .secondaryCard
+  ) {
+    @apply p-8 rounded-xl border-1 border-solid border-component;
+
+    background-color: rgb(var(--ragflow-theme-black) / 2%);
+  }
+
+  :where(.secondaryCard) {
+    @apply bg-standard;
+  }
+
+  :where(
+    .heroTitleTextGradient,
+    .primaryGradientText,
+    .primaryInfoGradientText
+  ) {
+    @apply text-transparent bg-clip-text;
+  }
+
+  :where(.heroTitleTextGradient) {
+    background-size: 200% 200%;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(var(--ragflow-theme-black)),
+      #9dbab8,
+      rgb(var(--ragflow-theme-black)),
+    );
+  }
+
+  :where(.primaryGradientText) {
+    background-size: 200% 200%;
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--ragflow-color-primary)),
+      #42ffa4,
+      rgb(var(--ragflow-color-primary)),
+    );
+
+    &.moving {
+      animation: bg-move-right 3s linear infinite;
+      background-size: 200% 200%;
+
+      @keyframes bg-move-right {
+        from {
+          background-position-x: 0%;
+        }
+
+        to {
+          background-position-x: -200%;
+        }
+      };
+    }
+  }
+
+  :where(.primaryInfoGradientText) {
+    @apply bg-gradient-to-r from-primary to-info;
+  }
+
+  :where(.bgPolka) {
+    background-image: radial-gradient(var(--ragflow-border-component) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
