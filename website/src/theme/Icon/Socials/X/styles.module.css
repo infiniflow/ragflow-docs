@@ -1,0 +1,7 @@
+[data-theme='dark'] .xSvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .xSvg {
+  fill: var(--dark);
+}

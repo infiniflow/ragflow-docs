@@ -1,0 +1,60 @@
+.testimonial {
+  @apply relative w-full overflow-hidden;
+  @apply select-none flex flex-col;
+
+  gap: var(--testimonial-card-gap);
+
+  &:hover {
+    @apply select-auto;
+
+    .row {
+      animation-play-state: paused;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+
+    @apply absolute top-0 bottom-0 w-40 z-1 pointer-events-none;
+  }
+
+  &::before {
+    @apply left-0 bg-gradient-to-r from-bg-standard to-transparent;
+  }
+
+  &::after {
+    @apply right-0 bg-gradient-to-l from-bg-standard to-transparent;
+  }
+
+  .row {
+    @apply flex w-fit will-change-transform;
+
+    gap: var(--testimonial-card-gap);
+
+    // Slow animation from right to left
+    animation: testimonial-fly calc(var(--testimonial-animation-duration) * (var(--testimonial-inconsistent-rows, 0) + 1)) linear infinite;
+
+    &:nth-child(2n) > .card {
+      transform: translateX(calc(var(--testimonial-card-gap) * -.5 - 50%));
+    }
+
+    @keyframes testimonial-fly {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        // Move by exactly 50% (one set of duplicated content)
+        // Since we duplicate the content, moving -50% creates seamless loop
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .card {
+    width: var(--testimonial-card-width);
+  }
+}
+
+
+

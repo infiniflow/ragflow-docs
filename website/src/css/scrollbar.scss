@@ -1,0 +1,173 @@
+@layer ragflow.scrollbar {
+  :root {
+    --ps-rail-thickness: 6px;
+    --ps-rail-margin: 0px; // Must have a unit
+    --ps-thumb-thickness: 6px;
+    --ps-thumb-margin: 2px; // Must have a unit
+
+    --ps-rail-color: transparent;
+    --ps-rail-hover-color: transparent;
+    --ps-thumb-color: rgba(var(--ragflow-theme-black) / 50%);
+    --ps-thumb-hover-color: rgba(var(--ragflow-theme-black) / 75%);
+
+    --ps-scrollbar-hint-size: 6rem;
+  }
+
+  /*
+  * Container style
+  */
+  .ps {
+    @apply overflow-hidden !important;
+    @apply relative touch-auto;
+
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+  }
+
+  /*
+  * Scrollbar rail styles
+  */
+  .ps__rail-x,
+  .ps__rail-y {
+    @apply absolute hidden transition-[opacity,background-color] z-[1000];
+  }
+
+  .ps__rail-x {
+    height: calc(var(--ps-rail-thickness) + var(--ps-thumb-margin) * 2);
+    bottom: var(--ps-rail-margin);
+  }
+
+  .ps__rail-y {
+    width: calc(var(--ps-rail-thickness) + var(--ps-thumb-margin) * 2);
+    right: var(--ps-rail-margin);
+  }
+
+  .ps--no-controls {
+    > .ps__rail-x,
+    > .ps__rail-y {
+      @apply hidden invisible !important;
+    }
+  }
+
+  .ps--active-x > .ps__rail-x,
+  .ps--active-y > .ps__rail-y {
+    @apply block opacity-0;
+
+    background-color: var(--ps-rail-color);
+  }
+
+  .ps:hover,
+  .ps--focus {
+    .ps__rail-x,
+    .ps__rail-y {
+      @apply opacity-100;
+      background-color: var(--ps-rail-hover-color);
+    }
+  }
+
+  .ps--scrolling-x > .ps__rail-x,
+  .ps--scrolling-y > .ps__rail-y {
+    @apply opacity-100;
+    background-color: var(--ps-rail-hover-color);
+  }
+
+  .ps {
+    .ps__rail-x,
+    .ps__rail-y {
+      &:hover,
+      &:focus,
+      &.ps--clicking {
+        background-color: var(--ps-rail-hover-color);
+      }
+    }
+  }
+
+  /*
+  * Scrollbar thumb styles
+  */
+  .ps__thumb-x,
+  .ps__thumb-y {
+    @apply absolute rounded-full transition-colors;
+
+    background-color: var(--ps-thumb-color);
+  }
+
+  .ps__thumb-x {
+    height: var(--ps-thumb-thickness);
+    bottom: var(--ps-thumb-margin);
+  }
+
+  .ps__thumb-y {
+    width: var(--ps-thumb-thickness);
+    right: var(--ps-thumb-margin);
+  }
+
+  .ps__rail-x {
+    &:hover,
+    &:focus,
+    &.ps--clicking {
+      > .ps__thumb-x {
+        background-color: var(--ps-thumb-hover-color);
+      }
+    }
+  }
+
+  .ps__rail-y {
+    &:hover,
+    &:focus,
+    &.ps--clicking {
+      > .ps__thumb-y {
+        background-color: var(--ps-thumb-hover-color);
+      }
+    }
+  }
+
+  /*
+  * Scroll hint styles
+  */
+  .ps__scroll-hint-x-start,
+  .ps__scroll-hint-x-end,
+  .ps__scroll-hint-y-start,
+  .ps__scroll-hint-y-end {
+    @apply absolute z-[1000] pointer-events-none !important;
+    @apply transition-all opacity-0 from-transparent to-bg-standard;
+
+    &.ps__scroll-hint--active {
+      @apply opacity-100;
+    }
+  }
+
+  .ps__scroll-hint-x-start,
+  .ps__scroll-hint-x-end {
+    width: var(--ps-scrollbar-hint-size);
+  }
+
+  .ps__scroll-hint-y-start,
+  .ps__scroll-hint-y-end {
+    height: var(--ps-scrollbar-hint-size);
+  }
+
+  .ps__scroll-hint-x-start {
+    @apply left-0 top-0 h-full bg-gradient-to-l;
+  }
+
+  .ps__scroll-hint-x-end {
+    @apply right-0 bottom-0 h-full bg-gradient-to-r;
+  }
+
+  .ps__scroll-hint-y-start {
+    @apply left-0 top-0 w-full bg-gradient-to-t;
+  }
+
+  .ps__scroll-hint-y-end {
+    @apply right-0 bottom-0 w-full bg-gradient-to-b;
+  }
+
+
+  /* MS supports */
+  @supports (-ms-overflow-style: none) {
+    .ps {
+      @apply overflow-auto !important;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+[data-theme='dark'] .instagramSvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .instagramSvg {
+  fill: var(--dark);
+}

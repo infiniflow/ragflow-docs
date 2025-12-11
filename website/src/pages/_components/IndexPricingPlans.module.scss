@@ -1,0 +1,34 @@
+.pricingPlanGroup {
+  .pricingPlan {
+    @apply transition-transform duration-slow;
+
+    &:hover,
+    &:focus-within {
+      @apply scale-105 !important;
+      @apply z-1 !important;
+    }
+
+  }
+
+  &:has(.pricingPlan:not(.mostPopular):hover),
+  &:has(.pricingPlan:not(.mostPopular):focus-within) {
+    .pricingPlan {
+      @apply scale-100;
+
+      &.mostPopular {
+        &::before {
+          @apply opacity-0 !important;
+        }
+
+        > div {
+          @apply border-component;
+        }
+      }
+    }
+  }
+
+  .pricingPlan.mostPopular {
+  @apply scale-105;
+    @apply hover:!scale-110 focus-within:!scale-110;
+  }
+}

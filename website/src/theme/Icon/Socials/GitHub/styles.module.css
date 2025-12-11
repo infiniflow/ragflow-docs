@@ -1,0 +1,7 @@
+[data-theme='dark'] .githubSvg {
+  fill: var(--light);
+}
+
+[data-theme='light'] .githubSvg {
+  fill: var(--dark);
+}
