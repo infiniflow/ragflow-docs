@@ -2,7 +2,6 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import { isRegexpStringMatch } from '@docusaurus/theme-common';
-import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/NavbarItem/NavbarNavLink';
 import { cn } from '@site/src/utils/twUtils';
 
@@ -50,8 +49,6 @@ export default function NavbarNavLink({
       />
     );
   }
-
-  console.log(toUrl, activeBasePath, activeBaseRegex, location.pathname);
 
   return (
     <Link
