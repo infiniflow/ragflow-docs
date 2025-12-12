@@ -29,7 +29,7 @@
     .card,
     .secondaryCard
   ) {
-    @apply p-8 rounded-xl border-1 border-solid border-component;
+    @apply p-4 mobile:p-6 desktop:p-8 rounded-xl border-1 border-solid border-component;
 
     background-color: rgb(var(--ragflow-theme-black) / 2%);
   }

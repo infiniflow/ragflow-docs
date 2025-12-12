@@ -15,6 +15,8 @@ module.exports = {
       screens: {
         mobile: '577px',
         desktop: '997px',
+        '2xl': '1440px',
+        '3xl': '1536px',
       },
       // Assign custom Infima variables to Tailwind
       fontFamily: {
@@ -29,6 +31,7 @@ module.exports = {
         h4: 'var(--ragflow-h4-font-size)',
         h5: 'var(--ragflow-h5-font-size)',
         h6: 'var(--ragflow-h6-font-size)',
+        hero: 'var(--ragflow-hero-font-size)',
       },
       padding: {
         'navbar-height': 'var(--ragflow-navbar-height)',
@@ -56,12 +59,15 @@ module.exports = {
       },
       height: {
         navbar: 'var(--ragflow-navbar-height)',
+        screen: '100dvh',
       },
       minHeight: {
         navbar: 'var(--ragflow-navbar-height)',
+        screen: '100dvh',
       },
       maxHeight: {
         navbar: 'var(--ragflow-navbar-height)',
+        screen: '100dvh',
       },
       backgroundColor: {
         standard: 'rgb(var(--ragflow-bg-standard) / <alpha-value>)',

@@ -5,6 +5,7 @@ import IconMenu from '@theme/Icon/Menu';
 
 export default function MobileSidebarToggle(): ReactNode {
   const { toggle, shown } = useNavbarMobileSidebar();
+
   return (
     <button
       onClick={toggle}
@@ -17,7 +18,7 @@ export default function MobileSidebarToggle(): ReactNode {
       aria-expanded={shown}
       className="
         navbar-toggle clean-btn
-        desktop:hidden mr-4 p-3
+        desktop:hidden p-3
         text-base leading-none flex items-center justify-center
         rounded transition-colors
         hover:bg-hover-overlay focus-visible:bg-hover-overlay"

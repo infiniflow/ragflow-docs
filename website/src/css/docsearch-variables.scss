@@ -1,8 +1,9 @@
 :root {
-
   --docsearch-spacing: var(--ragflow-global-spacing);
   --docsearch-primary-color: rgb(var(--ragflow-color-primary));
+  --docsearch-icon-color: rgb(var(--ragflow-color-primary));
   --docsearch-text-color: rgb(var(--ragflow-text-standard));
+  --docsearch-subtle-color: var(--ragflow-border-component);
   --docsearch-secondary-text-color: rgb(var(--ragflow-text-secondary));
   --docsearch-muted-color: rgb(var(--ragflow-text-disabled));
   --docsearch-container-background: var(--ragflow-bg-surface);
@@ -37,12 +38,16 @@
   }
 }
 
+:where(.DocSearch-Container) {
+  z-index: var(--ragflow-search-overlay-z-index);
+}
+
 :where(.DocSearch-Modal) {
   @apply backdrop-blur-xl rounded-2xl;
 }
 
 :where(.DocSearch-Button) {
-  @apply box-border w-full;
+  @apply box-border w-full rounded-lg;
 
   &:focus-visible {
     @apply outline;
@@ -57,6 +62,10 @@
   @apply overflow-hidden;
 }
 
+:where(.DocSearch-Hit mark) {
+  text-underline-offset: .3ex;
+}
+
 :where(.DocSearch-Hit-icon) {
   @apply mr-2;
 }
@@ -67,4 +76,8 @@
 
 :where(.DocSearch-Hit-path) {
   @apply overflow-hidden text-ellipsis;
+}
+
+:where(.DocSearch-Screen-Icon > svg) {
+  @apply stroke-danger;
 }

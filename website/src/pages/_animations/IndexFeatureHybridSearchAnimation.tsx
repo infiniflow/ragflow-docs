@@ -256,7 +256,7 @@ function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<H
           />
 
           <path id={shapeStar}
-            d="M-8 0 q12 2 11 -11 q-2 12 11 11 q-12 -2 -11 11 q2 -12 -11 -11z"
+            d="M-12 0 q12 2 11 -11 q-2 12 11 11 q-12 -2 -11 11 q2 -12 -11 -11z"
             filter={`url(#${filterGlow})`}
           />
 
@@ -344,15 +344,7 @@ function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<H
             </feMerge>
           </filter>
 
-          <SvgGlowFilter
-            id={filterGlow}
-            extrude="1"
-            colorMatrix="
-              5 0 0 0 .2
-              0 5 0 0 .2
-              0 0 5 0 .2
-              0 0 0 .5 0"
-          />
+          <SvgGlowFilter id={filterGlow} />
 
           <SvgRecolorLinearGradientFilter id={filterGreyGradient} to="bottom">
             <stop offset="0" stopColor="white" />

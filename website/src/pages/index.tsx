@@ -31,12 +31,14 @@ export default function Home(): ReactNode {
       description="The AI-powered RAG solution"
       wrapperClassName={styles.page}
     >
-      <div className="text-standard">
+      <div className="text-standard text-sm mobile:text-base">
         {/* Hero */}
         <header
           className="
-            relative flex justify-center items-center min-h-[800px] h-[75vh] py-32
-            text-center text-[1.25rem] desktop:text-[1.5rem]
+            relative flex justify-center items-center
+            min-h-max desktop:h-[75dvh]
+            py-8 mobile:py-16 desktop:py-32
+            text-center text-lg desktop:text-2xl
           "
         >
           <IndexHeroBgAnimation
@@ -46,17 +48,20 @@ export default function Home(): ReactNode {
 
           <div className="container max-desktop:px-page">
             <h1 className="
-              mx-auto text-center text-[4rem] desktop:text-[6rem] font-bold
-              drop-shadow-[0_0_25px_rgb(var(--ragflow-theme-white))] text-pretty"
+              mx-auto text-center text-hero font-bold
+              drop-shadow-[0_0_2em_rgb(var(--ragflow-theme-white))] text-pretty
+              mb-4 mobile:mb-8 desktop:mb-12"
             >
               <span className={styles.heroTitleTextGradient}>
-                Build superior context layer for&nbsp;
+                Build a superior context layer for
               </span>
-              <span className={cn(styles.primaryGradientText, 'whitespace-nowrap')}>AI Agents</span>
+              <span>{' '}</span>
+              <span className={cn(styles.primaryGradientText, 'whitespace-nowrap')}>AI agents</span>
             </h1>
 
             <p>
-              Empower Your AI Agents through the leading open-source RAG engine, <br className="max-desktop:hidden" /> delivering reliable context and an integrated agent platform, built for enterprise
+              Empower your AI agents through the leading open-source RAG engine,
+              <br className="max-desktop:hidden" /> delivering reliable context and an integrated agent platform, built for enterprise
             </p>
 
             <Link to="https://demo.ragflow.io/">
@@ -96,16 +101,16 @@ export default function Home(): ReactNode {
 
               <section
                 className={cn('flex flex-col', styles.card)}
-                aria-label="High-Precision hybrid search"
+                aria-label="High-precision hybrid search"
               >
                 <h2>
                   <span className={styles.primaryGradientText}>
-                    High-Precision hybrid search
+                    High-precision hybrid search
                   </span>
                 </h2>
 
                 <p>
-                  Combine vector search, BM25, and custom scoring with advanced reranking
+                  Combine vector search, BM25, and custom scoring with advanced re-ranking
                   to deliver unmatched answer accuracy and context relevance.
                 </p>
 
@@ -123,8 +128,7 @@ export default function Home(): ReactNode {
                 </h2>
 
                 <p>
-                  Build powerful agents in an all-in-one platform, seamlessly integrating RAG,
-                  Tools, and MCPs within visual workflows.
+                  Build powerful agents in an all-in-one platform, seamlessly integrating RAG, tools, and MCPs within visual workflows.
                 </p>
 
                 <IndexFeatureUnifiedAgentAnimation key="animation" className="w-full max-h-[280px] aspect-video"/>
@@ -139,31 +143,25 @@ export default function Home(): ReactNode {
 
               <div>
                 <section
-                  className="flex flex-col desktop:flex-row gap-16"
+                  className="flex flex-col desktop:flex-row gap-8 desktop:gap-16"
                   aria-label="Advanced stock research"
                 >
                   <div>
                     <h2>
                       <span className={styles.primaryInfoGradientText}>
-                      Advanced stock research
+                        Advanced stock research
                       </span>
                     </h2>
 
-                    <p className="mb-16">
+                    <p className="mb-0">
                       It automatically gathers company data, consolidates financial metrics and research insights It automatically gathers company data, consolidates It automatically gathers company data, consolidates financial metrics and research insights
                     </p>
-
-                    <FxGlowEffect>
-                      <button className={styles.btn}>
-                        Try demo
-                      </button>
-                    </FxGlowEffect>
                   </div>
 
                   <div className={cn(
                     styles.card,
                     styles.bgPolka,
-                    'p-2 flex-none desktop:w-3/5 max-h-[480px] aspect-video',
+                    'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
                   )}>
                     <IndexSolutionAdvancedStockResearchAnimation
                       key="animation"

@@ -6,7 +6,7 @@ interface Props extends React.SVGAttributes<SVGFilterElement> {
 export default function SvgGlowFilter({
   extrude = 1,
   stdDeviation = 4,
-  colorMatrix = '5 0 0 0 .2 0 5 0 0 .2 0 0 5 0 .2 0 0 0 1 0',
+  colorMatrix = '5 0 0 0 .2 0 5 0 0 .2 0 0 5 0 .2 0 0 0 .5 0',
   ...restProps
 }: Props) {
   const _extrude = typeof extrude === 'number' ? extrude : Number(extrude);

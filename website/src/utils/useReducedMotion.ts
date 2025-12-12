@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+// One time check to see if the user has reduced motion
+export function shouldReduceMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export default function useReducedMotion() {
   const [reducedMotion, setReducedMotion] = useState(false);
 

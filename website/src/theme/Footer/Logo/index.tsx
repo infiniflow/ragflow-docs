@@ -36,7 +36,7 @@ export default function FooterLogo({ logo }: Props) {
     <div className="desktop:flex desktop:items-center">
       <LogoImage
         logo={logo}
-        className="block size-12 mx-auto desktop:mr-3"
+        className="block size-12 max-desktop:mx-auto desktop:mr-3"
       />
 
       {title && (

@@ -195,6 +195,11 @@ export default function DocsVersionDropdownNavbarItem({
       items={items}
       activeClassName="text-standard"
       isActive={dropdownActiveClassDisabled ? () => false : undefined}
+
+      // @ts-ignore
+      wrapperClassName="max-desktop:ml-auto max-desktop:order-last"
+      listClassName="desktop:left-0 desktop:right-auto"
+      dropdownPosition="left"
     />
   );
 }
