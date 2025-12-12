@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import type {Props} from '@theme/NavbarItem/DropdownNavbarItem/Desktop';
@@ -7,11 +7,17 @@ import Icon from '@site/src/components/Icon';
 
 export default function DropdownNavbarItemDesktop({
   items,
-  position,
+  dropdownPosition = 'right',
   className,
+  wrapperClassName,
+  listClassName,
   onClick,
   ...props
-}: Props) {
+}: Props & {
+  dropdownPosition?: 'left' | 'right';
+  wrapperClassName?: string;
+  listClassName?: string;
+}) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -45,6 +51,7 @@ export default function DropdownNavbarItemDesktop({
       className={cn(
         'group/dropdown',
         'inline-flex relative align-top',
+        wrapperClassName,
       )}
     >
       <NavbarNavLink
@@ -55,7 +62,7 @@ export default function DropdownNavbarItemDesktop({
         // See https://github.com/facebook/docusaurus/pull/6003
         // There's probably a better solution though...
         href={props.to ? undefined : '#'}
-        className={cn('px-4 py-2 max-desktop:hidden', className)}
+        className={cn('px-4 py-2 max-desktop:hidden whitespace-nowrap', className)}
         {...props}
         onClick={props.to ? undefined : (e) => e.preventDefault()}
         onKeyDown={(e) => {
@@ -76,7 +83,8 @@ export default function DropdownNavbarItemDesktop({
           'rounded-md list-none shadow-lg shadow-black/20 -translate-y-2 transition-all',
           'pointer-events-none invisible opacity-0',
           'group-hover/dropdown:visible group-hover/dropdown:opacity-100 group-hover/dropdown:pointer-events-auto group-hover/dropdown:translate-y-0',
-          position === 'right' ? 'right-0': 'left-0',
+          dropdownPosition === 'right' ? 'left-0' : 'right-0',
+          listClassName,
           showDropdown && 'visible opacity-100 pointer-events-auto',
         )}
       >

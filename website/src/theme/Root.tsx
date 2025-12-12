@@ -1,7 +1,9 @@
-import useReducedMotion from "@site/src/utils/useReducedMotion";
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { useLocation } from '@docusaurus/router';
 
-import { useLocation } from "@docusaurus/router";
+import useReducedMotion from '@site/src/utils/useReducedMotion';
+
+import '@site/src/lib/polyfill';
 
 export default function Root({ children }) {
   const pathname = useLocation();

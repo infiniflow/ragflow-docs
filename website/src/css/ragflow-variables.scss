@@ -103,6 +103,7 @@ $secondaryColorValueDark: 178 181 183;
     --ragflow-h4-font-size: 1rem; // 16px
     --ragflow-h5-font-size: .9rem; // 14.4px
     --ragflow-h6-font-size: .85rem; // 13.6px
+    --ragflow-hero-font-size: 6rem; // 96px
 
     --ragflow-font-size-base: 16px;
     --ragflow-global-spacing: 1rem;
@@ -140,12 +141,5 @@ $secondaryColorValueDark: 178 181 183;
     @include generateColorShades("color-warning", $warningColorValue, $reversed: true); /* state/warning */
     @include generateColorShades("color-danger", $dangerColorValue, $reversed: true); /* state/error */
     @include generateColorShades("color-info", $infoColorValue, $reversed: true); /* team/member */
-  }
-
-  @media all and (max-width: 997px) {
-    :root {
-      --ragflow-page-padding: 1.5rem;
-      --ragflow-page-padding-lg: 1.5rem;
-    }
   }
 }

@@ -4,6 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import PrismLight from './src/utils/prismLight';
 import PrismDark from './src/utils/prismDark';
 import { omit } from 'lodash-es';
+import { Options as PluginClientRedirectOptions } from '@docusaurus/plugin-client-redirects';
 
 const socialLinks = [
   {
@@ -93,6 +94,20 @@ const config: Config = {
 
     // Supports Tailwind CSS
     './src/plugins/tailwind-plugin',
+
+    // Redirects
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects: (existingPath) => {
+          if (existingPath.startsWith('/docs')) {
+            return [
+              existingPath.replace(/^\/docs/, '/docs/dev'),
+            ];
+          }
+        },
+      } satisfies PluginClientRedirectOptions,
+    ]
   ],
 
   presets: [
@@ -145,6 +160,9 @@ const config: Config = {
 
             // Custom styles and overrides
             './src/css/custom.scss',
+
+            // Responsive
+            './src/css/ragflow-responsive.scss',
           ],
         },
 
@@ -187,6 +205,10 @@ const config: Config = {
         name: 'algolia-site-verification',
         content: '02ADC03A2BCB8D0C',
       },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1.0, user-scalable=no',
+      }
     ],
 
     // Algolia search configuration
@@ -242,8 +264,8 @@ const config: Config = {
         },
         {
           type: 'dropdown',
-          position: 'left',
           label: 'Resources',
+          position: 'left',
           items: [
             {
               label: 'Blog',
@@ -259,8 +281,8 @@ const config: Config = {
         },
         {
           type: 'dropdown',
-          position: 'left',
           label: 'Community',
+          position: 'left',
           items: socialLinks,
         },
 
@@ -275,9 +297,9 @@ const config: Config = {
         },
         {
           type: 'custom-githubStars',
-          position: 'right',
           repo: 'infiniflow/ragflow',
           icon: 'SiGithub',
+          position: 'right',
           mobilePosition: 'bottom',
         },
 

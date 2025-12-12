@@ -20,8 +20,8 @@ export default function IndexHeroBgAnimation() {
     >
       <div
         className="
-          z-[1] absolute -inset-x-[150px] -inset-y-[50px]
-          shadow-[inset_0_0_400px_200px] shadow-bg-standard"
+          z-[1] absolute -inset-x-[8em] -inset-y-[4em]
+          shadow-[inset_0_0_20em_10em] shadow-bg-standard"
       />
 
       <svg

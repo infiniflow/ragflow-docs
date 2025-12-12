@@ -3,6 +3,6 @@ import Logo from '@theme/Logo';
 
 export default function NavbarLogo(): ReactNode {
   return (
-    <Logo className="mr-8" />
+    <Logo className="desktop:mr-8" />
   );
 }

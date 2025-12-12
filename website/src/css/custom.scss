@@ -1,4 +1,17 @@
 @layer ragflow {
+  html {
+    @apply overflow-hidden w-screen h-screen;
+  }
+
+  body {
+    overflow-x: hidden !important;
+    scrollbar-width: thin;
+
+    @supports (scrollbar-gutter: stable) {
+      scrollbar-gutter: stable;
+    }
+  }
+
   .container {
     // @apply max-desktop:px-page !important;
     @apply px-page;
@@ -28,13 +41,11 @@
     input,
     textarea
   ) {
-    font-family: var(--ragflow-font-family-base);
+    @apply font-sans;
   }
 
   :where(button) {
-    @apply transition-all text-secondary cursor-pointer;
-
-    font-family: var(--ragflow-font-family-base);
+    @apply font-sans transition-all text-secondary cursor-pointer;
 
     &:hover,
     &:focus-visible,
@@ -402,7 +413,6 @@
 
       ul,
       ol {
-        @apply pl-8;
         padding-left: var(--ragflow-list-indent);
       }
 
@@ -439,65 +449,5 @@
         @apply mt-16 mb-4;
       }
     }
-
-    /*
-    .doc-content {
-      :where(
-        p,
-        pre,
-        ul,
-        ol,
-        dl,
-        blockquote,
-        table,
-        hr,
-        fieldset,
-        figure,
-        details,
-        .theme-code-block
-      ) {
-        @apply mt-8;
-        @apply mb-0;
-
-        &:first-child {
-          @apply mt-0;
-        }
-      }
-
-      p + :is(
-        pre,
-        ul,
-        ol,
-        dl,
-        blockquote,
-        table,
-        hr,
-        fieldset,
-        figure,
-        details,
-        .theme-code-block
-      ) {
-        @apply mt-4;
-      }
-
-      h1, h2, h3, h4, h5, h6 {
-        @apply mt-8;
-
-        + * {
-          @apply mt-4;
-        }
-      }
-
-      li + li,
-      li > ul,
-      li > ol {
-        @apply mt-2;
-      }
-
-      li > p:first-child {
-        margin-top: 0 !important;
-      }
-    }
-    */
   }
 }

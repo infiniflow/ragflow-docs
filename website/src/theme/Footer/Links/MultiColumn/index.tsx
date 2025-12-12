@@ -43,7 +43,7 @@ function Column({ column: { className, title, items }}: { column: ColumnType }) 
 
 export default function FooterLinksMultiColumn({ columns }: Props) {
   return (
-    <div className="flex flex-col mobile:flex-row justify-between gap-16 desktop:gap-16">
+    <div className="flex flex-col mobile:flex-row justify-between md:max-desktop:justify-evenly gap-16">
       {columns.map((column, i) => (
         <Column key={i} column={column} />
       ))}

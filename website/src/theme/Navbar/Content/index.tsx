@@ -48,11 +48,11 @@ function NavbarContentLayout({
   right: ReactNode;
 }) {
   return (
-    <div className="flex items-center justify-between w-full flex-wrap text-sm">
+    <div className="flex items-center w-full flex-wrap text-sm">
       <div
         className={clsx(
           ThemeClassNames.layout.navbar.containerLeft,
-          'flex-1 min-w-0 flex items-center gap-4',
+          'flex-1 min-w-0 flex items-center gap-4 max-desktop:w-full',
         )}>
         {left}
       </div>
@@ -60,7 +60,7 @@ function NavbarContentLayout({
       <div
         className={clsx(
           ThemeClassNames.layout.navbar.containerRight,
-          'flex-none hidden desktop:flex items-center justify-end',
+          'ml-auto flex-none hidden desktop:flex items-center justify-end',
         )}>
         {right}
       </div>

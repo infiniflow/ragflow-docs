@@ -98,13 +98,13 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
 
           <linearGradient id={gradientConnector}>
             <stop stopColor="transparent" />
-            <stop offset=".15" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
+            <stop offset=".25" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
             <stop offset="1" stopColor="rgb(var(--ragflow-color-primary))" />
           </linearGradient>
 
           <linearGradient id={gradientConnectorReversed}>
             <stop stopColor="rgb(var(--ragflow-color-primary))" />
-            <stop offset=".85" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
+            <stop offset=".75" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
             <stop offset="1" stopColor="transparent" />
           </linearGradient>
 
@@ -222,13 +222,13 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
           <g>
             <path
               id={mpathDest}
-              d="M50 0 h40 a10 10 0 0 0 10 -10 v-20 a10 10 0 0 1 10 -10 h50"
+              d="M0 0 h90 a10 10 0 0 0 10 -10 v-20 a10 10 0 0 1 10 -10 h70"
               stroke={`url(#${gradientConnectorReversed})`}
             />
 
             <path
               id={mpathRest}
-              d="M210,-40 h25 a10 10 0 0 1 10 10 v20 a10 10 0 0 0 10 10 h25"
+              d="M180,-40 h55 a10 10 0 0 1 10 10 v20 a10 10 0 0 0 10 10 h35"
               stroke={`url(#${gradientConnectorVanishing})`}
             />
 
@@ -336,7 +336,7 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
             <animateMotion
               id={animBallToRest}
               dur={BALL_FADE_OUT_DURATION}
-              begin={`0;${animBallToRest}.end+5`}
+              begin={`5;${animBallToRest}.end+5`}
             >
               <mpath href={`#${mpathRest}`} />
             </animateMotion>
@@ -345,7 +345,7 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
               attributeName="fill-opacity"
               values="1;1;0"
               dur={BALL_FADE_OUT_DURATION}
-              begin={`0;${animBallToRest}.end+5`}
+              begin={`5;${animBallToRest}.end+5`}
             />
           </use>
         </g>

@@ -1,0 +1,15 @@
+{
+  "words": [
+    "ragflow",
+    "infiniflow",
+
+    "infima",
+
+    "hideable",
+    "fulltext",
+  ],
+  "files": [
+    "./sidebars.ts",
+    "./src/**/*.{ts,tsx,md,mdx,json}",
+  ],
+}
