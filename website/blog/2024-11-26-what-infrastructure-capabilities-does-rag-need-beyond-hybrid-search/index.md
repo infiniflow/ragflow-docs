@@ -2,10 +2,9 @@
 slug: what-infrastructure-capabilities-does-rag-need-beyond-hybrid-search
 title: What Infrastructure Capabilities does RAG Need beyond Hybrid Search
 authors: [yingfeng]
-tags: [RAG, GraphRAG, LLM, agent, HybridRAG, KAG]
+tags: [Technologies]
 ---
-
-Infinity is a database specifically designed for Retrieval-Augmented Generation (RAG), excelling in both functionality and performance. It provides high-performance capabilities for dense and sparse vector searches, as well as full-text searches, along with efficient range filtering for these data types. Additionally, it features tensor-based reranking, enabling the implementation of powerful multi-modal RAG and integrating ranking capabilities comparable to Cross Encoders. <!--truncate-->
+Infinity is a database specifically designed for Retrieval-Augmented Generation (RAG), excelling in both functionality and performance. It provides high-performance capabilities for dense and sparse vector searches, as well as full-text searches, along with efficient range filtering for these data types. Additionally, it features tensor-based reranking, enabling the implementation of powerful multi-modal RAG and integrating ranking capabilities comparable to Cross Encoders. `<!--truncate-->`
 
 ![](./1.jpg)
 
@@ -90,7 +89,7 @@ For vectors, index construction is a time-consuming process; therefore, Infinity
 
 Infinity, a database specifically designed for Retrieval-Augmented Generation (RAG), has evolved to possess comprehensive service capabilities. In the latest release of RAGFlow version 0.14, Infinity has been integrated as an alternative to Elasticsearch. After thorough testing and validation, Infinity will become the preferred option for RAGFlow, unlocking many advanced features over time. Please stay tuned for updates on Infinity and RAGFlow!
 
-https://github.com/infiniflow/infinity  
+https://github.com/infiniflow/infinity
 
 https://github.com/infiniflow/ragflow
 
@@ -99,6 +98,6 @@ https://github.com/infiniflow/ragflow
 1. https://github.com/kuzudb/kuzu
 2. https://github.com/HKUDS/LightRAG
 3. https://github.com/OpenSPG/KAG
-4. Annotative Indexing, arXiv preprint arXiv:2411.06256 
+4. Annotative Indexing, arXiv preprint arXiv:2411.06256
 5. HybridRAG: Integrating Knowledge Graphs and Vector Retrieval Augmented Generation for Efficient Information Extraction, Proceedings of the 5th ACM International Conference on AI in Finance, 2024
 6. TCAF: a Multi-Agent Approach of Thought Chain for Retrieval Augmented Generation, 2024 KDD Cup Workshop for Retrieval Augmented Generation

@@ -1,9 +1,8 @@
 ---
 slug: ragflow-seamless-upgrade-from-0.21-to-0.22-and-beyond
 title: RAGFlow’s Seamless Upgrade - from 0.21 to 0.22 and Beyond
-tags: [Agent, embedding, parser]
+tags: [Tutorials]
 ---
-
 ![](./1.PNG)
 
 ## Background

@@ -1,15 +1,13 @@
 ---
 slug: a-deep-dive-into-ragflow-v0.15.0
 title: A deep dive into RAGFlow v0.15.0
-authors: [yingfeng]
-tags: [RAG, GraphRAG, LLM, agent, workflow, DeepDoc, RAPTOR]
+tags: [Product News]
 ---
-
 The final release of RAGFlow for the year of 2024, v0.15.0, has just been released, bringing the following key updates:
 
 ## Agent Improvements
 
-This version introduces several enhancements to the Agent, including additional APIs, step-run debugging, and import/export capabilities. Since v0.13.0, RAGFlow's Agent has been restructured to improve usability. The step-run debugging feature finalizes this process, enabling operators in the Agent workflow to be executed individually, thereby assisting users in debugging based on output information.<!--truncate-->
+This version introduces several enhancements to the Agent, including additional APIs, step-run debugging, and import/export capabilities. Since v0.13.0, RAGFlow's Agent has been restructured to improve usability. The step-run debugging feature finalizes this process, enabling operators in the Agent workflow to be executed individually, thereby assisting users in debugging based on output information.`<!--truncate-->`
 
 ![](./pubmed.png)
 

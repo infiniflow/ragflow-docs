@@ -1,9 +1,8 @@
 ---
 slug: is-data-processing-like-building-with-lego-here-is-a-detailed-explanation-of-the-ingestion-pipeline
 title: Is data processing like building with lego? Here is a detailed explanation of the ingestion pipeline.
-tags: [RAGfolw, ingestion pipeline, index, heterogeneous documents, retrieval accuracy]
+tags: [Product News]
 ---
-
 ![](./toutu.PNG)
 
 Since its open-source release, RAGFlow has consistently garnered widespread attention from the community. Its core module, DeepDoc, leverages built-in document parsing models to provide intelligent document-sharding capabilities tailored for multiple business scenarios, ensuring that RAGFlow can deliver accurate and high-quality answers during both the retrieval and generation phases. Currently, RAGFlow comes pre-integrated with over a dozen document-sharding templates, covering various business scenarios and file types.
@@ -66,13 +65,10 @@ Here, we provide further explanations for the parsers of several common file cat
   3. Naive: A pure text extraction method without using any models. It is suitable for documents with no complex structure or non-textual elements.
 
 ![](./7.png)
-  
+
 - For Image files, the system will by default invoke OCR to extract text from the image. Additionally, users can also configure VLMs (Vision Language Models) that support visual recognition to process them.
-
 - For Audio files, it is necessary to configure a model that supports speech-to-text conversion. The Parser will then extract the textual content from the Audio. Users can configure the API keys of model providers that support this type of parsing on the "Model provider" page of the homepage. After that, they can return to the Parser node and select it from the dropdown menu. This "configure first, then select" logic also applies to PDF, Image, and Video files.
-
 - For Video files, it is necessary to configure a large model that supports multimodal recognition. The Parser will invoke this model to conduct a comprehensive analysis of the video and output the results in text format.
-
 - When parsing Email files, RAGFlow provides Field options, allowing users to select only the desired fields, such as "subject" and "body." The Parser will then precisely extract the textual content of these fields.
 
 ![](./8.png)

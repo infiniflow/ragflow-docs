@@ -1,9 +1,8 @@
 ---
 slug: tutorial-building-a-sql-assistant-workflow
 title: Tutorial - Building a SQL Assistant Workflow
-tags: [agentic, agents, multi-agent, workflow]
+tags: [Tutorials]
 ---
-
 ![](./dfsafasdf.png)
 
 ## Workflow overview
@@ -25,6 +24,7 @@ You can download the sample datasets from [Hugging Face Datasets](https://huggin
 ![](./datasets.png)
 
 The following are the predefined example files:
+
 1. Schema.txt
 
 ```
@@ -63,7 +63,6 @@ SELECT geo_name, value FROM data_commons_public_data.cybersyn.timeseries join da
 ```
 
 3. Database Description EN.txt
-
 
 ```
 ### Users Table (users)
@@ -118,11 +117,12 @@ CREATE TABLE `merchants` (
 );
 ```
 
-To isolate each table as a standalone chunk without overlapping content, configure the knowledge base parameters as follows: 
+To isolate each table as a standalone chunk without overlapping content, configure the knowledge base parameters as follows:
+
 - Chunking Method: General
-- Chunk Size: 2 tokens (minimum size for isolation) 
-- Delimiter: Semicolon (;) 
-RAGFlow will then parse and generate chunks according to this workflow:
+- Chunk Size: 2 tokens (minimum size for isolation)
+- Delimiter: Semicolon (;)
+  RAGFlow will then parse and generate chunks according to this workflow:
 
 ![](./segment.jpg)
 
@@ -154,17 +154,17 @@ Create a new knowledge base titled "Database Description" and upload the file "D
 ![](./10.jpg)
 
 Configuration (Same as Schema Knowledge Base):
+
 - Chunking Method: General
-- Chunk Size: 2 tokens (minimum size for isolation) 
+- Chunk Size: 2 tokens (minimum size for isolation)
 - Delimiter: Semicolon `###`
-Below is a preview of the parsed Database_Description_EN.txt following configuration.
+  Below is a preview of the parsed Database_Description_EN.txt following configuration.
 
 ![](./11.jpg)
 
 We now validate the retrieved results through retrieval testing:
 
 ![](./12.jpg)
-
 
 Note: The three knowledge bases are maintained and queried separately. The Agent component consolidates results from all sources before producing outputs."
 
@@ -187,21 +187,20 @@ Hi! I'm your SQL assistant, what can I do for you?
 ### 2.2 Configure three Retrieval components
 
 Add three parallel Retrieval components after the Begin component, named as follows:
+
 - Schema
 - Question to SQL
 - Database Description
-Configure each Retrieval component:
+  Configure each Retrieval component:
+
 1. Query variable: sys.query
 2. Knowledge base selection: Select the knowledge base whose name matches the current component's name.
 
 ![](./15.jpg)
 
-
 ### 2.3 Configure the Agent component
 
 Add an Agent component named 'SQL Generator' after the Retrieval components, connecting all three to it.
-
-
 
 ![](./16.jpg)
 
@@ -275,7 +274,6 @@ After inserting variables, the populated result appears as follows:
 
 Append an ExeSQL component named "SQL Executor" after the SQL Generator.
 
-
 ![](./19.jpg)
 
 Configure the database for the SQL Executor component, specifying that its Query input comes from the output of the SQL Generator.
@@ -300,6 +298,6 @@ Click Save → Run → Enter a natural language question → View execution resu
 
 ![](./25.jpg)
 
-## Finale 
+## Finale
 
 Finally, like current Copilot technologies, NL2SQL cannot achieve complete accuracy. For standardized processing of structured data, we recommend consolidating its operations to specific APIs, then encapsulating these APIs as MCPs (Managed Content Packages) for RAGFlow. We will demonstrate this approach in a forthcoming blog.

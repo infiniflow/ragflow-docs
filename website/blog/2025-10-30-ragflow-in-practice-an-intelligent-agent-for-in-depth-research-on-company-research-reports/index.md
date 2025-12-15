@@ -1,9 +1,8 @@
 ---
 slug: ragflow-in-practice-building-an-agent-for-deep-dive-analysis-of-company-research-reports
 title: RAGFlow in Practice - Building an Agent for Deep-Dive Analysis of Company Research Reports
-tags: [RAGFlow, agent, deep research, mcp]
+tags: [Tutorials]
 ---
-
 ![](./toutu.jpg)
 
 # Background
@@ -26,7 +25,7 @@ The following sections will provide a detailed introduction to the implementatio
 
 ## 1.1 Create a dataset
 
-The dataset required for this example can be downloaded from *Hugging Face Datasets*[1].
+The dataset required for this example can be downloaded from *Hugging Face Datasets*[1][1].
 
 ![](./2.png)
 
@@ -174,7 +173,7 @@ def extract_md_table_single_column(input_text: str) -> str:
         "Net Debt", "Cash And Cash Equivalents", "Working Capital", 
         "Long Term Debt", "Common Stock Equity", "Ordinary Shares Number"
     ]
-    
+  
     # Core indicators and their corresponding units
     unit_map = {
         "Total Assets": "USD",

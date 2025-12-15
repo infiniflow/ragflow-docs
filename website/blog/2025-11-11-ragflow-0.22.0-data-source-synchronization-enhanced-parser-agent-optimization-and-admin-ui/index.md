@@ -1,9 +1,8 @@
 ---
 slug: ragflow-0.22.0-data-source-synchronization-enhanced-parser-agent-optimization-and-admin-ui
 title: RAGFlow 0.22.0 Overview — Supported Data Sources, Enhanced Parser, Agent Optimizations, and Admin UI
-tags: [Agent, data synchronization, parser, Admin UI]
+tags: [Product News]
 ---
-
 ![](./1.PNG)
 
 ## 0.22 Highlights
@@ -14,9 +13,9 @@ This 0.22.0 release focuses on the data upload step to help developers build dat
 
 We also added these key improvements:
 
--   The Parser component in the Ingestion pipeline now offers more model choices for better file parsing.
--   We optimized the Agent's **Retrieval** and **Await response** components.
--   A new Admin UI gives you a clearer and easier way to manage the system.
+- The Parser component in the Ingestion pipeline now offers more model choices for better file parsing.
+- We optimized the Agent's **Retrieval** and **Await response** components.
+- A new Admin UI gives you a clearer and easier way to manage the system.
 
 ## Support for Rich External Data Sources
 
@@ -28,48 +27,48 @@ Use the "Data Sources" menu in your personal center to add and set up sources li
 
 ### Example: S3 Configuration
 
-1.  Make sure you have an S3 storage bucket in your AWS account.
+1. Make sure you have an S3 storage bucket in your AWS account.
 
 ![](./s31.PNG)
 
-2.  Add your S3 details to the S3 data source form.
+2. Add your S3 details to the S3 data source form.
 
 ![](./s32.PNG)
 
-3.  After you add it, click the settings icon to see the data source details.
+3. After you add it, click the settings icon to see the data source details.
 
 ![](./s33.PNG)
 
-4.  If you set "Refresh Freq" to "1", the system will check for new files every minute.
-5.  RAGFlow watches your specified S3 Bucket (like `ragflow-bucket`). If it finds new files, it immediately starts syncing them.
-6.  After syncing, it waits one minute before checking again. Use the "Pause" button to turn this automatic refresh on or off anytime.
+4. If you set "Refresh Freq" to "1", the system will check for new files every minute.
+5. RAGFlow watches your specified S3 Bucket (like `ragflow-bucket`). If it finds new files, it immediately starts syncing them.
+6. After syncing, it waits one minute before checking again. Use the "Pause" button to turn this automatic refresh on or off anytime.
 
 ![](s34.png)
 
 ### Linking Data Sources to a dataset
 
-1.  Create a new dataset (for example, `TEST_S3`).
-2.  Click `Configuration` and go to the bottom of the page.
-3.  Click `Link Data Source` and pick the data source you want (like S3).
+1. Create a new dataset (for example, `TEST_S3`).
+2. Click `Configuration` and go to the bottom of the page.
+3. Click `Link Data Source` and pick the data source you want (like S3).
 
 ![](./s35.png)
 ![](./s36.png)
 
 After you link successfully, you'll see three icons:
 
-*   **Rebuild:** Click this to delete all files and logs in the dataset and import everything again.
-*   **Settings:** Check the sync logs here.
-*   **Unlink:** This disconnects the data source. It keeps all the files already in the dataset but stops new syncs.
+* **Rebuild:** Click this to delete all files and logs in the dataset and import everything again.
+* **Settings:** Check the sync logs here.
+* **Unlink:** This disconnects the data source. It keeps all the files already in the dataset but stops new syncs.
 
 ![](./s3icons.png)
 
 **Status Messages in Logs:**
 
-*   **Scheduled:** The task is in line, waiting for its next turn to check for files.
-*   **Running:** The system is moving files right now.
-*   **Success:** It finished checking for new files.
-*   **Failed:** The upload didn't work. Check the error message for details.
-*   **Cancel:** You paused the transfer.
+* **Scheduled:** The task is in line, waiting for its next turn to check for files.
+* **Running:** The system is moving files right now.
+* **Success:** It finished checking for new files.
+* **Failed:** The upload didn't work. Check the error message for details.
+* **Cancel:** You paused the transfer.
 
 You can link multiple data sources to one dataset, and one data source can feed into many datasets.
 
@@ -83,20 +82,22 @@ The idea is simple: RAGFlow asks MinerU to parse a file, reads the results, and 
 
 **Key Environment Variables:**
 
-| Variable | Explanation | Default | Example |
-| :--- | :--- | :--- | :--- |
-| `MINERU_EXECUTABLE` | Path to MinerU on your computer | `mineru` | `MINERU_EXECUTABLE=/home/ragflow/uv_tools/.venv/bin/mineru` |
-| `MINERU_DELETE_OUTPUT` | Keep or delete MinerU's output files? | `1` (delete) | `MINERU_DELETE_OUTPUT=0` (keep) |
-| `MINERU_OUTPUT_DIR` | Where to put MinerU's output | System temp folder | `MINERU_OUTPUT_DIR=/home/ragflow/mineru/output` |
-| `MINERU_BACKEND` | Which MinerU backend to use | `pipeline` | `MINERU_BACKEND=vlm-transformers` |
+| Variable                 | Explanation                           | Default            | Example                                                       |
+| :----------------------- | :------------------------------------ | :----------------- | :------------------------------------------------------------ |
+| `MINERU_EXECUTABLE`    | Path to MinerU on your computer       | `mineru`         | `MINERU_EXECUTABLE=/home/ragflow/uv_tools/.venv/bin/mineru` |
+| `MINERU_DELETE_OUTPUT` | Keep or delete MinerU's output files? | `1` (delete)     | `MINERU_DELETE_OUTPUT=0` (keep)                             |
+| `MINERU_OUTPUT_DIR`    | Where to put MinerU's output          | System temp folder | `MINERU_OUTPUT_DIR=/home/ragflow/mineru/output`             |
+| `MINERU_BACKEND`       | Which MinerU backend to use           | `pipeline`       | `MINERU_BACKEND=vlm-transformers`                           |
 
 **Starting Up:**
-*   If you use the `vlm-http-client` backend, set the server address with `MINERU_SERVER_URL`.
-*   To connect to a remote MinerU parser, use `MINERU_APISERVER` to give its address.
+
+* If you use the `vlm-http-client` backend, set the server address with `MINERU_SERVER_URL`.
+* To connect to a remote MinerU parser, use `MINERU_APISERVER` to give its address.
 
 **How to Start:**
-1.  **From Source:** Install MinerU by itself (its dependencies can conflict with RAGFlow's). Then set the environment variables and start the RAGFlow server.
-2.  **Using Docker:** Set `USE_MINERU=true` in `docker/.env` and restart your containers.
+
+1. **From Source:** Install MinerU by itself (its dependencies can conflict with RAGFlow's). Then set the environment variables and start the RAGFlow server.
+2. **Using Docker:** Set `USE_MINERU=true` in `docker/.env` and restart your containers.
 
 ### Docling
 
@@ -105,10 +106,11 @@ RAGFlow also supports Docling as another PDF parser. It works the same way as Mi
 Docling finds the text, formulas, tables, and images in a document. RAGFlow then uses what Docling finds.
 
 **What Docling Can Do:**
-1.  Pull out text (paragraphs, headings, lists).
-2.  Extract math formulas.
-3.  Identify tables and images (and save them).
-4.  Mark where everything is located.
+
+1. Pull out text (paragraphs, headings, lists).
+2. Extract math formulas.
+3. Identify tables and images (and save them).
+4. Mark where everything is located.
 
 **Starting Up:** Set `USE_DOCLING=true` in `docker/.env` and restart your containers.
 
@@ -127,7 +129,6 @@ Before, this only worked in the Chat app. Now the Agent's Retrieval component ca
 
 ![](./retrieval_metadata.png)
 ![](./retrieval_effect.png)
-
 
 ### Agent Teamwork Gets Better
 
@@ -185,5 +186,5 @@ We will keep adding more data sources, better parsers, and smarter pipelines to 
 **GitHub:** https://github.com/infiniflow/ragflow
 
 **Reference:**
-1. https://ragflow.io/docs/dev/faq#how-to-use-mineru-to-parse-pdf-documents
 
+1. https://ragflow.io/docs/dev/faq#how-to-use-mineru-to-parse-pdf-documents

@@ -1,9 +1,8 @@
 ---
 slug: tutorial-build-an-e-commerce-customer-support-agent-using-ragflow
 title: Tutorial - Build an E-Commerce Customer Support Agent Using RAGFlow
-tags: [agentic, agents, multi-agent, workflow]
+tags: [Tutorials]
 ---
-
 ![](./phonecall.png)
 
 Currently, e-commerce retail platforms extensively use intelligent customer service systems to manage a wide range of user enquiries. However, traditional intelligent customer service often struggles to meet users’ increasingly complex and varied needs. For example, customers may require detailed comparisons of functionalities between different product models before making a purchase; they might be unable to use certain features due to losing the instruction manual; or, in the case of home products, they may need to arrange an on-site installation appointment through customer service.
@@ -11,8 +10,6 @@ Currently, e-commerce retail platforms extensively use intelligent customer serv
 To address these challenges, we have identified several common demand scenarios, including queries about functional differences between product models, requests for usage assistance, and scheduling of on-site installation services. Building on the recently launched Agent framework of RAGFlow, this blog presents an approach for the automatic identification and branch-specific handling of user enquiries, achieved by integrating workflow orchestration with large language models.
 
 The workflow is orchestrated as follows:
-
-
 
 ![Image](./1.PNG)
 
@@ -24,8 +21,6 @@ The following sections offer a detailed explanation of the implementation proces
 
 You can download the sample datasets from [Hugging Face Datasets](https://huggingface.co/datasets/InfiniFlow/Ecommerce-Customer-Service-Workflow).
 
-
-
 ![](./createdatasets.png)
 
 Create the "Product Information" and "User Guide" knowledge bases and upload the relevant dataset documents.
@@ -34,13 +29,10 @@ Create the "Product Information" and "User Guide" knowledge bases and upload the
 
 For documents in the 'Product Information' and 'User Guide' knowledge bases, we choose to use Manual chunking.
 
-
-
 ![Image](./2.PNG)
 
 Product manuals are often richly illustrated with a combination of text and images, containing extensive information and complex structures. Relying solely on text length for segmentation risks compromising the integrity of the content. RAGFlow assumes such documents follow a hierarchical structure and therefore uses the "smallest heading" as the basic unit of segmentation, ensuring each section of text and its accompanying graphics remain intact within a single chunk.
 A preview of the user manual following segmentation is shown below:
-
 
 ![Image](./3.png)
 
@@ -50,7 +42,6 @@ A preview of the user manual following segmentation is shown below:
 
 Upon successful creation, the system will automatically generate a Begin component on the canvas.
 
-
 ![Image](./1.jpg)
 
 In the Begin component, the opening greeting message for customer service can be configured, for example:
@@ -58,9 +49,6 @@ In the Begin component, the opening greeting message for customer service can be
 ```
 Hi! I'm your assistant. 
 ```
-
-
-
 
 ![Image](./4.png)
 
@@ -77,7 +65,6 @@ The Retrieval component connects to the "Product Information" knowledge base to 
 ![Image](./6.png)
 
 Add a Retrieval component named "Feature Comparison Knowledge Base" and link it to the "Product Information" knowledge base.
-
 
 ![Image](./7.png)
 
@@ -108,12 +95,7 @@ Schema is /(Feature Comparison Knowledge Base) formalized_content
 
 After configuring the Agent component, the result is as follows:
 
-
-
-
-
 ![Image](./8.png)
-
 
 ### 2.4 Build a product user guide workflow
 
@@ -151,9 +133,6 @@ Schema is / (Usage Guide Knowledge Base) formalized_content
 
 After configuring the Agent component, the result is as follows:
 
-
-
-
 ![Image](./12.png)
 
 ### 2.5 Build an installation booking  assistant
@@ -186,16 +165,11 @@ User's query is /(Begin Input) sys.query
 
 After configuring the Agent component, the result is as follows:
 
-
-
 ![Image](./14.png)
 
 If user information needs to be registered, an HTTP Request component can be connected after the Agent component to transmit the data to platforms such as Google Sheets or Notion. Developers may implement this according to their specific requirements; this blog article does not cover implementation details.
 
-
-
 ![Image](./15.png)
-
 
 ### 2.6 Add a reply message component
 

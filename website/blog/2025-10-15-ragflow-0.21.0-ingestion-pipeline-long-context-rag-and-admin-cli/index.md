@@ -1,9 +1,8 @@
 ---
 slug: ragflow-0.21.0-ingestion-pipeline-long-context-rag-and-admin-cli
 title: RAGFlow 0.21.0 - Ingestion Pipeline, Long-Context RAG, and Admin CLI
-tags: [ingestion pipeline, long-context, cli, etl]
+tags: [Product News]
 ---
-
 ![](./ingestion_pipeline_cover.PNG)
 
 ## RAGFlow 0.21.0 officially released
@@ -84,7 +83,7 @@ Context Retrieval: This method enriches original chunks with extra semantics suc
 
 - The more effective option queries the LLM multiple times per chunk, using both full text and the current chunk for context, improving performance but driving token costs several times higher than the original text.
 - The cheaper option generates semantic information based only on the current chunk, saving costs but providing limited global context and modest performance gains.
-The last few years have seen the emergence of new RAG schemes.
+  The last few years have seen the emergence of new RAG schemes.
 - Complete abandonment of retrieval: some approaches have the LLM read documents directly, splitting them into chunks according to the context window and performing multi-stage searches. First, the LLM decides which global document is relevant, then which chunks, and finally loads those chunks to answer. While this avoids recall inaccuracies, it harms response latency, concurrency, and large-scale data handling, making practical deployment difficult.
 - Abandoning embedding or indexing in favour of tools like grep: this evolves RAG into Agentic RAG. As applications grow more complex and user queries diversify, combining RAG with agents is increasingly inevitable, since only LLMs can translate raw inquiries into structured retrieval commands. In RAGFlow, this capability has long been realized. Abandoning indexing to use grep is a compromise for simplifying agent development in personal or small-scale contexts; in enterprise settings, a powerful retrieval engine remains essential.
 - Long-Context RAG: introduced in version 0.21.0 as part of the same family as GraphRAG, RAPTOR and Context Retrieval, this approach uses LLMs to enrich raw text semantics to boost recall while retaining indexing and search. Retrieval remains central. Long-context RAG mirrors how people consult information: identify relevant chapters via the table of contents, then locate exact pages for detail. During indexing, the LLM extracts and attaches chapter information to each chunk to provide global context; during retrieval, it finds matching chunks and uses the table-of-contents structure to fill in gaps from chunk fragmentation.

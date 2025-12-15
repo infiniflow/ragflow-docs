@@ -1,9 +1,8 @@
 ---
 slug: ragflow-named-among-github-fastest-growing-open-source-projects
 title:  RAGFlow Named Among GitHub’s Fastest-Growing Open Source Projects, Reflecting Surging Demand for Production-Ready AI
-tags: [GitHub, RAG, opensource, landscape]
+tags: [Product News]
 ---
-
 The release of GitHub’s 2025 Octoverse report marks a pivotal moment for the open source ecosystem—and for projects like **RAGFlow**, which has emerged as one of the **fastest-growing open source projects by contributors** this year. With a remarkable **2,596% year-over-year growth** in contributor engagement, RAGFlow isn’t just gaining traction—it’s defining the next wave of AI-powered development.
 
 ### The Rise of Retrieval-Augmented Generation in Production
@@ -28,10 +27,10 @@ The project first made its mark by systematically addressing core RAG limitation
 
 Now, building on this robust technical foundation, RAGFlow is steering toward a bolder vision: **to become the superior context engine for enterprise-grade Agents**. Evolving from a specialized RAG engine into a unified, resilient context layer, RAGFlow is positioning itself as the essential **data foundation for LLMs** in the enterprise—enabling Agents of any kind to access rich, precise, and secure context, ensuring reliable and effective operation across all tasks.
 
-------
+---
 
 *RAGFlow is an open source retrieval-augmented generation engine designed for building production-ready AI applications. To learn more or contribute, visit the [RAGFlow GitHub repository](https://github.com/infiniflow/ragflow).*
 
 *This post was inspired by insights from the [GitHub Octoverse 2025 Report](https://gh.io/octoverse). Special thanks to the GitHub team for amplifying the voices of open source builders everywhere.*
 
-------
+---

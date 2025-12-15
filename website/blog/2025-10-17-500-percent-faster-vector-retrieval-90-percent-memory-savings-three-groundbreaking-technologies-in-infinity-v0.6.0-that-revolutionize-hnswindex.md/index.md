@@ -1,19 +1,17 @@
 ---
 slug: 500-percent-faster-vector-retrieval-90-percent-memory-savings-three-groundbreaking-technologies-in-infinity-v0.6.0-that-revolutionize-hnsw
 title: 500 Percent Faster Vector Retrieval! 90 Percent Memory Savings! Three Groundbreaking Technologies in Infinity v0.6.0 That Revolutionize HNSW
-tags: [RAG, gen, vector, database, tech]
+tags: [Technologies]
 ---
-
 ![](./toutu.jpg)
 
 ## Introduction
 
-In RAG (Retrieval-Augmented Generation) and LLM (Large Language Model) Memory, vector retrieval is widely employed. Among various options, graph-based indexing has become the most common choice due to its high accuracy and performance, with the HNSW (Hierarchical Navigable Small World) index being the most representative one[1] [2].
+In RAG (Retrieval-Augmented Generation) and LLM (Large Language Model) Memory, vector retrieval is widely employed. Among various options, graph-based indexing has become the most common choice due to its high accuracy and performance, with the HNSW (Hierarchical Navigable Small World) index being the most representative one[1][1] [2][2].
 
 However, during our practical application of HNSW in RAGFlow, we encountered the following two major bottlenecks:
 
 1. As the data scale continues to grow, the memory consumption of vector data becomes highly significant. For instance, one billion 1024-dimensional floating-point vectors would require approximately 4TB of memory space.
-
 2. When constructing an HNSW index on complex datasets, there is a bottleneck in retrieval accuracy. After reaching a certain threshold, it becomes difficult to further improve accuracy solely by adjusting parameters.
 
 To address this, Infinity has implemented a variety of improved algorithms based on HNSW. Users can select different indexing schemes by adjusting the index parameters of HNSW. Each HNSW index variant possesses distinct characteristics and is suitable for different scenarios, allowing users to construct corresponding index structures based on their actual needs.
@@ -75,7 +73,7 @@ The CPU has a 16-core specification. To align with the actual device environment
 
 ### Solution 1: Original HNSW + LVQ Quantizer (HnswLvq)
 
-LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer[3], thereby reducing memory usage to one-fourth of that of the original vectors. 
+LVQ is a scalar quantization method that compresses each 32-bit floating-point number in the original vectors into an 8-bit integer[3][3], thereby reducing memory usage to one-fourth of that of the original vectors.
 
 Compared to simple scalar quantization methods (such as mean scalar quantization), LVQ reduces errors by statistically analyzing the residuals of each vector, effectively minimizing information loss in distance calculations for quantized vectors. Consequently, LVQ can accurately estimate the distances between original vectors with only approximately 30% of the original memory footprint.
 
@@ -109,11 +107,11 @@ In summary, HnswLvq significantly reduces memory usage while maintaining excelle
 
 RaBitQ is a binary scalar quantization method that shares a similar core idea with LVQ, both aiming to replace the 32-bit floating-point numbers in original vectors with fewer encoded bits. The difference lies in that RaBitQ employs binary scalar quantization, representing each floating-point number with just 1 bit, thereby achieving an extremely high compression ratio.
 
-However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent[4].
+However, this extreme compression also leads to more significant information loss in the vectors, resulting in a decline in the accuracy of distance estimation. To mitigate this issue, RaBitQ introduces a rotation matrix to preprocess the dataset during the preprocessing stage and retains more residual information, thereby reducing errors in distance calculations to a certain extent[4][4].
 
-Nevertheless, binary quantization has obvious limitations in terms of precision, showing a substantial gap compared to LVQ. Indexes built directly using RaBitQ encoding exhibit poor query performance. 
+Nevertheless, binary quantization has obvious limitations in terms of precision, showing a substantial gap compared to LVQ. Indexes built directly using RaBitQ encoding exhibit poor query performance.
 
-Therefore, the HnswRabitq scheme implemented in Infinity involves first constructing an original HNSW index for the dataset and then converting it into an HnswRabitq index through the `compress_to_rabitq` parameter in the optimize method. 
+Therefore, the HnswRabitq scheme implemented in Infinity involves first constructing an original HNSW index for the dataset and then converting it into an HnswRabitq index through the `compress_to_rabitq` parameter in the optimize method.
 
 During the query process, the system initially uses quantized vectors for preliminary retrieval and then re-ranks the ef candidate results specified by the user using the original vectors.
 
@@ -136,7 +134,7 @@ table_obj.optimize("hnsw_index", {"compress_to_rabitq": "true"})
 query_builder.match_dense('embedding', [1.0, 2.0, 3.0], 'float', 'l2', 10, {'ef': 200})
 ```
 
-Compared to LVQ, RaBitQ can further reduce the memory footprint of encoded vectors by nearly 70%. On some datasets, the query efficiency of HnswRabitq even surpasses that of HnswLvq due to the higher efficiency of distance calculations after binary quantization. 
+Compared to LVQ, RaBitQ can further reduce the memory footprint of encoded vectors by nearly 70%. On some datasets, the query efficiency of HnswRabitq even surpasses that of HnswLvq due to the higher efficiency of distance calculations after binary quantization.
 
 However, it should be noted that on certain datasets (such as sift1M), the quantization process may lead to significant precision loss, making such datasets unsuitable for using HnswRabitq.
 
@@ -148,19 +146,19 @@ However, it should be noted that on certain datasets (such as sift1M), the quant
 
 ![](./infinity-4.png)
 
-In summary, if a user's dataset is not sensitive to quantization errors, adopting the HnswRabitq index can significantly reduce memory overhead while still maintaining relatively good query performance. 
+In summary, if a user's dataset is not sensitive to quantization errors, adopting the HnswRabitq index can significantly reduce memory overhead while still maintaining relatively good query performance.
 
 In such scenarios, it is recommended to prioritize the use of the HnswRabitq index. Users can replicate the aforementioned experiments by setting the benchmark parameter `build_type=crabitq`.
 
 ### Solution 3: LSG Graph Construction Strategy
 
-LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.) [5]. 
+LSG (Local Scaling Graph) is an improved graph construction strategy based on graph indexing algorithms (such as HNSW, DiskANN, etc.) [5][5].
 
-This strategy scales the distance (e.g., L2 distance, inner product distance, etc.) between any two vectors by statistically analyzing the local information—neighborhood radius—of each vector in the dataset. The scaled distance is referred to as the LS distance. 
+This strategy scales the distance (e.g., L2 distance, inner product distance, etc.) between any two vectors by statistically analyzing the local information—neighborhood radius—of each vector in the dataset. The scaled distance is referred to as the LS distance.
 
 During the graph indexing construction process, LSG uniformly replaces the original distance metric with the LS distance, effectively performing a "local scaling" of the original metric space. Through theoretical proofs and experiments, the paper demonstrates that constructing a graph index in this scaled space can achieve superior query performance in the original space.
 
-LSG optimizes the HNSW index in multiple ways. When the accuracy requirement is relatively lenient (&lt; 99%), LSG exhibits higher QPS (Queries Per Second) compared to the original HNSW index. 
+LSG optimizes the HNSW index in multiple ways. When the accuracy requirement is relatively lenient (&lt; 99%), LSG exhibits higher QPS (Queries Per Second) compared to the original HNSW index.
 
 In high-precision scenarios (&gt; 99%), LSG enhances the quality of the graph index, enabling HNSW to surpass its original accuracy limit and achieve retrieval accuracy that is difficult for the original HNSW index to attain. These improvements translate into faster response times and more precise query results for users in real-world applications of RAGFlow.
 
@@ -218,8 +216,8 @@ Based on the above experimental results, we offer the following practical recomm
 
 Infinity continues to iterate and improve. We welcome ongoing attention and valuable feedback and suggestions from everyone.
 
-[1]:https://github.com/nmslib/hnswlib
-[2]:https://github.com/facebookresearch/faiss
-[3]:https://arxiv.org/pdf/2304.04759
-[4]:https://doi.org/10.1145/3654970
-[5]:https://doi.ieeecomputersociety.org/10.1109/ICDE65448.2025.00032
+[1]: https://github.com/nmslib/hnswlib
+[2]: https://github.com/facebookresearch/faiss
+[3]: https://arxiv.org/pdf/2304.04759
+[4]: https://doi.org/10.1145/3654970
+[5]: https://doi.ieeecomputersociety.org/10.1109/ICDE65448.2025.00032

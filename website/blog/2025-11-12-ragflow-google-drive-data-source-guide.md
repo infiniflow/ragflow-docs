@@ -1,6 +1,8 @@
-# Google Drive Data source Guide
-
-------------------------------------------------------------------------
+---
+slug: google-drive-data-source-guide
+title: Google Drive Data source Guide
+tags: [Tutorials]
+---
 
 ## 1. Create a Google Cloud Project
 

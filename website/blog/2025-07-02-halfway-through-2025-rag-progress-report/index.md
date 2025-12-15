@@ -2,9 +2,9 @@
 slug: rag-at-the-crossroads-mid-2025-reflections-on-ai-evolution
 title: RAG at the Crossroads - Mid-2025 Reflections on AI’s Incremental Evolution
 authors: [yingfeng]
-tags: [RAG, agent, memory, agentic, LLM, workflow]
+tags: [Insights]
 ---
-Six months have passed since our last year-end review. As the initial wave of excitement sparked by DeepSeek earlier this year begins to wane, AI seems to have entered a phase of stagnation. This pattern is evident in Retrieval-Augmented Generation (RAG) as well: although academic papers on RAG continue to be plentiful, significant breakthroughs have been few and far between in recent months. Likewise, recent iterations of RAGFlow have focused on incremental improvements rather than major feature releases. Is this the start of future leaps forward, or the beginning of a period of steady, incremental growth? A mid-year assessment is therefore both timely and necessary.<!--truncate-->
+Six months have passed since our last year-end review. As the initial wave of excitement sparked by DeepSeek earlier this year begins to wane, AI seems to have entered a phase of stagnation. This pattern is evident in Retrieval-Augmented Generation (RAG) as well: although academic papers on RAG continue to be plentiful, significant breakthroughs have been few and far between in recent months. Likewise, recent iterations of RAGFlow have focused on incremental improvements rather than major feature releases. Is this the start of future leaps forward, or the beginning of a period of steady, incremental growth? A mid-year assessment is therefore both timely and necessary.`<!--truncate-->`
 
 ![](./agent_rag.jpg)
 
@@ -88,7 +88,7 @@ Currently, aside from methods like GraphRAG and RAPTOR that support cross-chunk 
 1. No Chunking, Whole Document Retrieval: Skip chunking and recall entire documents based on brief queries, feeding them directly into the context. This works for a small number of documents but struggles at scale due to poor understanding of global document context, resulting in low recall relevance.
 2. Hierarchical Indexing & In-Document Agentic RAG: Construct a tree-like index during ingestion reflecting document structure (e.g., sections, subsections). Recall happens at the document level, followed by structured traversal within the document using the hierarchical index to locate relevant chunks, enabling “Agentic RAG” within documents.
 3. Overlapped Chunking & Multi-Granular Retrieval: Use chunking with significant overlap and build a multi-layered index (e.g., document, section, paragraph levels). This employs a combined retrieval strategy leveraging both coarse and fine granularities.
-Though conceptually straightforward, each approach poses unique challenges. As a tool provider, RAGFlow plans to offer similar functionalities in due course.
+   Though conceptually straightforward, each approach poses unique challenges. As a tool provider, RAGFlow plans to offer similar functionalities in due course.
 
 Turning to the second aspect: multimodal data. In our year-end review, we highlighted Multimodal RAG (MM-RAG) as a key trend for 2025. Yet, by mid-year, this trend has failed to gain momentum. The primary obstacle remains the immaturity of the supporting infrastructure. As noted, late interaction models continue to dominate MM-RAG pipelines, meaning embedding models produce Tensors, or multi-vectors. For instance, a single image may be represented by 1,024 vectors, each comprising 128-dimensional floats, as illustrated below.
 
@@ -121,6 +121,6 @@ Stay tuned and welcome to star RAGFlow: https://github.com/infiniflow/ragflow
 3. Reasoning RAG via System 1 or System 2: A Survey on Reasoning Agentic Retrieval-Augmented Generation for Industry Challenges https://arxiv.org/abs/2506.10408
 4. Rethinking Memory in AI: Taxonomy, Operations, Topics and Future Directions https://arxiv.org/abs/2505.00675
 5. Don't Do RAG: When Cache-Augmented Generation is All You Need for Knowledge Tasks https://arxiv.org/abs/2412.15605
-6. RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval https://arxiv.org/abs/2409.10516 
+6. RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval https://arxiv.org/abs/2409.10516
 7. RetroInfer: A Vector-Storage Approach for Scalable Long-Context LLM Inference https://arxiv.org/abs/2505.02922
 8. AlayaDB: The Data Foundation for Efficient and Effective Long-context LLM Inference https://arxiv.org/abs/2504.10326

@@ -2,10 +2,9 @@
 slug: the-rise-and-evolution-of-rag-in-2024-a-year-in-review
 title: The Rise and Evolution of RAG in 2024 A Year in Review
 authors: [yingfeng]
-tags: [RAG, GraphRAG, reranking, agent, tensor, full-text, multimodal]
+tags: [Insights]
 ---
-
-As 2024 comes to a close, the development of Retrieval-Augmented Generation (RAG) has been nothing short of turbulent. Let's take a comprehensive look back at the year's progress from various perspectives. <!--truncate-->
+As 2024 comes to a close, the development of Retrieval-Augmented Generation (RAG) has been nothing short of turbulent. Let's take a comprehensive look back at the year's progress from various perspectives. `<!--truncate-->`
 
 ![](./rag_llm.png)
 
@@ -15,17 +14,17 @@ As 2024 comes to a close, the development of Retrieval-Augmented Generation (RAG
 
 At the beginning of 2024, the year was dubbed "The Year of RAG" by some, though this wasn't a universally accepted label. However, the progress made throughout the year certainly justified this title. In scenarios involving Large Language Models (LLMs), RAG has consistently proven to be an indispensable role. Yet, since its inception, debates about RAG have never ceased. As seen in the graph above, the term "RAG" was not widely used in 2023; instead, temporary terms such as "external memory" or "external knowledge base" were more prevalent. The main debate at that time centered around whether to use temporary external solutions or permanent fine-tuning. By early 2024, this debate had mostly settled: RAG offered a clear advantage in terms of cost and real-time performance, with only minor differences in effectiveness compared to fine-tuning. Even in scenarios requiring fine-tuning, RAG often remained essential.
 
-In the first half of 2024, one of the most significant impacts on industry was the gradual convergence of open-source LLMs with commercial LLMs led by OpenAI. This meant that capabilities such as summarization and instruction following had significantly improved compared to 2023. This progress enabled widespread adoption of basic RAG applications such as question answering, customer service, and knowledge bases. Another notable advancement in LLMs during this period was long context windows—a feature that sparked controversy throughout the first half of the year but gradually subsided by mid-year. Similar to previous debates, it was concluded that both long context windows and traditional methods had their strengths and were best used together. 
+In the first half of 2024, one of the most significant impacts on industry was the gradual convergence of open-source LLMs with commercial LLMs led by OpenAI. This meant that capabilities such as summarization and instruction following had significantly improved compared to 2023. This progress enabled widespread adoption of basic RAG applications such as question answering, customer service, and knowledge bases. Another notable advancement in LLMs during this period was long context windows—a feature that sparked controversy throughout the first half of the year but gradually subsided by mid-year. Similar to previous debates, it was concluded that both long context windows and traditional methods had their strengths and were best used together.
 
-| Long-context                                                 | RAG                                                          |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 👎Accuracy decreases as the context length increases.          |                                                              |
-| 👎The longer the context window, the more likely it is to miss distant "needles". |                                                              |
-|👎Introduces noises if the retrieved content is semantically similar but irrelevant to the answer. |                                                              |
-| 👎LLM is "indefinite" by nature.                               |                                                              |
-| 👎Difficult to consolidate the enterprise data with long context alone. |                                                              |
-| 👎Long context significantly increases both the cost of reasoning and delay. |                                                              |
-|                                                              | 👎Not smart enough: capable only of searching, unable to reason or make decisions. |
+| Long-context                                                                                       | RAG                                                                                |
+| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 👎Accuracy decreases as the context length increases.                                              |                                                                                    |
+| 👎The longer the context window, the more likely it is to miss distant "needles".                  |                                                                                    |
+| 👎Introduces noises if the retrieved content is semantically similar but irrelevant to the answer. |                                                                                    |
+| 👎LLM is "indefinite" by nature.                                                                   |                                                                                    |
+| 👎Difficult to consolidate the enterprise data with long context alone.                            |                                                                                    |
+| 👎Long context significantly increases both the cost of reasoning and delay.                       |                                                                                    |
+|                                                                                                    | 👎Not smart enough: capable only of searching, unable to reason or make decisions. |
 
 Additionally, the maturation of architectures like LLMOps enabled businesses and individuals to quickly set up their own custom systems using components such as vector databases, embedding/reranking models, LLM itself, chunking tools, and prompt management techniques connected via arrows indicating data flow ensuring system usability.
 
@@ -34,9 +33,7 @@ Additionally, the maturation of architectures like LLMOps enabled businesses and
 However, applying it in broader scenarios and enterprises, and aligning its development with advancements in LLMs, still faces significant technical challenges. References [29] and [30] outline traditional academic approaches to these challenges. While some principles and practices are widely accepted, a practical analysis reveals that RAG primarily faces three main issues:
 
 1. Ineffective question answering for unstructured multimodal documents: Existing LLMOps solutions are confined to text-only scenarios. Documents such as PDFs, PowerPoint presentations (PPTs), or those integrating text with images cannot unlock their full commercial potential. These types of documents often constitute the majority within enterprise data.
-
 2. Low recall and hit rates due to pure vector databases: Relying solely on vector databases leads to low recall and hit rates, hindering effective real-world question answering. This is due to vector representations' inability to precisely represent exact information and the semantic loss during retrieval.
-
 3. The fundamental challenge of search: At its core, RAG relies on search capabilities. It works only if it can "search" for the answer based on a user's query. However, this prerequisite often fails with vague or ambiguous queries lacking clear intent or 'multi-hop' questions requiring synthesis from multiple sub-questions. In such scenarios, there is a significant semantic gap between the question posed and the answer retrieved, making traditional search methods ineffective.
 
 Therefore, the following landmark events revolve around the technical challenges of RAG.
@@ -59,7 +56,7 @@ RAGFlow can be considered one of the key drivers behind these two events.
 
 Microsoft's mid-year open-sourcing of GraphRAG was a groundbreaking event. As a library rather than an end-to-end solution, GraphRAG's rapid rise in popularity underscores its ability to tackle key issues with Retrieval-Augmented Generation (RAG), particularly the semantic gap. This issue has long been a challenge for search system developers, as queries and answers often fail to align perfectly. When search systems evolved into RAG models, this problem was amplified: while traditional search queries are defined by a few keywords, RAG queries are user questions. The shift from keywords to questions makes user intent even harder to discern, thereby exacerbating this semantic gap. GraphRAG is one design aimed at bridging this gap.
 
-### The Emergence of Latency Interaction Models Like Col-xxx 
+### The Emergence of Latency Interaction Models Like Col-xxx
 
 ### Multimodal RAG built on VLM and late Interaction Models
 
@@ -72,7 +69,6 @@ The following is a summary of the technological developments in RAG throughout 2
 Ensuring data quality (Quality In) is essential for achieving quality results (Quality Out), and this is a natural concept. For multimodal unstructured documents, employing visual models to parse document layouts ensures high-quality data input. This issue has long been recognized in academia and is widely referred to as Document Intelligence. However, previous approaches to Document Intelligence have not been closely linked to RAG and often involve multiple sub-tasks that lack cohesive integration. For instance, table processing has a dedicated task known as Table Structure Recognition (TSR), and similar specialized models exist for other types of images, such as formulas, flowcharts, and pie charts. By unifying these models into a document layout recognition framework, we establish the first step in using models for data cleaning to support RAG.
 
 ![](./doc_processing.png)
-
 
 The task of document structure recognition models is to identify the coordinates of different semantic areas within unstructured documents. Such models are already implemented in some OCR systems; for example, the well-known PaddleOCR [Reference 1] includes capabilities for document structure recognition. Consequently, the various tasks mentioned earlier, including table processing, are often referred to as broad OCR and can be seen as an entry point for RAG.
 
@@ -286,7 +282,7 @@ The above content summarizes the main development trends and future outlook for 
 35. Vespa https://github.com/vespa-engine/vespa
 36. JaColBERT https://huggingface.co/answerdotai/JaColBERTv2.5
 37. Jina ColBERT v2 https://huggingface.co/jinaai/jina-colbert-v2
-38. Awesome-RAG 2024:  https://github.com/awesome-rag/awesome-rag 
+38. Awesome-RAG 2024:  https://github.com/awesome-rag/awesome-rag
 39. Self RAG https://arxiv.org/abs/2310.11511
 40. LangGraph https://github.com/langchain-ai/langgraph/
 41. TCAF: a Multi-Agent Approach of Thought Chain for Retrieval Augmented Generation, SIGKDD 2024

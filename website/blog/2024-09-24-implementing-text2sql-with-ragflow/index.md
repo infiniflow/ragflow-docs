@@ -2,10 +2,9 @@
 slug: implementing-text2sql-with-ragflow
 title: Implementing Text2SQL with RAGFlow
 authors: [yingfeng]
-tags: [RAG, text2sql, agent]
+tags: [Product News]
 ---
-
-[RAGFlow](https://github.com/infiniflow/ragflow) introduces the Text2SQL feature in response to community demand. Traditional Text2SQL requires model fine-tuning, which can significantly increase deployment and maintenance costs when used in enterprise settings alongside RAG or Agent components. RAGFlow’s RAG-based Text2SQL leverages the existing (connected) large language model (LLM), enabling seamless integration with other RAG/Agent components without the need for additional fine-tuned models.<!--truncate-->
+[RAGFlow](https://github.com/infiniflow/ragflow) introduces the Text2SQL feature in response to community demand. Traditional Text2SQL requires model fine-tuning, which can significantly increase deployment and maintenance costs when used in enterprise settings alongside RAG or Agent components. RAGFlow’s RAG-based Text2SQL leverages the existing (connected) large language model (LLM), enabling seamless integration with other RAG/Agent components without the need for additional fine-tuned models.`<!--truncate-->`
 
 ![](./station.jpg)
 
@@ -61,7 +60,7 @@ Example: https://huggingface.co/datasets/InfiniFlow/text2sql/tree/main
 
 ### 3. Configure the database
 
-1. Configure the required parameters for the database in the **Execute SQL** component, including:  
+1. Configure the required parameters for the database in the **Execute SQL** component, including:
    - Database type (currently supports MySQL, PostgresDB, and MariaDB)
    - Database name
    - Database username
@@ -71,14 +70,13 @@ Example: https://huggingface.co/datasets/InfiniFlow/text2sql/tree/main
 
 ![](./configure_db.png)
 
-2. After completing the configuration, click the **Test** button to check if the connection is successful.  
-
+2. After completing the configuration, click the **Test** button to check if the connection is successful.
 3. Configure the **Loop** parameter:
 
-Text2SQL in RAGFlow features automatic reflection capabilities. If the generated SQL is deemed capable of querying correctly, the results will be returned directly. However, if the query fails, RAGFlow’s Text2SQL will automatically correct the SQL statement based on the error information returned from the database and retry the query. This process — query failure, correction of the SQL statement, and retry — will continue iterating until it reaches the maximum limit set by the Loop parameter. If this maximum is reached, the Text2SQL process will terminate, prompting the user to optimize their question or knowledge base data before attempting again.  
+Text2SQL in RAGFlow features automatic reflection capabilities. If the generated SQL is deemed capable of querying correctly, the results will be returned directly. However, if the query fails, RAGFlow’s Text2SQL will automatically correct the SQL statement based on the error information returned from the database and retry the query. This process — query failure, correction of the SQL statement, and retry — will continue iterating until it reaches the maximum limit set by the Loop parameter. If this maximum is reached, the Text2SQL process will terminate, prompting the user to optimize their question or knowledge base data before attempting again.
 
-4. Configure **TopN**:  
-   *This parameter limits the number of records returned in a query, as queries often involve records.*  
+4. Configure **TopN**:
+   *This parameter limits the number of records returned in a query, as queries often involve records.*
 
 ### 4. Try out Text2SQL
 
@@ -88,7 +86,7 @@ Click **Run** to execute the operation.
 
 ### `Database Connection Failed`
 
-Failed to connect to the database. To solve this issue:  
+Failed to connect to the database. To solve this issue:
 
 1. Click the **Execute SQL** component to ensure all parameters are correctly set.
 2. Double check if the machine deploying RAGFlow can connect to the database using the provided information.
@@ -104,7 +102,7 @@ The SQL query failed to retrieve any records from the table, either because the 
 
 ### `Maximum loop time exceeds. Can’t query the correct data via SQL statement.`
 
-The generated SQL statement cannot accurately query the database. Please check the following:  
+The generated SQL statement cannot accurately query the database. Please check the following:
 
 - Ensure the database contains the relevant data.
 - Verify that the user question is appropriate.

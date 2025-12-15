@@ -1,9 +1,8 @@
 ---
 slug: agentic-workflow-whats-inside-ragflow-v0.20.0
 title: Agentic Workflow - What's inside RAGFlow 0.20.0
-tags: [agentic, agents, workflow]
+tags: [Product News]
 ---
-
 ![](./agentic_workflow.jpg)
 
 ## 1. From Workflow to Agentic Workflow

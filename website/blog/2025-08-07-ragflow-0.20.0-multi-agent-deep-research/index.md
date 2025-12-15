@@ -1,9 +1,8 @@
 ---
 slug: ragflow-0.20.0-multi-agent-deep-research
 title: RAGFlow 0.20.0 - Multi-Agent Deep Research
-tags: [agentic, agents, multi-agent, workflow]
+tags: [Product News]
 ---
-
 ![](./multi-agent.png)
 
 ## Deep Research: The defining capability of the Agent era
@@ -110,6 +109,7 @@ Given the fact-driven nature of this application, we set the temperature paramet
 
 Model Selection: Qwen-Plus
 Excerpts from Core System Prompt Design:
+
 1. Role Definition:
 
 ```
@@ -167,6 +167,7 @@ Use web search tools (including MCP connections) to discover and evaluate premiu
 
 Model Selection: Moonshot-v1-128k
 Core System Prompt Design Excerpts:
+
 1. Role Definition Framework
 
 ```
@@ -215,10 +216,12 @@ Use web extracting tools (including MCP connections) to extract comprehensive, s
 Model Selection: Moonshot-v1-128k
 Special Note: The Subagent handling final report generation must use models with very long context windows. This is essential for processing extensive context and producing thorough reports. Models with limited context risk truncating information, resulting in shorter reports.
 Other potential model options include but are not limited to:
+
 - Qwen-Long (10M tokens)
 - Claude 4 Sonnet (200K tokens)
 - Gemini 2.5 Flash (1M tokens)
-Excerpts from Core Prompt Design:
+  Excerpts from Core Prompt Design:
+
 1. Role Definition Design
 
 ```
@@ -281,11 +284,14 @@ You are a Research Synthesizer working as part of a research team. Your expertis
 
 **Executive Summary Format:**
 ```
+
 **Key Finding 1**: [FACT] 73% of major banks now use AI for fraud detection, representing 40% growth from 2023
+
 - *Strategic Implication*: AI adoption has reached critical mass in security applications
 - *Recommendation*: Financial institutions should prioritize AI compliance frameworks now
 
 ...
+
 ```
 </report_structure>
 ```
