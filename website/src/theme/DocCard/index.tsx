@@ -17,6 +17,7 @@ import type {
 } from '@docusaurus/plugin-content-docs';
 
 import Icon from '@site/src/components/Icon';
+import DocCardItemIcon from '@site/src/components/DocCardItemIcon';
 
 function useCategoryItemsPlural() {
   const { selectMessage } = usePluralForm();
@@ -119,9 +120,9 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
       className={item.className}
       href={href}
       icon={(
-        <Icon icon={item.customProps?.categoryCardIcon as any}>
+        <DocCardItemIcon item={item}>
           <Icon icon="LucideBox" />
-        </Icon>
+        </DocCardItemIcon>
       )}
       title={item.label}
       description={item.description ?? categoryItemsPlural(item.items.length)}
@@ -131,11 +132,9 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
 
 function CardLink({ item }: { item: PropSidebarItemLink }): ReactNode {
   const icon = isInternalUrl(item.href)
-    ? (
-      <Icon icon={item.customProps?.categoryCardIcon as any}>
+    ? <DocCardItemIcon item={item}>
         <Icon icon="LucideFile" />
-      </Icon>
-    )
+      </DocCardItemIcon>
     : <Icon icon="LucideLink" />;
 
   const doc = useDocById(item.docId ?? undefined);

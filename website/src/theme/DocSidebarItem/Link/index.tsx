@@ -1,4 +1,3 @@
-import React, { type ReactNode } from 'react';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { isActiveSidebarItem } from '@docusaurus/plugin-content-docs/client';
 import Link from '@docusaurus/Link';
@@ -6,7 +5,7 @@ import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import type { Props } from '@theme/DocSidebarItem/Link';
 import { cn } from '@site/src/utils/twUtils';
-import Icon from '@site/src/components/Icon';
+import DocSidebarItemIcon from '@site/src/components/DocSidebarItemIcon';
 
 export default function DocSidebarItemLink({
   item,
@@ -15,7 +14,7 @@ export default function DocSidebarItemLink({
   level,
   index,
   ...props
-}: Props): ReactNode {
+}: Props) {
   const { href, label, className, autoAddBaseUrl } = item;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
@@ -47,10 +46,7 @@ export default function DocSidebarItemLink({
         title={label}
         {...props}
       >
-        {item.customProps?.sidebarIcon && (
-          <Icon className="flex-none mr-2" icon={item.customProps.sidebarIcon as any} />
-        )}
-
+        <DocSidebarItemIcon item={item} />
         <span className="line-clamp-2">{label}</span>
 
         {!isInternalLink && <IconExternalLink />}

@@ -1,0 +1,92 @@
+{
+  "/category/models": "LucideBox",
+  "/llm_api_key_setup": "LucideKey",
+  "/deploy_local_llm": "LucideMonitorCog",
+
+  "/category/datasets": "LucideDatabaseZap",
+  "/configure_knowledge_base": "LucideCog",
+  "/set_metadata": "LucideCode",
+  "/select_pdf_parser": "LucideFileText",
+  "/set_page_rank": "LucideStickyNote",
+  "/autokeyword_autoquestion": "LucideSlidersHorizontal",
+  "/enable_excel2html": "LucideToggleRight",
+  "/enable_table_of_contents": "LucideTableOfContents",
+  "/use_tag_sets": "LucideTags",
+  "/enable_raptor": "LucideNetwork",
+  "/construct_knowledge_graph": "LucideWandSparkles",
+  "/run_retrieval_test": "LucideTextSearch",
+
+  "/category/add-data-source": "LucideServer",
+  "/add_google_drive": "SiGoogledrive",
+
+  "/category/best-practices": "LucideStar",
+
+  "/category/chat": "LucideMessagesSquare",
+  "/start_chat": "LucideBot",
+  "/implement_deep_research": "LucideScanSearch",
+  "/set_chat_variables": "LucideVariable",
+
+  "/category/best-practices-1": "LucideStar",
+
+  "/ai_search": "LucideSearch",
+
+  "/category/agents": "RagAiAgent",
+  "/agent_introduction": "LucideBookOpenText",
+  "/embed_agent_into_webpage": "LucideMonitorDot",
+
+  "/category/agent-components": "RagAiAgent",
+  "/begin_component": "LucideHome",
+  "/agent_component": "RagAiAgent",
+  "/retrieval_component": "LucideFolderSearch",
+  "/message_component": "LucideMessageSquareReply",
+  "/await_response": "LucideMessageSquareDot",
+  "/switch_component": "LucideSplit",
+  "/iteration_component": "LucideRepeat2",
+  "/categorize_component": "LucideSwatchBook",
+  "/code_component": "LucideCodeXml",
+  "/text_processing": "LucideType",
+  "/execute_sql": "RagSql",
+  "/parser_component": "LucideFilePlay",
+  "/chunker_title_component": "LucideBlocks",
+  "/chunker_token_component": "LucideBlocks",
+  "/docs_generator": null,
+  "/transformer_component": "LucideFileStack",
+  "/indexer_component": "LucideListPlus",
+
+  "/sandbox_quickstart": "LucideCodesandbox",
+  "/category/best-practices-2": "LucideStar",
+
+  "/category/team": "LucideUsers",
+  "/manage_team_members": "LucideUserCog",
+  "/join_or_leave_team": "LucideLogOut",
+  "/share_datasets": "LucideShare2",
+  "/share_chat_assistant": "LucideShare2",
+  "/share_agent": "LucideShare2",
+  "/share_model": "LucideShare2",
+
+  "/manage_files": "LucideFolderDot",
+  "/manage_users_and_services": "LucideUserCog",
+  "/accessing_admin_ui": "LucidePalette",
+  "/run_health_check": "LucideMonitor",
+  "/tracing": "LucideLocateFixed",
+  "/upgrade_ragflow": "LucideArrowBigUpDash",
+
+  "migration": "LucideArrowRightLeft",
+
+  "/build_docker_image": "LucidePackage",
+  "/launch_ragflow_from_source": "LucideMonitorPlay",
+  "/switch_doc_engine": "LucideShuffle",
+  "/acquire_ragflow_api_key": "LucideKey",
+  "/category/mcp": "SiModelcontextprotocol",
+  "/launch_mcp_server": "LucideTvMinimalPlay",
+  "/mcp_tools": "LucideToolCase",
+  "/mcp_client": "LucideBookMarked",
+
+
+  "/glossary": "LucideCaseUpper",
+  "/supported_models": "LucideBox",
+  "/http_api_reference": "LucideGlobe",
+  "/python_api_reference": "SiPython",
+
+  "/contributing": "LucideBookA"
+}
