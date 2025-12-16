@@ -8,6 +8,37 @@ export type GradientPosition = 'top' | 'right' | 'bottom' | 'left' | 'top-right'
 
 const getRootComputedStyle = throttle(() => window.getComputedStyle(document.documentElement), 100);
 
+function isOffscreenCanvas(canvas: HTMLCanvasElement | OffscreenCanvas): canvas is OffscreenCanvas {
+  return window.OffscreenCanvas && canvas instanceof OffscreenCanvas;
+}
+
+function createCanvas(width = 100, height = 100) {
+  if (window.OffscreenCanvas) {
+    return new OffscreenCanvas(width, height);
+  }
+
+  const canvasEl = document.createElement('canvas');
+
+  canvasEl.width = width;
+  canvasEl.height = height;
+
+  return canvasEl;
+}
+
+async function canvasToBlob(
+  canvas: HTMLCanvasElement | OffscreenCanvas,
+  type = 'image/png',
+  quality = 1,
+) {
+  if (isOffscreenCanvas(canvas)) {
+    return canvas.convertToBlob({ type, quality });
+  }
+
+  return new Promise<Blob>((resolve) => {
+    canvas.toBlob(resolve, type, quality);
+  });
+}
+
 function getComputedColor(s: string) {
   const rootStyle = getRootComputedStyle();
 
@@ -86,12 +117,8 @@ export default function useLinearGradient(props: UseLinearGradientProps) {
       return;
     }
 
-    const canvas = new OffscreenCanvas(1, 1);
-
-    canvas.width = 100;
-    canvas.height = 100;
-
-    const ctx = canvas.getContext('2d')!;
+    const canvas = createCanvas(100, 100);
+    const ctx = canvas.getContext('2d')! as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
 
     ctx.clearRect(0, 0, 100, 100);
 
@@ -110,9 +137,8 @@ export default function useLinearGradient(props: UseLinearGradientProps) {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 100, 100);
 
-    canvas
-      .convertToBlob({ type: 'image/png' })
-      .then(blob => {
+    canvasToBlob(canvas)
+      .then((blob) => {
         const fr = new FileReader();
 
         fr.addEventListener('load', () => {

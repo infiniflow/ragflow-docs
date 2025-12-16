@@ -33,6 +33,9 @@ import type {
 import Icon from '@site/src/components/Icon';
 import { cn } from '@site/src/utils/twUtils';
 
+import SIDEBAR_ICONS from '@site/src/assets/doc-sidebar-icons.json';
+import DocSidebarItemIcon from '@site/src/components/DocSidebarItemIcon';
+
 // If we navigate to a category and it becomes active, it should automatically
 // expand itself
 function useAutoExpandActiveCategory({
@@ -185,7 +188,7 @@ function DocSidebarItemCategoryCollapsible({
   index,
   ...props
 }: Props): ReactNode {
-  const {items, label, collapsible, className, href} = item;
+  const { items, label, collapsible, className, href } = item;
   const {
     docs: {
       sidebar: { autoCollapseCategories },
@@ -287,7 +290,7 @@ function DocSidebarItemCategoryCollapsible({
           title={label}
           {...props}
         >
-          {item.customProps?.sidebarIcon && <Icon className="flex-none mr-2" icon={item.customProps.sidebarIcon as any} />}
+          <DocSidebarItemIcon item={item} />
 
           <span className="flex-1 line-clamp-2">
             {label}
