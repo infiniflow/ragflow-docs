@@ -154,7 +154,7 @@ export default function Home(): ReactNode {
                     </h2>
 
                     <p className="mb-0">
-                    It automatically gathers comprehensive company data and consolidates key financial metrics with research insights, enabling powerful analytics and informed decision-making.
+                    Automatically gather comprehensive company data and consolidate key financial metrics with research insights, enabling powerful analytics and informed decision-making.
                     </p>
                   </div>
 
