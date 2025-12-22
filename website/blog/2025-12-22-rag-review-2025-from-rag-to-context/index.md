@@ -1,6 +1,6 @@
 ---
 slug: rag-review-2025-from-rag-to-context
-title: From RAG to Context: A 2025 year-end review of RAG
+title: From RAG to Context - A 2025 year-end review of RAG
 tags: [Insights]
 ---
 ![](./2025racap.PNG)
