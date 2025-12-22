@@ -194,7 +194,7 @@ Therefore, from functional interface and core technology (retrieval), Memory and
 Their core distinction lies in data source and management goals:
 
 - RAG: Processes primarily pre-existing, relatively static enterprise private knowledge assets (documents, manuals, KB articles). Its goal is providing domain facts and background knowledge.
-- Memory: Processes primarily dynamically generated interaction logs and derived data from Agent operation (user input, LLM output, possible interaction state, LLM-generated summaries/reflections). Its goal is maintaining会话 continuity, enabling personalization, and learning from historical experience.
+- Memory: Processes primarily dynamically generated interaction logs and derived data from Agent operation (user input, LLM output, possible interaction state, LLM-generated summaries/reflections). Its goal is maintaining conversational continuity, enabling personalization, and learning from historical experience.
 
 As research deepens, finer division of data organization within memory systems has emerged, borrowing ideas and concepts from cognitive science: Working Memory, Episodic Memory, Semantic Memory, Meta Memory, etc. These different "memory regions" can be likened to different tables or collections in a database.
 
