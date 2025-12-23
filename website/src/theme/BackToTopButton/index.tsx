@@ -2,7 +2,6 @@ import { translate } from '@docusaurus/Translate';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import { useBackToTopButton } from '@docusaurus/theme-common/internal';
 
-import styles from './styles.module.css';
 import { cn } from '@site/src/utils/twUtils';
 
 export default function BackToTopButton() {
@@ -18,7 +17,7 @@ export default function BackToTopButton() {
       className={cn(
         'clean-btn',
         ThemeClassNames.common.backToTopButton,
-        'fixed right-0 bottom-0 mr-6 mb-6 size-12 rounded-full',
+        'fixed right-6 bottom-6 size-12 rounded-full',
         'z-50 opacity-0 scale-0 invisible transition-all bg-secondary-contrast-background/75 backdrop-blur-lg',
         shown && 'opacity-100 scale-100 visible',
       )}

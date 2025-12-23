@@ -51,8 +51,7 @@ function getVersions() {
 
 const config: Config = {
   title: 'RAGFlow',
-  // TODO: Replace later
-  tagline: 'Retrieval-Augmented Generation engine to unleash your full potential',
+  tagline: 'Build a superior context layer for AI agents',
   favicon: 'img/logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#futurexx
@@ -191,7 +190,7 @@ const config: Config = {
 
   themeConfig: {
     // Project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/ragflow-social-card.png',
 
     // Announcement bar at the top of the page
     // announcementBar: {

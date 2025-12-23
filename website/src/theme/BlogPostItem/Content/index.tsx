@@ -8,12 +8,19 @@ export default function BlogPostItemContent({
   children,
   className,
 }: Props) {
-  const {isBlogPostPage} = useBlogPost();
+  const { isBlogPostPage } = useBlogPost();
+
   return (
     <div
       // This ID is used for the feed generation to locate the main content
       id={isBlogPostPage ? blogPostContainerID : undefined}
-      className={cn('markdown', className)}
+      className={cn(
+        'markdown',
+        className,
+
+        // hard truncate the content to avoid extremely long content blocks
+        !isBlogPostPage && 'hard-truncate',
+      )}
     >
       <MDXContent>{children}</MDXContent>
     </div>

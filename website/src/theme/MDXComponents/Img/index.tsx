@@ -1,17 +1,27 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { Props } from '@theme/MDXComponents/Img';
 
 import Icon from '@site/src/components/Icon';
 import { cn } from '@site/src/utils/twUtils';
 
-export default function MDXImg(props: Props) {
+export default function MDXImg({ className, ...props }: Props) {
   const [state, setState] = useState<'pending' | 'loaded' | 'error'>('pending');
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useLayoutEffect(() => {
+    const imgEl = imgRef.current;
+
+    if (imgEl && imgEl.complete) {
+      imgEl.dispatchEvent(new Event('load'));
+    }
+  }, []);
 
   return (
     <span
       className={cn(
-        props.className,
-        'img max-w-full my-2 only:my-0',
+        'w-full',
+        className,
+        'img my-2 only:my-0',
         state === 'loaded' ? 'inline-block' : 'block',
         state === 'pending' && 'text-center',
         state === 'error' && 'text-center text-disabled',
@@ -19,11 +29,15 @@ export default function MDXImg(props: Props) {
       inert={state === 'error'}
     >
       <img
+        ref={imgRef}
         decoding="async"
         loading="lazy"
         onLoad={() => setState('loaded')}
         onError={() => setState('error')}
-        className={cn(state === 'error' && 'opacity-0 size-0')}
+        className={cn(
+          'w-full',
+          state === 'error' && 'opacity-0 size-0',
+        )}
         {...props}
       />
 

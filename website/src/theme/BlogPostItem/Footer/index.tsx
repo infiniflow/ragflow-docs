@@ -7,22 +7,23 @@ import ReadMoreLink from '@theme/BlogPostItem/Footer/ReadMoreLink';
 import { cn } from '@site/src/utils/twUtils';
 
 export default function BlogPostItemFooter() {
-  const {metadata, isBlogPostPage} = useBlogPost();
+  const { metadata, isBlogPostPage } = useBlogPost();
   const {
     tags,
     title,
     editUrl,
-    hasTruncateMarker,
+    // hasTruncateMarker,
     lastUpdatedBy,
     lastUpdatedAt,
   } = metadata;
 
   // A post is truncated if it's in the "list view" and it has a truncate marker
-  const truncatedPost = !isBlogPostPage && hasTruncateMarker;
+  // const truncatedPost = !isBlogPostPage && hasTruncateMarker;
 
   const tagsExists = tags.length > 0;
 
-  const renderFooter = tagsExists || truncatedPost || editUrl;
+  // const renderFooter = tagsExists || truncatedPost || editUrl;
+  const renderFooter = tagsExists || !isBlogPostPage || editUrl;
 
   if (!renderFooter) {
     return null;
@@ -33,23 +34,20 @@ export default function BlogPostItemFooter() {
     const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
 
     return (
-      <footer className="mt-12">
+      <footer className="mt-12 space-y-4">
         {tagsExists && (
           <div
             className={cn(
-              'row',
-              'margin-top--sm',
               ThemeClassNames.blog.blogFooterEditMetaRow,
-            )}>
-            <div className="col">
-              <TagsListInline tags={tags} />
-            </div>
+            )}
+          >
+            <TagsListInline tags={tags} />
           </div>
         )}
+
         {canDisplayEditMetaRow && (
           <EditMetaRow
             className={cn(
-              'margin-top--sm',
               ThemeClassNames.blog.blogFooterEditMetaRow,
             )}
             editUrl={editUrl}
@@ -65,24 +63,22 @@ export default function BlogPostItemFooter() {
     return (
       <footer className="mt-12 flex">
         {tagsExists && (
-          <div className={cn(truncatedPost ? 'w-3/4' : 'w-full')}>
+          <div className="w-3/4">
             <TagsListInline tags={tags} />
           </div>
         )}
 
-        {truncatedPost && (
-          <div
-            className={cn(
-              'ml-auto text-right',
-              tagsExists && 'w-1/4',
-            )}
-          >
-            <ReadMoreLink
-              blogPostTitle={title}
-              to={metadata.permalink}
-            />
-          </div>
-        )}
+        <div
+          className={cn(
+            'ml-auto text-right',
+            tagsExists && 'w-1/4',
+          )}
+        >
+          <ReadMoreLink
+            blogPostTitle={title}
+            to={metadata.permalink}
+          />
+        </div>
       </footer>
     );
   }
