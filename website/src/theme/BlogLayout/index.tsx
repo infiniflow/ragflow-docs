@@ -15,7 +15,6 @@ export default function BlogLayout(props: Props) {
     children: _children,
     ...layoutProps
   } = props;
-  const hasSidebar = sidebar && sidebar.items.length > 0;
 
   const [children, paginator] = partition(
     Children.toArray(_children),
@@ -29,8 +28,8 @@ export default function BlogLayout(props: Props) {
 
         <div className="blog container flex flex-row w-0 flex-1 px-page pt-4 pb-8">
           <div className={cn(
-            'max-xl:w-full',
-            hasSidebar ? 'w-3/4' : 'w-full',
+            'w-full xl:w-3/4',
+            !toc && 'mx-auto',
           )}>
             <main className="blog-content">
               {children}

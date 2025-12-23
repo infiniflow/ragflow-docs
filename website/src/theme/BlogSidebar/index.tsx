@@ -13,5 +13,8 @@ export default function BlogSidebar({sidebar}: Props): ReactNode {
   if (windowSize === 'mobile') {
     return <BlogSidebarMobile sidebar={sidebar} />;
   }
-  return <BlogSidebarDesktop sidebar={sidebar} />;
+
+  // SEO: temporarily hide blog sidebar
+  // return <BlogSidebarDesktop sidebar={sidebar} />;
+  return null;
 }

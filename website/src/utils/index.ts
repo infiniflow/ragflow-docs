@@ -19,3 +19,12 @@ export async function sleepAnimation(ms: number) {
 
   return promise;
 }
+
+export function handleForwardedRef<T>(ref: T, forwardedRef: React.ForwardedRef<T>) {
+  if (typeof forwardedRef === 'function') {
+    forwardedRef(ref);
+  }
+  else if (forwardedRef) {
+    forwardedRef.current = ref;
+  }
+}

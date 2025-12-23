@@ -28,7 +28,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={siteConfig.title}
-      description="The AI-powered RAG solution"
+      description={siteConfig.tagline}
       wrapperClassName={styles.page}
     >
       <div className="text-standard text-sm mobile:text-base">

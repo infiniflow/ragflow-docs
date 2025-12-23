@@ -1,9 +1,9 @@
-import React, {type ReactNode} from 'react';
-import type {Props} from '@theme/BlogPostItem/Container';
+import type { Props } from '@theme/BlogPostItem/Container';
+import { forwardRef } from 'react';
 
-export default function BlogPostItemContainer({
+export default forwardRef<HTMLElement, Props>(function BlogPostItemContainer({
   children,
   className,
-}: Props): ReactNode {
-  return <article className={className}>{children}</article>;
-}
+}: Props, ref) {
+  return <article ref={ref} className={className}>{children}</article>;
+});

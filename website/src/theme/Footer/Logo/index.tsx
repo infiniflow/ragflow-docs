@@ -44,7 +44,10 @@ export default function FooterLogo({ logo }: Props) {
           max-desktop:mt-4 text-3xl text-bg-standard font-bold
           [paint-order:stroke] [-webkit-text-stroke:2px_rgb(var(--ragflow-color-secondary))]
         ">
-          <span className="group/title max-desktop:px-2">
+          <span
+            className="group/title max-desktop:px-2"
+            aria-label={title}
+          >
             {title.split('').map((char, index) => (
               <span
                 key={index}
@@ -52,6 +55,7 @@ export default function FooterLogo({ logo }: Props) {
                 style={{
                   transitionDelay: `${index * 10}ms`,
                 }}
+                aria-hidden
               >
                 {char}
               </span>
