@@ -85,6 +85,32 @@ const config: Config = {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
+
+    parseFrontMatter: async (params) => {
+      const result = await params.defaultParseFrontMatter(params);
+      const filePath = params.filePath || '';
+
+      if (!filePath.includes(`${process.cwd()}/blog/`) || result.frontMatter.image) {
+        return result;
+      }
+
+      const imagePath = params.fileContent.match(/!\[.*?\]\((.*?)\)/)?.[1];
+
+      if (!imagePath) {
+        return result;
+      }
+
+      // Absolute path - construct absolute URL
+      if (imagePath.startsWith('/')) {
+        result.frontMatter.image = `${config.url}${imagePath}`;
+      }
+      // Absolute URL or relative path - use as-is and let Docusaurus resolve it
+      else {
+        result.frontMatter.image = imagePath;
+      }
+
+      return result;
+    },
   },
 
   plugins: [
@@ -95,18 +121,15 @@ const config: Config = {
     './src/plugins/tailwind-plugin',
 
     // Redirects
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        createRedirects: (existingPath) => {
-          if (existingPath.startsWith('/docs')) {
-            return [
-              existingPath.replace(/^\/docs/, '/docs/dev'),
-            ];
-          }
-        },
-      } satisfies PluginClientRedirectOptions,
-    ]
+    ['@docusaurus/plugin-client-redirects', {
+      createRedirects: (existingPath) => {
+        if (existingPath.startsWith('/docs')) {
+          return [
+            existingPath.replace(/^\/docs/, '/docs/dev'),
+          ];
+        }
+      },
+    } satisfies PluginClientRedirectOptions]
   ],
 
   presets: [
@@ -266,6 +289,11 @@ const config: Config = {
           label: 'Resources',
           position: 'left',
           items: [
+            // {
+            //   label: 'Basics',
+            //   to: '/basics',
+            //   icon: 'LucideBookOpen',
+            // },
             {
               label: 'Blog',
               to: '/blog',
@@ -325,12 +353,16 @@ const config: Config = {
             {
               label: 'Changelog',
               to: '/docs/release_notes',
-            }
+            },
+            {
+              label: 'Blog',
+              to: '/blog',
+            },
           ],
         },
-        {
-          title: 'Company',
-          items: [
+        // {
+        //   title: 'Company',
+        //   items: [
             // {
             //   label: 'About',
             //   to: '/about',
@@ -339,12 +371,8 @@ const config: Config = {
             //   label: 'Careers',
             //   to: '/careers',
             // },
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-          ],
-        },
+        //   ],
+        // },
         {
           title: 'Community',
           items: socialLinks.map((s) => omit(s, 'icon')),

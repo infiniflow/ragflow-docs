@@ -44,7 +44,8 @@ export default function BlogAuthorsListPage({
       className={clsx(
         ThemeClassNames.wrapper.blogPages,
         ThemeClassNames.page.blogAuthorsListPage,
-      )}>
+      )}
+    >
       <PageMetadata title={title} />
       <SearchMetadata tag="blog_authors_list" />
       <BlogLayout sidebar={sidebar}>

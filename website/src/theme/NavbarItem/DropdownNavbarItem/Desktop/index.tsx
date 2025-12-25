@@ -93,7 +93,7 @@ export default function DropdownNavbarItemDesktop({
             key={i}
             isDropdownItem
             className="transition-all"
-            activeClassName="text-primary"
+            activeClassName="text-standard"
             {...childItemProps}
           />
         ))}
