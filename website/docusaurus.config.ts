@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -90,6 +92,17 @@ const config: Config = {
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const filePath = params.filePath || '';
+
+      const extname = path.extname(filePath);
+      const basename = path.basename(filePath);
+
+      // Suppress MDX partial files frontmatter warnings and errors
+      if (extname === '.mdx' && basename.startsWith('_')) {
+        return {
+          ...result,
+          frontMatter: {},
+        };
+      }
 
       if (!filePath.includes(`${process.cwd()}/blog/`) || result.frontMatter.image) {
         return result;
