@@ -14,7 +14,7 @@ interface Props {
   position?: keyof typeof POSITION_TRANSFORM;
 }
 
-function FxSpotlightEffect({
+function FxEdgeInnerLightEffect({
   className,
   style,
   position = 'bottom',
@@ -81,4 +81,4 @@ function FxSpotlightEffect({
   );
 }
 
-export default FxSpotlightEffect;
+export default FxEdgeInnerLightEffect;

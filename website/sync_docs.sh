@@ -17,4 +17,6 @@ then
 fi
 
 cd $RAGFLOW_WEBSITE/website
+# Move the release notes to the website source
+mv -f ./docs/release_notes.md ./src/pages/_changelog.mdx
 sh ./sync_version.sh main

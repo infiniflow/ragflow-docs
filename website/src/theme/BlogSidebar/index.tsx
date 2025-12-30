@@ -1,10 +1,9 @@
-import React, {type ReactNode} from 'react';
-import {useWindowSize} from '@docusaurus/theme-common';
+import { useWindowSize } from '@docusaurus/theme-common';
 import BlogSidebarDesktop from '@theme/BlogSidebar/Desktop';
 import BlogSidebarMobile from '@theme/BlogSidebar/Mobile';
 import type {Props} from '@theme/BlogSidebar';
 
-export default function BlogSidebar({sidebar}: Props): ReactNode {
+export default function BlogSidebar({ sidebar }: Props): React.ReactNode {
   const windowSize = useWindowSize();
   if (!sidebar?.items.length) {
     return null;
@@ -14,7 +13,5 @@ export default function BlogSidebar({sidebar}: Props): ReactNode {
     return <BlogSidebarMobile sidebar={sidebar} />;
   }
 
-  // SEO: temporarily hide blog sidebar
-  // return <BlogSidebarDesktop sidebar={sidebar} />;
-  return null;
+  return <BlogSidebarDesktop sidebar={sidebar} />;
 }

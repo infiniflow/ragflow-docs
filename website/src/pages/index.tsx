@@ -11,8 +11,10 @@ import styles from './index.module.scss';
 
 import IndexHeroBgAnimation from './_animations/IndexHeroBgAnimation';
 
-import FxEdgeLightEffect from './_fx/FxEdgeLightEffect';
+import FxEdgeInnerLightEffect from './_fx/FxEdgeInnerLightEffect';
+import FxGradientText from './_fx/FxGradientText';
 import FxGlowEffect from './_fx/FxGlowEffect';
+import FxPolkaDotsBackgroundEffect from './_fx/FxPolkaDotsBackgroundEffect';
 
 import IndexFeatureEtlAnimation from './_animations/IndexFeatureEtlAnimation';
 import IndexFeatureHybridSearchAnimation from './_animations/IndexFeatureHybridSearchAnimation';
@@ -36,8 +38,8 @@ export default function Home(): ReactNode {
         <header
           className="
             relative flex justify-center items-center
-            min-h-max desktop:h-[75dvh]
-            py-8 mobile:py-16 desktop:py-32
+            min-h-max
+            py-8 mobile:py-16 desktop:py-40
             text-center text-lg desktop:text-2xl
           "
         >
@@ -52,20 +54,28 @@ export default function Home(): ReactNode {
               drop-shadow-[0_0_2em_rgb(var(--ragflow-theme-white))] text-pretty
               mb-4 mobile:mb-8 desktop:mb-12"
             >
-              <span className={styles.heroTitleTextGradient}>
+              <FxGradientText
+                preset="text"
+              >
                 Build a superior context layer for
-              </span>
+              </FxGradientText>
               <span>{' '}</span>
-              <span className={cn(styles.primaryGradientText, 'whitespace-nowrap')}>AI agents</span>
+              <FxGradientText
+                className="whitespace-nowrap"
+                preset="primary"
+                direction="right"
+              >
+                AI agents
+              </FxGradientText>
             </h1>
 
             <p>
               Empower your AI agents through the leading open-source RAG engine,
-              <br className="max-desktop:hidden" /> delivering reliable context and an integrated agent platform, built for enterprise
+              <br className="max-desktop:hidden" /> delivering reliable context and an integrated agent platform, built for enterprise.
             </p>
 
             <Link to="https://demo.ragflow.io/">
-              <FxGlowEffect className="mt-16">
+              <FxGlowEffect className="mt-16" as="a" >
                 <button
                   className={cn(styles.btn, 'px-9 py-3 rounded-lg')}
                 >
@@ -77,7 +87,7 @@ export default function Home(): ReactNode {
         </header>
 
         {/* Main content */}
-        <article className="relative pt-28 overflow-hidden">
+        <article className="relative pt-12 overflow-hidden">
           <main className="container max-desktop:px-page space-y-48">
             {/* Features */}
             <div className="max-desktop:space-y-6 desktop:grid desktop:grid-cols-2 desktop:gap-6">
@@ -86,9 +96,12 @@ export default function Home(): ReactNode {
                 aria-label="ETL for AI data"
               >
                 <h2>
-                  <span className={styles.primaryGradientText}>
+                  <FxGradientText
+                    preset="primary"
+                    direction="right"
+                  >
                     ETL for AI data
-                  </span>
+                  </FxGradientText>
                 </h2>
 
                 <p>
@@ -96,7 +109,7 @@ export default function Home(): ReactNode {
                   structuring it into rich semantic representations for superior retrieval.
                 </p>
 
-                <IndexFeatureEtlAnimation key="animation" className="mt-auto w-full max-h-[280px] aspect-video"/>
+                <IndexFeatureEtlAnimation key="animation" className="w-full max-h-[280px] aspect-video"/>
               </section>
 
               <section
@@ -104,9 +117,12 @@ export default function Home(): ReactNode {
                 aria-label="High-precision hybrid search"
               >
                 <h2>
-                  <span className={styles.primaryGradientText}>
+                  <FxGradientText
+                    preset="primary"
+                    direction="right"
+                  >
                     High-precision hybrid search
-                  </span>
+                  </FxGradientText>
                 </h2>
 
                 <p>
@@ -114,7 +130,7 @@ export default function Home(): ReactNode {
                   to deliver unmatched answer accuracy and context relevance.
                 </p>
 
-                <IndexFeatureHybridSearchAnimation key="animation" className="mt-auto w-full max-h-[280px] aspect-video"/>
+                <IndexFeatureHybridSearchAnimation key="animation" className=" w-full max-h-[280px] aspect-video"/>
               </section>
 
               <section
@@ -138,7 +154,12 @@ export default function Home(): ReactNode {
             {/* Solutions */}
             <section aria-label="Smart solutions for every industry">
               <h1 className="mb-24 text-center">
-                <span className={styles.primaryGradientText}>Smart solutions for every industry</span>
+                <FxGradientText
+                  preset="primary"
+                  direction="right"
+                >
+                  Smart solutions for every industry
+                </FxGradientText>
               </h1>
 
               <div>
@@ -148,26 +169,34 @@ export default function Home(): ReactNode {
                 >
                   <div>
                     <h2>
-                      <span className={styles.primaryInfoGradientText}>
-                        Advanced stock research
-                      </span>
+                      <FxGradientText
+                        preset="primary info"
+                        direction="right"
+                      >
+                        Equity investment research
+                      </FxGradientText>
                     </h2>
 
+                    <p>
+                      This workflow automates company data collection and consolidates financial metrics with research insights. Enables advanced stock analysis through autonomous planning and multi-agent orchestration.
+                    </p>
+
                     <p className="mb-0">
-                    Automatically gather comprehensive company data and consolidate key financial metrics with research insights, enabling powerful analytics and informed decision-making.
+                      It starts by identifying stock tickers from user queries, then aggregates insights from external authoritative sources and internal records. Ultimately, these qualitative insights are combined with financial metrics to yield a complete investment report.
                     </p>
                   </div>
 
-                  <div className={cn(
-                    styles.card,
-                    styles.bgPolka,
-                    'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
-                  )}>
+                  <FxPolkaDotsBackgroundEffect
+                    className={cn(
+                      styles.card,
+                      'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
+                    )}
+                  >
                     <IndexSolutionAdvancedStockResearchAnimation
                       key="animation"
                       className="size-full"
                     />
-                  </div>
+                  </FxPolkaDotsBackgroundEffect>
                 </section>
               </div>
             </section>
@@ -177,7 +206,12 @@ export default function Home(): ReactNode {
               aria-label="Here's what people are saying about RAGFlow"
             >
               <h1 className="mb-24 text-center">
-                <span className={styles.primaryGradientText}>Here’s what people are saying about RAGFlow</span>
+                <FxGradientText
+                  preset="primary"
+                  direction="right"
+                >
+                  Here’s what people are saying about RAGFlow
+                </FxGradientText>
               </h1>
 
               <IndexTestimonials />
@@ -186,7 +220,12 @@ export default function Home(): ReactNode {
             {/* Pricing plans*/}
             {/* <section aria-label="Scale Your Business">
               <h1 className="mb-24 text-center">
-                <span className={styles.primaryGradientText}>Scale Your Business</span>
+                <FxGradientText
+                  preset="primary"
+                  direction="right"
+                >
+                  Scale Your Business
+                </FxGradientText>
               </h1>
 
               <IndexPricingPlans />
@@ -198,7 +237,12 @@ export default function Home(): ReactNode {
               className="!my-64 text-center"
             >
               <h1>
-                <span className={styles.primaryGradientText}>Start building</span>
+                <FxGradientText
+                  preset="primary"
+                  direction="right"
+                >
+                  Start building
+                </FxGradientText>
               </h1>
 
               <div className="mt-16 flex justify-center items-center gap-8">
@@ -220,7 +264,7 @@ export default function Home(): ReactNode {
             </section>
           </main>
 
-          <FxEdgeLightEffect className="w-full min-w-[960px] h-[800px] left-1/2 -translate-x-1/2 bottom-0" />
+          <FxEdgeInnerLightEffect className="w-full min-w-[960px] h-[800px] left-1/2 -translate-x-1/2 bottom-0" />
         </article>
       </div>
     </Layout>

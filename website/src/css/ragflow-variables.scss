@@ -10,6 +10,9 @@ $dangerColorValue: 216 73 75;
 
 $secondaryColorValueDark: 178 181 183;
 
+$systemFamilyBase: -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, Cantarell, "Noto Sans", "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+$systemFamilyMonospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
 @function colorToRgbValueList($color) {
   $r: round(color.channel($color, "red", $space: rgb));
   $g: round(color.channel($color, "green", $space: rgb));
@@ -54,13 +57,13 @@ $secondaryColorValueDark: 178 181 183;
 @layer ragflow {
   :root {
     --ragflow-line-height-base: 1.7;
-    --ragflow-font-family-base: "Poppins", -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, Cantarell, "Noto Sans", "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;;
-    --ragflow-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    --ragflow-font-family-base: "Poppins", #{$systemFamilyBase};
+    --ragflow-font-family-monospace: #{$systemFamilyMonospace};
 
     @supports (font-variation-settings: normal) {
       font-optical-sizing: auto;
 
-      --ragflow-font-family-base: "Poppins Variable";
+      --ragflow-font-family-base: "Poppins Variable", #{$systemFamilyBase};
     }
 
     --ragflow-color-white: 255 255 255;
@@ -101,7 +104,7 @@ $secondaryColorValueDark: 178 181 183;
     --ragflow-h2-font-size: 1.5rem; // 24px
     --ragflow-h3-font-size: 1.25rem; // 20px
     --ragflow-h4-font-size: 1rem; // 16px
-    --ragflow-h5-font-size: .9rem; // 14.4px
+    --ragflow-h5-font-size: .925em; // 14.8px
     --ragflow-h6-font-size: .85rem; // 13.6px
     --ragflow-hero-font-size: 6rem; // 96px
 

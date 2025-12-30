@@ -28,7 +28,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    @apply text-standard font-semibold;
+    @apply text-standard font-medium;
   }
 
   @for $i from 1 through 6 {
@@ -133,11 +133,14 @@
     b,
     strong
   ) {
-    @apply font-semibold
+    @apply font-medium text-standard;
   }
 
-  :where(strong) {
-    @apply text-standard;
+  :where(
+    a strong,
+    a b
+  ) {
+    @apply font-semibold;
   }
 
   :where(hr) {
@@ -178,7 +181,7 @@
   .theme-doc-footer {
     a, .alert a {
       :where(&) {
-        @apply text-primary-contrast-foreground dark:text-primary;
+        @apply text-primary;
 
         &:hover,
         &:focus-visible,
@@ -202,10 +205,19 @@
         }
       }
     }
-
   }
 
   :where(.pagination-nav) a {
+    &:hover,
+    &:focus-visible,
+    &:active {
+      @apply text-primary;
+    }
+  }
+
+  :is(.blog-content header nav) a {
+    @apply no-underline text-standard;
+
     &:hover,
     &:focus-visible,
     &:active {
@@ -268,6 +280,7 @@
       color: inherit;
     }
 
+    nav:first-child + h1,
     h1:first-child {
       @apply mt-0;
     }
