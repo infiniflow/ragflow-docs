@@ -51,7 +51,7 @@ function getVersions() {
 
 const config: Config = {
   title: 'RAGFlow',
-  tagline: 'Build a superior context layer for AI agents',
+  tagline: 'Build a superior context layer for AI agents - Empower your AI agents through the leading open-source RAG engine, delivering reliable context and an integrated agent platform, built for enterprise.',
   favicon: 'img/logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#futurexx
@@ -86,6 +86,7 @@ const config: Config = {
       onBrokenMarkdownLinks: 'warn',
     },
 
+    // If any, extract the first image in the post content and write it to the frontmatter `image`
     parseFrontMatter: async (params) => {
       const result = await params.defaultParseFrontMatter(params);
       const filePath = params.filePath || '';
@@ -114,6 +115,12 @@ const config: Config = {
   },
 
   plugins: [
+    // Vercel Analytics
+    ['vercel-analytics', {
+      debug: true,
+      mode: 'auto',
+    }],
+
     // Supports Sass
     'docusaurus-plugin-sass',
 
@@ -129,7 +136,25 @@ const config: Config = {
           ];
         }
       },
-    } satisfies PluginClientRedirectOptions]
+    } satisfies PluginClientRedirectOptions],
+
+    // Our own enhanced blog plugin
+    ['./src/plugins/blog-plugin', {
+      showReadingTime: true,
+      onInlineTags: 'warn',
+      onInlineAuthors: 'warn',
+      onUntruncatedBlogPosts: 'warn',
+      blogSidebarTitle: 'Blog',
+
+      // Forced to display all blog posts in blog list
+      blogSidebarCount: 'ALL',
+      postsPerPage: 'ALL',
+
+      // Disable some pages
+      archiveBasePath: null,
+      tagBasePath: null,
+      authorBasePath: null,
+    }],
   ],
 
   presets: [
@@ -153,14 +178,13 @@ const config: Config = {
           versions: getVersions(),
         },
 
-        blog: {
-          showReadingTime: true,
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-          blogSidebarTitle: 'All posts',
-          blogSidebarCount: 'ALL',
-          postsPerPage: 'ALL',
+        // Use our own enhanced blog plugin instead of default one
+        blog: false,
+
+        pages: {
+          admonitions: {
+            keywords: ['note', 'tip', 'info', 'warning', 'danger'],
+          },
         },
 
         theme: {
@@ -239,6 +263,7 @@ const config: Config = {
       apiKey: 'd278212ab5a570179f9072f7792d7bb9',
       indexName: 'ragflow-docs',
       contextualSearch: true,
+      insights: true,
     },
 
     colorMode: {
@@ -301,7 +326,7 @@ const config: Config = {
             },
             {
               label: 'Changelog',
-              to: '/docs/release_notes',
+              to: '/changelog',
               icon: 'LucideClipboardClock',
             },
           ],
@@ -352,7 +377,7 @@ const config: Config = {
             },
             {
               label: 'Changelog',
-              to: '/docs/release_notes',
+              to: '/changelog',
             },
             {
               label: 'Blog',

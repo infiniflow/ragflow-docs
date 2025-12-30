@@ -1,52 +1,154 @@
-import React, {memo, type ReactNode} from 'react';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import {groupBlogSidebarItemsByYear} from '@docusaurus/plugin-content-blog/client';
-import Heading from '@theme/Heading';
-import type {Props} from '@theme/BlogSidebar/Content';
+import React, { memo } from 'react';
+import {
+  Collapsible,
+  useCollapsible,
+} from '@docusaurus/theme-common';
+import type { Props } from '@theme/BlogSidebar/Content';
+import Translate from '@docusaurus/Translate';
+import Link from '@docusaurus/Link';
+import Icon from '@site/src/components/Icon';
+import Tag from '@site/src/components/Tag';
+import { usePluginData } from '@docusaurus/useGlobalData';
 
-function BlogSidebarYearGroup({
-  year,
-  children,
-}: {
-  year: string;
-  children: ReactNode;
-}) {
-  return (
-    <div
-      role="group"
-      className="mb-4 last:mb-0"
-    >
-      <Heading as="h3" className="mb-2">
-        {year}
-      </Heading>
+import type { BlogTags } from '@docusaurus/plugin-content-blog';
+import { useLocalPathname } from '@docusaurus/theme-common/internal';
+import { useLocation } from '@docusaurus/router';
 
-      {children}
-    </div>
-  );
+type FilterProps = {
+  items: {
+    permalink?: string;
+    label?: string;
+    items?: any[];
+  }[];
+  urlSearchKey: string;
+  label?: React.ReactNode;
 }
 
-function BlogSidebarContent({
-  items,
-  ListComponent,
-}: Props): ReactNode {
-  const themeConfig = useThemeConfig();
-  if (themeConfig.blog.sidebar.groupByYear) {
-    const itemsByYear = groupBlogSidebarItemsByYear(items);
-    return (
-      <>
-        {itemsByYear.map(([year, yearItems]) => (
-          <BlogSidebarYearGroup
-            key={year}
-            year={year}
-          >
-            <ListComponent items={yearItems} />
-          </BlogSidebarYearGroup>
-        ))}
-      </>
-    );
-  } else {
-    return <ListComponent items={items} />;
+function BlogFilter(props: FilterProps) {
+  const {
+    items,
+    urlSearchKey,
+    label,
+  } = props;
+
+  const { collapsed, setCollapsed } = useCollapsible({
+    initialState: false,
+  });
+
+  const location = useLocation();
+
+  if (!items?.length) {
+    return null;
   }
+
+  return (
+    <div>
+      <button
+        className="group clean-btn w-full py-2 flex items-center text-base leading-tight text-standard font-medium"
+        onClick={() => setCollapsed(!collapsed)}
+        aria-expanded={!collapsed}
+      >
+        <div className="mr-2">
+          {label}
+        </div>
+
+        <Icon icon="LucideChevronRight" className="ml-auto transition-transform group-aria-expanded:rotate-90" />
+      </button>
+
+      <div className="ml-2 border-0 border-l-1 border-solid border-standard">
+        <Collapsible
+          lazy={false}
+          as="ul"
+          className="list-none block m-0 p-0 mt-2 -ml-px py-2"
+          collapsed={collapsed}
+          animation={{
+            duration: 150,
+            easing:  'ease-out',
+          }}
+        >
+          {items.map((item) => {
+            const search = new URLSearchParams(location.search);
+            search.set(urlSearchKey, item.label);
+            const searchString = search.toString();
+
+            return (
+              <li
+                key={item.permalink || item.label}
+                className="mt-4 first:mt-0"
+              >
+                <Link
+                  to={`${location.pathname}${searchString ? `?${searchString}` : ''}`}
+                  isNavLink
+                  isActive={(match, location) => {
+                    const searchParams = new URLSearchParams(location.search);
+                    const searchingItem = searchParams.get(urlSearchKey);
+                    return searchingItem === item.label;
+                  }}
+                  className="pl-2 inline-block leading-tights border-0 border-l-1 border-solid border-transparent transition-colors hover:border-theme-black focus:border-theme-black"
+                  activeClassName="text-standard !border-theme-black"
+                >
+                  <Tag
+                    count={<span className="text-theme-white">{item.items?.length ?? 0}</span>}
+                    counterClassName="inline-flex justify-center items-center min-w-5 rounded-sm bg-current transition-colors px-1 py-0.5 pt-1 leading-none"
+                  >
+                    {item.label}
+                  </Tag>
+                </Link>
+              </li>
+            );
+          })}
+        </Collapsible>
+      </div>
+    </div>
+  )
+}
+
+function BlogSidebarContent(props: Props) {
+  const {
+    blogTags,
+    blogYears,
+  } = (usePluginData('docusaurus-plugin-content-blog') as GlobalBlogPluginData) || {};
+
+  // Tags are sorted in alphabetical ascending order
+  const tags = Object.values(blogTags || {}).sort((a, b) => a.label.localeCompare(b.label));
+  // Years are sorted in descending order
+  const years = Object.values(blogYears || {}).sort((a, b) => Number(b.label) - Number(a.label));
+
+  return (
+    <div className="space-y-8">
+      <BlogFilter
+        items={tags}
+        urlSearchKey="tag"
+        label={(
+          <>
+            <Icon icon="LucideTag" className="mr-2" />
+            <Translate
+              id="theme.blog.sidebar.tag"
+              description="The label of the tags filter"
+            >
+              Tags
+            </Translate>
+          </>
+        )}
+      />
+
+      <BlogFilter
+        items={years}
+        urlSearchKey="year"
+        label={(
+          <>
+            <Icon icon="LucideCalendarDays" className="mr-2" />
+            <Translate
+              id="theme.blog.sidebar.date"
+              description="The label of the date filter"
+            >
+              Date
+            </Translate>
+          </>
+        )}
+      />
+    </div>
+  );
 }
 
 export default memo(BlogSidebarContent);

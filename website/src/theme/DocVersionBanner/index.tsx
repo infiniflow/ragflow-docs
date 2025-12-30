@@ -4,13 +4,11 @@ import Translate from '@docusaurus/Translate';
 import {
   useActivePlugin,
   useDocVersionSuggestions,
+  useDocsPreferredVersion,
+  useDocsVersion,
   type GlobalVersion,
 } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-import {
-  useDocsPreferredVersion,
-  useDocsVersion,
-} from '@docusaurus/plugin-content-docs/client';
 import type { Props } from '@theme/DocVersionBanner';
 import type {
   VersionBanner,

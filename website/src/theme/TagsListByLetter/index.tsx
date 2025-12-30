@@ -1,7 +1,9 @@
 import { listTagsByLetters, type TagLetterEntry } from '@docusaurus/theme-common';
-import Tag from '@theme/Tag';
-import type {Props} from '@theme/TagsListByLetter';
+import Link from '@docusaurus/Link';
+
+import type { Props } from '@theme/TagsListByLetter';
 import Heading from '@theme/Heading';
+import Tag from '@site/src/components/Tag';
 
 function TagLetterEntryItem({ letterEntry }: {letterEntry: TagLetterEntry}) {
   return (
@@ -17,7 +19,18 @@ function TagLetterEntryItem({ letterEntry }: {letterEntry: TagLetterEntry}) {
       <ul className="mt-0.5 list-none m-0 p-0 flex flex-row flex-wrap gap-2">
         {letterEntry.tags.map((tag) => (
           <li key={tag.permalink} className="m-0 p-0">
-            <Tag {...tag} />
+            <Link
+              to={tag.permalink}
+              className="no-underline"
+            >
+              <Tag
+                className="transition-colors text-secondary hover:text-standard focus:text-standard"
+                count={<span className="text-theme-white">{tag.count}</span>}
+                counterClassName="inline-flex justify-center items-center min-w-5 rounded-sm bg-current transition-colors px-1 py-0.5 pt-1 leading-none"
+              >
+                {tag.label}
+              </Tag>
+            </Link>
           </li>
         ))}
       </ul>

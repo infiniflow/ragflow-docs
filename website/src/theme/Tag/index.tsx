@@ -1,6 +1,6 @@
 import React, {type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
-import type {Props} from '@theme/Tag';
+import type { Props } from '@theme/Tag';
 
 import Icon from '@site/src/components/Icon';
 import TagComponent from '@site/src/components/Tag';
@@ -11,25 +11,29 @@ export default function Tag({
   count,
   description,
 }: Props): ReactNode {
-  if (permalink)
+  if (permalink) {
+    return (
+      <TagComponent
+        as={Link}
+        href={permalink}
+        title={description}
+        count={count}
+        className="
+          no-underline transition-colors
+          text-secondary bg-secondary/10
+          hover:bg-secondary/20 focus-visible:bg-secondary/20
+          hover:text-standard focus-visible:text-standard"
+        counterClassName="text-theme-white bg-current"
+      >
+        <Icon
+          icon="LucideTag"
+          className="flex-none mr-1"
+        />
 
-  return (
-    <TagComponent
-      as={Link}
-      href={permalink}
-      title={description}
-      count={count}
-      className="
-        no-underline transition-colors
-        hover:bg-primary/20 focus-visible:bg-primary/20
-        hover:text-primary-dark focus-visible:text-primary-dark"
-    >
-      <Icon
-        icon="LucideTag"
-        className="flex-none mr-1"
-      />
+        {label}
+      </TagComponent>
+    );
+  }
 
-      {label}
-    </TagComponent>
-  );
+  return null;
 }

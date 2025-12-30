@@ -1,14 +1,13 @@
 import { cn } from "@site/src/utils/twUtils";
 import { Children, isValidElement } from "react";
 
-type Props<As extends React.ElementType = any> = {
-  as?: As;
+type Props<As extends React.ElementType> = PropsWithAs<{
   style?: React.CSSProperties;
   className?: string;
   size?: number | string;
   interactive?: boolean;
   glowOnInteract?: boolean;
-} & Omit<React.ComponentPropsWithoutRef<As>, 'as' | 'style' | 'className' | 'size' | 'interactive'>;
+}, As>
 
 const INTERACTIVE_ELEMENTS = [
   'button', 'a', 'input', 'textarea', 'select'
