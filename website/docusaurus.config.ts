@@ -89,6 +89,7 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
   onBrokenAnchors: 'warn',
+  onDuplicateRoutes: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -157,22 +158,10 @@ const config: Config = {
 
     // Redirects
     ['@docusaurus/plugin-client-redirects', {
-      // Commented out, because of using file-based redirects currently
-      // redirects: [
-      //   {
-      //     from: ['/basics'],
-      //     to: '/basics/what_is_rag',
-      //   },
-      // ],
-
       createRedirects: (existingPath) => {
-        const redirects = [];
-
         if (existingPath.startsWith('/docs')) {
-          redirects.push(existingPath.replace(/^\/docs/, '/docs/dev'));
+          return [existingPath.replace(/^\/docs/, '/docs/dev')];
         }
-
-        return redirects;
       },
     } satisfies PluginClientRedirectOptions],
 
@@ -399,7 +388,7 @@ const config: Config = {
             },
             {
               label: 'Basics',
-              to: '/basics',
+              to: '/basics/what-is-rag',
               icon: 'LucideBookOpen',
             },
             {
@@ -459,7 +448,7 @@ const config: Config = {
             },
             {
               label: 'Basics',
-              to: '/basics',
+              to: '/basics/what-is-rag',
             },
             {
               label: 'Blog',
