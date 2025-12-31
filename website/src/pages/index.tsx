@@ -11,15 +11,15 @@ import styles from './index.module.scss';
 
 import IndexHeroBgAnimation from './_animations/IndexHeroBgAnimation';
 
-import FxEdgeInnerLightEffect from './_fx/FxEdgeInnerLightEffect';
-import FxGradientText from './_fx/FxGradientText';
-import FxGlowEffect from './_fx/FxGlowEffect';
-import FxPolkaDotsBackgroundEffect from './_fx/FxPolkaDotsBackgroundEffect';
+import FxEdgeInnerLightEffect from '@site/src/utils/visual-effects/FxEdgeInnerLightEffect';
+import FxGradientText from '@site/src/utils/visual-effects/FxGradientText';
+import FxGlowEffect from '@site/src/utils/visual-effects/FxGlowEffect';
+import FxPolkaDotsBackgroundEffect from '@site/src/utils/visual-effects/FxPolkaDotsBackgroundEffect';
 
 import IndexFeatureEtlAnimation from './_animations/IndexFeatureEtlAnimation';
 import IndexFeatureHybridSearchAnimation from './_animations/IndexFeatureHybridSearchAnimation';
 import IndexFeatureUnifiedAgentAnimation from './_animations/IndexFeatureUnifiedAgentAnimation';
-import IndexSolutionAdvancedStockResearchAnimation from './_animations/IndexSolutionAdvancedStockResearchAnimation';
+import IndexSolutionEquityInvestmentResearchAnimation from './_animations/IndexSolutionEquityInvestmentResearchAnimation';
 
 import IndexTestimonials from './_components/IndexTestimonials';
 import IndexPricingPlans from './_components/IndexPricingPlans';
@@ -192,7 +192,7 @@ export default function Home(): ReactNode {
                       'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
                     )}
                   >
-                    <IndexSolutionAdvancedStockResearchAnimation
+                    <IndexSolutionEquityInvestmentResearchAnimation
                       key="animation"
                       className="size-full"
                     />

@@ -25,7 +25,7 @@ export default function BlogTagsPostsPage({
   sidebar,
   tag,
 }: Props) {
-  const title = useBlogTagsPostsPageTitle(tag);
+  // const title = useBlogTagsPostsPageTitle(tag);
   const redirectUrl = useBaseUrl(`/blog?tag=${tag.label}`);
 
   return <Redirect to={redirectUrl} />;

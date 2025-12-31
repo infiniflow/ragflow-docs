@@ -7,10 +7,10 @@ import VectorIcon from "@site/src/assets/svg/vector.svg";
 import FullTextIcon from "@site/src/assets/svg/fulltext.svg";
 import TensorIcon from "@site/src/assets/svg/tensor.svg";
 
-import SvgRecolorLinearGradientFilter from "../_fx/SvgRecolorLinearGradientFilter";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
-import SvgLinearGradient from "../_fx/SvgLinearGradient";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
+import SvgLinearGradient from "@site/src/utils/visual-effects/SvgLinearGradient";
 import {
   DASH_ARRAY,
   DASH_OFFSET_DURATION,
