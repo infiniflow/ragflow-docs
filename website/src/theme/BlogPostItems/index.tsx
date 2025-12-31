@@ -1,14 +1,16 @@
+import { useMemo } from 'react';
+
 import { BlogPostProvider } from '@docusaurus/plugin-content-blog/client';
 import { useLocation } from '@docusaurus/router';
+import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate';
 import { PageMetadata, usePluralForm } from '@docusaurus/theme-common';
 
 import BlogPostItem from '@theme/BlogPostItem';
 import type { Props } from '@theme/BlogPostItems';
-import { useMemo } from 'react';
+import SearchMetadata from '@theme/SearchMetadata';
+
 import Icon from '@site/src/components/Icon';
-import Link from '@docusaurus/Link';
-import SearchMetadata from '../SearchMetadata';
 
 export default function BlogPostItems({
   items,
