@@ -4,10 +4,10 @@ import { cn } from "@site/src/utils/twUtils";
 import useLinearGradient from "@site/src/utils/useLinearGradient";
 import Icon from "@site/src/components/Icon";
 
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
-import SvgBreathingGlowFilter from "../_fx/SvgBreathingGlowFilter";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
-import SvgRecolorLinearGradientFilter from "../_fx/SvgRecolorLinearGradientFilter";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
+import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 import {
   DASH_ARRAY,
   DASH_OFFSET_DURATION,

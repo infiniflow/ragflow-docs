@@ -1,12 +1,11 @@
-import { useEffect, useId, useLayoutEffect } from "react";
+import { useId, useLayoutEffect } from "react";
 
 import { cn } from "@site/src/utils/twUtils";
-import SvgBreathingGlowFilter from "../_fx/SvgBreathingGlowFilter";
-import SvgForeignIcon from "../_fx/SvgForeignIcon";
-import SvgRecolorGradientFilter from "../_fx/SvgRecolorLinearGradientFilter";
+import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
+import SvgForeignIcon from "@site/src/utils/visual-effects/SvgForeignIcon";
+import SvgRecolorGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 
-import TavilyIcon from "@site/src/assets/svg/tavily.svg";
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
 
 import {
   SerialAnimationGroup,
@@ -20,8 +19,9 @@ import {
   SECONDARY_COLOR,
   DASH_ARRAY,
 } from "./constants";
+import Icon from "@site/src/components/Icon";
 
-export default function IndexSolutionAdvancedStockResearchAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+export default function IndexSolutionEquityInvestmentResearchAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeBox`;
@@ -450,17 +450,24 @@ export default function IndexSolutionAdvancedStockResearchAnimation({ className 
             </g>
           </g>
 
-          {/* Tavily */}
+          {/* Web search */}
           <g transform="translate(-300, 100)">
             <use href={`#${shapeBox}`}
               fill="rgb(var(--ragflow-bg-standard))"
               stroke="var(--ragflow-border-component)"
               strokeWidth="var(--ragflow-global-border-width)"
-              transform="scale(.6, .6)"
+              transform="scale(1, .6)"
             />
 
-            <SvgForeignIcon size={24} y="-22">
-              <TavilyIcon className="size-[24px]" />
+            <SvgForeignIcon
+              size={24}
+              y="-22"
+              filter={`url(#${filterRecolorGreyGradient})`}
+            >
+              <div className="relative size-[24px]">
+                <Icon className="block m-0 size-[24px]" icon="LucideMonitor" />
+                <Icon className="block m-0 absolute top-[5px] left-1/2 size-[10px] -translate-x-1/2 stroke-[3]" icon="LucideSearch" />
+              </div>
             </SvgForeignIcon>
 
             <text
@@ -468,7 +475,7 @@ export default function IndexSolutionAdvancedStockResearchAnimation({ className 
               y="22"
               textAnchor="middle"
             >
-              Tavily
+              Web search
             </text>
           </g>
 

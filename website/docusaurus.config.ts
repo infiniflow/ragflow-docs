@@ -1,12 +1,19 @@
+import { omit } from 'lodash-es';
 import path from 'node:path';
 
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type { Options as PluginContentBlogOptions } from '@docusaurus/plugin-content-blog';
+import type { Options as PluginContentDocsOptions } from '@docusaurus/plugin-content-docs';
+import type { Options as PluginClientRedirectOptions } from '@docusaurus/plugin-client-redirects';
+
+import { GlobExcludeDefault } from '@docusaurus/utils';
+import { DEFAULT_OPTIONS as PluginContentDocsDefaultOptions } from '@docusaurus/plugin-content-docs/src/options.js';
 
 import PrismLight from './src/utils/prismLight';
 import PrismDark from './src/utils/prismDark';
-import { omit } from 'lodash-es';
-import { Options as PluginClientRedirectOptions } from '@docusaurus/plugin-client-redirects';
+
+import versions from './versions.json' with { type: 'json' };
 
 const socialLinks = [
   {
@@ -39,14 +46,22 @@ const socialLinks = [
 const disableVersioning = false;
 
 function getVersions() {
-  const versions = {
+  const versionsMap = {
     current: { label: 'DEV' },
-    'v0.22.1': { label: '0.22.1' },
+
+    ...Object.fromEntries(
+      (versions as any[]).map((version) => {
+        return [
+          version,
+          { label: version.slice(1) },
+        ];
+      })
+    ),
   };
 
   return disableVersioning
-    ? { current: versions.current }
-    : versions;
+    ? { current: versionsMap.current }
+    : versionsMap;
 }
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -142,22 +157,35 @@ const config: Config = {
 
     // Redirects
     ['@docusaurus/plugin-client-redirects', {
+      // Commented out, because of using file-based redirects currently
+      // redirects: [
+      //   {
+      //     from: ['/basics'],
+      //     to: '/basics/what_is_rag',
+      //   },
+      // ],
+
       createRedirects: (existingPath) => {
+        const redirects = [];
+
         if (existingPath.startsWith('/docs')) {
-          return [
-            existingPath.replace(/^\/docs/, '/docs/dev'),
-          ];
+          redirects.push(existingPath.replace(/^\/docs/, '/docs/dev'));
         }
+
+        return redirects;
       },
     } satisfies PluginClientRedirectOptions],
 
     // Our own enhanced blog plugin
     ['./src/plugins/blog-plugin', {
-      showReadingTime: true,
+      path: 'blog',
+      routeBasePath: '/blog',
       onInlineTags: 'warn',
       onInlineAuthors: 'warn',
-      onUntruncatedBlogPosts: 'warn',
+      onUntruncatedBlogPosts: 'ignore',
+
       blogSidebarTitle: 'Blog',
+      showReadingTime: true,
 
       // Forced to display all blog posts in blog list
       blogSidebarCount: 'ALL',
@@ -165,9 +193,38 @@ const config: Config = {
 
       // Disable some pages
       archiveBasePath: null,
-      tagBasePath: null,
-      authorBasePath: null,
-    }],
+    } satisfies PluginContentBlogOptions],
+
+    // Individual docs for "Basics" category
+    ['@docusaurus/plugin-content-docs', {
+      ...PluginContentDocsDefaultOptions,
+
+      id: 'basics',
+      path: 'basics',
+      routeBasePath: '/basics',
+      sidebarPath: './sidebars.ts',
+      admonitions: {
+        keywords: ['note', 'tip', 'info', 'warning', 'danger'],
+      },
+
+      editCurrentVersion: false,
+      disableVersioning,
+      lastVersion: 'current',
+      versions: {
+        current: getVersions().current,
+      },
+
+      sidebarCollapsed: false,
+      sidebarCollapsible: false,
+      breadcrumbs: false,
+      tags: false,
+
+      sidebarItemsGenerator: async (args) => (
+        // Remove the "index" doc from the "Basics" sidebar
+        (await args.defaultSidebarItemsGenerator(args))
+          .filter((item) => item.type === 'doc' && item.id !== 'index')
+      ),
+    } satisfies PluginContentDocsOptions],
   ],
 
   presets: [
@@ -175,6 +232,9 @@ const config: Config = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          id: 'default',
+          path: 'docs',
+          routeBasePath: '/docs',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/infiniflow/ragflow/tree/main',
           editCurrentVersion: true,
@@ -182,13 +242,18 @@ const config: Config = {
 
           // Disable versioning
           disableVersioning,
+          versions: getVersions(),
 
           admonitions: {
             // Discard 'caution' admonition
             keywords: ['note', 'tip', 'info', 'warning', 'danger'],
           },
 
-          versions: getVersions(),
+          exclude: [
+            ...GlobExcludeDefault,
+            'basics/**/*.{md,mdx}',
+            'release_notes.{md,mdx}',
+          ],
         },
 
         // Use our own enhanced blog plugin instead of default one
@@ -327,15 +392,15 @@ const config: Config = {
           label: 'Resources',
           position: 'left',
           items: [
-            // {
-            //   label: 'Basics',
-            //   to: '/basics',
-            //   icon: 'LucideBookOpen',
-            // },
             {
               label: 'Blog',
               to: '/blog',
               icon: 'LucideRss',
+            },
+            {
+              label: 'Basics',
+              to: '/basics',
+              icon: 'LucideBookOpen',
             },
             {
               label: 'Changelog',
@@ -391,6 +456,10 @@ const config: Config = {
             {
               label: 'Changelog',
               to: '/changelog',
+            },
+            {
+              label: 'Basics',
+              to: '/basics',
             },
             {
               label: 'Blog',
