@@ -32,7 +32,7 @@ export default function SearchMetadata({
       {/* Algolia DocSearch metadata */}
       {language && <meta name="docsearch:language" content={language} />}
       {version && <meta name="docsearch:version" content={version} />}
-      {tag && <meta name="`docsearch:docusaurus_tag" content={tag} />}
+      {tag && <meta name="docsearch:docusaurus_tag" content={tag} />}
       {datetime && <meta name="docsearch:datetime" content={datetime} />}
     </Head>
   );
