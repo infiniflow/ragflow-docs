@@ -220,6 +220,10 @@ const config: Config = {
     [
       '@docusaurus/preset-classic',
       {
+        gtag: {
+          trackingID: 'G-CYPZV02X34',
+        },
+
         docs: {
           id: 'default',
           path: 'docs',

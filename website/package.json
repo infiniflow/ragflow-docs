@@ -1,5 +1,5 @@
 {
-  "name": "test-landing-page",
+  "name": "ragflow-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-client-redirects": "^3.9.2",
+    "@docusaurus/plugin-google-gtag": "^3.9.2",
     "@docusaurus/plugin-vercel-analytics": "^3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@icons-pack/react-simple-icons": "^13.8.0",
