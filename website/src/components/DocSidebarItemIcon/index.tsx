@@ -1,3 +1,8 @@
+import {
+  useActiveDocContext,
+  useVersions,
+} from '@docusaurus/plugin-content-docs/client';
+
 import type { Props as LinkProps } from '@theme/DocSidebarItem/Link';
 import type { Props as CategoryProps } from '@theme/DocSidebarItem/Category';
 
@@ -8,21 +13,29 @@ type Props = LinkProps | CategoryProps;
 
 export default function DocSidebarItemIcon({ item }: { item: Props['item'] }) {
   const {
-    // customProps: {
-    //   sidebarIcon,
-    // } = {},
+    customProps: {
+      sidebarIcon,
+    } = {},
     href: _href,
   } = item;
 
-  // if (sidebarIcon) {
-  //   return <Icon className="flex-none mr-2" icon={sidebarIcon as any} />;
-  // }
+  const activeDocContext = useActiveDocContext('default');
 
-  const href = _href && `${_href.replace(/^\/docs/, '') || '/'}`;
-
-  if (href && SIDEBAR_ICONS[href]) {
-    return <Icon className="flex-none mr-2" icon={SIDEBAR_ICONS[href] as any} />;
+  // Respect the custom sidebar icon if provided
+  if (sidebarIcon) {
+    return (
+      <Icon
+        className="flex-none mr-2"
+        icon={sidebarIcon as any}
+      />
+    );
   }
+
+  // const href = _href && `/${activeDocContext.activeDoc?.path ? _href.replace(activeDocContext.activeDoc.path, '') : ''}`;
+
+  // if (href && SIDEBAR_ICONS[href]) {
+  //   return <Icon className="flex-none mr-2" icon={SIDEBAR_ICONS[href] as any} />;
+  // }
 
   return null;
 };
