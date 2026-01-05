@@ -14,40 +14,49 @@ export default function DocCardItemIcon({
   item: Props['item'],
 }) {
   const {
-    // customProps: {
-    //   sidebarIcon,
-    // } = {},
+    customProps: {
+      categoryIcon,
+    } = {},
     href: _href,
     label,
   } = item;
 
-  // if (sidebarIcon) {
-  //   return <Icon className="flex-none mr-2" icon={sidebarIcon as any} />;
+  // Respect the custom sidebar icon if provided
+  if (categoryIcon) {
+    return (
+      <Icon
+        className="flex-none mr-2"
+        icon={categoryIcon as any}
+      >
+        {children}
+      </Icon>
+    );
+  }
+
+  // Match by href
+  // const href = _href && `${_href.replace(/^\/docs/, '') || '/'}`;
+
+  // if (href && CATEGORY_ICONS[href]) {
+  //   return (
+  //     <Icon
+  //       className="flex-none mr-2"
+  //       icon={CATEGORY_ICONS[href] as any}
+  //     >
+  //       {children}
+  //     </Icon>
+  //   );
   // }
 
-  const href = _href && `${_href.replace(/^\/docs/, '') || '/'}`;
-
-  if (href && CATEGORY_ICONS[href]) {
-    return (
-      <Icon
-        className="flex-none mr-2"
-        icon={CATEGORY_ICONS[href] as any}
-      >
-        {children}
-      </Icon>
-    );
-  }
-
-  if (label && CATEGORY_ICONS[label]) {
-    return (
-      <Icon
-        className="flex-none mr-2"
-        icon={CATEGORY_ICONS[label] as any}
-      >
-        {children}
-      </Icon>
-    );
-  }
+  // if (label && CATEGORY_ICONS[label]) {
+  //   return (
+  //     <Icon
+  //       className="flex-none mr-2"
+  //       icon={CATEGORY_ICONS[label] as any}
+  //     >
+  //       {children}
+  //     </Icon>
+  //   );
+  // }
 
   return children;
 };
