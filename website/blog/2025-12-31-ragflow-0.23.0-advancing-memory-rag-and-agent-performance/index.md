@@ -1,7 +1,7 @@
 ---
 slug: ragflow-0.23.0-advanding-memory-rag-and-agent-performance
 title: RAGFlow 0.23.0 — Advancing Memory, RAG, and Agent Performance
-tags: [Insights]
+tags: [Product News]
 ---
 ![](./memory_0.23.0.PNG)
 
