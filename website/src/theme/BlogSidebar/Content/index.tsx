@@ -1,18 +1,21 @@
 import React, { memo } from 'react';
+
 import {
   Collapsible,
   useCollapsible,
 } from '@docusaurus/theme-common';
-import type { Props } from '@theme/BlogSidebar/Content';
+
 import Translate from '@docusaurus/Translate';
 import Link from '@docusaurus/Link';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import { useLocation } from '@docusaurus/router';
+
+import type { Props } from '@theme/BlogSidebar/Content';
+import SearchBar from '@theme/SearchBar';
+
 import Icon from '@site/src/components/Icon';
 import Tag from '@site/src/components/Tag';
-import { usePluginData } from '@docusaurus/useGlobalData';
 
-import type { BlogTags } from '@docusaurus/plugin-content-blog';
-import { useLocalPathname } from '@docusaurus/theme-common/internal';
-import { useLocation } from '@docusaurus/router';
 
 type FilterProps = {
   items: {
@@ -20,7 +23,7 @@ type FilterProps = {
     label?: string;
     items?: any[];
   }[];
-  urlSearchKey: string;
+  urlSearchKey?: string;
   label?: React.ReactNode;
 }
 
@@ -30,6 +33,7 @@ function BlogFilter(props: FilterProps) {
     urlSearchKey,
     label,
   } = props;
+
 
   const { collapsed, setCollapsed } = useCollapsible({
     initialState: false,
@@ -68,21 +72,33 @@ function BlogFilter(props: FilterProps) {
         >
           {items.map((item) => {
             const search = new URLSearchParams(location.search);
-            search.set(urlSearchKey, item.label);
+
+            if (urlSearchKey) {
+              search.set(urlSearchKey, item.label);
+            }
+
             const searchString = search.toString();
+
+            // Take care of search string in the URL
+            const targetTo = `${item.permalink || location.pathname}${searchString ? `?${searchString}` : ''}`;
 
             return (
               <li
-                key={item.permalink || item.label}
+                key={item.label}
                 className="mt-4 first:mt-0"
               >
                 <Link
-                  to={`${location.pathname}${searchString ? `?${searchString}` : ''}`}
+                  to={targetTo}
                   isNavLink
                   isActive={(match, location) => {
                     const searchParams = new URLSearchParams(location.search);
-                    const searchingItem = searchParams.get(urlSearchKey);
-                    return searchingItem === item.label;
+
+                    if (urlSearchKey) {
+                      const searchingItem = searchParams.get(urlSearchKey);
+                      return searchingItem === item.label;
+                    }
+
+                    return location.pathname === item.permalink;
                   }}
                   className="pl-2 inline-block leading-tights border-0 border-l-1 border-solid border-transparent transition-colors hover:border-theme-black focus:border-theme-black"
                   activeClassName="text-standard !border-theme-black"
@@ -116,9 +132,12 @@ function BlogSidebarContent(props: Props) {
 
   return (
     <div className="space-y-8">
+      <div>
+        <SearchBar />
+      </div>
+
       <BlogFilter
         items={tags}
-        urlSearchKey="tag"
         label={(
           <>
             <Icon icon="LucideTag" className="mr-2" />

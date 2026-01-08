@@ -36,14 +36,9 @@ const ListComponent: BlogSidebarContentProps['ListComponent'] = ({items}) => {
 
 function BlogSidebarDesktop({ sidebar }: Props) {
   const isBlogPostPage = useIsBlogPostPage();
-  const location = useLocation();
 
   if (isBlogPostPage) {
     return null;
-  }
-
-  if (location.pathname !== '/blog') {
-    return <div className="pl-page w-sidebar" />
   }
 
   return (
@@ -71,7 +66,7 @@ function BlogSidebarDesktop({ sidebar }: Props) {
             <span>{sidebar.title}</span>
           </div>
 
-          <hr className="mt-4 mb-8" />
+          <hr />
 
           <BlogSidebarContent
             items={sidebar.items}
