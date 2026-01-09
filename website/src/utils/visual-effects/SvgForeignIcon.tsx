@@ -1,5 +1,5 @@
 import { partition } from "lodash-es";
-import { Children, isValidElement } from "react";
+import { Children, forwardRef, isValidElement } from "react";
 
 import Icon, { type IconName } from "@site/src/components/Icon";
 
@@ -12,7 +12,7 @@ interface Props extends React.SVGAttributes<SVGForeignObjectElement> {
   iconClassName?: string;
 }
 
-export default function SvgForeignIcon({
+const SvgForeignIcon = forwardRef(function SvgForeignIcon({
   children: _children,
   id,
   size,
@@ -26,7 +26,7 @@ export default function SvgForeignIcon({
   iconId,
   iconClassName,
   ...restProps
-}: Props) {
+}: Props, ref: React.ForwardedRef<SVGElement>) {
   const [animateChildren, children] = partition(
     Children.toArray(_children),
     (child) => isValidElement(child) && ANIMATE_ELEMENTS.includes(child.type as string),
@@ -35,11 +35,14 @@ export default function SvgForeignIcon({
   return (
     <g
       id={id}
+      ref={ref as React.ForwardedRef<SVGGElement>}
       {...restProps}
     >
       <foreignObject
-        x={x ?? (-size / 2)} y={y ?? (-size / 2)}
-        width={width ?? size} height={height ?? size}
+        x={x ?? (-size / 2)}
+        y={y ?? (-size / 2)}
+        width={width ?? size}
+        height={height ?? size}
       >
         {children.length
           ? children
@@ -49,6 +52,7 @@ export default function SvgForeignIcon({
               className={iconClassName}
               icon={icon}
               style={{
+                display: 'block',
                 width: `${size}px`,
                 height: `${size}px`,
                 fontSize: `${size}px`,
@@ -61,4 +65,6 @@ export default function SvgForeignIcon({
       {animateChildren}
     </g>
   );
-}
+});
+
+export default SvgForeignIcon;

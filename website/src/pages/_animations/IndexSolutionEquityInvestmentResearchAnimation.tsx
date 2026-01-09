@@ -21,7 +21,7 @@ import {
 } from "./constants";
 import Icon from "@site/src/components/Icon";
 
-export default function IndexSolutionEquityInvestmentResearchAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+export default function IndexSolutionEquityInvestmentResearchAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeBox`;
@@ -279,7 +279,10 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
   }, []);
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-490 -250 910 525"
@@ -327,7 +330,7 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
           >
             <use
               href={`#${shapeDot}`}
-              fill="rgb(var(--ragflow-text-disabled))"
+              fill={DISABLED_COLOR}
             />
           </marker>
 
@@ -338,7 +341,7 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
             orient="auto-start-reverse"
           >
             <use href={`#${shapeDot}`}
-              fill="rgb(var(--ragflow-color-primary))"
+              fill={PRIMARY_COLOR}
             />
           </marker>
 
@@ -354,7 +357,7 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
             orient="auto-start-reverse"
           >
             <use href={`#${shapeArrow}`}
-              fill="rgb(var(--ragflow-text-disabled))"
+              fill={DISABLED_COLOR}
             />
           </marker>
 
@@ -414,12 +417,11 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
               transform="scale(.5)"
             />
 
-            <g filter={`url(#${filterRecolorGreyGradient})`}>
-              <SvgForeignIcon
-                icon="LucideHousePlus"
-                size={24}
-              />
-            </g>
+            <SvgForeignIcon
+              icon="LucideHousePlus"
+              size={24}
+              filter={`url(#${filterRecolorGreyGradient})`}
+            />
           </g>
 
           {/* Search agent */}

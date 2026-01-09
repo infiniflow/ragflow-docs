@@ -23,6 +23,7 @@ import IndexSolutionEquityInvestmentResearchAnimation from './_animations/IndexS
 
 import IndexTestimonials from './_components/IndexTestimonials';
 import IndexPricingPlans from './_components/IndexPricingPlans';
+import IndexSolutionLegalPrecedentAnalysisAnimation from './_animations/IndexSolutionLegalPrecedentAnalysisAnimation';
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
@@ -39,7 +40,7 @@ export default function Home(): ReactNode {
           className="
             relative flex justify-center items-center
             min-h-max
-            py-8 mobile:py-16 desktop:py-40
+            py-8 mobile:py-12 desktop:py-20
             text-center text-lg desktop:text-2xl
           "
         >
@@ -71,104 +72,127 @@ export default function Home(): ReactNode {
 
             <p>
               Empower your AI agents through the leading open-source RAG engine,
-              <br className="max-desktop:hidden" /> delivering reliable context and an integrated agent platform, built for enterprise.
+              <br className="max-desktop:hidden" aria-hidden /> delivering reliable context and an integrated agent platform, built for enterprise.
             </p>
 
-            <Link to="https://demo.ragflow.io/">
-              <FxGlowEffect className="mt-16" as="a" >
-                <button
-                  className={cn(styles.btn, 'px-9 py-3 rounded-lg')}
-                >
-                  Try demo
-                </button>
-              </FxGlowEffect>
-            </Link>
+            <FxGlowEffect
+              className="mobile:mt-6 desktop:mt-12"
+              as={Link}
+              to="https://demo.ragflow.io/"
+            >
+              <button
+                className={cn(styles.btn, 'px-9 py-3 rounded-lg')}
+              >
+                Try demo
+              </button>
+            </FxGlowEffect>
           </div>
         </header>
 
         {/* Main content */}
-        <article className="relative pt-12 overflow-hidden">
+        <div className="relative overflow-hidden">
           <main className="container max-desktop:px-page space-y-48">
             {/* Features */}
-            <div className="max-desktop:space-y-6 desktop:grid desktop:grid-cols-2 desktop:gap-6">
-              <section
-                className={cn('flex flex-col', styles.card)}
-                aria-label="ETL for AI data"
-              >
-                <h2>
-                  <FxGradientText
-                    preset="primary"
-                    direction="right"
-                  >
-                    ETL for AI data
-                  </FxGradientText>
-                </h2>
+            <section
+              className="max-desktop:space-y-6 desktop:grid desktop:grid-cols-2 desktop:gap-6"
+              aria-label="Features"
+            >
+              <article className={cn('flex flex-col', styles.card)}>
+                <header>
+                  <h2 id="feature-1">
+                    <FxGradientText
+                      preset="primary"
+                      direction="right"
+                    >
+                      ETL for AI data
+                    </FxGradientText>
+                  </h2>
+                </header>
 
                 <p>
                   Harness our built-in ingestion pipeline to cleanse and process multi-format data,
                   structuring it into rich semantic representations for superior retrieval.
                 </p>
 
-                <IndexFeatureEtlAnimation key="animation" className="w-full max-h-[280px] aspect-video"/>
-              </section>
+                <IndexFeatureEtlAnimation
+                  key="animation"
+                  className="w-full max-h-[280px] aspect-video"
+                  role="figure"
+                  aria-labelledby="feature-1"
+                />
+              </article>
 
-              <section
-                className={cn('flex flex-col', styles.card)}
-                aria-label="High-precision hybrid search"
-              >
-                <h2>
-                  <FxGradientText
-                    preset="primary"
-                    direction="right"
-                  >
-                    High-precision hybrid search
-                  </FxGradientText>
-                </h2>
+              <article className={cn('flex flex-col', styles.card)}>
+                <header>
+                  <h2 id="feature-2">
+                    <FxGradientText
+                      preset="primary"
+                      direction="right"
+                    >
+                      High-precision hybrid search
+                    </FxGradientText>
+                  </h2>
+
+                </header>
 
                 <p>
                   Combine vector search, BM25, and custom scoring with advanced re-ranking
                   to deliver unmatched answer accuracy and context relevance.
                 </p>
 
-                <IndexFeatureHybridSearchAnimation key="animation" className=" w-full max-h-[280px] aspect-video"/>
-              </section>
+                <IndexFeatureHybridSearchAnimation
+                  key="animation"
+                  className=" w-full max-h-[280px] aspect-video"
+                  role="figure"
+                  aria-labelledby="feature-2"
+                />
+              </article>
 
-              <section
-                className={cn('desktop:col-span-2', styles.card)}
-                aria-label="Unified AI agent orchestration"
-              >
-                <h2>
-                  <span className={styles.primaryGradientText}>
-                    Unified AI agent orchestration
-                  </span>
-                </h2>
+              <article className={cn('desktop:col-span-2', styles.card)}>
+                <header>
+                  <h2 id="feature-3">
+                    <span className={styles.primaryGradientText}>
+                      Unified AI agent orchestration
+                    </span>
+                  </h2>
+                </header>
 
                 <p>
                   Build powerful agents in an all-in-one platform, seamlessly integrating RAG, tools, and MCPs within visual workflows.
                 </p>
 
-                <IndexFeatureUnifiedAgentAnimation key="animation" className="w-full max-h-[280px] aspect-video"/>
-              </section>
-            </div>
+                <IndexFeatureUnifiedAgentAnimation
+                  key="animation"
+                  className="w-full max-h-[280px] aspect-video"
+                  role="figure"
+                  aria-labelledby="feature-3"
+                />
+              </article>
+            </section>
 
             {/* Solutions */}
-            <section aria-label="Smart solutions for every industry">
-              <h1 className="mb-24 text-center">
-                <FxGradientText
-                  preset="primary"
-                  direction="right"
+            <section
+              className="space-y-12"
+              aria-label="Solutions"
+            >
+              <header>
+                <h1
+                  id="solutions"
+                  className="mb-24 text-center"
                 >
-                  Smart solutions for every industry
-                </FxGradientText>
-              </h1>
+                  <FxGradientText
+                    preset="primary"
+                    direction="right"
+                  >
+                    Smart solutions for every industry
+                  </FxGradientText>
+                </h1>
+              </header>
 
-              <div>
-                <section
-                  className="flex flex-col desktop:flex-row gap-8 desktop:gap-16"
-                  aria-label="Advanced stock research"
-                >
-                  <div>
-                    <h2>
+              <article className="flex flex-col desktop:flex-row gap-8 desktop:gap-16">
+                <div>
+                  <header>
+                    <h2 id="solution-1">
                       <FxGradientText
                         preset="primary info"
                         direction="right"
@@ -176,29 +200,69 @@ export default function Home(): ReactNode {
                         Equity investment research
                       </FxGradientText>
                     </h2>
+                  </header>
 
-                    <p>
-                      This workflow automates company data collection and consolidates financial metrics with research insights. Enables advanced stock analysis through autonomous planning and multi-agent orchestration.
-                    </p>
+                  <p>
+                    This workflow automates company data collection and consolidates financial metrics with research insights. Enables advanced stock analysis through autonomous planning and multi-agent orchestration.
+                  </p>
 
-                    <p className="mb-0">
-                      It starts by identifying stock tickers from user queries, then aggregates insights from external authoritative sources and internal records. Ultimately, these qualitative insights are combined with financial metrics to yield a complete investment report.
-                    </p>
-                  </div>
+                  <p className="mb-0">
+                    It starts by identifying stock tickers from user queries, then aggregates insights from external authoritative sources and internal records. Ultimately, these qualitative insights are combined with financial metrics to yield a complete investment report.
+                  </p>
+                </div>
 
-                  <FxPolkaDotsBackgroundEffect
-                    className={cn(
-                      styles.card,
-                      'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
-                    )}
-                  >
-                    <IndexSolutionEquityInvestmentResearchAnimation
-                      key="animation"
-                      className="size-full"
-                    />
-                  </FxPolkaDotsBackgroundEffect>
-                </section>
-              </div>
+                <FxPolkaDotsBackgroundEffect
+                  className={cn(
+                    styles.card,
+                    'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
+                  )}
+                >
+                  <IndexSolutionEquityInvestmentResearchAnimation
+                    key="animation"
+                    className="size-full"
+                    role="figure"
+                    aria-labelledby="solution-1"
+                  />
+                </FxPolkaDotsBackgroundEffect>
+              </article>
+
+              <article className="flex flex-col desktop:flex-row gap-8 desktop:gap-16">
+                <div>
+                  <header>
+                    <h2 id="solution-2">
+                      <FxGradientText
+                        preset="primary info"
+                        direction="right"
+                      >
+                        Legal precedent analysis
+                      </FxGradientText>
+                    </h2>
+                  </header>
+
+                  <p>
+                    This workflow provides structured precedent analysis by examining similar legal cases across public sources and internal datasets.
+                  </p>
+
+                  <p className="mb-0">
+                    Upon case input, key attributes—such as jurisdiction and legal issues—are automatically extracted to formulate search queries and retrieve comparable precedents. The results are then consolidated into a structured analysis reflecting how similar cases were resolved.
+                    This workflow automates company data collection and consolidates financial metrics with research insights. Enables advanced stock analysis through autonomous planning and multi-agent orchestration.
+                  </p>
+                </div>
+
+                <FxPolkaDotsBackgroundEffect
+                  className={cn(
+                    styles.card,
+                    'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
+                  )}
+                >
+                  <IndexSolutionLegalPrecedentAnalysisAnimation
+                    key="animation"
+                    className="size-full"
+                    role="figure"
+                    aria-labelledby="solution-2"
+                  />
+                </FxPolkaDotsBackgroundEffect>
+              </article>
             </section>
 
             {/* Testimonials */}
@@ -233,26 +297,29 @@ export default function Home(): ReactNode {
 
             {/* Try demo */}
             <section
-              aria-label="Start building"
               className="!my-64 text-center"
+              aria-labelledby="start-building"
             >
-              <h1>
-                <FxGradientText
-                  preset="primary"
-                  direction="right"
-                >
-                  Start building
-                </FxGradientText>
-              </h1>
+              <header>
+                <h1 id="start-building">
+                  <FxGradientText
+                    preset="primary"
+                    direction="right"
+                  >
+                    Start building
+                  </FxGradientText>
+                </h1>
+              </header>
 
               <div className="mt-16 flex justify-center items-center gap-8">
-                <Link to="https://demo.ragflow.io/">
-                  <FxGlowEffect>
-                    <button className={styles.btn}>
-                      Try demo
-                    </button>
-                  </FxGlowEffect>
-                </Link>
+                <FxGlowEffect
+                  as={Link}
+                  to="https://demo.ragflow.io/"
+                >
+                  <button className={styles.btn}>
+                    Try demo
+                  </button>
+                </FxGlowEffect>
 
                 <Link
                   className={cn(styles.btn, 'bg-standard')}
@@ -265,7 +332,7 @@ export default function Home(): ReactNode {
           </main>
 
           <FxEdgeInnerLightEffect className="w-full min-w-[960px] h-[800px] left-1/2 -translate-x-1/2 bottom-0" />
-        </article>
+        </div>
       </div>
     </Layout>
   );
