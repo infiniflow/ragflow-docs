@@ -20,7 +20,7 @@ import {
   DASH_PULSE_OFFSET_DURATION,
 } from "./constants";
 
-export default function IndexFeatureUnifiedAgentAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+export default function IndexFeatureUnifiedAgentAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeSecondaryBox`;
@@ -48,7 +48,10 @@ export default function IndexFeatureUnifiedAgentAnimation({ className }: React.H
   const animPulse = `${id}AnimPulse`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-300 -140 600 310"

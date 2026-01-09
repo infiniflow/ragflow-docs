@@ -53,7 +53,7 @@ const getGradientColor = (
   return `rgb(${r} ${g} ${b})`;
 };
 
-function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+function IndexFeatureHybridSearchAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const dotsRef = useRef([]);
@@ -229,7 +229,10 @@ function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<H
   const maskMagnifierCircle = `${id}MaskMagnifierCircle`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-285 -75 570 150"

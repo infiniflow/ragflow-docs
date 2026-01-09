@@ -20,7 +20,7 @@ const BALL_TO_DATASET_MOTION_DURATION = 9.5;
 const BALL_FADE_OUT_DURATION = 7.5;
 const DATASET_ZAP_DURATION = 4;
 
-function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeBox`;
@@ -49,7 +49,10 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
   const animBallToRest = `${id}AnimBallToRest`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-310 -75 610 160"
