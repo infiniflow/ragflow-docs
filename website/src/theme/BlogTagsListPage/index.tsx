@@ -37,7 +37,7 @@ export default function BlogTagsListPage({ tags, sidebar }: Props) {
               <Icon icon="LucideArrowLeft" />
               <span>
                 <Translate
-                  id="blog.post.backToPosts"
+                  id="theme.blog.post.backToPosts"
                   description="The label of the link back to the posts page"
                 >
                   Back to posts

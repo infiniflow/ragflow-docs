@@ -19,7 +19,7 @@ export default function BlogPostItemHeader(): ReactNode {
 
             <span>
               <Translate
-                id="blog.post.backToPosts"
+                id="theme.blog.post.backToPosts"
                 description="The label of the link back to the posts page"
               >
                 Back to posts

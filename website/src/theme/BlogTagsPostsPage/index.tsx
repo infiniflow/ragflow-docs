@@ -1,71 +1,32 @@
-import Translate from '@docusaurus/Translate';
 import {
-  PageMetadata,
   HtmlClassNameProvider,
   ThemeClassNames,
 } from '@docusaurus/theme-common';
-import {
-  useBlogTagsPostsPageTitle,
-} from '@docusaurus/theme-common/internal';
-import Link from '@docusaurus/Link';
 import BlogLayout from '@theme/BlogLayout';
-import BlogListPaginator from '@theme/BlogListPaginator';
-import SearchMetadata from '@theme/SearchMetadata';
 import type {Props} from '@theme/BlogTagsPostsPage';
 import BlogPostItems from '@theme/BlogPostItems';
 import Unlisted from '@theme/ContentVisibility/Unlisted';
-import Heading from '@theme/Heading';
+
 import { cn } from '@site/src/utils/twUtils';
-import { Redirect, useLocation } from '@docusaurus/router';
-import useBaseUrl, { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 export default function BlogTagsPostsPage({
   items,
-  listMetadata,
+  // listMetadata,
   sidebar,
   tag,
 }: Props) {
-  // const title = useBlogTagsPostsPageTitle(tag);
-  const redirectUrl = useBaseUrl(`/blog?tag=${tag.label}`);
+  return (
+    <HtmlClassNameProvider
+      className={cn(
+        ThemeClassNames.wrapper.blogPages,
+        ThemeClassNames.page.blogTagPostListPage,
+      )}
+    >
+      <BlogLayout sidebar={sidebar}>
+        {tag.unlisted && <Unlisted />}
 
-  return <Redirect to={redirectUrl} />;
-
-  // return (
-  //   <HtmlClassNameProvider
-  //     className={cn(
-  //       ThemeClassNames.wrapper.blogPages,
-  //       ThemeClassNames.page.blogTagPostListPage,
-  //     )}
-  //   >
-  //     <PageMetadata title={title} description={tag.description} />
-  //     <SearchMetadata tag="blog_tags_posts" />
-
-  //     <BlogLayout sidebar={sidebar}>
-  //       {tag.unlisted && <Unlisted />}
-
-  //       <header>
-  //         <Heading as="h1">{title}</Heading>
-  //         {tag.description && <p>{tag.description}</p>}
-
-  //         {/* <Link
-  //           href={tag.allTagsPath}
-  //           className="text-primary hover:text-primary-dark focus-visible:text-primary-dark"
-  //         >
-  //           <span>
-  //             <Translate
-  //               id="theme.tags.tagsPageLink"
-  //               description="The label of the link targeting the tag list page"
-  //             >
-  //               View all tags
-  //             </Translate>
-  //           </span>
-
-  //           <Icon icon="LucideArrowRight" />
-  //         </Link> */}
-  //       </header>
-
-  //       <BlogPostItems items={items} />
-  //     </BlogLayout>
-  //   </HtmlClassNameProvider>
-  // );
+        <BlogPostItems items={items} tag={tag} />
+      </BlogLayout>
+    </HtmlClassNameProvider>
+  );
 }

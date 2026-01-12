@@ -69,3 +69,14 @@ module '@theme/SearchMetadata' {
 
   export default function SearchMetadata(props: Props): React.ReactNode;
 }
+
+module '@theme/BlogPostItems' {
+  import type { TagModule } from '@docusaurus/utils';
+
+  export interface Props {
+    items: readonly { content: PropBlogPostContent }[];
+    tag?: TagModule;
+  }
+
+  export default function BlogPostItems(props: Props): React.ReactNode;
+}
