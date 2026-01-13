@@ -20,10 +20,11 @@ import IndexFeatureEtlAnimation from './_animations/IndexFeatureEtlAnimation';
 import IndexFeatureHybridSearchAnimation from './_animations/IndexFeatureHybridSearchAnimation';
 import IndexFeatureUnifiedAgentAnimation from './_animations/IndexFeatureUnifiedAgentAnimation';
 import IndexSolutionEquityInvestmentResearchAnimation from './_animations/IndexSolutionEquityInvestmentResearchAnimation';
+import IndexSolutionLegalPrecedentAnalysisAnimation from './_animations/IndexSolutionLegalPrecedentAnalysisAnimation';
+import IndexSolutionManufacturingMaintenanceSupportAnimation from './_animations/IndexSolutionManufacturingMaintenanceSupportAnimation';
 
 import IndexTestimonials from './_components/IndexTestimonials';
 import IndexPricingPlans from './_components/IndexPricingPlans';
-import IndexSolutionLegalPrecedentAnalysisAnimation from './_animations/IndexSolutionLegalPrecedentAnalysisAnimation';
 
 export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
@@ -40,7 +41,9 @@ export default function Home(): ReactNode {
           className="
             relative flex justify-center items-center
             min-h-max
-            py-8 mobile:py-12 desktop:py-20
+            container max-desktop:px-page
+            pt-8 mobile:pt-12 desktop:pt-20
+            pb-16 mobile:pb-20 desktop:pb-28
             text-center text-lg desktop:text-2xl
           "
         >
@@ -49,7 +52,7 @@ export default function Home(): ReactNode {
             aria-hidden="true"
           />
 
-          <div className="container max-desktop:px-page">
+          <div>
             <h1 className="
               mx-auto text-center text-hero font-bold
               drop-shadow-[0_0_2em_rgb(var(--ragflow-theme-white))] text-pretty
@@ -87,17 +90,32 @@ export default function Home(): ReactNode {
               </button>
             </FxGlowEffect>
           </div>
+
+          <FxEdgeInnerLightEffect
+            position="bottom"
+            className="w-[150%] min-w-[960px] h-[600px] left-1/2 -translate-x-1/2 bottom-0 opacity-75 mix-blend-screen"
+          />
         </header>
 
         {/* Main content */}
-        <div className="relative overflow-hidden">
-          <main className="container max-desktop:px-page space-y-48">
+        <div
+          className="
+            relative -mt-8 pb-64
+            container max-desktop:px-page
+          "
+        >
+          <FxEdgeInnerLightEffect
+            position="top"
+            className="w-[150%] min-w-[960px] h-[600px] left-1/2 -translate-x-1/2 top-8 opacity-75 mix-blend-screen"
+          />
+
+          <main className="relative z-1 space-y-48">
             {/* Features */}
             <section
               className="max-desktop:space-y-6 desktop:grid desktop:grid-cols-2 desktop:gap-6"
               aria-label="Features"
             >
-              <article className={cn('flex flex-col', styles.card)}>
+              <article className={cn('flex flex-col bg-standard', styles.card)}>
                 <header>
                   <h2 id="feature-1">
                     <FxGradientText
@@ -122,7 +140,7 @@ export default function Home(): ReactNode {
                 />
               </article>
 
-              <article className={cn('flex flex-col', styles.card)}>
+              <article className={cn('flex flex-col bg-standard', styles.card)}>
                 <header>
                   <h2 id="feature-2">
                     <FxGradientText
@@ -148,12 +166,15 @@ export default function Home(): ReactNode {
                 />
               </article>
 
-              <article className={cn('desktop:col-span-2', styles.card)}>
+              <article className={cn('desktop:col-span-2 bg-standard', styles.card)}>
                 <header>
                   <h2 id="feature-3">
-                    <span className={styles.primaryGradientText}>
+                    <FxGradientText
+                      preset="primary"
+                      direction="right"
+                    >
                       Unified AI agent orchestration
-                    </span>
+                    </FxGradientText>
                   </h2>
                 </header>
 
@@ -263,6 +284,44 @@ export default function Home(): ReactNode {
                   />
                 </FxPolkaDotsBackgroundEffect>
               </article>
+
+              <article className="flex flex-col desktop:flex-row gap-8 desktop:gap-16">
+                <div>
+                  <header>
+                    <h2 id="solution-2">
+                      <FxGradientText
+                        preset="primary info"
+                        direction="right"
+                      >
+                        Manufacturing maintenance support
+                      </FxGradientText>
+                    </h2>
+                  </header>
+
+                  <p>
+                    This workflow provides structured maintenance guidance by accurately sourcing content from internal manuals, with external references used as supplementary support.
+                  </p>
+
+                  <p className="mb-0">
+                    When a task is entered, the workflow first validates input sufficiency—ensuring essential details are present—then extracts standard protocols from internal maintenance manuals,
+                    integrates supplementary external technical data, and produces clear execution instructions.
+                  </p>
+                </div>
+
+                <FxPolkaDotsBackgroundEffect
+                  className={cn(
+                    styles.card,
+                    'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
+                  )}
+                >
+                  <IndexSolutionManufacturingMaintenanceSupportAnimation
+                    key="animation"
+                    className="size-full"
+                    role="figure"
+                    aria-labelledby="solution-2"
+                  />
+                </FxPolkaDotsBackgroundEffect>
+              </article>
             </section>
 
             {/* Testimonials */}
@@ -297,7 +356,7 @@ export default function Home(): ReactNode {
 
             {/* Try demo */}
             <section
-              className="!my-64 text-center"
+              className="mt-64 text-center"
               aria-labelledby="start-building"
             >
               <header>
@@ -331,7 +390,7 @@ export default function Home(): ReactNode {
             </section>
           </main>
 
-          <FxEdgeInnerLightEffect className="w-full min-w-[960px] h-[800px] left-1/2 -translate-x-1/2 bottom-0" />
+          <FxEdgeInnerLightEffect className="w-[150%] min-w-[960px] h-[800px] left-1/2 -translate-x-1/2 bottom-0" />
         </div>
       </div>
     </Layout>
