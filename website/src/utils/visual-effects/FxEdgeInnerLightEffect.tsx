@@ -12,11 +12,13 @@ interface Props {
   className?: string;
   style?: React.CSSProperties;
   position?: keyof typeof POSITION_TRANSFORM;
+  color?: string;
 }
 
 function FxEdgeInnerLightEffect({
   className,
   style,
+  color = 'rgba(var(--ragflow-color-primary))',
   position = 'bottom',
 }: Props) {
   const id = useId();
@@ -59,7 +61,7 @@ function FxEdgeInnerLightEffect({
 
         <g
           transform={POSITION_TRANSFORM[position]}
-          fill="rgba(var(--ragflow-color-primary))"
+          fill={color}
         >
           <ellipse
             cx="0"

@@ -14,10 +14,12 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
   const markerDot = `${id}MarkerDot`;
   const markerArrow = `${id}MarkerArrow`;
   const markerDotColored = `${id}MarkerDotColored`;
+  const markerDotColoredSmall = `${id}MarkerDotColoredSmall`;
   const markerArrowColored = `${id}MarkerArrowColored`;
   const pathStartToFormulateAgent = `${id}PathStartToFormulateAgent`;
   const pathFormulateAgentToHTTP = `${id}PathFormulateAgentToHTTP`;
-  const pathHTTPToIterate = `${id}PathHTTPToIterate`;
+  const pathHTTPToIteration = `${id}PathHTTPToIteration`;
+  const pathIterationToReportAgent = `${id}PathIterationToReportAgent`;
   const pathFormulateAgentToRetrievalAgent = `${id}PathFormulateAgentToRetrievalAgent`;
   const pathRetrievalToRetrievalAgent = `${id}PathRetrievalToRetrievalAgent`;
   const pathRetrievalAgentToReportAgent = `${id}PathRetrievalAgentToReportAgent`;
@@ -63,10 +65,20 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
             />
           </marker>
 
-          <marker id={markerDotColored}
+          <marker id={markerDotColoredSmall}
             viewBox="-5 -5 10 10"
             markerUnits="userSpaceOnUse"
             markerWidth="4" markerHeight="4"
+            orient="auto-start-reverse"
+          >
+            <use href={`#${shapeDot}`}
+              fill={PRIMARY_COLOR} />
+          </marker>
+
+          <marker id={markerDotColored}
+            viewBox="-5 -5 10 10"
+            markerUnits="userSpaceOnUse"
+            markerWidth="8" markerHeight="8"
             orient="auto-start-reverse"
           >
             <use href={`#${shapeDot}`}
@@ -86,7 +98,7 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
           <marker id={markerArrowColored}
             viewBox="-5 -5 10 10"
             markerUnits="userSpaceOnUse"
-            markerWidth="4" markerHeight="4"
+            markerWidth="8" markerHeight="8"
             orient="auto-start-reverse"
           >
             <use href={`#${shapeArrow}`}
@@ -135,6 +147,7 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
               fill={BG_STANDARD}
               stroke={BORDER_COLOR}
               strokeWidth={BORDER_WIDTH}
+              filter={`url(#${filterGlowBlurBreathing})`}
             />
 
             <g className="text-disabled">
@@ -142,6 +155,7 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
                 icon="RagAiAgent"
                 size={32}
                 x="12"
+                filter={`url(#${filterRecolorPrimaryGradient})`}
               />
 
               <text
@@ -291,19 +305,18 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
               </g>
 
               {/* Iteration inner connections */}
-              <g>
+              <g
+                stroke={BORDER_COLOR}
+                strokeWidth="1"
+              >
                 <path
                   d="M47 41 c10.5 0 10.5 -10 21 -10"
-                  stroke={BORDER_COLOR}
-                  strokeWidth={BORDER_WIDTH}
-                  markerStart={`url(#${markerDotColored})`}
+                  markerStart={`url(#${markerDotColoredSmall})`}
                 />
 
                 <path
                   d="M104 31 c40 0 -76 50 -36 50"
-                  stroke={BORDER_COLOR}
-                  strokeWidth={BORDER_WIDTH}
-                  markerStart={`url(#${markerDotColored})`}
+                  markerStart={`url(#${markerDotColoredSmall})`}
                 />
               </g>
             </g>
@@ -325,6 +338,7 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
                 icon="RagAiAgent"
                 size={32}
                 x="12"
+                filter={`url(#${filterRecolorPrimaryGradient})`}
               />
 
               <text
@@ -382,6 +396,7 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
                 icon="RagAiAgent"
                 size={32}
                 x="12"
+                filter={`url(#${filterRecolorPrimaryGradient})`}
               />
 
               <text
@@ -424,60 +439,72 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
         </g>
 
         {/* Connectors */}
-        <g>
+        <g
+          stroke={BORDER_COLOR}
+          strokeWidth="1"
+        >
+          {/* Start -> Formulate agent */}
           <path
             id={pathStartToFormulateAgent}
             d="M-425 0 v0.01 v-0.01 h35"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
             markerStart={`url(#${markerDot})`}
           />
 
+          {/* Formulate agent -> HTTP */}
           <path
             id={pathFormulateAgentToHTTP}
             d="M-200 0 h20 a10 10 0 0 0 10 -10 v-80 a10 10 0 0 1 10 -10 h20"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
-            markerStart={`url(#${markerDot})`}
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
           />
 
+          {/* HTTP -> Iteration */}
           <path
-            id={pathHTTPToIterate}
+            id={pathHTTPToIteration}
             d="M-80 -100 h30"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
-            markerStart={`url(#${markerDot})`}
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
           />
 
+          {/* Iteration -> Report agent */}
+          <path
+            id={pathIterationToReportAgent}
+            d="M90 -100 h20 a10 10 0 0 1 10 10 v80 a10 10 0 0 0 10 10 h10"
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
+            markerEnd={`url(#${markerArrowColored})`}
+          />
+
+          {/* Formulate agent -> Retrieval agent */}
           <path
             id={pathFormulateAgentToRetrievalAgent}
             d="M-200 0 h20 a10 10 0 0 1 10 10 v80 a10 10 0 0 0 10 10 h20"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
-            markerStart={`url(#${markerDot})`}
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
           />
 
+          {/* Retrieval -> Retrieval agent */}
           <path
             id={pathRetrievalToRetrievalAgent}
             d="M-50 160 v-30"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
           />
 
+          {/* Retrieval agent -> Report agent */}
           <path
             id={pathRetrievalAgentToReportAgent}
             d="M35 100 h75 a10 10 0 0 0 10 -10 v-80 a10 10 0 0 1 10 -10 h10"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
-            markerStart={`url(#${markerDot})`}
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
+            markerEnd={`url(#${markerArrowColored})`}
           />
 
+          {/* Report agent -> Report */}
           <path
             id={pathReportAgentToReport}
             d="M300 0 h40 a10 10 0 0 0 10 -10 v-65"
-            stroke={BORDER_COLOR}
-            strokeWidth={BORDER_WIDTH}
-            markerStart={`url(#${markerDot})`}
+            stroke={PRIMARY_COLOR}
+            markerStart={`url(#${markerDotColored})`}
+            markerEnd={`url(#${markerArrowColored})`}
           />
         </g>
       </svg>

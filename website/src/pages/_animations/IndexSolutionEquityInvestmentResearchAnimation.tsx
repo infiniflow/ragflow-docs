@@ -352,8 +352,7 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
           <marker id={markerArrow}
             viewBox="-5 -5 10 10"
             markerUnits="userSpaceOnUse"
-            markerWidth="6" markerHeight="6"
-            refX="5"
+            markerWidth="4" markerHeight="4"
             orient="auto-start-reverse"
           >
             <use href={`#${shapeArrow}`}
@@ -364,8 +363,7 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
           <marker id={markerArrowColored}
             viewBox="-5 -5 10 10"
             markerUnits="userSpaceOnUse"
-            markerWidth="6" markerHeight="6"
-            refX="5"
+            markerWidth="8" markerHeight="8"
             orient="auto-start-reverse"
           >
             <use href={`#${shapeArrow}`}
