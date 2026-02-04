@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from '@site/src/utils/twUtils';
 
 import * as LucideIcons from 'lucide-react';
@@ -44,12 +44,15 @@ const NAMESPACES = [
  * <Icon icon="ArrowRight" /> // Simple Icons library doesn't have `ArrowRight`, fallback to Lucide
  * <Icon icon="Oops" /> // Renders nothing
  */
-export default function Icon({
-  children,
-  icon,
-  className,
-  ...restProps
-}: Props & React.SVGAttributes<SVGElement>) {
+export default forwardRef(function Icon(
+  {
+    children,
+    icon,
+    className,
+    ...restProps
+  }: Props & React.SVGAttributes<SVGElement>,
+  ref: React.ForwardedRef<SVGElement>
+) {
   if (!icon) {
     return children;
   }
@@ -70,6 +73,13 @@ export default function Icon({
     ?? [];
 
   return IconComponent
-    ? <IconComponent className={cn('icon stroke-[1.5]', libraryClassName, className)} {...restProps} />
+  ? (
+      <IconComponent
+        // @ts-ignore
+        ref={ref}
+        className={cn('icon stroke-[1.5]', libraryClassName, className)}
+        {...restProps}
+      />
+    )
     : children;
-}
+})

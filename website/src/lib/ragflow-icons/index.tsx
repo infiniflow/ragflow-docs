@@ -6,6 +6,16 @@
 import { cn } from "@site/src/utils/twUtils";
 import "./font/iconfont.css";
 
+export const RagAcademic = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Academic", className)}
+    aria-label="Academic"
+    {...restProps}
+  />);
+};
+
+export const Academic = RagAcademic;
+
 export const RagAgent = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-agent", className)}
@@ -146,6 +156,16 @@ export const RagChat = ({ className, ...restProps }: React.HTMLAttributes<HTMLEl
 
 export const Chat = RagChat;
 
+export const RagClause = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Clause", className)}
+    aria-label="Clause"
+    {...restProps}
+  />);
+};
+
+export const Clause = RagClause;
+
 export const RagCodeSet = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-code-set", className)}
@@ -205,6 +225,16 @@ export const RagContentRewrite = ({ className, ...restProps }: React.HTMLAttribu
 };
 
 export const ContentRewrite = RagContentRewrite;
+
+export const RagContract = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-contract", className)}
+    aria-label="contract"
+    {...restProps}
+  />);
+};
+
+export const Contract = RagContract;
 
 export const RagCSV = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
@@ -305,6 +335,16 @@ export const RagEqual = ({ className, ...restProps }: React.HTMLAttributes<HTMLE
 };
 
 export const Equal = RagEqual;
+
+export const RagEquipment = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Equipment", className)}
+    aria-label="Equipment"
+    {...restProps}
+  />);
+};
+
+export const Equipment = RagEquipment;
 
 export const RagExcel = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
@@ -446,6 +486,16 @@ export const RagGroq = ({ className, ...restProps }: React.HTMLAttributes<HTMLEl
 
 export const Groq = RagGroq;
 
+export const RagHomework = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-homework", className)}
+    aria-label="homework"
+    {...restProps}
+  />);
+};
+
+export const Homework = RagHomework;
+
 export const RagHTTP = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-HTTP", className)}
@@ -475,6 +525,16 @@ export const RagHuggingface = ({ className, ...restProps }: React.HTMLAttributes
 };
 
 export const Huggingface = RagHuggingface;
+
+export const RagIncoming = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Incoming", className)}
+    aria-label="Incoming"
+    {...restProps}
+  />);
+};
+
+export const Incoming = RagIncoming;
 
 export const RagJina = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
@@ -556,6 +616,16 @@ export const RagLessOrEqual = ({ className, ...restProps }: React.HTMLAttributes
 
 export const LessOrEqual = RagLessOrEqual;
 
+export const RagLesson = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Lesson", className)}
+    aria-label="Lesson"
+    {...restProps}
+  />);
+};
+
+export const Lesson = RagLesson;
+
 export const RagLinkedin = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-linkedin", className)}
@@ -595,6 +665,16 @@ export const RagListStart = ({ className, ...restProps }: React.HTMLAttributes<H
 };
 
 export const ListStart = RagListStart;
+
+export const RagLitigation = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-lujingshuli", className)}
+    aria-label="Litigation"
+    {...restProps}
+  />);
+};
+
+export const Litigation = RagLitigation;
 
 export const RagLmstudio = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
@@ -655,6 +735,16 @@ export const RagMd = ({ className, ...restProps }: React.HTMLAttributes<HTMLElem
 };
 
 export const Md = RagMd;
+
+export const RagMemory = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-memory", className)}
+    aria-label="memory"
+    {...restProps}
+  />);
+};
+
+export const Memory = RagMemory;
 
 export const RagMiniMax = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
@@ -846,6 +936,16 @@ export const RagPerfxcloud1 = ({ className, ...restProps }: React.HTMLAttributes
 
 export const Perfxcloud1 = RagPerfxcloud1;
 
+export const RagPersonalized = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Personalized", className)}
+    aria-label="Personalized"
+    {...restProps}
+  />);
+};
+
+export const Personalized = RagPersonalized;
+
 export const RagPipeline = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-Pipeline", className)}
@@ -906,6 +1006,16 @@ export const RagPreviewFile = ({ className, ...restProps }: React.HTMLAttributes
 
 export const PreviewFile = RagPreviewFile;
 
+export const RagProcess = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-process", className)}
+    aria-label="process"
+    {...restProps}
+  />);
+};
+
+export const Process = RagProcess;
+
 export const RagPython = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-python", className)}
@@ -915,6 +1025,26 @@ export const RagPython = ({ className, ...restProps }: React.HTMLAttributes<HTML
 };
 
 export const Python = RagPython;
+
+export const RagQA = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-QA", className)}
+    aria-label="QA"
+    {...restProps}
+  />);
+};
+
+export const QA = RagQA;
+
+export const RagQuality = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Quality", className)}
+    aria-label="Quality"
+    {...restProps}
+  />);
+};
+
+export const Quality = RagQuality;
 
 export const RagQuestionClassification = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i

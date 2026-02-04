@@ -1,9 +1,16 @@
 import { useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
 import useReducedMotion from '@site/src/utils/useReducedMotion';
 
 import '@site/src/lib/polyfill';
+
+const queryClient = new QueryClient();
 
 export default function Root({ children }) {
   const pathname = useLocation();
@@ -43,5 +50,9 @@ export default function Root({ children }) {
     [pathname, shouldReduceMotion],
   );
 
-  return children;
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  );
 }

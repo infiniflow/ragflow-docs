@@ -3,7 +3,7 @@ import { useId, useLayoutEffect } from "react";
 import { cn } from "@site/src/utils/twUtils";
 import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
 import SvgForeignIcon from "@site/src/utils/visual-effects/SvgForeignIcon";
-import SvgRecolorGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 
 import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
 
@@ -390,15 +390,15 @@ export default function IndexSolutionEquityInvestmentResearchAnimation({ classNa
             )}
           />
 
-          <SvgRecolorGradientFilter id={filterRecolorPrimaryGradient} to="bottom">
+          <SvgRecolorLinearGradientFilter id={filterRecolorPrimaryGradient} to="bottom">
             <stop offset="0" stopColor="rgb(var(--ragflow-color-primary))" />
             <stop offset="1" stopColor="#01c48d" />
-          </SvgRecolorGradientFilter>
+          </SvgRecolorLinearGradientFilter>
 
-          <SvgRecolorGradientFilter id={filterRecolorGreyGradient} to="bottom">
+          <SvgRecolorLinearGradientFilter id={filterRecolorGreyGradient} to="bottom">
             <stop offset="0" stopColor="white" />
             <stop offset="1" stopColor="#666" />
-          </SvgRecolorGradientFilter>
+          </SvgRecolorLinearGradientFilter>
 
           <SvgBreathingGlowFilter id={filterGlowBlurBreathing} to="bottom-right" />
         </defs>

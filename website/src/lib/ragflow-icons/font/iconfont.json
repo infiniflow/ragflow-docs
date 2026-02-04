@@ -6,6 +6,104 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "46871747",
+      "name": "Incoming",
+      "font_class": "Incoming",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "46871746",
+      "name": "Quality",
+      "font_class": "Quality",
+      "unicode": "e72f",
+      "unicode_decimal": 59183
+    },
+    {
+      "icon_id": "46871745",
+      "name": "Equipment",
+      "font_class": "Equipment",
+      "unicode": "e730",
+      "unicode_decimal": 59184
+    },
+    {
+      "icon_id": "46871744",
+      "name": "process",
+      "font_class": "process",
+      "unicode": "e731",
+      "unicode_decimal": 59185
+    },
+    {
+      "icon_id": "46871759",
+      "name": "memory",
+      "font_class": "memory",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "46871676",
+      "name": "Clause",
+      "font_class": "Clause",
+      "unicode": "e725",
+      "unicode_decimal": 59173
+    },
+    {
+      "icon_id": "46871675",
+      "name": "QA",
+      "font_class": "QA",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "46871674",
+      "name": "contract",
+      "font_class": "contract",
+      "unicode": "e728",
+      "unicode_decimal": 59176
+    },
+    {
+      "icon_id": "46871643",
+      "name": "homework",
+      "font_class": "homework",
+      "unicode": "e729",
+      "unicode_decimal": 59177
+    },
+    {
+      "icon_id": "46871642",
+      "name": "Personalized",
+      "font_class": "Personalized",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "46871641",
+      "name": "Lesson",
+      "font_class": "Lesson",
+      "unicode": "e72b",
+      "unicode_decimal": 59179
+    },
+    {
+      "icon_id": "46871640",
+      "name": "Academic",
+      "font_class": "Academic",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    },
+    {
+      "icon_id": "1802504",
+      "name": "Litigation",
+      "font_class": "lujingshuli",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "29965993",
+      "name": "飞书",
+      "font_class": "feishu",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
       "icon_id": "4937000",
       "name": "github-fill",
       "font_class": "github-fill",
