@@ -34,8 +34,8 @@ type ContactUsFormValues = {
 };
 
 
-const MESSAGE_ENDPOINT = 'http://mail.ragflow.io:9378/v1/messages';
-  const DEFAULT_FORM_VALUES: ContactUsFormValues = {
+const MESSAGE_ENDPOINT = `${window.location.protocol}//mail.ragflow.io:9378/v1/messages`;
+const DEFAULT_FORM_VALUES: ContactUsFormValues = {
   first_name: '',
   last_name: '',
   company: '',

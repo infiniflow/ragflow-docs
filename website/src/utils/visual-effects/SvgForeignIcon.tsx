@@ -39,8 +39,6 @@ const SvgForeignIcon = forwardRef(function SvgForeignIcon({
     const icon = iconRef.current;
 
     if (icon) {
-      console.log(icon);
-
       // @ts-ignore
       const {
         width: iw,
