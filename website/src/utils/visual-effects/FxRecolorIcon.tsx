@@ -37,8 +37,6 @@ export default function FxRecolorIcon({
     const icon = iconRef.current;
 
     if (icon) {
-      console.log(icon);
-
       // @ts-ignore
       const {
         width: iw,
