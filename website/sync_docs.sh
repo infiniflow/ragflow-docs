@@ -18,10 +18,7 @@ fi
 
 cd $RAGFLOW_WEBSITE/website
 
-# Copy the release notes to the website source
 cp -f ./docs/release_notes.md ./src/pages/_changelog.mdx
-
-# Copy the "basics" directory to the website root
-cp -rf ./docs/basics ./
+rsync -avh --delete ./docs/basics/ ./basics/
 
 sh ./sync_version.sh main
