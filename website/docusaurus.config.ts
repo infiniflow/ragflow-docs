@@ -319,6 +319,10 @@ const config: Config = {
     // Metadata for Algolia search domain verification
     metadata: [
       {
+        name: 'google-site-verification',
+        content: 'vV1cl_RlTBIzTmiZLc022i_FJpoURZBVvJIdg4GDLGw',
+      },
+      {
         name: 'algolia-site-verification',
         content: '02ADC03A2BCB8D0C',
       },
