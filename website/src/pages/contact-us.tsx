@@ -7,14 +7,13 @@ import {
 } from 'react';
 
 import { useMutation } from '@tanstack/react-query';
-import { ReactFormExtendedApi, useForm } from '@tanstack/react-form';
+import { useForm } from '@tanstack/react-form';
 
 import {
   LucideAlertCircle,
   LucideCheck,
   LucideLoaderCircle,
 } from 'lucide-react';
-
 
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -34,7 +33,7 @@ type ContactUsFormValues = {
 };
 
 
-const MESSAGE_ENDPOINT = `${window.location.protocol}//mail.ragflow.io:9378/v1/messages`;
+const MESSAGE_ENDPOINT = 'https://mail.ragflow.io:9378/v1/messages';
 const DEFAULT_FORM_VALUES: ContactUsFormValues = {
   first_name: '',
   last_name: '',
