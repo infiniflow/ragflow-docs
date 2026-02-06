@@ -2,7 +2,7 @@ import { cn } from "@site/src/utils/twUtils";
 
 import { useId } from "react";
 import { BG_STANDARD, BG_SURFACE, BORDER_COLOR, BORDER_WIDTH, DISABLED_COLOR, PRIMARY_COLOR } from "./constants";
-import SvgRecolorGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
 import SvgForeignIcon from "@site/src/utils/visual-effects/SvgForeignIcon";
 
@@ -105,15 +105,15 @@ export default function IndexSolutionLegalPrecedentAnalysisAnimation({ className
               fill={PRIMARY_COLOR} />
           </marker>
 
-          <SvgRecolorGradientFilter id={filterRecolorPrimaryGradient} to="bottom">
+          <SvgRecolorLinearGradientFilter id={filterRecolorPrimaryGradient} to="bottom">
             <stop offset="0" stopColor={PRIMARY_COLOR} />
             <stop offset="1" stopColor="#01c48d" />
-          </SvgRecolorGradientFilter>
+          </SvgRecolorLinearGradientFilter>
 
-          <SvgRecolorGradientFilter id={filterRecolorGreyGradient} to="bottom">
+          <SvgRecolorLinearGradientFilter id={filterRecolorGreyGradient} to="bottom">
             <stop offset="0" stopColor="white" />
             <stop offset="1" stopColor="#666" />
-          </SvgRecolorGradientFilter>
+          </SvgRecolorLinearGradientFilter>
 
           <SvgBreathingGlowFilter id={filterGlowBlurBreathing} to="bottom-right" />
         </defs>

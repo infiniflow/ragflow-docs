@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import { cn } from "@site/src/utils/twUtils";
 import { Children, isValidElement } from "react";
 
@@ -10,7 +11,8 @@ type Props<As extends React.ElementType> = PropsWithAs<{
 }, As>
 
 const INTERACTIVE_ELEMENTS = [
-  'button', 'a', 'input', 'textarea', 'select'
+  'button', 'a', 'input', 'textarea', 'select',
+  Link,
 ];
 
 export default function FxGlowEffect<As extends React.ElementType = 'span'>(props: Props<As>) {
@@ -26,9 +28,11 @@ export default function FxGlowEffect<As extends React.ElementType = 'span'>(prop
   } = props;
 
   const interactive: boolean = _interactive
-    ?? Children
-      .toArray(children)
-      .reduce((acc, child) => acc || (isValidElement(child) && INTERACTIVE_ELEMENTS.includes(child.type as string)), false);
+    ?? (INTERACTIVE_ELEMENTS.includes(AsComponent as any)
+      || Children
+        .toArray(children)
+        .reduce((acc, child) => acc || (isValidElement(child) && INTERACTIVE_ELEMENTS.includes(child.type as string)), false)
+    );
 
   const sizeCalculable = typeof size === 'number' || !isNaN(size as any);
   const sanitizedSize = sizeCalculable

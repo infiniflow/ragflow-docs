@@ -3,20 +3,21 @@ import React, { Children, isValidElement } from "react";
 
 interface Props extends
 Omit<React.SVGAttributes<SVGFilterElement>, 'from' | 'to'>,
-Omit<UseLinearGradientProps, 'stops'> {
+Partial<UseLinearGradientProps> {
   children?: React.ReactElement<React.JSX.IntrinsicElements['stop']>[];
 }
 
-export default function SvgRecolorGradientFilter({
+export default function SvgRecolorLinearGradientFilter({
   children,
   from,
   to,
+  stops: _stops,
   ...restProps
 }: Props) {
-  const stops = Children
+  const stops = _stops ?? Children
     .toArray(children)
     .filter((child) => isValidElement(child) && child.type === 'stop')
-    .map((child: React.ReactElement<React.JSX.IntrinsicElements['stop']>) => [Number(child.props.offset), child.props.stopColor] as [number, string]);
+    .map((child: React.ReactElement<React.JSX.IntrinsicElements['stop']>) => [Number(child.props.offset), child.props.stopColor]);
 
   const dataGradient = useLinearGradient({
     stops,

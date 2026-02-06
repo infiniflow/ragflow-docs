@@ -144,12 +144,6 @@ const config: Config = {
   },
 
   plugins: [
-    // Vercel Analytics
-    ['vercel-analytics', {
-      debug: true,
-      mode: 'auto',
-    }],
-
     // Supports Sass
     'docusaurus-plugin-sass',
 
@@ -386,6 +380,33 @@ const config: Config = {
         },
         {
           type: 'dropdown',
+          label: 'Solutions',
+          position: 'left',
+          items: [
+            // {
+            //   label: 'Advanced stock research',
+            //   icon: 'LucideChartNoAxesCombined',
+            //   to: '/solutions/advanced-stock-research',
+            // },
+            {
+              label: 'Legal & compliance',
+              icon: 'LucideScale',
+              to: '/solutions/legal-and-compliance',
+            },
+            {
+              label: 'Manufacturing',
+              icon: 'LucideFactory',
+              to: '/solutions/manufacturing',
+            },
+            {
+              label: 'Education',
+              icon: 'LucideGraduationCap',
+              to: '/solutions/education',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
           label: 'Resources',
           position: 'left',
           items: [
@@ -434,6 +455,11 @@ const config: Config = {
         {
           type: 'localeDropdown',
           position: 'right',
+        },
+        {
+          position: 'right',
+          label: 'Contact us',
+          to: '/contact-us',
         },
       ],
     },

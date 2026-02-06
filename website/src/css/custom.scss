@@ -150,6 +150,9 @@
     height: var(--ragflow-global-border-width);
   }
 
+  :where(foreignObject svg) {
+    @apply block;
+  }
 
   // ----- Styles for specific classes
 

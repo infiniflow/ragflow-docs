@@ -78,16 +78,13 @@ export default function Home(): ReactNode {
               <br className="max-desktop:hidden" aria-hidden /> delivering reliable context and an integrated agent platform, built for enterprise.
             </p>
 
-            <FxGlowEffect
-              className="mobile:mt-6 desktop:mt-12"
-              as={Link}
-              to="https://demo.ragflow.io/"
-            >
-              <button
-                className={cn(styles.btn, 'px-9 py-3 rounded-lg')}
+            <FxGlowEffect className="mobile:mt-6 desktop:mt-12">
+              <Link
+                to="https://demo.ragflow.io/"
+                className={cn(styles.btn, 'block px-9 py-3 rounded-lg')}
               >
                 Try demo
-              </button>
+              </Link>
             </FxGlowEffect>
           </div>
 
@@ -135,7 +132,7 @@ export default function Home(): ReactNode {
                 <IndexFeatureEtlAnimation
                   key="animation"
                   className="w-full max-h-[280px] aspect-video"
-                  role="figure"
+                  role="img"
                   aria-labelledby="feature-1"
                 />
               </article>
@@ -147,7 +144,7 @@ export default function Home(): ReactNode {
                       preset="primary"
                       direction="right"
                     >
-                      High-precision hybrid search
+                      High-Precision hybrid search
                     </FxGradientText>
                   </h2>
 
@@ -161,7 +158,7 @@ export default function Home(): ReactNode {
                 <IndexFeatureHybridSearchAnimation
                   key="animation"
                   className=" w-full max-h-[280px] aspect-video"
-                  role="figure"
+                  role="img"
                   aria-labelledby="feature-2"
                 />
               </article>
@@ -185,7 +182,7 @@ export default function Home(): ReactNode {
                 <IndexFeatureUnifiedAgentAnimation
                   key="animation"
                   className="w-full max-h-[280px] aspect-video"
-                  role="figure"
+                  role="img"
                   aria-labelledby="feature-3"
                 />
               </article>
@@ -241,7 +238,7 @@ export default function Home(): ReactNode {
                   <IndexSolutionEquityInvestmentResearchAnimation
                     key="animation"
                     className="size-full"
-                    role="figure"
+                    role="img"
                     aria-labelledby="solution-1"
                   />
                 </FxPolkaDotsBackgroundEffect>
@@ -279,7 +276,7 @@ export default function Home(): ReactNode {
                   <IndexSolutionLegalPrecedentAnalysisAnimation
                     key="animation"
                     className="size-full"
-                    role="figure"
+                    role="img"
                     aria-labelledby="solution-2"
                   />
                 </FxPolkaDotsBackgroundEffect>
@@ -317,7 +314,7 @@ export default function Home(): ReactNode {
                   <IndexSolutionManufacturingMaintenanceSupportAnimation
                     key="animation"
                     className="size-full"
-                    role="figure"
+                    role="img"
                     aria-labelledby="solution-2"
                   />
                 </FxPolkaDotsBackgroundEffect>
@@ -371,17 +368,17 @@ export default function Home(): ReactNode {
               </header>
 
               <div className="mt-16 flex justify-center items-center gap-8">
-                <FxGlowEffect
-                  as={Link}
-                  to="https://demo.ragflow.io/"
-                >
-                  <button className={styles.btn}>
+                <FxGlowEffect>
+                  <Link
+                    className={cn(styles.btn, 'block')}
+                    to="https://demo.ragflow.io/"
+                  >
                     Try demo
-                  </button>
+                  </Link>
                 </FxGlowEffect>
 
                 <Link
-                  className={cn(styles.btn, 'bg-standard')}
+                  className="border-0 bg-standard"
                   href="https://github.com/infiniflow/ragflow"
                 >
                   <span>Github</span>

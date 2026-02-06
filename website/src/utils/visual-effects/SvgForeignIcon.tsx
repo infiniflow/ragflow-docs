@@ -1,5 +1,5 @@
 import { partition } from "lodash-es";
-import { Children, forwardRef, isValidElement } from "react";
+import { Children, cloneElement, forwardRef, isValidElement, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import Icon, { type IconName } from "@site/src/components/Icon";
 
@@ -32,6 +32,25 @@ const SvgForeignIcon = forwardRef(function SvgForeignIcon({
     (child) => isValidElement(child) && ANIMATE_ELEMENTS.includes(child.type as string),
   );
 
+  const iconRef = useRef<SVGGraphicsElement | HTMLDivElement>(null);
+  const [computedIconSize, setComputedIconSize] = useState<[number, number]>([0, 0]);
+
+  useEffect(() => {
+    const icon = iconRef.current;
+
+    if (icon) {
+      console.log(icon);
+
+      // @ts-ignore
+      const {
+        width: iw,
+        height: ih,
+      } = icon.getBoundingClientRect();
+
+      setComputedIconSize([iw, ih]);
+    }
+  }, [width, height, size]);
+
   return (
     <g
       id={id}
@@ -41,13 +60,33 @@ const SvgForeignIcon = forwardRef(function SvgForeignIcon({
       <foreignObject
         x={x ?? (-size / 2)}
         y={y ?? (-size / 2)}
-        width={width ?? size}
-        height={height ?? size}
+        width={width ?? size ?? computedIconSize[0]}
+        height={height ?? size ?? computedIconSize[1]}
       >
         {children.length
-          ? children
+          ? (children.length === 1 && isValidElement<React.ReactElement>(children[0])
+            ? cloneElement(
+              children[0],
+              {
+                // @ts-ignore
+                ref: iconRef as React.RefObject<SVGElement>,
+                ...children[0].props ?? {},
+              },
+              // @ts-ignore
+              children[0].props?.children,
+            )
+            : (
+              <div
+                ref={iconRef as React.RefObject<HTMLDivElement>}
+                className="size-fit"
+              >
+                {children}
+              </div>
+            )
+          )
           : (
             <Icon
+              ref={iconRef as React.RefObject<SVGElement>}
               id={iconId}
               className={iconClassName}
               icon={icon}

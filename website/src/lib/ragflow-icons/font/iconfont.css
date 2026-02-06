@@ -1,16 +1,72 @@
 @font-face {
-  font-family: "Ragflow Icons"; /* Project id 4909832 */
-  src: url('iconfont.woff2?t=1765452662280') format('woff2'),
-       url('iconfont.woff?t=1765452662280') format('woff'),
-       url('iconfont.ttf?t=1765452662280') format('truetype'),
-       url('iconfont.svg?t=1765452662280#iconfont') format('svg');
+  font-family: "Ragflow Icon"; /* Project id 4909832 */
+  src: url('iconfont.woff2?t=1770378186440') format('woff2'),
+       url('iconfont.woff?t=1770378186440') format('woff'),
+       url('iconfont.ttf?t=1770378186440') format('truetype'),
+       url('iconfont.svg?t=1770378186440#iconfont') format('svg');
 }
 
 .ragflow-icon {
-  font-family: "Ragflow Icons" !important;
+  font-family: "Ragflow Icon" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Incoming:before {
+  content: "\e72e";
+}
+
+.icon-Quality:before {
+  content: "\e72f";
+}
+
+.icon-Equipment:before {
+  content: "\e730";
+}
+
+.icon-process:before {
+  content: "\e731";
+}
+
+.icon-memory:before {
+  content: "\e72d";
+}
+
+.icon-Clause:before {
+  content: "\e725";
+}
+
+.icon-QA:before {
+  content: "\e727";
+}
+
+.icon-contract:before {
+  content: "\e728";
+}
+
+.icon-homework:before {
+  content: "\e729";
+}
+
+.icon-Personalized:before {
+  content: "\e72a";
+}
+
+.icon-Lesson:before {
+  content: "\e72b";
+}
+
+.icon-Academic:before {
+  content: "\e72c";
+}
+
+.icon-lujingshuli:before {
+  content: "\e61e";
+}
+
+.icon-feishu:before {
+  content: "\e623";
 }
 
 .icon-github-fill:before {

@@ -17,14 +17,6 @@
     }
   }
 
-  :where(.btn) {
-    @apply border-0 px-4 py-2 rounded-md;
-    @apply text-standard bg-standard;
-
-    line-height: var(--ragflow-line-height-base);
-    font-size: inherit;
-  }
-
   :where(
     .card,
     .secondaryCard
@@ -41,5 +33,47 @@
   :where(.bgPolka) {
     background-image: radial-gradient(var(--ragflow-border-component) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  :where(
+    .btn,
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"],
+    input[type="image"]
+  ) {
+    @apply border-0 px-4 py-2 rounded-md;
+    @apply text-standard bg-standard transition-all;
+    @apply border-0.5 border-solid border-component;
+    @apply outline-offset-2;
+
+    line-height: var(--ragflow-line-height-base);
+    font-size: inherit;
+  }
+
+  :where(input, textarea) {
+    @apply w-full bg-transparent border-0.5 border-solid border-component;
+    @apply rounded-md px-3 py-2 outline-0 transition-all;
+    @apply focus:ring-2 focus:ring-primary/50;
+    @apply focus:ring-offset-1 focus:ring-offset-primary;
+  }
+
+  :where(textarea) {
+    @apply resize-none;
+  }
+
+  :where(form label) {
+    @apply text-sm text-secondary;
+
+    > :where(:first-child) {
+      @apply mb-2;
+    }
+
+    &:has(:required) > :first-child::before {
+      @apply text-red-500;
+
+      content: "*";
+    }
   }
 }

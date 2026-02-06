@@ -11,6 +11,14 @@ module '*.png' {
   export default string;
 }
 
+module '*.jpg' {
+  export default string;
+}
+
+module '*.webp' {
+  export default string;
+}
+
 module '*.md' {
   import { ComponentType } from 'react';
   import { MDXProps } from 'mdx/types';

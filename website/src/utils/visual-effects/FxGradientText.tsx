@@ -17,15 +17,7 @@ const DIRECTIONS: Direction[] = [
   'bottom right',
 ];
 
-type Props = React.HTMLAttributes<HTMLSpanElement> & {
-  from?: string;
-  via?: string;
-  to?: string;
-  direction?: Direction | number;
-  preset?: 'primary' | 'text' | 'primary info',
-}
-
-const PRESET_GRADIENT_MAP: Record<Props['preset'], [string?, string?, string?]> = {
+const PRESET_GRADIENT_MAP = {
   'primary': [
     'rgb(var(--ragflow-color-primary))',
     null,
@@ -41,31 +33,64 @@ const PRESET_GRADIENT_MAP: Record<Props['preset'], [string?, string?, string?]> 
     null,
     '#9dbab8',
   ],
-};
+} as const;
 
-function FxGradientText({
-  children,
-  from: _from,
-  via: _via,
-  to: _to,
-  direction: _direction = 'bottom',
-  preset = 'primary',
-  style,
-  ...restProps
-}: React.PropsWithChildren<Props>) {
+type Props = React.HTMLAttributes<HTMLSpanElement> & {
+  /** Starting color */
+  from?: string;
+
+  /** Via color  */
+  via?: string;
+
+  /** Ending color */
+  to?: string;
+
+  /**
+   * Direction of the gradient, can be a string represents CSS `<side-or-corner>` value or a number for degrees
+   *
+   * @default 'bottom'
+   */
+  direction?: Direction | number;
+
+  /**
+   * Use a predefined gradient, could be partially overridden by `from`, `via`, `to` props
+   *
+   * @default 'primary'
+   */
+  preset?: keyof typeof PRESET_GRADIENT_MAP,
+}
+
+function FxGradientText(props: React.PropsWithChildren<Props>) {
+  const {
+    children,
+    from: _from,
+    via: _via,
+    to: _to,
+    direction: _direction = 'bottom',
+    preset = 'primary',
+    style,
+    ...restProps
+  } = props;
+
   const direction = typeof _direction === 'number'
     ? `${_direction}deg`
-    : DIRECTIONS.includes(_direction)
+    : DIRECTIONS.includes(_direction as Direction)
       ? `to ${_direction}`
       : _direction;
 
   const [
-    from = _from,
-    via = _via,
-    to = _to,
-  ] = PRESET_GRADIENT_MAP[preset] ?? []
+    from,
+    via,
+    to,
+  ] = PRESET_GRADIENT_MAP[preset] ?? [];
 
-  const stops = [from, via, to, via, from].filter(Boolean);
+  const stops = [
+    _from ?? from,
+    _via ?? via,
+    _to ?? to,
+    _via ?? via,
+    _to ?? to,
+  ].filter(Boolean);
 
   return (
     <span
