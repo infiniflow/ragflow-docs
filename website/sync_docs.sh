@@ -17,9 +17,11 @@ then
 fi
 
 cd $RAGFLOW_WEBSITE/website
-# Move the release notes to the website source
-mv -f ./docs/release_notes.md ./src/pages/_changelog.mdx
-# Move the "basics" directory to the website root
-mv -f ./docs/basics ./
+
+# Copy the release notes to the website source
+cp -f ./docs/release_notes.md ./src/pages/_changelog.mdx
+
+# Copy the "basics" directory to the website root
+cp -rf ./docs/basics ./
 
 sh ./sync_version.sh main
