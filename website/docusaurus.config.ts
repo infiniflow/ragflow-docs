@@ -448,14 +448,14 @@ const config: Config = {
         },
 
         // Right
-        {
-          type: "custom-iconLink",
-          icon: "SiDiscord",
-          href: "https://github.com/infiniflow/ragflow",
-          ariaLabel: "Github repository",
-          position: "right",
-          mobilePosition: "bottom",
-        },
+        // {
+        //   type: "custom-iconLink",
+        //   icon: "SiDiscord",
+        //   href: "https://github.com/infiniflow/ragflow",
+        //   ariaLabel: "Github repository",
+        //   position: "right",
+        //   mobilePosition: "bottom",
+        // },
         {
           type: "custom-githubStars",
           repo: "infiniflow/ragflow",
