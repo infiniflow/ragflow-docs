@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Ragflow Icon"; /* Project id 4909832 */
-  src: url('iconfont.woff2?t=1770378186440') format('woff2'),
-       url('iconfont.woff?t=1770378186440') format('woff'),
-       url('iconfont.ttf?t=1770378186440') format('truetype'),
-       url('iconfont.svg?t=1770378186440#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1770789439154') format('woff2'),
+       url('iconfont.woff?t=1770789439154') format('woff'),
+       url('iconfont.ttf?t=1770789439154') format('truetype'),
+       url('iconfont.svg?t=1770789439154#iconfont') format('svg');
 }
 
 .ragflow-icon {
@@ -11,6 +11,22 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Research:before {
+  content: "\e734";
+}
+
+.icon-Compliance:before {
+  content: "\e726";
+}
+
+.icon-post:before {
+  content: "\e732";
+}
+
+.icon-Sales:before {
+  content: "\e733";
 }
 
 .icon-Incoming:before {
