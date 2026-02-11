@@ -196,6 +196,16 @@ export const RagCometapi = ({ className, ...restProps }: React.HTMLAttributes<HT
 
 export const Cometapi = RagCometapi;
 
+export const RagCompliance = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Compliance", className)}
+    aria-label="Compliance"
+    {...restProps}
+  />);
+};
+
+export const Compliance = RagCompliance;
+
 export const RagCondition = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-condition", className)}
@@ -976,6 +986,16 @@ export const RagPng = ({ className, ...restProps }: React.HTMLAttributes<HTMLEle
 
 export const Png = RagPng;
 
+export const RagPost = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-post", className)}
+    aria-label="post"
+    {...restProps}
+  />);
+};
+
+export const Post = RagPost;
+
 export const RagPpio = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-ppio", className)}
@@ -1096,6 +1116,16 @@ export const RagReply = ({ className, ...restProps }: React.HTMLAttributes<HTMLE
 
 export const Reply = RagReply;
 
+export const RagResearch = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Research", className)}
+    aria-label="Research"
+    {...restProps}
+  />);
+};
+
+export const Research = RagResearch;
+
 export const RagReset = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i
     className={cn("icon-reset", className)}
@@ -1135,6 +1165,16 @@ export const RagRuncode0 = ({ className, ...restProps }: React.HTMLAttributes<HT
 };
 
 export const Runcode0 = RagRuncode0;
+
+export const RagSales = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
+  return (<i
+    className={cn("icon-Sales", className)}
+    aria-label="Sales"
+    {...restProps}
+  />);
+};
+
+export const Sales = RagSales;
 
 export const RagSearch = ({ className, ...restProps }: React.HTMLAttributes<HTMLElement>) => {
   return (<i

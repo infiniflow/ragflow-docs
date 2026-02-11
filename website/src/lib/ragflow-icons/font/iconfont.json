@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "46903722",
+      "name": "Research",
+      "font_class": "Research",
+      "unicode": "e734",
+      "unicode_decimal": 59188
+    },
+    {
+      "icon_id": "46903725",
+      "name": "Compliance",
+      "font_class": "Compliance",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "46903724",
+      "name": "post",
+      "font_class": "post",
+      "unicode": "e732",
+      "unicode_decimal": 59186
+    },
+    {
+      "icon_id": "46903723",
+      "name": "Sales",
+      "font_class": "Sales",
+      "unicode": "e733",
+      "unicode_decimal": 59187
+    },
+    {
       "icon_id": "46871747",
       "name": "Incoming",
       "font_class": "Incoming",
