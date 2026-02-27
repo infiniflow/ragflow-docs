@@ -247,7 +247,7 @@ const config: Config = {
           exclude: [
             ...GlobExcludeDefault,
             "basics/**/*.{md,mdx}",
-            "release_notes.{md,mdx}",
+            // "release_notes.{md,mdx}",
           ],
         },
 
