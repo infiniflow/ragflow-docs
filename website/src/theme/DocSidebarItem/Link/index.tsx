@@ -33,8 +33,8 @@ export default function DocSidebarItemLink({
         className={cn(
           'flex items-center flex-1 leading-tight',
           level === 1 ? 'py-2' : 'py-1',
-          level > 1 && 'border-0 border-l-1 border-solid border-transparent hover:border-theme-dark focus:border-theme-dark',
-          isActive && 'text-standard border-theme-dark',
+          level > 1 && 'border-0 border-l-1 border-solid border-transparent hover:border-theme-black focus:border-theme-black',
+          isActive && 'text-standard border-theme-black',
         )}
         style={level > 1 ? { paddingLeft: `calc(var(--ragflow-sidebar-nesting-padding) * ${level - 1})`} : undefined}
         autoAddBaseUrl={autoAddBaseUrl}

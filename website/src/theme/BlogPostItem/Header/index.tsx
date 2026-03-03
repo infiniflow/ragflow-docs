@@ -13,11 +13,8 @@ export default function BlogPostItemHeader(): ReactNode {
   return (
     <header className="mb-12">
       {isBlogPostPage && (
-        <nav className="mb-4">
-          <Link
-            to="/blog"
-            className="text-primary hover:text-primary-dark focus-visible:text-primary-dark"
-          >
+        <nav className="mb-4 text-base">
+          <Link to="/blog">
             <Icon icon="LucideArrowLeft" />
 
             <span>

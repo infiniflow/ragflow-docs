@@ -3,15 +3,15 @@ import { useId } from "react";
 import Icon from "@site/src/components/Icon";
 import { cn } from "@site/src/utils/twUtils";
 
-import SvgBreathingGlowFilter from "@site/src/pages/_fx/SvgBreathingGlowFilter";
-import SvgRecolorLinearGradientFilter from "@site/src/pages/_fx/SvgRecolorLinearGradientFilter";
+import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 
-
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
-import SvgLinearGradient from "../_fx/SvgLinearGradient";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
+import SvgLinearGradient from "@site/src/utils/visual-effects/SvgLinearGradient";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
+import SvgForeignIcon from "@site/src/utils/visual-effects/SvgForeignIcon";
 
 import AiModelsIcon from "@site/src/assets/svg/aimodels.svg";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
 
 import {
   DASH_ARRAY,
@@ -19,9 +19,8 @@ import {
   DASH_PULSE_ARRAY,
   DASH_PULSE_OFFSET_DURATION,
 } from "./constants";
-import SvgForeignIcon from "../_fx/SvgForeignIcon";
 
-export default function IndexFeatureUnifiedAgentAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+export default function IndexFeatureUnifiedAgentAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeSecondaryBox`;
@@ -49,7 +48,10 @@ export default function IndexFeatureUnifiedAgentAnimation({ className }: React.H
   const animPulse = `${id}AnimPulse`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-300 -140 600 310"

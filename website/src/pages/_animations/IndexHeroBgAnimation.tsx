@@ -1,5 +1,5 @@
 import { useId } from "react";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
 
 export default function IndexHeroBgAnimation() {
   const id = useId();

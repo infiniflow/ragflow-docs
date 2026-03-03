@@ -1,44 +1,42 @@
 import { cn } from '@site/src/utils/twUtils';
 
-type Props<C extends React.ElementType> = {
-  as?: C;
-  count?: number;
-  className?: string;
-  children?: React.ReactNode;
-};
+type Props<As extends React.ElementType> = PropsWithAs<{
+  count?: React.ReactNode;
+  counterClassName?: string;
+}, As>;
 
-export default function Tag<C extends React.ElementType = 'span'>({
-  as,
-  count,
-  children,
-  className,
-  ...restProps
-}: Omit<React.ComponentPropsWithoutRef<C>, keyof Props<C>> & Props<C>) {
-  const As = (as ?? 'span') as React.ElementType;
+export default function Tag<As extends React.ElementType = 'span'>(props: Props<As>) {
+  const {
+    as: AsComponent = 'span',
+    count,
+    children,
+    className,
+    counterClassName,
+    ...restProps
+  } = props;
 
   return (
-    <As
+    <AsComponent
       {...restProps}
       className={cn(
-        'px-2 py-1 text-sm text-nowrap leading-none',
-        'rounded-md text-primary bg-primary/10',
+        'group/tag',
+        'px-2 py-1 text-sm text-nowrap leading-none rounded-md',
         className,
-        count
-          ? 'flex items-center pr-1'
-          : 'inline-block'
+        count ? 'flex items-center' : 'inline-block'
       )}
     >
       {children}
 
       {count && (
         <span
-          className="
-            text-[.85em] ml-2 px-1.5 py-1 rounded
-            text-primary-contrast-foreground bg-standard/75"
+          className={cn(
+            'text-[.85em] ml-2 px-1.5 py-1 rounded',
+            counterClassName,
+          )}
         >
           {count}
         </span>
       )}
-    </As>
+    </AsComponent>
   )
 }

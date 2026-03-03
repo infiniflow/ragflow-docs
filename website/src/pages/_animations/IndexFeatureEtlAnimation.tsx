@@ -4,10 +4,10 @@ import { cn } from "@site/src/utils/twUtils";
 import useLinearGradient from "@site/src/utils/useLinearGradient";
 import Icon from "@site/src/components/Icon";
 
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
-import SvgBreathingGlowFilter from "../_fx/SvgBreathingGlowFilter";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
-import SvgRecolorLinearGradientFilter from "../_fx/SvgRecolorLinearGradientFilter";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
+import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
 import {
   DASH_ARRAY,
   DASH_OFFSET_DURATION,
@@ -20,7 +20,7 @@ const BALL_TO_DATASET_MOTION_DURATION = 9.5;
 const BALL_FADE_OUT_DURATION = 7.5;
 const DATASET_ZAP_DURATION = 4;
 
-function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeBox`;
@@ -49,7 +49,10 @@ function IndexFeatureEtlAnimation({ className }: React.HTMLAttributes<HTMLDivEle
   const animBallToRest = `${id}AnimBallToRest`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-310 -75 610 160"

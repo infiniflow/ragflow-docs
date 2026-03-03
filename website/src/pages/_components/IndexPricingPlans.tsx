@@ -1,5 +1,5 @@
 import { cn } from "@site/src/utils/twUtils";
-import FxGlowEffect from "../_fx/FxGlowEffect";
+import FxGlowEffect from "@site/src/utils/visual-effects/FxGlowEffect";
 
 import Icon from "@site/src/components/Icon";
 

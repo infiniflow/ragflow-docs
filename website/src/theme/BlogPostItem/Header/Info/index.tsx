@@ -4,6 +4,7 @@ import { useDateTimeFormat } from '@docusaurus/theme-common/internal';
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import type { Props } from '@theme/BlogPostItem/Header/Info';
 import { cn } from '@site/src/utils/twUtils';
+import TagsListInline from '@site/src/theme/TagsListInline';
 
 // Very simple pluralization: probably good enough for now
 function useReadingTimePlural() {
@@ -36,13 +37,13 @@ function DateTime({
 }
 
 export default function BlogPostItemHeaderInfo({className}: Props) {
-  const { metadata } = useBlogPost();
-  const { date, readingTime } = metadata;
+  const { metadata, isBlogPostPage } = useBlogPost();
+  const { date, readingTime, tags } = metadata;
   const readingTimePlural = useReadingTimePlural();
 
   const dateTimeFormat = useDateTimeFormat({
     day: 'numeric',
-    month: 'long',
+    month: 'short',
     year: 'numeric',
     timeZone: 'UTC',
   });
@@ -50,15 +51,25 @@ export default function BlogPostItemHeaderInfo({className}: Props) {
   const formatDate = (blogDate: string) =>
     dateTimeFormat.format(new Date(blogDate));
 
-  return (
-    <div className={cn('text-xs leading-none text-secondary', className)}>
-      <DateTime date={date} formattedDate={formatDate(date)} />
+  const tagsExists = tags.length > 0;
 
-      {typeof readingTime !== 'undefined' && (
-        <span className="before:content-['_·_']">
-          {readingTimePlural(readingTime)}
-        </span>
+  return (
+    <>
+      <div className={cn('text-sm leading-none text-secondary', className)}>
+        <DateTime date={date} formattedDate={formatDate(date)} />
+
+        {typeof readingTime !== 'undefined' && (
+          <span className="before:content-['·'] before:mx-2">
+            {readingTimePlural(readingTime)}
+          </span>
+        )}
+      </div>
+
+      {isBlogPostPage && tagsExists && (
+        <div className="mt-4">
+          <TagsListInline tags={tags} />
+        </div>
       )}
-    </div>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 import { memo} from 'react';
 import { translate } from '@docusaurus/Translate';
 import {
-  useVisibleBlogSidebarItems,
   BlogSidebarItemList,
 } from '@docusaurus/plugin-content-blog/client';
 import BlogSidebarContent from '@theme/BlogSidebar/Content';
@@ -9,6 +8,19 @@ import type { Props as BlogSidebarContentProps } from '@theme/BlogSidebar/Conten
 import type { Props } from '@theme/BlogSidebar/Desktop';
 
 import ScrollArea from '@site/src/components/ScrollArea';
+import Icon from '@site/src/components/Icon';
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
+import { useLocation } from '@docusaurus/router';
+
+const useIsBlogPostPage = () => {
+  try {
+    const { isBlogPostPage } = useBlogPost();
+    return isBlogPostPage;
+  }
+  catch {
+    return false;
+  }
+}
 
 const ListComponent: BlogSidebarContentProps['ListComponent'] = ({items}) => {
   return (
@@ -22,8 +34,12 @@ const ListComponent: BlogSidebarContentProps['ListComponent'] = ({items}) => {
   );
 };
 
-function BlogSidebarDesktop({sidebar}: Props) {
-  const items = useVisibleBlogSidebarItems(sidebar.items);
+function BlogSidebarDesktop({ sidebar }: Props) {
+  const isBlogPostPage = useIsBlogPostPage();
+
+  if (isBlogPostPage) {
+    return null;
+  }
 
   return (
     <aside className="
@@ -41,16 +57,19 @@ function BlogSidebarDesktop({sidebar}: Props) {
         <nav
           aria-label={translate({
             id: 'theme.blog.sidebar.navAriaLabel',
-            message: 'Blog recent posts navigation',
-            description: 'The ARIA label for recent posts in the blog sidebar',
+            message: 'Blog posts filters',
+            description: 'The ARIA label for blog posts filters in the blog sidebar',
           })}
         >
-          <div className="text-lg font-semibold mb-6">
-            {sidebar.title}
+          <div className="text-base text-standard font-medium">
+            <Icon icon="LucideRss" className="mr-2" />
+            <span>{sidebar.title}</span>
           </div>
 
+          <hr />
+
           <BlogSidebarContent
-            items={items}
+            items={sidebar.items}
             ListComponent={ListComponent}
           />
         </nav>

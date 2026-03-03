@@ -28,3 +28,16 @@ export function handleForwardedRef<T>(ref: T, forwardedRef: React.ForwardedRef<T
     forwardedRef.current = ref;
   }
 }
+
+export function combineRefs<T>(...refs: React.Ref<T>[]) {
+  return (value: T) => {
+    refs.forEach((ref) => {
+      if (typeof ref === 'function') {
+        ref(value);
+      }
+      else if (ref) {
+        ref.current = value;
+      }
+    });
+  };
+};

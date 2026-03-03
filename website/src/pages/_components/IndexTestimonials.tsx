@@ -1,4 +1,5 @@
 import {
+  useMemo,
   useRef,
 } from 'react';
 
@@ -26,6 +27,8 @@ const MOCK_TESTIMONIALS = [
     title: 'Product Manager',
     content: 'RAGFlow has transformed how we handle our data pipeline.',
   },
+
+  /*
   {
     name: 'Alice Williams',
     title: 'Data Scientist',
@@ -66,58 +69,60 @@ const MOCK_TESTIMONIALS = [
     title: 'Principal Data Analyst',
     content: 'RAGFlow made it easy to unify siloed data and operationalize our LLM use cases.',
   },
+  */
 ];
 
-function TestimonialCard({ index }: { index: number }) {
+function TestimonialCard({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   return (
     <div className={cn(
       styles.card, testimonialStyles.card,
       'flex-none pointer-events-auto',
       'flex flex-col items-center justify-center',
     )}>
-      <div className="text-3xl font-bold mb-4">{index}</div>
-      <div className="text-sm text-secondary">Pending to fill in data</div>
+      <div className="text-sm text-secondary">{children}</div>
     </div>
   );
 }
 
 interface Props {
   testimonials?: typeof MOCK_TESTIMONIALS;
-  scrollDuration?: number;
+  duration?: number;
+  speed?: number;
   gap?: string | number;
   itemWidth?: string | number;
+  rows?: 1 | 2;
 }
 
 export default function IndexTestimonials({
   testimonials = MOCK_TESTIMONIALS,
-  scrollDuration = 60,
-  gap = '2rem',
-  itemWidth = '330px',
+  duration: _scrollDuration,
+  speed: _speed = 5,
+  gap: _gap = '2rem',
+  itemWidth: _itemWidth = '330px',
+  rows = 2,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Partition the testimonials into two rows
-  const [_row1, _row2] = partition(testimonials, (_, index) => index % 2 === 0);
-  const sameLength = _row1.length === _row2.length;
+  const itemWidth = typeof _itemWidth === 'number' ? `${_itemWidth}px` : _itemWidth;
+  const gap = typeof _gap === 'number' ? `${_gap}px` : _gap;
+  const scrollDuration = typeof _scrollDuration === 'number' ? `${_scrollDuration}s` : _scrollDuration;
 
-  // Ensure the rows are the same length
-  const [row1, row2] = sameLength
-    ? [_row1, _row2]
-    : [[..._row1, ..._row2], [..._row2, ..._row1]];
+  const rowData = useMemo(() => {
+    if (rows === 1) {
+      return [testimonials];
+    }
 
-  const row1El = row1.map((testimonial, index) => (
-    <TestimonialCard
-      key={`row1-${index}`}
-      index={index}
-    />
-  ));
+    const [_row1, _row2] = partition(testimonials, (_, index) => index % 2 === 0);
+    const sameLength = _row1.length === _row2.length;
 
-  const row2El = row2.map((testimonial, index) => (
-    <TestimonialCard
-      key={`row2-${index}`}
-      index={index}
-    />
-  ));
+    return sameLength
+      ? [testimonials, testimonials]
+      : [[..._row1, ..._row2], [..._row2, ..._row1]];
+  }, [testimonials, rows]);
 
   return (
     <div
@@ -125,23 +130,37 @@ export default function IndexTestimonials({
       className={testimonialStyles.testimonial}
       style={{
         // @ts-ignore
-        '--testimonial-inconsistent-rows': sameLength ? 0 : 1,
-        '--testimonial-card-width': typeof itemWidth === 'number' ? `${itemWidth}px` : itemWidth,
-        '--testimonial-card-gap': typeof gap === 'number' ? `${gap}px` : gap,
-        '--testimonial-animation-duration': `${scrollDuration}s`,
+        '--testimonial-inconsistent-rows': (rows.length !== 2 || rows[0].length === rows[1].length) ? 0 : 1,
+        '--testimonial-card-width': itemWidth,
+        '--testimonial-card-gap': gap,
+        '--testimonial-animation-duration': (_scrollDuration != null
+          ? scrollDuration
+          : typeof _speed === 'number'
+          ? `${_speed * rowData[0].length}s`
+          : `calc(${_speed} * ${rowData[0].length})`
+        ),
       }}
     >
-      {/* First Row */}
-      <div className={cn(testimonialStyles.row)}>
-        {row1El}
-        {row1El}
-      </div>
+      {rowData.map((row, index) => {
+        const itemEls = row.map((t, index) => (
+          <TestimonialCard key={index}>
+            <div>{t.name}</div>
+            <p>{t.title}</p>
+            <p>{t.content}</p>
+          </TestimonialCard>
+        ));
 
-      {/* Second Row - Offset by 50% */}
-      <div className={cn(testimonialStyles.row)}>
-        {row2El}
-        {row2El}
-      </div>
+        return (
+          <div
+            key={index}
+            className={cn(testimonialStyles.row)}
+          >
+            {/* render twice to create the seamless loop */}
+            {itemEls}
+            {itemEls}
+          </div>
+        );
+      })}
     </div>
   );
 }

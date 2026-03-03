@@ -1,0 +1,35 @@
+@layer ragflow {
+  :where(.page) {
+    :where(h1) {
+      @apply text-heading font-semibold;
+    }
+
+    :where(h2) {
+      @apply font-bold;
+    }
+
+    :where(dl) {
+      @apply m-0;
+    }
+
+    :where(dt) {
+      @apply text-base font-bold;
+    }
+
+    :where(dd) {
+      @apply ml-0 text-secondary;
+
+      + :where(dt) {
+        @apply mt-4;
+      }
+    }
+
+    :where(p) {
+      @apply text-secondary last:mb-0;
+    }
+
+    :where(header p) {
+      @apply text-inherit !leading-relaxed;
+    }
+  }
+}

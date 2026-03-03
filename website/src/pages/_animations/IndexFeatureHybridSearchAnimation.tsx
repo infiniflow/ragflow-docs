@@ -7,10 +7,10 @@ import VectorIcon from "@site/src/assets/svg/vector.svg";
 import FullTextIcon from "@site/src/assets/svg/fulltext.svg";
 import TensorIcon from "@site/src/assets/svg/tensor.svg";
 
-import SvgRecolorLinearGradientFilter from "../_fx/SvgRecolorLinearGradientFilter";
-import SvgGlowFilter from "../_fx/SvgGlowFilter";
-import SvgSpotlightFilter from "../_fx/SvgSpotlightFilter";
-import SvgLinearGradient from "../_fx/SvgLinearGradient";
+import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
+import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
+import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
+import SvgLinearGradient from "@site/src/utils/visual-effects/SvgLinearGradient";
 import {
   DASH_ARRAY,
   DASH_OFFSET_DURATION,
@@ -53,7 +53,7 @@ const getGradientColor = (
   return `rgb(${r} ${g} ${b})`;
 };
 
-function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<HTMLDivElement>) {
+function IndexFeatureHybridSearchAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const dotsRef = useRef([]);
@@ -229,7 +229,10 @@ function IndexFeatureHybridSearchAnimation({ className }: React.HTMLAttributes<H
   const maskMagnifierCircle = `${id}MaskMagnifierCircle`;
 
   return (
-    <div className={cn('ragflow-animation-root', className)}>
+    <div
+      className={cn('ragflow-animation-root', className)}
+      {...restProps}
+    >
       <svg
         className="block size-full"
         viewBox="-285 -75 570 150"

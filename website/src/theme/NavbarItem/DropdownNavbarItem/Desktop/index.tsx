@@ -78,7 +78,7 @@ export default function DropdownNavbarItemDesktop({
 
       <ul
         className={cn(
-          'space-y-1 absolute top-full mb-0 p-1 min-w-32 max-h-[80vh]',
+          'space-y-2 absolute top-full mb-0 p-2 min-w-32 max-h-[80vh]',
           'bg-standard border border-solid border-component',
           'rounded-md list-none shadow-lg shadow-black/20 -translate-y-2 transition-all',
           'pointer-events-none invisible opacity-0',

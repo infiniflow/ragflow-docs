@@ -33,7 +33,6 @@ import type {
 import Icon from '@site/src/components/Icon';
 import { cn } from '@site/src/utils/twUtils';
 
-import SIDEBAR_ICONS from '@site/src/assets/doc-sidebar-icons.json';
 import DocSidebarItemIcon from '@site/src/components/DocSidebarItemIcon';
 
 // If we navigate to a category and it becomes active, it should automatically
@@ -271,7 +270,11 @@ function DocSidebarItemCategoryCollapsible({
       )}
     >
       <div
-        className="flex items-center"
+        className={cn(
+          'flex items-center',
+          level > 1 && 'transition-colors border-0 border-l-1 border-solid border-transparent hover:border-theme-black focus:border-theme-black',
+          isActive && 'border-theme-black',
+        )}
         style={{
           paddingLeft: `calc(var(--ragflow-sidebar-nesting-padding) * ${level - 1})`,
         }}
