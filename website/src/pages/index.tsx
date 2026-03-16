@@ -371,7 +371,7 @@ export default function Home(): ReactNode {
                 <FxGlowEffect>
                   <Link
                     className={cn(styles.btn, 'block')}
-                    to="https://demo.ragflow.io/"
+                    to="https://cloud.ragflow.io/"
                   >
                     Try demo
                   </Link>
