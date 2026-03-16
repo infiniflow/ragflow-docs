@@ -80,7 +80,7 @@ export default function Home(): ReactNode {
 
             <FxGlowEffect className="mobile:mt-6 desktop:mt-12">
               <Link
-                to="https://demo.ragflow.io/"
+                to="https://cloud.ragflow.io/"
                 className={cn(styles.btn, 'block px-9 py-3 rounded-lg')}
               >
                 Try demo
