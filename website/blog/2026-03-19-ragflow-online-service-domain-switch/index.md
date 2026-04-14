@@ -1,10 +1,8 @@
 ---
 slug: ragflow-online-service-domain-switch
-title: RAGFlow Online Service Domain Switch
+title: RAGFlow online service domain switch
 tags: [Product News]
 ---
-
-
 We are excited to announce an important update regarding the RAGFlow online service!
 
 Since the open-source launch of RAGFlow, we have provided a public playground at **[https://demo.ragflow.io](https://demo.ragflow.io/)** for everyone to experience the power of retrieval-augmented generation. Over the past two years, the platform has gained tremendous traction, and we are deeply grateful for the continuous support and feedback from our community.
