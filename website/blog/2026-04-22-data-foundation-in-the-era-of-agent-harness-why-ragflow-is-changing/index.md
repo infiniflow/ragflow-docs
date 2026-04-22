@@ -1,7 +1,7 @@
 ---
 slug: data-foundation-in-the-era-of-agent-harness-why-ragflow-is-changing
 title: Data foundation in the era of agent harness - why RAGFlow is changing
-tags: [Tutorials]
+tags: [Insights]
 ---
 
 ![](./agent-harness.PNG)
