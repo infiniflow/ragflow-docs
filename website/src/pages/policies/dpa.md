@@ -6,6 +6,8 @@ hide_table_of_contents: true
 
 # RAGFlow Data Processing Agreement (DPA)
 
+**Last Updated:** 2026-04-23
+
 This Data Processing Agreement (“**DPA**”) forms part of the master service agreement, terms of service, order form, or other written agreement between **RAGFlow,** **Inc\*\***.** (“**RAGFlow**”, “**Processor**”) and the customer entity identified in such agreement (“**Customer**”, “**Controller**”) (the “**Principal Agreement**”). This DPA reflects the parties’ commitment to comply with applicable data protection and privacy laws (“**Data Protection Laws\*\*”) when RAGFlow processes Personal Data on behalf of Customer.
 
 In case of conflict between this DPA and the Principal Agreement regarding the processing of Personal Data, this DPA will prevail.

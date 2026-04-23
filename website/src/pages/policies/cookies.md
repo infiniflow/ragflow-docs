@@ -7,9 +7,7 @@ toc: false
 
 # RAGFlow Cookie Policy
 
-**Effective Date:** [YYYY-MM-DD]
-
-**Last Updated:** [YYYY-MM-DD]
+**Last Updated:** 2026-04-23
 
 This Cookie Policy explains how **RAGFlow** uses cookies and similar technologies on our websites and online services that link to this Cookie Policy (the “**Sites**”).
 
@@ -99,11 +97,5 @@ Some browsers provide DNT or GPC signals. Where required by law, we may respond 
 ## 6. Updates to This Cookie Policy
 
 We may update this Cookie Policy from time to time. Changes become effective when posted with an updated “Last Updated” date.
-
-## 7. Contact Us
-
-**Email:** [privacy@ragflow.io]
-
-**Address:** [Company legal entity name, registered address]
 
 ---

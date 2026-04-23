@@ -6,9 +6,7 @@ hide_table_of_contents: true
 
 # RAGFlow Terms of Use
 
-**Effective Date:** [YYYY-MM-DD]
-
-**Last Updated:** [YYYY-MM-DD]
+**Last Updated:** 2026-04-23
 
 These Terms of Use (“**Terms**”) govern your access to and use of **RAGFlow** websites, Cloud services, software, documentation, APIs, and related services (collectively, the “**Services**”). By accessing or using the Services, you agree to these Terms.
 
@@ -140,11 +138,5 @@ Nothing prevents either party from seeking injunctive relief in an appropriate j
 ## 15. Changes to These Terms
 
 We may update these Terms from time to time. We will post the updated Terms with a new “Last Updated” date. Continued use of the Services after the effective date means you accept the updated Terms where permitted by law. If you do not agree, you must stop using the Services.
-
-## 16. Contact
-
-**Email:** [legal@ragflow.io]
-
-**Address:** [Company legal entity name, registered address]
 
 ---

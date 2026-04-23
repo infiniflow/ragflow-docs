@@ -4,25 +4,25 @@ import {
   useEffect,
   useLayoutEffect,
   useState,
-} from 'react';
+} from "react";
 
-import { useMutation } from '@tanstack/react-query';
-import { useForm } from '@tanstack/react-form';
+import { useMutation } from "@tanstack/react-query";
+import { useForm } from "@tanstack/react-form";
 
 import {
   LucideAlertCircle,
   LucideCheck,
   LucideLoaderCircle,
-} from 'lucide-react';
+} from "lucide-react";
 
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
 
-import FxGradientText from '@site/src/utils/visual-effects/FxGradientText';
+import FxGradientText from "@site/src/utils/visual-effects/FxGradientText";
 
-import IndexTestimonials from '@site/src/pages/_components/IndexTestimonials';
-import styles from './index.module.scss';
-import { cn } from '../utils/twUtils';
+import IndexTestimonials from "@site/src/pages/_components/IndexTestimonials";
+import styles from "./index.module.scss";
+import { cn } from "../utils/twUtils";
 
 type ContactUsFormValues = {
   first_name: string;
@@ -32,45 +32,43 @@ type ContactUsFormValues = {
   question: string;
 };
 
-
-const MESSAGE_ENDPOINT = 'https://mail.ragflow.io:9378/v1/messages';
+const MESSAGE_ENDPOINT = "https://mail.ragflow.io:9378/v1/messages";
 const DEFAULT_FORM_VALUES: ContactUsFormValues = {
-  first_name: '',
-  last_name: '',
-  company: '',
-  email: '',
-  question: '',
+  first_name: "",
+  last_name: "",
+  company: "",
+  email: "",
+  question: "",
 };
 
 const FormContext = createContext<ReturnType<typeof useForm>>(null);
 
 function SubmitButton() {
   const form = useContext(FormContext);
-  const [visualResultState, setVisualResultState] = useState<'idle' | 'success' | 'error'>('idle');
+  const [visualResultState, setVisualResultState] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const {
-    isPending,
-    mutate,
-  } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: async (data: FormData) => {
       const values = {
-        first_name: data.get('first_name') as string,
-        last_name: data.get('last_name') as string,
-        company: data.get('company') as string,
-        email: data.get('email') as string,
-        question: data.get('question') as string,
+        first_name: data.get("first_name") as string,
+        last_name: data.get("last_name") as string,
+        company: data.get("company") as string,
+        email: data.get("email") as string,
+        question: data.get("question") as string,
       };
 
       const response = await fetch(MESSAGE_ENDPOINT, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(values),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form', {
+        throw new Error("Failed to submit form", {
           cause: response,
         });
       }
@@ -79,17 +77,17 @@ function SubmitButton() {
     },
     onSuccess: () => {
       form.reset();
-      setVisualResultState('success');
+      setVisualResultState("success");
     },
     onError: () => {
-      setVisualResultState('error');
+      setVisualResultState("error");
     },
   });
 
   useEffect(() => {
-    if (visualResultState === 'success' || visualResultState === 'error') {
+    if (visualResultState === "success" || visualResultState === "error") {
       const timeout = setTimeout(() => {
-        setVisualResultState('idle');
+        setVisualResultState("idle");
       }, 3000);
 
       return () => clearTimeout(timeout);
@@ -101,50 +99,46 @@ function SubmitButton() {
       type="submit"
       formAction={mutate}
       className={cn(
-        'inline-flex items-center justify-center gap-2',
-        'text-sm bg-theme-black hover:bg-theme-black/80 focus:bg-theme-black/80',
-        'disabled:bg-theme-black/50',
-        isPending && 'cursor-progress',
-        visualResultState === 'idle' ? '!text-theme-white' : 'cursor-default',
-        visualResultState === 'success' && '!bg-success !text-theme-black',
-        visualResultState === 'error' && '!bg-danger !text-theme-black animate-shake-once',
+        "inline-flex items-center justify-center gap-2",
+        "text-sm bg-theme-black hover:bg-theme-black/80 focus:bg-theme-black/80",
+        "disabled:bg-theme-black/50",
+        isPending && "cursor-progress",
+        visualResultState === "idle" ? "!text-theme-white" : "cursor-default",
+        visualResultState === "success" && "!bg-success !text-theme-black",
+        visualResultState === "error" &&
+          "!bg-danger !text-theme-black animate-shake-once",
       )}
-      disabled={isPending || visualResultState !== 'idle'}
+      disabled={isPending || visualResultState !== "idle"}
     >
-      {isPending
-        ? <LucideLoaderCircle className="animate-spin" />
-        : visualResultState === 'success'
-        ? <LucideCheck />
-        : visualResultState === 'error'
-        ? <LucideAlertCircle />
-        : null
-      }
+      {isPending ? (
+        <LucideLoaderCircle className="animate-spin" />
+      ) : visualResultState === "success" ? (
+        <LucideCheck />
+      ) : visualResultState === "error" ? (
+        <LucideAlertCircle />
+      ) : null}
 
       <span>
         {isPending
-          ? 'Submitting...'
-          : visualResultState === 'success'
-          ? 'Submitted'
-          : visualResultState === 'error'
-          ? 'Error while submitting'
-          : 'Submit'
-        }
+          ? "Submitting..."
+          : visualResultState === "success"
+            ? "Submitted"
+            : visualResultState === "error"
+              ? "Error while submitting"
+              : "Submit"}
       </span>
     </button>
   );
 }
 
-function Form<T = ReturnType<typeof useForm>>(props: React.PropsWithChildren<{ form: T }>) {
-  const {
-    children,
-    form,
-  } = props;
+function Form<T = ReturnType<typeof useForm>>(
+  props: React.PropsWithChildren<{ form: T }>,
+) {
+  const { children, form } = props;
 
   return (
     // @ts-ignore
-    <FormContext.Provider value={form}>
-      {children}
-    </FormContext.Provider>
+    <FormContext.Provider value={form}>{children}</FormContext.Provider>
   );
 }
 
@@ -161,7 +155,8 @@ export default function ContactUs() {
       description={siteConfig.tagline}
       wrapperClassName={styles.page}
     >
-      <div className="
+      <div
+        className="
         text-standard text-sm mobile:text-base
         container max-desktop:px-page
         pt-12 mobile:pt-20 desktop:pt-24
@@ -171,16 +166,14 @@ export default function ContactUs() {
         <header className="pt-8 py-10 h-full flex flex-col justify-between">
           <div>
             <h1 className="text-5xl font-semibold mb-12">
-              <FxGradientText
-                preset="primary"
-                direction="right"
-              >
+              <FxGradientText preset="primary" direction="right">
                 How can we help?
               </FxGradientText>
             </h1>
 
             <p className="text-2xl text-standard leading-relaxed">
-              Speak to our sales team about plans, pricing, enterprise contracts, or request a demo.
+              Speak to our team about plans, pricing, enterprise contracts, or
+              request a demo.
             </p>
           </div>
 
@@ -198,9 +191,7 @@ export default function ContactUs() {
 
           <Form form={form}>
             <form className="grid grid-cols-2 gap-x-8 gap-y-6">
-              <form.Field
-                name="first_name"
-              >
+              <form.Field name="first_name">
                 {(field) => (
                   <label>
                     <div>First Name</div>
@@ -285,7 +276,8 @@ export default function ContactUs() {
                 )}
               </form.Field>
 
-              <div className="text-right mt-4 col-span-full">
+              <div className="flex justify-between items-end  mt-4 col-span-full">
+                <label>You can also email us at sales@infiniflow.ai</label>
                 <SubmitButton />
               </div>
             </form>

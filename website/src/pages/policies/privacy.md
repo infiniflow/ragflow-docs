@@ -6,9 +6,7 @@ hide_table_of_contents: true
 
 # RAGFlow Privacy Policy
 
-**Effective Date:** [YYYY-MM-DD]
-
-**Last Updated:** [YYYY-MM-DD]
+**Last Updated:** 2026-04-23
 
 This Privacy Policy explains how **RAGFlow** (together with its affiliates, “**RAGFlow**,” “**we**,” “**us**,” or “**our**”) collects, uses, discloses, and otherwise processes **Personal Data** in connection with our websites, apps, documentation, community channels, and other services that link to this Privacy Policy (collectively, the “**Services**”).
 
@@ -164,9 +162,3 @@ Our Services may link to third-party websites or services. Their privacy practic
 ## 12. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time. We will post the updated version with a new “Last Updated” date. Your continued use of the Services after the change becomes effective means you acknowledge the updated Policy where permitted by law.
-
-## 13. Contact Us
-
-**Email:** [privacy@ragflow.io]
-
-**Address:** [Company legal entity name, registered address]
