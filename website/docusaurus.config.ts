@@ -520,6 +520,27 @@ const config: Config = {
           title: "Community",
           items: socialLinks.map((s) => omit(s, "icon")),
         },
+        {
+          title: "TERMS & POLICIES",
+          items: [
+            {
+              label: "Privacy Policy",
+              to: "/policies/privacy",
+            },
+            {
+              label: "Cookie Policy",
+              to: "/policies/cookies",
+            },
+            {
+              label: "Terms of Use",
+              to: "/policies/terms",
+            },
+            {
+              label: "Data Processing Agreement",
+              to: "/policies/dpa",
+            },
+          ],
+        },
       ],
     },
 
