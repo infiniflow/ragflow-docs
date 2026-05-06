@@ -478,7 +478,7 @@ const config: Config = {
     },
 
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} InfiniFlow.<br />All rights reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} InfiniFlow Inc.<br />All rights reserved.`,
 
       // Footer columns
       links: [
