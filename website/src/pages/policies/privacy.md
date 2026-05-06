@@ -33,7 +33,7 @@ We will make reasonable efforts to respond to your request in accordance with ap
 
 **“Customer Data”** means data (which may include Personal Data) that a Customer or its authorized users upload, submit, transmit, or otherwise make available to the Services.
 
-**Self-Hosted /** **Open Source\*\***:** If you deploy RAGFlow in your own environment (“Self-Hosted”), RAGFlow generally does **not\*\* receive or process Customer Data from your Self-Hosted instance unless you enable optional features that send data to us (e.g., cloud connectors, telemetry, support logs), or you otherwise provide data to us.
+**Self-Hosted** **Open Source**: If you deploy RAGFlow in your own environment (“Self-Hosted”), RAGFlow generally does **not** receive or process Customer Data from your Self-Hosted instance unless you enable optional features that send data to us (e.g., cloud connectors, telemetry, support logs), or you otherwise provide data to us.
 
 ## 3. Personal Data We Collect
 
