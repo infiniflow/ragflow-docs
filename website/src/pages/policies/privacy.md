@@ -19,9 +19,13 @@ This Privacy Policy explains how **RAGFlow** (together with its affiliates, “*
 - **Controller** **(typical):** For Personal Data we collect for our own purposes (e.g., account administration, billing, website analytics), RAGFlow typically acts as a **data controller** (or equivalent role under applicable law).
 - **Processor / Service Provider (typical):** For **Customer Data** uploaded to our Cloud services by Customers and their authorized users, RAGFlow typically acts as a **data processor** (or “service provider” under certain laws), subject to the Customer agreement and DPA.
 
-**Contact:** [privacy@ragflow.io]
+- **Contact Information** If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, you may contact us at:
 
-**Address:** [Company legal entity name, registered address]
+    Email: privacy@ragflow.io
+
+We will make reasonable efforts to respond to your request in accordance with applicable data protection laws.
+
+- **Legal Entity and Registered Address** RAGFlow is operated by its legal entity (the “Company”). The registered name and address of the Company will be provided upon request or made available through appropriate official channels where required by applicable law.
 
 ## 2. Scope and Definitions
 
