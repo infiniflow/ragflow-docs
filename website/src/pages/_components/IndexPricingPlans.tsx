@@ -8,37 +8,19 @@ import styles from "./IndexPricingPlans.module.scss";
 
 const PRICING_PLANS = [
   {
-    name: "Free",
-    description:
-      "Start for free and explore essential features to get your project off the ground.",
-    features: [
-      { name: "5 Apps", icon: "LucideLayoutGrid" },
-      { name: "1 team members", icon: "LucideUsers" },
-      { name: "0.1 GB dataset storage", icon: "LucideDatabaseZap" },
-      { name: "500 credits / month", icon: "LucideCoins" },
-    ],
-    price: {
-      currency: "USD",
-      currencySymbol: "$",
-      amount: 59,
-      frequency: "month",
-    },
-    action: "Upgrade now",
-  },
-  {
     name: "Starter",
     description:
       "Ideal for individuals and small teams starting their journey with essential features.",
     features: [
-      { name: "50 Apps", icon: "LucideLayoutGrid" },
-      { name: "5 team members", icon: "LucideUsers" },
+      { name: "20 Apps", icon: "LucideLayoutGrid" },
+      { name: "50 team members", icon: "LucideUsers" },
       { name: "5 GB dataset storage", icon: "LucideDatabaseZap" },
-      { name: "5,000 credits / month", icon: "LucideCoins" },
+      { name: "6000/min API requests", icon: "LucideGitPullRequestArrow" },
     ],
     price: {
       currency: "USD",
       currencySymbol: "$",
-      amount: 59,
+      amount: 9,
       frequency: "month",
     },
     action: "Upgrade now",
@@ -49,15 +31,15 @@ const PRICING_PLANS = [
     description:
       "Perfect for growing businesses requiring more advanced tools and higher limits.",
     features: [
-      { name: "Unlimited Apps", icon: "LucideLayoutGrid" },
-      { name: "20 team members", icon: "LucideUsers" },
+      { name: "50 Apps", icon: "LucideLayoutGrid" },
+      { name: "100 team members", icon: "LucideUsers" },
       { name: "50 GB dataset storage", icon: "LucideDatabaseZap" },
-      { name: "20,000 credits / month", icon: "LucideCoins" },
+      { name: "20,000/min API requests", icon: "LucideGitPullRequestArrow" },
     ],
     price: {
       currency: "USD",
       currencySymbol: "$",
-      amount: 259,
+      amount: 29,
       frequency: "month",
     },
     action: "Upgrade now",
@@ -65,12 +47,12 @@ const PRICING_PLANS = [
   {
     name: "Enterprise",
     description:
-      "Enterprise-grade capabilities for production workloads at scale",
+      "Tailored for large organizations needing custom solutions, priority support, and full scalability",
     features: [
-      { name: "BYOC deployment", icon: "LucideBanknoteArrowUp" },
-      { name: "On-premises deployment", icon: "LucideVault" },
-      { name: "Dedicated support", icon: "LucideHeartHandshake" },
-      { name: "Custom SLA", icon: "LucideShieldCheck" },
+      { name: "Unlimited Apps", icon: "LucideLayoutGrid" },
+      { name: "Unlimited team members", icon: "LucideUsers" },
+      { name: "Unlimited dataset storage", icon: "LucideDatabaseZap" },
+      { name: "Unlimited API requests", icon: "LucideGitPullRequestArrow" },
     ],
     action: "Contact us",
   },
@@ -82,7 +64,7 @@ export default function IndexPricingPlans() {
       className={cn(
         styles.pricingPlanGroup,
         "py-8 flex flex-col",
-        "desktop:grid desktop:grid-cols-4 gap-8",
+        "desktop:grid desktop:grid-cols-3 gap-8",
       )}
     >
       {PRICING_PLANS.map((plan) => (
@@ -120,7 +102,7 @@ export default function IndexPricingPlans() {
                 </span>
               )}
             </h2>
-            <p className="mb-0 line-clamp-3 h-[4.5rem]" itemProp="description">
+            <p className="mb-0" itemProp="description">
               {plan.description}
             </p>
 
@@ -186,9 +168,6 @@ export default function IndexPricingPlans() {
                     ]
                   : "bg-surface hover:bg-hover-overlay focus-visible:bg-hover-overlay",
               )}
-              onClick={() => {
-                window.open("https://cloud.ragflow.io/price", "_blank");
-              }}
             >
               {plan.action}
             </button>

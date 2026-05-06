@@ -333,7 +333,7 @@ export default function Home(): ReactNode {
             </section> */}
 
             {/* Pricing plans*/}
-            <section aria-label="Scale Your Business">
+            {/* <section aria-label="Scale Your Business">
               <h1 className="mb-24 text-center">
                 <FxGradientText preset="primary" direction="right">
                   Scale Your Business
@@ -341,7 +341,7 @@ export default function Home(): ReactNode {
               </h1>
 
               <IndexPricingPlans />
-            </section>
+            </section> */}
 
             {/* Get Started */}
             <section
