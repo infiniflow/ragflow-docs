@@ -187,7 +187,7 @@ export default function IndexPricingPlans() {
                   : "bg-surface hover:bg-hover-overlay focus-visible:bg-hover-overlay",
               )}
               onClick={() => {
-                window.open("https://stage.ragflow.io/price", "_blank");
+                window.open("https://cloud.ragflow.io/price", "_blank");
               }}
             >
               {plan.action}
