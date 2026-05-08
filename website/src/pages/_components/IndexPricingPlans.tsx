@@ -20,7 +20,7 @@ const PRICING_PLANS = [
     price: {
       currency: 'USD',
       currencySymbol: '$',
-      amount: 59,
+      amount: 0,
       frequency: 'month',
     },
     action: 'Upgrade now',
@@ -92,6 +92,7 @@ export default function IndexPricingPlans() {
           className={cn(
             styles.pricingPlan,
             plan.isMostPopular && styles.mostPopular,
+            'group',
           )}
           itemScope
           itemType='https://schema.org/Product'
@@ -178,13 +179,14 @@ export default function IndexPricingPlans() {
             <button
               className={cn(
                 indexStyles.btn,
-                'px-8 py-2 mt-12 block w-full border border-component rounded-lg transition-colors duration-slow',
+                styles.pricingPlanBtn,
+                'px-8 py-2 mt-12 block w-full border border-component rounded-lg transition-colors duration-slow bg-surface',
                 plan.isMostPopular
                   ? [
-                      '!text-theme-white bg-text-standard hover:bg-text-standard/80 focus-visible:bg-text-standard/80',
-                      'bg-gradient-to-b from-transparent to-secondary shadow-[0_2px_0_rgb(var(--ragflow-color-primary))]',
+                      'text-theme-white bg-text-standard hover:bg-text-standard/80 focus-visible:bg-text-standard/80',
+                      'shadow-[0_2px_0_rgb(var(--ragflow-color-primary))]',
                     ]
-                  : 'bg-surface hover:bg-hover-overlay focus-visible:bg-hover-overlay',
+                  : '  group-hover:!text-theme-white group-hover:!bg-text-standard group-hover:!shadow-[0_2px_0_rgb(var(--ragflow-color-primary))]',
               )}
               onClick={() => {
                 window.open('https://cloud.ragflow.io/price', '_blank');
