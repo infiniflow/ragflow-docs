@@ -38,7 +38,8 @@ const PRICING_PLANS = [
     price: {
       currency: 'USD',
       currencySymbol: '$',
-      amount: 59,
+      amount: 29,
+      originalAmount: 59,
       frequency: 'month',
     },
     action: 'Upgrade now',
@@ -49,7 +50,7 @@ const PRICING_PLANS = [
     description:
       'Perfect for growing businesses requiring more advanced tools and higher limits.',
     features: [
-      { name: 'Unlimited Apps', icon: 'LucideLayoutGrid' },
+      { name: '100000 Apps', icon: 'LucideLayoutGrid' },
       { name: '20 team members', icon: 'LucideUsers' },
       { name: '50 GB dataset storage', icon: 'LucideDatabaseZap' },
       { name: '20,000 credits / month', icon: 'LucideCoins' },
@@ -57,7 +58,8 @@ const PRICING_PLANS = [
     price: {
       currency: 'USD',
       currencySymbol: '$',
-      amount: 259,
+      amount: 129,
+      originalAmount: 259,
       frequency: 'month',
     },
     action: 'Upgrade now',
@@ -141,6 +143,7 @@ export default function IndexPricingPlans() {
                 itemScope
                 itemType='https://schema.org/Offer'
                 itemProp='offers'
+                className='flex items-end gap-2'
               >
                 <div
                   className='mt-12'
@@ -171,6 +174,37 @@ export default function IndexPricingPlans() {
                     {plan.price.frequency}
                   </span>
                 </div>
+                {plan.price.originalAmount && (
+                  <div
+                    className='mt-12 text-secondary '
+                    itemScope
+                    itemType='https://schema.org/PriceSpecification'
+                    itemProp='priceSpecification'
+                  >
+                    <span
+                      className='font-medium text-[1.25rem] mx-0.5'
+                      itemProp='priceCurrency'
+                      content={plan.price.currency}
+                    >
+                      {plan.price.currencySymbol}
+                    </span>
+
+                    <span
+                      className='line-through text-2xl align-[-.2ex]'
+                      itemProp='price'
+                    >
+                      {plan.price.originalAmount}
+                    </span>
+
+                    <span
+                      className="text-secondary text-sm before:content-['/']"
+                      itemProp='unitText'
+                      content={plan.price.frequency.toUpperCase()}
+                    >
+                      {plan.price.frequency}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
 
@@ -183,7 +217,7 @@ export default function IndexPricingPlans() {
                 'px-8 py-2 mt-12 block w-full border border-component rounded-lg transition-colors duration-slow bg-surface',
                 plan.isMostPopular
                   ? [
-                      'text-theme-white bg-text-standard hover:bg-text-standard/80 focus-visible:bg-text-standard/80',
+                      'text-theme-white bg-text-standard hover:!bg-text-standard hover:text-theme-white focus-visible:bg-text-standard/80',
                       'shadow-[0_2px_0_rgb(var(--ragflow-color-primary))]',
                     ]
                   : '  group-hover:!text-theme-white group-hover:!bg-text-standard group-hover:!shadow-[0_2px_0_rgb(var(--ragflow-color-primary))]',
