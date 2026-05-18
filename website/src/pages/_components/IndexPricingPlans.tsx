@@ -50,7 +50,7 @@ const PRICING_PLANS = [
     description:
       'Perfect for growing businesses requiring more advanced tools and higher limits.',
     features: [
-      { name: '100000 Apps', icon: 'LucideLayoutGrid' },
+      { name: 'Unlimited Apps', icon: 'LucideLayoutGrid' },
       { name: '20 team members', icon: 'LucideUsers' },
       { name: '50 GB dataset storage', icon: 'LucideDatabaseZap' },
       { name: '20,000 credits / month', icon: 'LucideCoins' },
