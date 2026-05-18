@@ -7,7 +7,6 @@
       @apply scale-105 !important;
       @apply z-1 !important;
     }
-
   }
 
   &:has(.pricingPlan:not(.mostPopular):hover),
@@ -24,11 +23,15 @@
           @apply border-component;
         }
       }
+
+      .pricingPlanBtn {
+        @apply bg-surface text-standard shadow-none;
+      }
     }
   }
 
   .pricingPlan.mostPopular {
-  @apply scale-105;
+    @apply scale-105;
     @apply hover:!scale-110 focus-within:!scale-110;
   }
 }
