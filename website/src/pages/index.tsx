@@ -333,7 +333,7 @@ export default function Home(): ReactNode {
             </section> */}
 
             {/* Pricing plans*/}
-            <section aria-label='Scale Your Business'>
+            <section aria-label='Scale Your Business' id='pricing-plan'>
               <h1 className='mb-24 text-center'>
                 <FxGradientText preset='primary' direction='right'>
                   Scale Your Business

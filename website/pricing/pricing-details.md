@@ -1,11 +1,11 @@
 ---
 sidebar_position: 10
-slug: /pricing-details
+slug: /details
 ---
 
-# RAGFlow pricing & billing
+# RAGFlow pricing and billing
 
-**Limited-time promo:** RAGFlow billing is currently in beta. All plans enjoy limited-time discounts. Currently, **billing only applies to PDF parsing via DeepDoc**. Other parsing features are temporarily free. 
+**Limited-time promo:** RAGFlow billing is currently in beta. All plans enjoy limited-time discounts. Currently, **billing only applies to PDF parsing via DeepDoc**. Other parsing features are temporarily free.
 
 ## Introduction
 
@@ -47,12 +47,12 @@ Unless specified otherwise, all prices are in **USD** and billed **monthly**. En
 
 ## Storage quota rules
 
-Storage is measured in **GB** based on the actual size of your knowledge base. 
+Storage is measured in **GB** based on the actual size of your knowledge base.
 
 ### 1. Storage cycle & limits
 
 - If your storage hits the limit, uploading or adding new content will be blocked. You can free up space by deleting files, upgrading your plan, or purchasing add-on packs.
-- Unused plan storage quota does *not* roll over to the next billing cycle.
+- Unused plan storage quota does _not_ roll over to the next billing cycle.
 - Add-on packs expire/renew in sync with your main subscription cycle.
 
 ### 2. Capacity release
@@ -63,6 +63,7 @@ Storage is measured in **GB** based on the actual size of your knowledge base.
 ### 3. Metric conversion
 
 Storage uses standard decimal conversion:
+
 > 1 GB = 1,000 MB = 1,000,000 KB = 1,000,000,000 Bytes
 
 Usage is determined by the system backend metrics.
@@ -79,7 +80,7 @@ Currently, **only PDF parsing via DeepDoc** counts against your quota. Images, W
 
 ### Failed & cancelled tasks
 
-- Failures: Parsing failures caused by corrupted files, unsupported formats, encryption, or system errors do *not* consume quota. Any incorrectly deducted quota will be refunded.
+- Failures: Parsing failures caused by corrupted files, unsupported formats, encryption, or system errors do _not_ consume quota. Any incorrectly deducted quota will be refunded.
 - Cancellations: If you cancel a task before completion, no quota is deducted. Completed tasks will be billed normally.
 
 ### Repeated parsing
