@@ -3,13 +3,13 @@ sidebar_position: 10
 slug: /pricing-details
 ---
 
-# RAGFlow pricing & billing
+# RAGFlow Cloud pricing & billing
 
-**Limited-time promo:** RAGFlow billing is currently in beta. All plans enjoy limited-time discounts. Currently, **billing only applies to PDF parsing via DeepDoc**. Other parsing features are temporarily free. 
+**Limited-time promo:** RAGFlow Cloud billing is currently in beta. All plans enjoy limited-time discounts. Currently, **billing only applies to PDF parsing via DeepDoc**. Other parsing features are temporarily free. 
 
 ## Introduction
 
-RAGFlow uses a "base subscription + add-on packs + enterprise customization" billing model.
+RAGFlow Cloud uses a "base subscription + add-on packs + enterprise customization" billing model.
 
 - Free plan: Best for evaluation and light testing.
 - Team plans (small/medium): Designed for standard collaboration and scalable growth.
@@ -117,4 +117,4 @@ Self-service refunds are not supported. For special requests, submit an applicat
 
 ## Legal disclaimer
 
-This page is for informational purposes to help users understand RAGFlow's billing structure. It does not replace or supersede any terms of service, procurement contracts, or enterprise agreements. In case of conflicts, the signed legal contracts shall prevail.
+This page is for informational purposes to help users understand RAGFlow Cloud's billing structure. It does not replace or supersede any terms of service, procurement contracts, or enterprise agreements. In case of conflicts, the signed legal contracts shall prevail.
