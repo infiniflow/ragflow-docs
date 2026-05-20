@@ -25,10 +25,12 @@ Unless specified otherwise, all prices are in **USD** and billed **monthly**. En
 | Agent / workflow       | Supported         | Supported               | Supported       | Supported         |
 | Team seats             | 1 (Fixed)         | 5 (Fixed)               | 20 (Expandable) | Custom            |
 | Knowledge base storage | 100 MB (Fixed)    | 5 GB                    | 50 GB           | Custom            |
-| App connections        | 5 (Fixed)         | 50                      | Unlimited       | Custom            |
+| App count              | 5 (Fixed)         | 50                      | Unlimited       | Custom            |
 | Monthly parsing quota  | 500 pages (Fixed) | 5,000 pages             | 20,000 pages    | Custom            |
 | Peak protection        | N/A               | Priority                | Higher priority | Custom            |
 | Overage                | N/A               | Tiered billing          | Tiered billing  | Custom            |
+| API calling            | N/A               | Supported               | Supported       | Supported         |
+| API rate limit         | 50/min            | 300/min                 | 1000/min        | Custom            |
 | Support                | Community / docs  | Email / ticket (No SLA) | Priority ticket | Custom            |
 | **Price**              | **$0**            | **$59**                 | **$259**        | **Contact sales** |
 
