@@ -29,7 +29,7 @@ Unless specified otherwise, all prices are in **USD** and billed **monthly**. En
 | Monthly parsing quota  | 500 pages (Fixed) | 5,000 pages             | 20,000 pages    | Custom            |
 | Peak protection        | N/A               | Priority                | Higher priority | Custom            |
 | Overage                | N/A               | Tiered billing          | Tiered billing  | Custom            |
-| API calling            | N/A               | Supported               | Supported       | Supported         |
+| API call support       | N/A               | Supported               | Supported       | Supported         |
 | API rate limit         | 50/min            | 300/min                 | 1000/min        | Custom            |
 | Support                | Community / docs  | Email / ticket (No SLA) | Priority ticket | Custom            |
 | **Price**              | **$0**            | **$59**                 | **$259**        | **Contact sales** |
