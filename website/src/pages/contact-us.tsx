@@ -277,7 +277,7 @@ export default function ContactUs() {
               </form.Field>
 
               <div className="flex justify-between items-end  mt-4 col-span-full">
-                <label>You can also email us at sales@infiniflow.ai</label>
+                <label>You can also email us at sales@ragflow.io</label>
                 <SubmitButton />
               </div>
             </form>
