@@ -487,10 +487,6 @@ const config: Config = {
         //   mobilePosition: "bottom",
         // },
         {
-          type: 'search',
-          position: 'right',
-        },
-        {
           type: 'custom-githubStars',
           repo: 'infiniflow/ragflow',
           icon: 'SiGithub',
