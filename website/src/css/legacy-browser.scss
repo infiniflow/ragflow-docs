@@ -1,0 +1,1736 @@
+/* Legacy Browser Compatibility Styles - Custom Classes Only */
+/* Only applies when :root.legacy-browser class is present on <html> */
+/* Used for browsers with kernels that don't support modern CSS (UC, QQ, old WebView, etc.) */
+/* NOTE: Tailwind CSS utility fallbacks have been moved to tailwind-legacy-fallbacks.scss */
+:root {
+  --ragflow-border-standard: rgba(255, 255, 255, 0.2);
+}
+:root.legacy-browser {
+  color: rgba(246, 246, 247, 0.8);
+  .text-hero {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgba(246, 246, 247, 1);
+  }
+  .h-\[600px\] {
+    height: 600px;
+  }
+  .pb-16 {
+    padding-bottom: 4rem;
+  }
+  ul > li .icon {
+    margin-right: 0.5rem;
+  }
+  ul > li {
+    margin-top: 0.5rem;
+  }
+  .ml-auto {
+    margin-left: auto;
+  }
+  .pl-page {
+    padding-left: 1.5rem;
+  }
+  .px-page {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .pl-nesting-padding {
+    padding-left: 1.5rem;
+  }
+
+  .\!text-theme-white {
+    --tw-text-opacity: 1 !important;
+    color: rgba(0, 0, 0, 1) !important;
+  }
+  .text-bg-standard {
+    --tw-text-opacity: 1;
+    color: rgba(22, 22, 24, 1);
+  }
+  .legacy-btn {
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    --tw-bg-opacity: 1;
+    background-color: rgba(22, 22, 24, 1);
+    --tw-text-opacity: 1;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+    border-width: 0.5px;
+    color: rgba(246, 246, 247, 1);
+    font-size: inherit;
+    line-height: 1.7rem;
+    outline-offset: 2px;
+    transition-duration: 0.15s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .legacy-card {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    border-style: solid;
+    border-width: 1px;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  svg text {
+    fill: currentColor;
+  }
+  .text-disabled {
+    --tw-text-opacity: 1;
+    color: rgba(117, 120, 122, 1);
+  }
+  .text-\[3rem\] {
+    font-size: 3rem;
+  }
+}
+:root.legacy-browser {
+  /* ========================================
+     Custom z-index classes
+     ======================================== */
+
+  .z-navbar {
+    z-index: 1000;
+  }
+  .z-sticky {
+    z-index: 1020;
+  }
+  .z-fixed {
+    z-index: 1030;
+  }
+  .z-modal-backdrop {
+    z-index: 1040;
+  }
+  .z-modal {
+    z-index: 1050;
+  }
+  .z-popover {
+    z-index: 1060;
+  }
+  .z-tooltip {
+    z-index: 1070;
+  }
+
+  /* ========================================
+     Theme Layout - Navbar Sidebar
+     ======================================== */
+
+  .theme-layout-navbar-sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    z-index: 9000;
+    background-color: rgb(22, 22, 24);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .z-navbar-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 83vw;
+    max-width: 83vw;
+    z-index: 10000;
+    background-color: rgb(22, 22, 24);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Hidden by default */
+    visibility: hidden;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+  }
+
+  .z-navbar-sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+
+  /* ========================================
+     Navbar Toggle Button
+     ======================================== */
+
+  .navbar-toggle {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    color: rgb(246, 246, 247);
+  }
+
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+  }
+
+  .navbar-toggle:active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ========================================
+     Navbar Sidebar States
+     ======================================== */
+
+  /* Drawer open state - Docusaurus uses .navbar-sidebar--show class on nav element */
+  .navbar-sidebar--show .z-navbar-sidebar {
+    visibility: visible;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+  }
+
+  body.navbar-sidebar-open .theme-layout-navbar-sidebar {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .navbar-sidebar-open .navbar-sidebar {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  .navbar-sidebar-closed .navbar-sidebar {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+
+  /* ========================================
+     Navbar
+     ======================================== */
+
+  .navbar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 16px;
+    min-height: 60px;
+  }
+
+  .navbar-brand {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(246, 246, 247);
+    text-decoration: none;
+  }
+
+  .navbar-collapse {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ========================================
+     Nav Items
+     ======================================== */
+
+  .nav-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: rgb(178, 181, 183);
+    text-decoration: none;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: rgb(246, 246, 247);
+  }
+
+  /* ========================================
+     Navbar Sidebar Components
+     ======================================== */
+
+  .navbar-sidebar-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgb(63, 63, 70);
+  }
+
+  .navbar-sidebar-close {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(178, 181, 183);
+    font-size: 24px;
+  }
+
+  .navbar-sidebar-body {
+    padding: 16px;
+  }
+
+  /* ========================================
+     Navbar Sidebar Container
+     ======================================== */
+
+  .navbar-sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: rgb(22, 22, 24);
+  }
+
+  /* ========================================
+     Menu
+     ======================================== */
+
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    margin: 0;
+  }
+
+  .menu-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: rgb(178, 181, 183);
+    text-decoration: none;
+    border-radius: 6px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .menu-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(246, 246, 247);
+  }
+
+  .menu-link--active {
+    background-color: rgba(0, 190, 180, 0.2);
+    color: rgb(0, 190, 180);
+  }
+
+  /* ========================================
+     Sidebar
+     ======================================== */
+
+  .sidebar-section {
+    margin-bottom: 24px;
+  }
+
+  .sidebar-section-title {
+    display: block;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(117, 120, 122);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar-item {
+    margin: 0;
+  }
+
+  .sidebar-link {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: rgb(178, 181, 183);
+    text-decoration: none;
+    border-radius: 6px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(246, 246, 247);
+  }
+
+  .sidebar-link--active {
+    background-color: rgba(0, 190, 180, 0.2);
+    color: rgb(0, 190, 180);
+  }
+
+  /* ========================================
+     Icon
+     ======================================== */
+
+  .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  .icon-inline {
+    display: inline;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+
+  /* ========================================
+     Buttons
+     ======================================== */
+
+  .btn {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-primary {
+    background-color: rgb(0, 190, 180);
+    color: rgb(255, 255, 255);
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(0, 170, 170);
+  }
+
+  .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(246, 246, 247);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ========================================
+     Hamburger Menu Icon
+     ======================================== */
+
+  .navbar-toggle-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar-toggle-icon::before,
+  .navbar-toggle-icon::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar-toggle-icon::before {
+    top: -6px;
+  }
+
+  .navbar-toggle-icon::after {
+    top: 6px;
+  }
+
+  /* ========================================
+     Doc Page Layout
+     ======================================== */
+
+  .doc-main-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .doc-sidebar-container {
+    width: 280px;
+    min-width: 280px;
+    border-right: 1px solid rgb(63, 63, 70);
+    overflow-y: auto;
+  }
+
+  .doc-content-container {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  /* ========================================
+     Custom Opacity Modifiers (with / syntax)
+     ======================================== */
+
+  .bg-primary\/20,
+  .bg-primary\/75,
+  .bg-primary\/80,
+  [class*='bg-primary\/'] {
+    background-color: rgba(0, 190, 180, 0.2);
+  }
+
+  .bg-success\/20 {
+    background-color: rgba(59, 160, 92, 0.2);
+  }
+  .bg-secondary\/10 {
+    background-color: rgba(117, 120, 122, 0.1);
+  }
+  .bg-secondary\/20 {
+    background-color: rgba(117, 120, 122, 0.2);
+  }
+  .bg-secondary\/75 {
+    background-color: rgba(117, 120, 122, 0.75);
+  }
+  .bg-black\/20 {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .bg-white\/20 {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .bg-standard\/75 {
+    background-color: rgba(22, 22, 24, 0.75);
+  }
+  .bg-standard\/80 {
+    background-color: rgba(22, 22, 24, 0.8);
+  }
+  .border-primary\/75 {
+    border-color: rgba(0, 190, 180, 0.75);
+  }
+  .text-standard\/40 {
+    color: rgba(22, 22, 24, 0.4);
+  }
+  // .from-bg-standard\/80 {
+  //   --tw-gradient-from: rgba(255, 255, 255, 0.8);
+  // }
+  .to-theme-black\/5 {
+    --tw-gradient-to: rgba(22, 22, 24, 0.05);
+  }
+
+  /* ========================================
+     Scrollbar Gutter
+     ======================================== */
+
+  .scrollbar-gutter-stable {
+    scrollbar-gutter: stable;
+  }
+
+  /* ========================================
+     Custom Search Bar
+     ======================================== */
+
+  .search-bar {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .search-bar-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: rgb(246, 246, 247);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(63, 63, 70);
+    border-radius: 6px;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .search-bar-input:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgb(0, 190, 180);
+  }
+
+  .search-bar-input::placeholder {
+    color: rgb(117, 120, 122);
+  }
+
+  /* ========================================
+     Custom Tab Bar
+     ======================================== */
+
+  .tab-bar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(63, 63, 70);
+  }
+
+  .tab-item {
+    margin: 0;
+  }
+
+  .tab-link {
+    display: block;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: rgb(178, 181, 183);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .tab-link:hover {
+    color: rgb(246, 246, 247);
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .tab-link--active {
+    color: rgb(0, 190, 180);
+    border-bottom-color: rgb(0, 190, 180);
+  }
+}
+
+/* ========================================
+   Element Selectors
+   ======================================== */
+
+:root.legacy-browser {
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    -webkit-appearance: button;
+    appearance: button;
+  }
+
+  a {
+    /* color with CSS variable fallback */
+    color: rgb(var(--ragflow-text-secondary));
+    text-decoration: none;
+    -webkit-text-decoration: none;
+
+    /* transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) */
+    -webkit-transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Dark mode overrides for anchor elements */
+  [data-theme='dark'] a {
+    color: rgb(var(--ragflow-text-secondary));
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ========================================
+   Sticky positioning fallback
+   ======================================== */
+@supports not (position: sticky) {
+  .no-sticky .sticky {
+    position: relative;
+  }
+}
+
+/* Aspect-ratio fallback */
+@supports not (aspect-ratio: 1 / 1) {
+  .no-aspect-ratio .aspect-square {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* Focus-visible fallback */
+@supports not (selector(:focus-visible)) {
+  .no-focus-visible :focus {
+    outline: 2px solid #00beb4;
+    outline-offset: 2px;
+  }
+}
+
+/* Canvas fallback */
+.no-canvas canvas {
+  display: none !important;
+}
+
+/* SVG filter fallback */
+.legacy-browser svg[data-fx-effect],
+.no-modern-color svg[data-fx-effect] {
+  opacity: 0.9 !important;
+}
+
+/* SVG rect element fallback for browsers not supporting CSS variables */
+:root.legacy-browser .legacy-card rect {
+  fill: rgb(255, 255, 255) !important;
+  stroke: rgba(0, 0, 0, 0.2) !important;
+  stroke-width: 1px !important;
+}
+
+:root.legacy-browser[data-theme='dark'] .legacy-card rect {
+  fill: rgb(22, 22, 24) !important;
+  stroke: rgba(255, 255, 255, 0.2) !important;
+  stroke-width: 1px !important;
+}
+
+/* dvh fallback */
+@supports not (height: 100dvh) {
+  .no-dvh .h-screen,
+  .no-dvh .min-h-screen,
+  .no-dvh .max-h-screen {
+    height: 100vh;
+  }
+}
+
+/* Gap property fallback for flexbox */
+@supports not (gap: 1px) {
+  .no-gap .flex.gap-1 > * {
+    margin: 0.25rem;
+  }
+  .no-gap .flex.gap-2 > * {
+    margin: 0.5rem;
+  }
+  .no-gap .flex.gap-3 > * {
+    margin: 0.75rem;
+  }
+  .no-gap .flex.gap-4 > * {
+    margin: 1rem;
+  }
+  .no-gap .flex.gap-6 > * {
+    margin: 1.5rem;
+  }
+  .no-gap .flex.gap-8 > * {
+    margin: 2rem;
+  }
+
+  .no-gap .flex-col.gap-1 > * {
+    margin: 0.25rem;
+  }
+  .no-gap .flex-col.gap-2 > * {
+    margin: 0.5rem;
+  }
+  .no-gap .flex-col.gap-3 > * {
+    margin: 0.75rem;
+  }
+  .no-gap .flex-col.gap-4 > * {
+    margin: 1rem;
+  }
+  .no-gap .flex-col.gap-6 > * {
+    margin: 1.5rem;
+  }
+  .no-gap .flex-col.gap-8 > * {
+    margin: 2rem;
+  }
+}
+
+/* Flexbox gap fallback for grid */
+@supports not (gap: 1px) {
+  .no-gap .grid.gap-1 {
+    margin: -0.25rem;
+  }
+  .no-gap .grid.gap-1 > * {
+    margin: 0.25rem;
+  }
+  .no-gap .grid.gap-2 {
+    margin: -0.5rem;
+  }
+  .no-gap .grid.gap-2 > * {
+    margin: 0.5rem;
+  }
+  .no-gap .grid.gap-4 {
+    margin: -1rem;
+  }
+  .no-gap .grid.gap-4 > * {
+    margin: 1rem;
+  }
+}
+
+/* CSS Custom Properties fallback */
+.no-custom-properties {
+  :root {
+    --ragflow-color-primary: 0, 190, 180;
+    --ragflow-bg-standard: 255, 255, 255;
+    --ragflow-text-standard: 22, 22, 24;
+    --ragflow-text-secondary: 117, 120, 122;
+    --ragflow-border-standard: rgba(0, 0, 0, 0.2);
+    --ragflow-border-component: rgba(0, 0, 0, 0.1);
+    --ragflow-navbar-height: 4.5rem;
+    --ragflow-page-padding: 4rem;
+  }
+
+  [data-theme='dark'] {
+    --ragflow-bg-standard: 22, 22, 24;
+    --ragflow-text-standard: 246, 246, 247;
+    --ragflow-text-secondary: 178, 181, 183;
+  }
+}
+
+/* Modern color syntax fallback */
+.no-modern-color {
+  --ragflow-color-primary: 0, 190, 180;
+
+  [data-theme='dark'] & {
+    --ragflow-color-primary: 0, 160, 150;
+  }
+}
+
+/* Placeholder color */
+.no-custom-properties input::placeholder,
+.no-custom-properties textarea::placeholder {
+  color: #999;
+}
+
+/* Environment variables */
+.no-modern-color .pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Color function fallback */
+.no-modern-color {
+  color: rgb(22, 22, 24);
+
+  .bg-standard {
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+[data-theme='dark'] .no-modern-color {
+  color: rgb(246, 246, 247);
+
+  .bg-standard {
+    background-color: rgb(22, 22, 24);
+  }
+}
+
+/* Focus within fallback */
+@supports not (selector(:focus-within)) {
+  .no-has-pseudo .has\:focus-within:focus-within {
+    outline: 2px solid #00beb4;
+  }
+}
+
+/* Place items/place self */
+@supports not (place-items: center) {
+  .no-modern-browser .place-items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .no-modern-browser .place-self-center {
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+/* Break inside avoid for flex */
+@supports not (break-inside: avoid) {
+  .no-modern-browser .break-inside-avoid > * {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* Object fit */
+@supports not (object-fit: cover) {
+  .no-modern-browser .object-cover {
+    object-fit: cover;
+    -o-object-fit: cover;
+  }
+
+  .no-modern-browser .object-contain {
+    object-fit: contain;
+    -o-object-fit: contain;
+  }
+}
+
+/* Text overflow ellipsis */
+.no-modern-browser .truncate {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Line clamp fallback */
+@supports not (-webkit-line-clamp: 2) {
+  .no-modern-browser .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Scrollbar width */
+.no-modern-browser ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.no-modern-browser ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Selection color */
+.no-modern-browser ::selection {
+  background-color: rgba(0, 190, 180, 0.3);
+  color: inherit;
+}
+
+/* Smooth scroll */
+.no-modern-browser html {
+  scroll-behavior: auto;
+}
+
+/* ========================================
+   Custom Gradient Text Component
+   ======================================== */
+:root.legacy-browser {
+  .fx-gradient-text {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, rgb(0, 190, 180), #42ffa4, #42ffa4);
+    --fx-gradient-image: linear-gradient(to right, rgb(0, 190, 180), #42ffa4, #42ffa4);
+    background-size: 200% 200%;
+  }
+
+  :not(svg) {
+    .text-transparent {
+      &,
+      * {
+        color: transparent !important;
+      }
+    }
+
+    [style*='background-clip: text'],
+    [style*='background-clip:text'] {
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+    }
+
+    [style*='background-clip: padding-box'],
+    [style*='background-clip:padding-box'] {
+      -webkit-background-clip: padding-box !important;
+      background-clip: padding-box !important;
+    }
+
+    [style*='background-clip: border-box'],
+    [style*='background-clip:border-box'] {
+      -webkit-background-clip: border-box !important;
+      background-clip: border-box !important;
+    }
+
+    /* Ensure CSS variables work properly */
+    [style*='--ragflow'] {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    /* Fix for mix-blend-mode */
+    [style*='mix-blend-mode'] {
+      mix-blend-mode: normal;
+    }
+
+    /* Gradient text fallback - show first color if gradient fails */
+    [style*='background-image: linear-gradient'] {
+      color: inherit;
+    }
+
+    /* Fix for backdrop-filter blur effects */
+    [style*='backdrop-filter'] {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    [style*='backdrop-filter: blur'] {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+  }
+}
+
+/* ========================================
+   Legacy Browser Mobile Specific Fixes
+   ======================================== */
+:root.legacy-browser {
+  /* Mobile viewport fixes */
+  :not(svg) {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Touch action fixes for better mobile experience */
+  :not(svg) button,
+  :not(svg) a,
+  :not(svg) [role='button'] {
+    touch-action: manipulation;
+  }
+
+  /* Better scrolling on mobile */
+  :not(svg) {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix for inline-block spacing issues */
+  :not(svg) .inline-block {
+    display: inline-block;
+  }
+
+  /* Fix width and height auto issues */
+  :not(svg) .w-auto {
+    width: auto;
+  }
+
+  :not(svg) .h-auto {
+    height: auto;
+  }
+
+  /* Fix max-width issues */
+  :not(svg) .max-w-full {
+    max-width: 100%;
+  }
+
+  /* Fix min-height issues */
+  :not(svg) .min-h-screen {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  /* Fix for aspect-ratio containers */
+  :not(svg) .aspect-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  :not(svg) .aspect-square {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* Hardware acceleration for specific elements */
+  :not(svg):not(canvas) .hero,
+  :not(svg):not(canvas) .card,
+  :not(svg):not(canvas) .btn,
+  :not(svg):not(canvas) .navbar,
+  :not(svg):not(canvas) .sidebar {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* ========================================
+   CSS Variables Fallback - Complete Set
+   ======================================== */
+
+:root.legacy-browser,
+:root.no-modern-color,
+:root.no-space-separated-rgb {
+  --ragflow-color-primary: 0, 190, 180;
+  --ragflow-color-info: 59, 130, 246;
+  --ragflow-color-success: 34, 197, 94;
+  --ragflow-color-warning: 245, 158, 11;
+  --ragflow-color-danger: 239, 68, 68;
+
+  --ragflow-bg-standard: 255, 255, 255;
+  --ragflow-bg-surface: 249, 250, 251;
+  --ragflow-bg-elevated: 255, 255, 255;
+  --ragflow-bg-overlay: 255, 255, 255;
+
+  --ragflow-text-standard: 22, 22, 24;
+  --ragflow-text-secondary: 117, 120, 122;
+  --ragflow-text-disabled: 156, 163, 175;
+
+  --ragflow-border-standard: 229, 231, 235;
+  --ragflow-border-component: 209, 213, 219;
+
+  --ragflow-theme-black: 22, 22, 24;
+  --ragflow-theme-white: 255, 255, 255;
+
+  --ragflow-navbar-height: 4.5rem;
+  --ragflow-page-padding: 1.5rem;
+  --ragflow-page-padding-lg: 2rem;
+  --ragflow-line-height-base: 1.5;
+
+  --ragflow-h1-font-size: 2.25rem;
+  --ragflow-h2-font-size: 1.875rem;
+  --ragflow-h3-font-size: 1.5rem;
+  --ragflow-h4-font-size: 1.25rem;
+  --ragflow-h5-font-size: 1.125rem;
+  --ragflow-h6-font-size: 1rem;
+
+  --ragflow-list-indent: 1.5rem;
+
+  --ragflow-global-border-width: 1px;
+}
+
+:root.legacy-browser[data-theme='dark'],
+:root.no-modern-color[data-theme='dark'],
+:root.no-space-separated-rgb[data-theme='dark'] {
+  --ragflow-bg-standard: 22, 22, 24;
+  --ragflow-bg-surface: 33, 33, 35;
+  --ragflow-bg-elevated: 38, 38, 40;
+  --ragflow-bg-overlay: 33, 33, 35;
+
+  --ragflow-text-standard: 246, 246, 247;
+  --ragflow-text-secondary: 178, 181, 183;
+  --ragflow-text-disabled: 107, 114, 128;
+
+  --ragflow-border-standard: 63, 63, 70;
+  --ragflow-border-component: 55, 55, 60;
+
+  --ragflow-theme-black: 255, 255, 255;
+  --ragflow-theme-white: 22, 22, 24;
+}
+
+/* ========================================
+   Modern CSS Syntax Fallback
+   ======================================== */
+:root.legacy-browser {
+  /* Ensure all color variables are RGB format (comma-separated) */
+  --ragflow-color-primary: 0, 190, 180;
+  --ragflow-color-info: 59, 130, 246;
+  --ragflow-color-success: 34, 197, 94;
+  --ragflow-color-warning: 245, 158, 11;
+  --ragflow-color-danger: 239, 68, 68;
+  --ragflow-bg-standard: 255, 255, 255;
+  --ragflow-text-standard: 22, 22, 24;
+  --ragflow-text-secondary: 117, 120, 122;
+  --ragflow-border-standard: 229, 231, 235;
+  --ragflow-border-component: 209, 213, 219;
+
+  :not(svg) {
+    /* Gradient Text - Fallback to solid color */
+    [style*='background-clip: text'],
+    [style*='background-clip:text'] {
+      color: rgb(var(--ragflow-color-primary)) !important;
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+    }
+
+    /* Background Gradient - Fallback to solid color */
+    [style*='background-image: linear-gradient'] {
+      background-image: none !important;
+      background-color: rgb(var(--ragflow-bg-standard));
+    }
+
+    /* Backdrop Blur - Disable or simplify */
+    [style*='backdrop-filter: blur'],
+    [style*='backdrop-filter: blur('] {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    /* Mix-Blend-Mode - Disable complex blending */
+    [style*='mix-blend-mode: screen'],
+    [style*='mix-blend-mode: overlay'],
+    [style*='mix-blend-mode: multiply'],
+    [style*='mix-blend-mode: exclusion'] {
+      mix-blend-mode: normal !important;
+    }
+
+    /* Shadow Effects - Ensure display */
+    .shadow-sm {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    .shadow {
+      box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    .shadow-md {
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .shadow-lg {
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .shadow-xl {
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .shadow-2xl {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .shadow-none {
+      box-shadow: none;
+    }
+
+    /* -webkit-text-stroke fallback */
+    .\[\-webkit-text-stroke\:2px_rgb\(var\(--ragflow-color-secondary\)\)\] {
+      -webkit-text-stroke: 2px rgb(var(--ragflow-text-secondary));
+      text-stroke: 2px rgb(var(--ragflow-text-secondary));
+    }
+  }
+}
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+:root.legacy-browser {
+  @media (min-width: 480px) {
+    :not(svg) {
+      .mobile\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .mobile\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .mobile\:hidden {
+        display: none;
+      }
+      .mobile\:block {
+        display: block;
+      }
+      .mobile\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (min-width: 640px) {
+    :not(svg) {
+      .sm\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .sm\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .sm\:hidden {
+        display: none;
+      }
+      .sm\:block {
+        display: block;
+      }
+      .sm\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    :not(svg) {
+      .md\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .md\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .md\:hidden {
+        display: none;
+      }
+      .md\:block {
+        display: block;
+      }
+      .md\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (min-width: 997px) {
+    :not(svg) {
+      .desktop\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .desktop\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .desktop\:hidden {
+        display: none;
+      }
+      .desktop\:block {
+        display: block;
+      }
+      .desktop\:inline-block {
+        display: inline-block;
+      }
+      .desktop\:flex-row {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :not(svg) {
+      .lg\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .lg\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .lg\:hidden {
+        display: none;
+      }
+      .lg\:block {
+        display: block;
+      }
+      .lg\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :not(svg) {
+      .xl\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .xl\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .xl\:hidden {
+        display: none;
+      }
+      .xl\:block {
+        display: block;
+      }
+      .xl\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 996px) {
+    :not(svg) {
+      .max-desktop\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .max-desktop\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .max-desktop\:hidden {
+        display: none;
+      }
+      .max-desktop\:block {
+        display: block;
+      }
+      .max-desktop\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    :not(svg) {
+      .max-lg\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .max-lg\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .max-lg\:hidden {
+        display: none;
+      }
+      .max-lg\:block {
+        display: block;
+      }
+      .max-lg\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    :not(svg) {
+      .max-md\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .max-md\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .max-md\:hidden {
+        display: none;
+      }
+      .max-md\:block {
+        display: block;
+      }
+      .max-md\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 639px) {
+    :not(svg) {
+      .max-sm\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .max-sm\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .max-sm\:hidden {
+        display: none;
+      }
+      .max-sm\:block {
+        display: block;
+      }
+      .max-sm\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+
+  @media (max-width: 479px) {
+    :not(svg) {
+      .max-mobile\:flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .max-mobile\:grid {
+        display: -ms-grid;
+        display: grid;
+      }
+      .max-mobile\:hidden {
+        display: none;
+      }
+      .max-mobile\:block {
+        display: block;
+      }
+      .max-mobile\:inline-block {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+/* ========================================
+   index.module.scss Legacy Fallbacks
+   ======================================== */
+
+/* Complete fallback styles for legacy browsers.
+   DOM elements have both hashed class (e.g. card_qqcS) and stable global class (e.g. legacy-card).
+   legacy-browser.scss is loaded after all CSS variables are defined, so CSS vars work here. */
+:root.legacy-browser {
+  /* .legacy-card / .legacy-secondaryCard */
+  .legacy-card,
+  .legacy-secondaryCard {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.02); /* rgb() opacity fallback for Chrome < 121 */
+  }
+}
+
+/* .legacy-form-label */
+:root.legacy-browser {
+  .legacy-form-label {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgb(117, 120, 122);
+  }
+
+  .legacy-form-label > :first-child {
+    margin-bottom: 0.5rem;
+  }
+}
+
+:root.legacy-browser[data-theme='dark'] {
+  .legacy-form-label {
+    color: rgb(178, 181, 183);
+  }
+}
+
+/* :has(:required) fallback - show asterisk via adjacent sibling */
+:root.legacy-browser.no-has-selector-support {
+  .legacy-form-label:has(:required) > :first-child::before {
+    color: rgb(239, 68, 68);
+    content: '*';
+  }
+}
+
+:root.legacy-browser[data-theme='dark'] {
+  background-color: rgb(22, 22, 24);
+
+  .bg-standard {
+    background-color: rgb(22, 22, 24);
+  }
+
+  .text-standard {
+    color: rgb(246, 246, 247);
+  }
+
+  .text-primary,
+  [class*='text-primary'] {
+    color: rgb(0, 190, 180);
+  }
+
+  .bg-primary,
+  [class*='bg-primary'] {
+    background-color: rgb(0, 190, 180);
+  }
+
+  .border-standard {
+    border-color: rgb(63, 63, 70);
+  }
+
+  /* Text secondary dark mode - all Tailwind opacity variants */
+  .text-secondary,
+  .text-secondary\/0,
+  .text-secondary\/5,
+  .text-secondary\/10,
+  .text-secondary\/20,
+  .text-secondary\/25,
+  .text-secondary\/30,
+  .text-secondary\/40,
+  .text-secondary\/50,
+  .text-secondary\/60,
+  .text-secondary\/70,
+  .text-secondary\/75,
+  .text-secondary\/80,
+  .text-secondary\/90,
+  .text-secondary\/95,
+  .text-secondary\/100 {
+    color: rgb(178, 181, 183) !important;
+  }
+}

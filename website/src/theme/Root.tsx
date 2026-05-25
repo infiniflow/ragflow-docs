@@ -1,31 +1,45 @@
 import { useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import useReducedMotion from '@site/src/utils/useReducedMotion';
 
 import '@site/src/lib/polyfill';
+import { initLegacyBrowserPolyfills } from '../lib/polyfill/detect-legacy-browser';
+
+import { useVConsole } from '../utils/useVConsole';
 
 const queryClient = new QueryClient();
 
 export default function Root({ children }) {
   const pathname = useLocation();
   const shouldReduceMotion = useReducedMotion();
+  const { initVConsole } = useVConsole();
+
+  useEffect(() => {
+    let index = 0;
+    const ensureClass = setInterval(() => {
+      initLegacyBrowserPolyfills();
+      index++;
+      if (index > 10) {
+        clearInterval(ensureClass);
+      }
+    }, 200);
+
+    initVConsole();
+  }, [pathname]);
 
   useEffect(
     () => {
-      const svgElements = document.body.querySelectorAll<SVGSVGElement>('svg:has(animate, animateTransform, animateMotion)');
+      const svgElements = document.body.querySelectorAll<SVGSVGElement>(
+        'svg:has(animate, animateTransform, animateMotion)'
+      );
 
       // Pause SVG SMIL animations when matches media query "(prefers-reduced-motion: reduce)"
       // This takes precedence over the IntersectionObserver
       svgElements.forEach((svg) => {
-        shouldReduceMotion
-          ? svg.pauseAnimations()
-          : svg.unpauseAnimations();
+        shouldReduceMotion ? svg.pauseAnimations() : svg.unpauseAnimations();
       });
 
       // If not reduced motion, start observing SVG elements for SMIL animations
@@ -35,9 +49,7 @@ export default function Root({ children }) {
             const { isIntersecting } = entry;
             const target = entry.target as SVGSVGElement;
 
-            isIntersecting
-              ? target.unpauseAnimations()
-              : target.pauseAnimations();
+            isIntersecting ? target.unpauseAnimations() : target.pauseAnimations();
           }
         });
 
@@ -47,12 +59,8 @@ export default function Root({ children }) {
       }
     },
     // Regather SVG elements on every pathname change
-    [pathname, shouldReduceMotion],
+    [pathname, shouldReduceMotion]
   );
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }

@@ -1,6 +1,10 @@
 type DirectionHorizontal = 'left' | 'right';
 type DirectionVertical = 'top' | 'bottom';
-type Direction = DirectionHorizontal | DirectionVertical | `${DirectionHorizontal} ${DirectionVertical}` | `${DirectionVertical} ${DirectionHorizontal}`;
+type Direction =
+  | DirectionHorizontal
+  | DirectionVertical
+  | `${DirectionHorizontal} ${DirectionVertical}`
+  | `${DirectionVertical} ${DirectionHorizontal}`;
 
 const DIRECTIONS: Direction[] = [
   'left',
@@ -18,21 +22,9 @@ const DIRECTIONS: Direction[] = [
 ];
 
 const PRESET_GRADIENT_MAP = {
-  'primary': [
-    'rgb(var(--ragflow-color-primary))',
-    null,
-    '#42ffa4',
-  ],
-  'primary info': [
-    'rgb(var(--ragflow-color-primary))',
-    null,
-    'rgb(var(--ragflow-color-info))',
-  ],
-  'text': [
-    'rgb(var(--ragflow-theme-black))',
-    null,
-    '#9dbab8',
-  ],
+  primary: ['rgb(var(--ragflow-color-primary))', null, '#42ffa4'],
+  'primary info': ['rgb(var(--ragflow-color-primary))', null, 'rgb(var(--ragflow-color-info))'],
+  text: ['rgb(var(--ragflow-theme-black))', null, '#9dbab8'],
 } as const;
 
 type Props = React.HTMLAttributes<HTMLSpanElement> & {
@@ -57,8 +49,8 @@ type Props = React.HTMLAttributes<HTMLSpanElement> & {
    *
    * @default 'primary'
    */
-  preset?: keyof typeof PRESET_GRADIENT_MAP,
-}
+  preset?: keyof typeof PRESET_GRADIENT_MAP;
+};
 
 function FxGradientText(props: React.PropsWithChildren<Props>) {
   const {
@@ -72,36 +64,29 @@ function FxGradientText(props: React.PropsWithChildren<Props>) {
     ...restProps
   } = props;
 
-  const direction = typeof _direction === 'number'
-    ? `${_direction}deg`
-    : DIRECTIONS.includes(_direction as Direction)
-      ? `to ${_direction}`
-      : _direction;
+  const direction =
+    typeof _direction === 'number'
+      ? `${_direction}deg`
+      : DIRECTIONS.includes(_direction as Direction)
+        ? `to ${_direction}`
+        : _direction;
 
-  const [
-    from,
-    via,
-    to,
-  ] = PRESET_GRADIENT_MAP[preset] ?? [];
+  const [from, via, to] = PRESET_GRADIENT_MAP[preset] ?? [];
 
-  const stops = [
-    _from ?? from,
-    _via ?? via,
-    _to ?? to,
-    _via ?? via,
-    _to ?? to,
-  ].filter(Boolean);
+  const stops = [_from ?? from, _via ?? via, _to ?? to, _via ?? via, _to ?? to].filter(Boolean);
+
+  const gradientValue = `linear-gradient(${direction}, ${stops.join(', ')})`;
 
   return (
     <span
       {...restProps}
-      style={{
-        ...(style ?? {}),
-        color: 'transparent',
-        backgroundClip: 'text',
-        backgroundSize: '200% 200%',
-        backgroundImage: `linear-gradient(${direction}, ${stops.join(', ')})`,
-      }}
+      className={`fx-gradient-text ${restProps.className || ''}`}
+      style={
+        {
+          ...(style ?? {}),
+          '--fx-gradient-image': gradientValue,
+        } as React.CSSProperties
+      }
     >
       {children}
     </span>

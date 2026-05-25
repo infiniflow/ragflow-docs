@@ -80,6 +80,7 @@ function TestimonialCard({
   return (
     <div className={cn(
       styles.card, testimonialStyles.card,
+      'legacy-card',
       'flex-none pointer-events-auto',
       'flex flex-col items-center justify-center',
     )}>
