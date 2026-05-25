@@ -14,6 +14,7 @@ import PrismLight from './src/utils/prismLight';
 import PrismDark from './src/utils/prismDark';
 
 import versions from './versions.json' with { type: 'json' };
+import './src/lib/polyfill';
 
 const socialLinks = [
   {
@@ -52,7 +53,7 @@ function getVersions() {
     ...Object.fromEntries(
       (versions as any[]).map((version) => {
         return [version, { label: version.slice(1) }];
-      }),
+      })
     ),
   };
 
@@ -116,10 +117,7 @@ const config: Config = {
         };
       }
 
-      if (
-        !filePath.includes(`${process.cwd()}/blog/`) ||
-        result.frontMatter.image
-      ) {
+      if (!filePath.includes(`${process.cwd()}/blog/`) || result.frontMatter.image) {
         return result;
       }
 
@@ -212,7 +210,7 @@ const config: Config = {
         sidebarItemsGenerator: async (args) =>
           // Remove the "index" doc from the "Basics" sidebar
           (await args.defaultSidebarItemsGenerator(args)).filter(
-            (item) => item.type === 'doc' && item.id !== 'index',
+            (item) => item.type === 'doc' && item.id !== 'index'
           ),
       } satisfies PluginContentDocsOptions,
     ],
@@ -306,6 +304,11 @@ const config: Config = {
 
             // Responsive
             './src/css/ragflow-responsive.scss',
+
+            './src/css/legacy-browser.scss',
+
+            // Tailwind CSS legacy browser fallbacks
+            './src/css/tailwind-legacy-fallbacks.scss',
           ],
         },
 

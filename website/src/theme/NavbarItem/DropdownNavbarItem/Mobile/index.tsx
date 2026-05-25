@@ -1,21 +1,14 @@
 import React, { useEffect, type ReactNode, type ComponentProps } from 'react';
-import {
-  isRegexpStringMatch,
-  useCollapsible,
-  Collapsible,
-} from '@docusaurus/theme-common';
+import { isRegexpStringMatch, useCollapsible, Collapsible } from '@docusaurus/theme-common';
 import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
-import NavbarItem, { type LinkLikeNavbarItemProps} from '@theme/NavbarItem';
+import NavbarItem, { type LinkLikeNavbarItemProps } from '@theme/NavbarItem';
 import type { Props } from '@theme/NavbarItem/DropdownNavbarItem/Mobile';
 import { cn } from '@site/src/utils/twUtils';
 import Icon from '@site/src/components/Icon';
 
-function isItemActive(
-  item: LinkLikeNavbarItemProps,
-  localPathname: string,
-): boolean {
+function isItemActive(item: LinkLikeNavbarItemProps, localPathname: string): boolean {
   if (isSamePath(item.to, localPathname)) {
     return true;
   }
@@ -30,13 +23,13 @@ function isItemActive(
 
 function containsActiveItems(
   items: readonly LinkLikeNavbarItemProps[],
-  localPathname: string,
+  localPathname: string
 ): boolean {
   return items.some((item) => isItemActive(item, localPathname));
 }
 
-function useItemCollapsible({active}: {active: boolean}) {
-  const {collapsed, toggleCollapsed, setCollapsed} = useCollapsible({
+function useItemCollapsible({ active }: { active: boolean }) {
+  const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !active,
   });
 
@@ -64,7 +57,7 @@ export default function DropdownNavbarItemMobile({
   const isActive = isSamePath(props.to, localPathname);
   const containsActive = containsActiveItems(items, localPathname);
 
-  const {collapsed, toggleCollapsed} = useItemCollapsible({
+  const { collapsed, toggleCollapsed } = useItemCollapsible({
     active: isActive || containsActive,
   });
 
@@ -74,23 +67,11 @@ export default function DropdownNavbarItemMobile({
   const href = props.to ? undefined : '#';
 
   return (
-    <li
-      className={cn('mt-4 first:mt-0',
-        collapsed && 'menu__list-item--collapsed',
-      )}
-    >
-      <div
-        className={cn(
-          'w-full relative',
-          isActive && 'menu__list-item-collapsible--active',
-        )}
-      >
+    <li className={cn('mt-4 first:mt-0', collapsed && 'menu__list-item--collapsed')}>
+      <div className={cn('w-full relative', isActive && 'menu__list-item-collapsible--active')}>
         <NavbarNavLink
           role="button"
-          className={cn(
-            'flex items-center cursor-pointer py-2 leading-tight',
-            className,
-          )}
+          className={cn('flex items-center cursor-pointer py-2 leading-tight', className)}
           href={href}
           aria-expanded={!collapsed}
           {...props}
@@ -106,10 +87,7 @@ export default function DropdownNavbarItemMobile({
           <span className="mr-auto">{props.children ?? props.label}</span>
 
           <Icon
-            className={cn(
-              'ml-auto transition-transform',
-              collapsed ? 'rotate-0' : 'rotate-90',
-            )}
+            className={cn('ml-auto transition-transform', collapsed ? 'rotate-0' : 'rotate-90')}
             icon="LucideChevronRight"
           />
         </NavbarNavLink>
@@ -119,7 +97,7 @@ export default function DropdownNavbarItemMobile({
         <Collapsible
           lazy
           as="ul"
-          className="list-none block m-0 p-0 mt-2 py-2 -ml-px pl-[var(--ragflow-sidebar-nesting-padding)]"
+          className="list-none block m-0 p-0 mt-2 py-2 -ml-px pl-[var(--ragflow-sidebar-nesting-padding)] pl-nesting-padding"
           collapsed={collapsed}
         >
           {items.map((childItemProps, i) => (

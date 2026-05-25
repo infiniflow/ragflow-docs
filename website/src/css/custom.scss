@@ -8,7 +8,8 @@
     @apply overflow-x-hidden !important;
   }
 
-  html, body {
+  html,
+  body {
     scrollbar-width: thin;
 
     @supports (scrollbar-gutter: stable) {
@@ -41,10 +42,7 @@
     fill: currentColor;
   }
 
-  :where(
-    input,
-    textarea
-  ) {
+  :where(input, textarea) {
     @apply font-sans;
   }
 
@@ -58,11 +56,7 @@
     }
   }
 
-  :where(
-    input,
-    textarea,
-    select
-  ) {
+  :where(input, textarea, select) {
     @apply border border-solid border-component;
   }
 
@@ -87,7 +81,9 @@
       @apply font-bold;
     }
 
-    tr, th, td {
+    tr,
+    th,
+    td {
       @apply border-0 bg-transparent;
     }
 
@@ -114,7 +110,7 @@
     @apply mb-4;
 
     &[open]:not(.is-browser) > summary .icon,
-    &[data-collapsed="false"] > summary .icon {
+    &[data-collapsed='false'] > summary .icon {
       @apply rotate-90;
     }
   }
@@ -129,17 +125,11 @@
     }
   }
 
-  :where(
-    b,
-    strong
-  ) {
+  :where(b, strong) {
     @apply font-medium text-standard;
   }
 
-  :where(
-    a strong,
-    a b
-  ) {
+  :where(a strong, a b) {
     @apply font-semibold;
   }
 
@@ -156,7 +146,8 @@
 
   // ----- Styles for specific classes
 
-  :where(:root:has(.navbar .navbar-toggle[aria-expanded="true"])) :where(.theme-layout-navbar-sidebar) {
+  :where(:root:has(.navbar .navbar-toggle[aria-expanded='true']))
+    :where(.theme-layout-navbar-sidebar) {
     @apply visible translate-x-0 !important;
   }
 
@@ -164,7 +155,7 @@
     @apply list-none;
 
     > :where(li.task-list-item) {
-      > input[type="checkbox"] {
+      > input[type='checkbox'] {
         @apply ml-1.5 mr-2;
       }
 
@@ -182,7 +173,8 @@
   .blog-content,
   .theme-doc-version-banner,
   .theme-doc-footer {
-    a, .alert a {
+    a,
+    .alert a {
       :where(&) {
         @apply text-primary;
 
@@ -193,13 +185,8 @@
         }
       }
 
-      :where(&:not(
-        .doc-card,
-        .hash-link,
-        [rel="tag"]
-      )) {
+      :where(&:not(.doc-card, .hash-link, [rel='tag'])) {
         @apply underline underline-offset-[.35ex] decoration-[.1ex] decoration-transparent;
-
 
         &:hover,
         &:focus-visible,
@@ -250,16 +237,11 @@
     @apply mx-0;
   }
 
-  :where(
-    .table-of-contents,
-    .markdown,
-    .blog-content
-  ) {
+  :where(.table-of-contents, .markdown, .blog-content) {
     :not(pre) > code {
       @apply rounded-[.35em] border-1 border-solid border-secondary/15;
       @apply leading-tight align-baseline bg-surface;
-
-      padding: .2em .3em .1em;
+      padding: 0.2em 0.3em 0.1em;
     }
 
     pre {
@@ -271,10 +253,7 @@
     }
   }
 
-  :where(
-    .markdown,
-    .blog-content
-  ) {
+  :where(.markdown, .blog-content) {
     code {
       @apply text-standard;
     }
@@ -293,7 +272,7 @@
         @apply opacity-0 font-normal leading-none transition-all text-primary;
         @apply hover:text-primary-dark focus-visible:text-primary-dark;
 
-        margin-left: .25em;
+        margin-left: 0.25em;
         font-size: 1em;
 
         &::after {
@@ -379,11 +358,7 @@
   // ----- @layer
 
   @layer icon {
-    :where(
-      .icon,
-      svg.lucide,
-      svg.simple-icon
-    ) {
+    :where(.icon, svg.lucide, svg.simple-icon) {
       @apply size-[1em] inline-block align-[-.3ex];
 
       :where(&:first-child:not(:only-child)) {
@@ -407,7 +382,7 @@
 
     &::after {
       z-index: 1;
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -434,10 +409,7 @@
       }
     }
 
-    :where(
-      .markdown,
-      .blog-content
-    ) {
+    :where(.markdown, .blog-content) {
       blockquote {
         @apply my-4;
       }
@@ -476,7 +448,12 @@
         @apply mb-0;
       }
 
-      h1, h2, h3, h4, h5, h6 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         @apply mb-4;
       }
 
@@ -512,5 +489,13 @@
         @apply mt-4;
       }
     }
+  }
+
+  .fx-gradient-text {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: var(--fx-gradient-image);
+    background-size: 200% 200%;
   }
 }

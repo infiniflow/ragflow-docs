@@ -1,17 +1,14 @@
-import { useId } from "react";
+import { useId } from 'react';
 
-import { cn } from "@site/src/utils/twUtils";
-import useLinearGradient from "@site/src/utils/useLinearGradient";
-import Icon from "@site/src/components/Icon";
+import { cn } from '@site/src/utils/twUtils';
+import useLinearGradient from '@site/src/utils/useLinearGradient';
+import Icon from '@site/src/components/Icon';
 
-import SvgSpotlightFilter from "@site/src/utils/visual-effects/SvgSpotlightFilter";
-import SvgBreathingGlowFilter from "@site/src/utils/visual-effects/SvgBreathingGlowFilter";
-import SvgGlowFilter from "@site/src/utils/visual-effects/SvgGlowFilter";
-import SvgRecolorLinearGradientFilter from "@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter";
-import {
-  DASH_ARRAY,
-  DASH_OFFSET_DURATION,
-} from "./constants";
+import SvgSpotlightFilter from '@site/src/utils/visual-effects/SvgSpotlightFilter';
+import SvgBreathingGlowFilter from '@site/src/utils/visual-effects/SvgBreathingGlowFilter';
+import SvgGlowFilter from '@site/src/utils/visual-effects/SvgGlowFilter';
+import SvgRecolorLinearGradientFilter from '@site/src/utils/visual-effects/SvgRecolorLinearGradientFilter';
+import { DASH_ARRAY, DASH_OFFSET_DURATION } from './constants';
 
 const COG_ROTATE_DURATION = 15;
 const SIDE_STAR_MOTION_DURATION = 22;
@@ -20,7 +17,10 @@ const BALL_TO_DATASET_MOTION_DURATION = 9.5;
 const BALL_FADE_OUT_DURATION = 7.5;
 const DATASET_ZAP_DURATION = 4;
 
-function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttributes<HTMLDivElement>) {
+function IndexFeatureEtlAnimation({
+  className,
+  ...restProps
+}: React.HTMLAttributes<HTMLDivElement>) {
   const id = useId();
 
   const shapeBox = `${id}ShapeBox`;
@@ -49,10 +49,7 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
   const animBallToRest = `${id}AnimBallToRest`;
 
   return (
-    <div
-      className={cn('ragflow-animation-root', className)}
-      {...restProps}
-    >
+    <div className={cn('ragflow-animation-root', className)} {...restProps}>
       <svg
         className="block size-full"
         viewBox="-310 -75 610 160"
@@ -64,19 +61,19 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
         <defs>
           <rect
             id={shapeBox}
-            x="-50" y="-50"
-            width="100" height="100"
-            rx="6" ry="6"
+            x="-50"
+            y="-50"
+            width="100"
+            height="100"
+            rx="6"
+            ry="6"
             fill="rgb(var(--ragflow-bg-standard))"
             stroke="var(--ragflow-border-component)"
             strokeWidth="var(--ragflow-global-border-width)"
             vectorEffect="non-scaling-stroke"
           />
 
-          <circle id={shapeDot}
-            cx="0" cy="0" r="4"
-            filter={`url(#${filterGlow})`}
-          />
+          <circle id={shapeDot} cx="0" cy="0" r="4" filter={`url(#${filterGlow})`} />
 
           <path
             id={shapeStar}
@@ -101,33 +98,38 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
 
           <linearGradient id={gradientConnector}>
             <stop stopColor="transparent" />
-            <stop offset=".25" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
+            <stop offset=".25" stopColor="rgb(var(--ragflow-color-primary))" stopOpacity="0.5" />
             <stop offset="1" stopColor="rgb(var(--ragflow-color-primary))" />
           </linearGradient>
-
+            <stop offset=".25" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
           <linearGradient id={gradientConnectorReversed}>
             <stop stopColor="rgb(var(--ragflow-color-primary))" />
+            <stop offset=".75" stopColor="rgb(var(--ragflow-color-primary))" stopOpacity="0.5" />
+            <stop offset="1" stopColor="transparent" />
+          </linearGradient>
             <stop offset=".75" stopColor="rgb(var(--ragflow-color-primary) / 0.5)" />
-            <stop offset="1" stopColor="transparent" />
-          </linearGradient>
-
           <linearGradient id={gradientConnectorVanishing}>
-            <stop offset=".5" stopColor="rgb(var(--ragflow-theme-black) / .5)" />
+            <stop offset=".5" stopColor="rgb(var(--ragflow-theme-black))" stopOpacity="0.5" />
             <stop offset="1" stopColor="transparent" />
           </linearGradient>
-
+            <stop offset=".5" stopColor="rgb(var(--ragflow-theme-black) / .5)" />
           <SvgRecolorLinearGradientFilter id={filterGreyGradient} to="bottom">
             <stop offset="0" stopColor="white" />
             <stop offset="1" stopColor="#666666" />
           </SvgRecolorLinearGradientFilter>
 
-          <SvgSpotlightFilter id={filterTopSpotlight}
+          <SvgSpotlightFilter
+            id={filterTopSpotlight}
             lightingColor="rgb(47 236 168)"
-            x="0" y="-80" z="200"
-            pointsAtX="0" pointsAtY="-85" pointsAtZ="0"
+            x="0"
+            y="-80"
+            z="200"
+            pointsAtX="0"
+            pointsAtY="-85"
+            pointsAtZ="0"
             limitingConeAngle="15"
             stdDeviation="10"
-            animateSpotlight={(
+            animateSpotlight={
               <animate
                 attributeName="z"
                 values="150;170;150"
@@ -137,11 +139,12 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
                 keyTimes="0;0.5;1"
                 keySplines="0.5 0 0.5 1;0.5 0 0.5 1"
               />
-            )}
+            }
           />
 
           <SvgBreathingGlowFilter id={filterGlowBlurBreathing} />
-          <SvgGlowFilter id={filterGlow}
+          <SvgGlowFilter
+            id={filterGlow}
             colorMatrix="
               5 0 0 0 .2
               0 5 0 0 .2
@@ -149,10 +152,7 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
               0 0 0 .5 0"
           />
 
-          <filter id={filterDatasetZap}
-            x="-100" y="-100"
-            width="300" height="300"
-          >
+          <filter id={filterDatasetZap} x="-100" y="-100" width="300" height="300">
             <feColorMatrix
               type="matrix"
               values="
@@ -163,24 +163,18 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
               result="colored"
             />
 
-            <feMorphology
-              in="colored"
-              operator="dilate"
-              radius="1"
-              result="dilated"
-            />
+            <feMorphology in="colored" operator="dilate" radius="1" result="dilated" />
 
-            <feGaussianBlur
-              in="dilated"
-              stdDeviation="2"
-              result="blurred"
-            />
+            <feGaussianBlur in="dilated" stdDeviation="2" result="blurred" />
 
             <feComposite
               in="blurred"
               in2="SourceGraphic"
               operator="arithmetic"
-              k1="0" k2="0" k3="1" k4="0"
+              k1="0"
+              k2="0"
+              k3="1"
+              k4="0"
             >
               <animate
                 attributeName="k2"
@@ -194,20 +188,14 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
         </defs>
 
         {/* Connectors */}
-        <g
-          strokeWidth="1"
-          strokeDasharray={DASH_ARRAY}
-        >
+        <g strokeWidth="1" strokeDasharray={DASH_ARRAY}>
           <g stroke={`url(#${gradientConnector})`}>
             <path
               id={mpathImages}
               d="M0 0 h-115 a10 10 0 0 1 -10 -10 v-80 a10 10 0 0 0 -10 -10 h-100"
             />
 
-            <path
-              id={mpathDocuments}
-              d="M0 -0.01 v0.01 h-235"
-            />
+            <path id={mpathDocuments} d="M0 -0.01 v0.01 h-235" />
 
             <path
               id={mpathDataSources}
@@ -308,28 +296,19 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
             </use>
 
             <use href={`#${shapeDot}`}>
-              <animateMotion
-                dur={BALL_TO_DATASET_MOTION_DURATION}
-                begin={`${animStar1}.end`}
-              >
+              <animateMotion dur={BALL_TO_DATASET_MOTION_DURATION} begin={`${animStar1}.end`}>
                 <mpath href={`#${mpathDest}`} />
               </animateMotion>
             </use>
 
             <use href={`#${shapeDot}`}>
-              <animateMotion
-                dur={BALL_TO_DATASET_MOTION_DURATION}
-                begin={`${animStar2}.end`}
-              >
+              <animateMotion dur={BALL_TO_DATASET_MOTION_DURATION} begin={`${animStar2}.end`}>
                 <mpath href={`#${mpathDest}`} />
               </animateMotion>
             </use>
 
             <use href={`#${shapeDot}`}>
-              <animateMotion
-                dur={BALL_TO_DATASET_MOTION_DURATION}
-                begin={`${animStar3}.end`}
-              >
+              <animateMotion dur={BALL_TO_DATASET_MOTION_DURATION} begin={`${animStar3}.end`}>
                 <mpath href={`#${mpathDest}`} />
               </animateMotion>
             </use>
@@ -357,54 +336,45 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
         <g>
           <g transform="translate(-250, -100)">
             <foreignObject
-              width="25" height="25"
+              width="25"
+              height="25"
               filter={`url(#${filterGreyGradient})`}
               transform="translate(-12, -15)"
             >
               <Icon icon="LucideFileImage" className="size-[24px]" />
             </foreignObject>
 
-            <text
-              className="text-xs text-disabled"
-              y="24"
-              textAnchor="middle"
-            >
+            <text className="text-xs text-disabled" y="24" textAnchor="middle">
               Images
             </text>
           </g>
 
           <g transform="translate(-250, 0)">
             <foreignObject
-              width="25" height="25"
+              width="25"
+              height="25"
               filter={`url(#${filterGreyGradient})`}
               transform="translate(-12, -15)"
             >
               <Icon icon="LucideFolderKanban" className="size-[24px]" />
             </foreignObject>
 
-            <text
-              className="text-xs text-disabled"
-              y="24"
-              textAnchor="middle"
-            >
+            <text className="text-xs text-disabled" y="24" textAnchor="middle">
               Documents
             </text>
           </g>
 
           <g transform="translate(-250, 100)">
             <foreignObject
-              width="25" height="25"
+              width="25"
+              height="25"
               filter={`url(#${filterGreyGradient})`}
               transform="translate(-12, -15)"
             >
               <Icon icon="LucideServer" className="size-[24px]" />
             </foreignObject>
 
-            <text
-              className="text-xs text-disabled"
-              y="24"
-              textAnchor="middle"
-            >
+            <text className="text-xs text-disabled" y="24" textAnchor="middle">
               Data sources
             </text>
           </g>
@@ -416,10 +386,7 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
             <use href={`#${shapeBox}`} />
           </g>
 
-          <g
-            transform="translate(-12.5, 10)"
-            stroke={`url(#${gradientGrey})`}
-          >
+          <g transform="translate(-12.5, 10)" stroke={`url(#${gradientGrey})`}>
             <g>
               <path
                 strokeWidth="2"
@@ -558,10 +525,7 @@ function IndexFeatureEtlAnimation({ className, ...restProps }: React.HTMLAttribu
         <g transform="translate(180, -40)">
           <g>
             <g filter={`url(#${filterTopSpotlight})`}>
-              <use
-                href={`#${shapeBox}`}
-                transform="scale(.6)"
-              />
+              <use href={`#${shapeBox}`} transform="scale(.6)" />
             </g>
           </g>
 

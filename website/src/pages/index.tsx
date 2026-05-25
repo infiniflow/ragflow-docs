@@ -79,7 +79,7 @@ export default function Home(): ReactNode {
             <FxGlowEffect className='mobile:mt-6 desktop:mt-12'>
               <Link
                 to='https://cloud.ragflow.io/'
-                className={cn(styles.btn, 'block px-9 py-3 rounded-lg')}
+                className={cn(styles.btn, 'legacy-btn', 'block px-9 py-3 rounded-lg')}
               >
                 Get Started
               </Link>
@@ -110,7 +110,7 @@ export default function Home(): ReactNode {
               className='max-desktop:space-y-6 desktop:grid desktop:grid-cols-2 desktop:gap-6'
               aria-label='Features'
             >
-              <article className={cn('flex flex-col bg-standard', styles.card)}>
+              <article className={cn('flex flex-col bg-standard', styles.card, 'legacy-card')}>
                 <header>
                   <h2 id='feature-1'>
                     <FxGradientText preset='primary' direction='right'>
@@ -133,7 +133,7 @@ export default function Home(): ReactNode {
                 />
               </article>
 
-              <article className={cn('flex flex-col bg-standard', styles.card)}>
+              <article className={cn('flex flex-col bg-standard', styles.card, 'legacy-card')}>
                 <header>
                   <h2 id='feature-2'>
                     <FxGradientText preset='primary' direction='right'>
@@ -157,7 +157,7 @@ export default function Home(): ReactNode {
               </article>
 
               <article
-                className={cn('desktop:col-span-2 bg-standard', styles.card)}
+                className={cn('desktop:col-span-2 bg-standard', styles.card, 'legacy-card')}
               >
                 <header>
                   <h2 id='feature-3'>
@@ -220,6 +220,7 @@ export default function Home(): ReactNode {
                 <FxPolkaDotsBackgroundEffect
                   className={cn(
                     styles.card,
+                    'legacy-card',
                     'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
                   )}
                 >
@@ -263,6 +264,7 @@ export default function Home(): ReactNode {
                 <FxPolkaDotsBackgroundEffect
                   className={cn(
                     styles.card,
+                    'legacy-card',
                     'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
                   )}
                 >
@@ -303,6 +305,7 @@ export default function Home(): ReactNode {
                 <FxPolkaDotsBackgroundEffect
                   className={cn(
                     styles.card,
+                    'legacy-card',
                     'p-2 flex-none desktop:w-3/5 w-full desktop:max-h-[480px] aspect-video',
                   )}
                 >
@@ -359,7 +362,7 @@ export default function Home(): ReactNode {
               <div className='mt-16 flex justify-center items-center gap-8'>
                 <FxGlowEffect>
                   <Link
-                    className={cn(styles.btn, 'block')}
+                    className={cn(styles.btn, 'legacy-btn', 'block')}
                     to='https://cloud.ragflow.io/'
                   >
                     Get Started
