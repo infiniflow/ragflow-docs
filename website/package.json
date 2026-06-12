@@ -2,7 +2,6 @@
   "name": "ragflow-docs",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "npm@10.9.0",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0 --no-open",
