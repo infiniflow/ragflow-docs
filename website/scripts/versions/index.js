@@ -27,5 +27,5 @@ function keepLastNVersion(n) {
   return res
 }
 
-const arr = keepLastNVersion(1)
+const arr = keepLastNVersion(2)
 writeFile('./versions.json', JSON.stringify(arr, null, 1))

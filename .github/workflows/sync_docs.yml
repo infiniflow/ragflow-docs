@@ -15,7 +15,8 @@ jobs:
         with:
           repository: infiniflow/ragflow
           # Relative path under $GITHUB_WORKSPACE to place the repository
-          path: source  
+          path: source
+          fetch-depth: 0
 
       - name: Checkout RAGFlow docs repo
         uses: actions/checkout@v3

@@ -18,7 +18,7 @@ fi
 
 cd $RAGFLOW_WEBSITE/website
 
+sh ./sync_version.sh main
+
 cp -f ./docs/release_notes.md ./src/pages/_changelog.mdx
 rsync -avh --delete ./docs/basics/ ./basics/
-
-sh ./sync_version.sh main
