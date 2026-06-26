@@ -16,6 +16,7 @@ const PRICING_PLANS = [
       { name: '1 team members', icon: 'LucideUsers' },
       { name: '0.1 GB dataset storage', icon: 'LucideDatabaseZap' },
       { name: '500 credits / month', icon: 'LucideCoins' },
+      { name: 'API key not available', icon: 'LucideKey' },
     ],
     price: {
       currency: 'USD',
@@ -34,6 +35,7 @@ const PRICING_PLANS = [
       { name: '5 team members', icon: 'LucideUsers' },
       { name: '5 GB dataset storage', icon: 'LucideDatabaseZap' },
       { name: '5,000 credits / month', icon: 'LucideCoins' },
+      { name: 'API key available', icon: 'LucideKey' },
     ],
     price: {
       currency: 'USD',
@@ -53,6 +55,7 @@ const PRICING_PLANS = [
       { name: '20 team members', icon: 'LucideUsers' },
       { name: '50 GB dataset storage', icon: 'LucideDatabaseZap' },
       { name: '20,000 credits / month', icon: 'LucideCoins' },
+      { name: 'API key available', icon: 'LucideKey' },
     ],
     price: {
       currency: 'USD',
