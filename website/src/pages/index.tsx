@@ -244,20 +244,19 @@ export default function Home(): ReactNode {
                   </header>
 
                   <p>
-                    This workflow provides structured precedent analysis by
-                    examining similar legal cases across public sources and
-                    internal datasets.
+                    This workflow provides structured precedent analysis by 
+                    examining binding and persuasive authority across public 
+                    case law and internal matter records.
                   </p>
 
                   <p className='mb-0'>
-                    Upon case input, key attributes—such as jurisdiction and
-                    legal issues—are automatically extracted to formulate search
-                    queries and retrieve comparable precedents. The results are
-                    then consolidated into a structured analysis reflecting how
-                    similar cases were resolved. This workflow automates company
-                    data collection and consolidates financial metrics with
-                    research insights. Enables advanced stock analysis through
-                    autonomous planning and multi-agent orchestration.
+                    Upon case input, key attributes—such as jurisdiction, court 
+                    level, and legal issues—are automatically extracted to formulate 
+                    search queries and retrieve relevant precedents with their ratio 
+                    decidendi. The results are then consolidated into a structured 
+                    analysis reflecting how courts reasoned and ruled on analogous 
+                    legal questions, with citations and distinguishing factors ready 
+                    for argument.
                   </p>
                 </div>
 
