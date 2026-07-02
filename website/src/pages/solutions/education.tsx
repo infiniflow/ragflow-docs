@@ -79,11 +79,11 @@ const USE_CASES = [
   },
 ];
 
-export default function PageAdvancedStockResearch() {
+export default function PageEducation() {
   return (
     <Layout
-      title="Advanced Stock Research"
-      description="Advanced Stock Research"
+      title="Education"
+      description="Education"
       wrapperClassName={styles.page}
     >
       <div className="relative container max-desktop:px-page text-standard text-sm mobile:text-base pb-64">

@@ -43,41 +43,37 @@ const USE_CASES = [
     icon: 'RagContract',
     title: 'Contract risk review assistant',
     description: (<>
-      Users can ask questions such as “Analyze NVIDIA’s AI-related revenue changes over the past three quarters.”<br />
-      The agent automatically retrieves internal and public research reports, generates comparison tables and insights, and provides full source references.
+      Contract risk review assistant: Identify high-risk clauses and propose revisions with supporting authority.
     </>),
   },
   {
     icon: 'RagQA',
-    title: 'Compliance & Risk Control Q&A',
+    title: 'Due diligence Q&A',
     description: (<>
-      New employees or sales staff can ask questions like “Can leveraged products be recommended to retail investors?”<br />
-      The agent responds strictly based on internal compliance manuals, citing specific clauses and policies.
+      Generate a due diligence brief from public and internal materials, with citations.
     </>),
   },
   {
     icon: 'RagLitigation',
-    title: 'Post-Investment Monitoring',
+    title: 'Litigation file organizer',
     description: (<>
-      A dedicated knowledge base is built for portfolio companies.<br />
-      The agent generates quarterly business summaries and highlights key operational and risk signals.
+      Produce timelines, issue lists, and exhibit numbering and indexes.
     </>),
   },
   {
     icon: 'RagClause',
-    title: 'Regulatory Change Tracking',
+    title: 'Clause library and compliance templates',
     description: (<>
-      New regulatory documents are synchronized into the knowledge base.<br />
-      The agent can answer questions such as “Which regulatory changes last month impact our cross-border business?” and list relevant clauses and implications.
+      Standardize clause templates to reduce inconsistency across collaborators.
     </>),
   },
 ];
 
-export default function PageAdvancedStockResearch() {
+export default function PageLegalAndCompliance() {
   return (
     <Layout
-      title="Advanced Stock Research"
-      description="Advanced Stock Research"
+      title="Legal & Compliance"
+      description="Legal & Compliance"
       wrapperClassName={styles.page}
     >
       <div className="relative container max-desktop:px-page text-standard text-sm mobile:text-base pb-64">
