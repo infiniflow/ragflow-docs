@@ -21,7 +21,7 @@ The Memory module offers streamlined, centralized management of all memories.
 When creating a Memory, users can precisely define which types of information to extract, helping ensure that only relevant data is captured and organized. From the navigation path Overview >> Memory, users can then perform key management actions, including renaming memories, organizing them, and sharing them with team members to support collaborative workflows.
 
 
-![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/create_memory.jpg)
+![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/memory_interface.PNG)
 
 ## Configure memory
 
@@ -68,7 +68,7 @@ Within an individual Memory page, you can fine-tune how saved entries are used d
 
 When certain details are no longer relevant, you can also choose to forget specific memory entries entirely. This keeps the Memory clean, focused, and easier to maintain over time, ensuring that Agents rely only on up‑to‑date and useful information.
 
-![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/message_page.jpg)
+![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/memory_interface.PNG)
 
 Manually forgotten memory entries are completely excluded from the results returned by Agent calls, ensuring they no longer influence downstream behavior. This helps keep responses focused on the most relevant and intentionally retained information.
 
@@ -82,14 +82,14 @@ Under [Retrieval](../agent/agent_component_reference/retrieval.mdx) and [Message
 
 For any Agent configuration that uses Memory, a **Retrieval** component is required to bring stored information back into the conversation.  By including Retrieval alongside Memory-aware components, the Agent can consistently recall and apply relevant past data whenever it is needed.
 
-![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/let_an_agent_retrieve_from_memory.jpg)
+![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/retrieve_from_memory.PNG)
 
 ### Save to memory
 
 At the same time you have finished **Retrieval** component settings, select the corresponding Memory in the **Message** component under **Save to Memory**:
 
 
-![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/write_agent_messages_to_memory.jpg)
+![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/save_to_memory.png)
 
 
 ## Frequently asked questions
