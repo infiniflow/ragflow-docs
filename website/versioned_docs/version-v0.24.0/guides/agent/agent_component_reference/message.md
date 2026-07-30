@@ -30,4 +30,4 @@ Click **+ Add message** to add message options. When multiple messages are suppl
 Save the conversation to specified memories. Expand the dropdown list to either select all available memories or specified memories:
 
 
-![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/save_to_memory.png)
+![](https://raw.githubusercontent.com/infiniflow/ragflow-docs/main/images/write_agent_messages_to_memory.jpg)
