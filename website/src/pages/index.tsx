@@ -84,6 +84,14 @@ export default function Home(): ReactNode {
                 Get Started
               </Link>
             </FxGlowEffect>
+
+            <p className='mt-6 text-sm text-secondary'>
+              <Link to='/about-service'>About this application</Link>
+              <span className='mx-2 opacity-40' aria-hidden>
+                ·
+              </span>
+              <Link to='/policies/privacy'>Privacy Policy</Link>
+            </p>
           </div>
 
           <FxEdgeInnerLightEffect
