@@ -349,7 +349,7 @@ const config: Config = {
     metadata: [
       {
         name: 'google-site-verification',
-        content: 'vV1cl_RlTBIzTmiZLc022i_FJpoURZBVvJIdg4GDLGw',
+        content: 'VRW2WaeBKyASJYDtA71Yoz0BHWgXMiCeQeDefe1fIQc',
       },
       {
         name: 'algolia-site-verification',
