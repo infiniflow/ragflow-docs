@@ -519,6 +519,10 @@ const config: Config = {
           title: 'Resources',
           items: [
             {
+              label: 'About RAGFlow',
+              to: '/about-service',
+            },
+            {
               label: 'Documentation',
               to: '/docs',
             },

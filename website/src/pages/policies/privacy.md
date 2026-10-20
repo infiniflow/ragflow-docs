@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 # RAGFlow Privacy Policy
 
-**Last Updated:** 2026-04-23
+**Last Updated:** 2026-10-20
 
 This Privacy Policy explains how **RAGFlow** (together with its affiliates, “**RAGFlow**,” “**we**,” “**us**,” or “**our**”) collects, uses, discloses, and otherwise processes **Personal Data** in connection with our websites, apps, documentation, community channels, and other services that link to this Privacy Policy (collectively, the “**Services**”).
 
@@ -25,7 +25,11 @@ This Privacy Policy explains how **RAGFlow** (together with its affiliates, “*
 
 We will make reasonable efforts to respond to your request in accordance with applicable data protection laws.
 
-- **Legal Entity and Registered Address** RAGFlow is operated by its legal entity (the “Company”). The registered name and address of the Company will be provided upon request or made available through appropriate official channels where required by applicable law.
+- **Legal Entity and Registered Address** The Services are provided by **InfiniFlow Inc.** (“**InfiniFlow**”), which acts as the data controller for the processing described in this Privacy Policy.
+
+    Registered address: Palm Grove Unit 4, 265 Smith Road, George Town, P.O. Box 52A Edgewater Way, #1653, Grand Cayman KY1-9006, Cayman Islands.
+
+    For a formal legal notice, contact us at privacy@ragflow.io.
 
 ## 2. Scope and Definitions
 
@@ -45,6 +49,7 @@ We may collect Personal Data you provide, such as:
 - **Billing and transactional information:** billing contact details, invoices, subscription plan, payment method details (typically processed by a third-party payment provider).
 - **Support and communications:** content of messages, tickets, feedback, recordings, and attachments you provide to support.
 - **Events and marketing:** registration details for webinars, community events, newsletters, surveys.
+- **Connected data sources:** content and metadata from third-party sources you choose to connect, such as Google Drive files and folders imported into a knowledge base (see Section 12).
 
 ### 3.2 Information collected automatically
 
@@ -103,11 +108,11 @@ Where applicable, we rely on one or more legal bases, including:
 
 ## 6. How We Share Personal Data
 
-We may share Personal Data with:
+**We do not sell Personal Data, and we do not share it for cross-context behavioral advertising.** We may share Personal Data with:
 
 ### 6.1 Service providers / subprocessors
 
-Vendors that help us provide the Services (e.g., hosting, analytics, customer support, billing, email delivery) under contractual confidentiality and security obligations.
+Vendors that help us provide the Services under contractual confidentiality and security obligations, for example: cloud hosting and content delivery (Vercel), website analytics (Google Analytics), email delivery and support tooling, and payment processing. A current list of subprocessors for Customer Data is available in our [Data Processing Agreement](/policies/dpa) or on request.
 
 ### 6.2 Affiliates and corporate group
 
@@ -153,7 +158,7 @@ Depending on your location, you may have rights such as:
 - Withdraw consent (where processing is based on consent)
 - Opt out of certain marketing communications
 
-**How to exercise rights:** email [privacy@ragflow.io].
+**How to exercise rights:** email [privacy@ragflow.io](mailto:privacy@ragflow.io).
 
 We may verify your identity and authority. If applicable, you may appeal a decision per local law.
 
@@ -163,6 +168,53 @@ We may verify your identity and authority. If applicable, you may appeal a decis
 
 Our Services may link to third-party websites or services. Their privacy practices are governed by their own policies, not ours.
 
-## 12. Changes to This Privacy Policy
+## 12. Google API Services (Google Sign-In and Google Drive)
+
+RAGFlow offers optional integrations with Google. You can sign in with a Google Account, and you can import Google Drive content into a knowledge base. These integrations are activated only after you explicitly authorize them, and only the scopes required for the feature you enable are requested.
+
+### 12.1 Google user data we access
+
+- **Basic profile** (`openid`, `email`, `profile`): your name, email address, and profile picture.
+- **Google Drive (read-only)**: the files and folders you explicitly select, their metadata (name, ID, MIME type, modified time, size), and their content.
+
+### 12.2 How we use Google user data
+
+- To authenticate you, create and administer your account, and secure access to it.
+- To import the Google Drive items you select, parse and index them, and keep them in sync so that you can search and ask questions about them inside your workspace.
+- To provide customer support and investigate security incidents when you ask us to.
+
+### 12.3 What we do not do with Google user data
+
+- We do not use it for advertising or ad personalization.
+- We do not sell it.
+- We do not use it to develop, train, or improve generalized AI or machine learning models.
+- We do not transfer it to third parties except: as needed to provide or improve the feature you requested, to comply with applicable law, or as part of a merger, acquisition, or sale of assets with appropriate notice.
+- We do not allow humans to read it unless you give explicit consent, we need it for security purposes, or we must do so to comply with law.
+
+### 12.4 Storage, sharing, and retention
+
+- OAuth access and refresh tokens are stored encrypted and are used only to perform the actions described above.
+- Imported content is stored in your workspace and retained until you delete it, disconnect the integration, or request deletion.
+- Google user data may be processed by our subprocessors strictly to host and operate the Services, under contractual confidentiality and security obligations (see Section 6 and our [Data Processing Agreement](/policies/dpa)).
+- Where Google user data is transferred internationally, we rely on the safeguards described in Section 7.
+
+### 12.5 Limited Use
+
+RAGFlow's use of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+
+## 13. Data Deletion and Revoking Access
+
+- **Revoke access:** you can remove RAGFlow's access to your Google Account at [myaccount.google.com/permissions](https://myaccount.google.com/permissions).
+- **Disconnect integrations:** you can disconnect a data source or integration in your workspace at any time; synchronization stops immediately.
+- **Delete content:** you can delete imported documents and datasets in your workspace at any time.
+- **Delete your account and data:** email [privacy@ragflow.io](mailto:privacy@ragflow.io) from the address associated with your account. We verify the request and then delete or de-identify the associated Personal Data — including imported Google user data and stored OAuth tokens — within 30 days.
+- **Backups:** residual copies may persist in encrypted backups for up to 90 days before being deleted in the ordinary course.
+- **Exceptions:** we may retain limited records where required by law, for tax and accounting purposes, to resolve disputes, or to enforce our agreements.
+
+## 14. Children's Privacy
+
+The Services are not directed to children under 16, and we do not knowingly collect Personal Data from them. If you believe a child has provided us with Personal Data, contact [privacy@ragflow.io](mailto:privacy@ragflow.io) and we will delete it.
+
+## 15. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time. We will post the updated version with a new “Last Updated” date. Your continued use of the Services after the change becomes effective means you acknowledge the updated Policy where permitted by law.
