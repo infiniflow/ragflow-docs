@@ -14,6 +14,14 @@ This Privacy Policy explains how **RAGFlow** (together with its affiliates, “*
 >
 > When we process **Customer Data** on behalf of an organization (e.g., as a processor), the processing is governed primarily by our contract and Data Processing Addendum/Agreement (“DPA”) with that Customer, not this Privacy Policy.
 
+## Summary
+
+- **What we collect.** Account details (name, email address, hashed credentials, organization and role); the content you put into RAGFlow (documents you upload or connect, parsed text, chunks, embeddings, questions, prompts, generated answers, agent and workspace settings); technical and audit logs; and — only when you connect Google — your Google profile and the Google Drive items you select.
+- **Why we use it.** To provide the service you asked for: index your content, generate answers and agent responses, keep integrations in sync, operate and secure your account, provide support, and meet legal obligations.
+- **Who we share it with.** Infrastructure and AI model providers acting on our instructions under contract, and authorities where the law requires it. We do not sell Personal Data.
+- **How long we keep it.** Until you delete the content or your account, or ask us to delete it. Account and imported data are deleted within 30 days of a verified request; encrypted backups expire within 90 days.
+- **Your choices.** Delete content in your workspace, revoke Google access at [myaccount.google.com/permissions](https://myaccount.google.com/permissions), or email [privacy@ragflow.io](mailto:privacy@ragflow.io). See Sections 13 and 15.
+
 ## 1. Who We Are
 
 - **Controller** **(typical):** For Personal Data we collect for our own purposes (e.g., account administration, billing, website analytics), RAGFlow typically acts as a **data controller** (or equivalent role under applicable law).
@@ -66,6 +74,21 @@ We may receive Personal Data from:
 - **Public sources** (e.g., professional profiles)
 - **Security providers** (e.g., fraud detection)
 
+### 3.4 Content processed in the RAGFlow application
+
+When you use the application, we process the content you choose to put into it:
+
+- **Documents and files** you upload or connect (for example PDF, Word, spreadsheet, presentation, image, audio and web pages), together with parsed text, extracted tables, generated chunks, embeddings and metadata such as file name, size, type and timestamps.
+- **Conversations:** your questions, prompts, instructions, the model responses returned to you, and any feedback you give on them.
+- **Workspace configuration:** knowledge base and dataset settings, agent and workflow definitions, model configuration, API keys and integration credentials.
+- **Technical and audit logs:** access logs, request identifiers, error traces, IP address and timestamps, used to operate and secure the Services.
+
+This content may contain Personal Data about you or about third parties whose data you are authorized to process. You are responsible for having a lawful basis to upload it.
+
+### 3.5 Model providers
+
+To generate answers, RAGFlow sends the prompts and the retrieved passages needed for a response to the AI model provider you configure. Those providers act as our subprocessors or as your own processors (in Self-Hosted deployments) and are contractually restricted from using your content to train or improve their general models, where such terms are offered. If you use a self-hosted model, that content does not leave your infrastructure.
+
 ## 4. How We Use Personal Data
 
 We may use Personal Data for the following purposes:
@@ -75,6 +98,10 @@ We may use Personal Data for the following purposes:
 - Create, maintain, and secure accounts
 - Provide core functionality, customer support, and service communications
 - Process subscriptions, billing, payments, and account administration
+- Parse and index your content, embed it, and generate answers and agent responses using the models you configure
+- Maintain conversation history and workspace state so that you can continue working across sessions
+
+**We do not use Customer Data, imported documents, conversations or prompts to train or fine-tune generalized AI or machine learning models,** and we do not permit our model providers to do so.
 
 ### 4.2 Improve, develop, and protect the Services
 
@@ -215,6 +242,19 @@ RAGFlow's use of information received from Google APIs adheres to the [Google AP
 
 The Services are not directed to children under 16, and we do not knowingly collect Personal Data from them. If you believe a child has provided us with Personal Data, contact [privacy@ragflow.io](mailto:privacy@ragflow.io) and we will delete it.
 
-## 15. Changes to This Privacy Policy
+## 15. AI Features and Prohibited Content
+
+RAGFlow generates answers and agent responses by combining your content with AI models. Generated output may be inaccurate or incomplete and should be reviewed before you rely on it.
+
+**Prohibited content and uses.** You may not use the Services, including any Google integration, to create, request, store or distribute:
+
+- AI-generated non-consensual intimate imagery (NCII) or any sexual content depicting a real person without their consent;
+- child sexual abuse material (CSAM) or any sexual content involving minors;
+- content that harasses, threatens, defrauds or unlawfully discriminates against individuals;
+- content that infringes intellectual property or privacy rights, or that violates applicable law.
+
+We may remove such content, suspend or terminate the responsible account, and report it to the competent authorities where required by law. We do not use Google APIs to generate, host or distribute any of the content described above.
+
+## 16. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time. We will post the updated version with a new “Last Updated” date. Your continued use of the Services after the change becomes effective means you acknowledge the updated Policy where permitted by law.

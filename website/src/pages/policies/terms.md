@@ -63,8 +63,14 @@ You agree not to (and not to allow others to):
 - Use the Services to develop, deploy, or facilitate harmful or illegal activity
 - Circumvent rate limits or access restrictions
 - Resell or provide the Services to third parties except as expressly permitted by an agreement with us
+- Create, request, store or distribute AI-generated non-consensual intimate imagery (NCII), child sexual abuse material (CSAM), or any sexual content involving minors or real people without their consent
+- Use the Services or any Google API in violation of the Google APIs Terms of Service or the Google API Services User Data Policy
 
-We may suspend or terminate access if we reasonably believe you violated these Terms or pose a security risk.
+We may suspend or terminate access if we reasonably believe you violated these Terms or pose a security risk, and we may report unlawful content to the competent authorities.
+
+### 5.1 AI-generated output
+
+Some features generate output using AI models configured by you or by us. Output may be inaccurate, and you are responsible for reviewing it before use. You must not present AI-generated output as human-generated where disclosure is required by law, and you must not use it to impersonate a real person or to deceive. The restrictions on NCII, CSAM and non-consensual intimate content above apply to all output generated through the Services.
 
 ## 6. Customer Data and Privacy
 
