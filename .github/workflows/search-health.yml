@@ -1,0 +1,48 @@
+name: Search Health
+
+# Guards the Algolia index against the failure mode that made search return
+# stale results and dead links: the index drifting away from the deployed site.
+# Every indexed URL is requested; dead URLs fail the job and can optionally be
+# pruned from the index.
+
+on:
+  schedule:
+    # Weekly, Monday 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      prune:
+        description: 'Delete records whose URL returns 404/410'
+        type: boolean
+        default: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Audit indexed URLs
+        env:
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+          ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+        run: node scripts/search/audit-index.mjs --limit=0
+
+      - name: Prune dead records
+        if: ${{ inputs.prune }}
+        env:
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+          ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+        run: node scripts/search/audit-index.mjs --limit=0 --prune

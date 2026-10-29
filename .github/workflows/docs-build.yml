@@ -1,0 +1,45 @@
+name: Docs Build Check
+
+# Builds the site with STRICT_LINKS=true so renamed/deleted pages surface as
+# broken links instead of silently shipping dead URLs to search engines.
+# Reported as a check but intentionally non-blocking: the docs are synced and
+# auto-merged by a cron job, and a hard gate there would stall the sync.
+
+on:
+  pull_request:
+    paths:
+      - 'website/**'
+      - '.github/workflows/docs-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    defaults:
+      run:
+        working-directory: website
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+          cache-dependency-path: website/yarn.lock
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --non-interactive
+
+      - name: Build with strict links
+        env:
+          STRICT_LINKS: 'true'
+          SEARCH_SKIP_POSTBUILD: '1'
+        run: yarn build
+
+      - name: Report broken links
+        if: failure()
+        run: echo "::error::Build failed - check the log above for broken links or anchors introduced by this change."
