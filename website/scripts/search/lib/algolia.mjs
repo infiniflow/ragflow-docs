@@ -12,9 +12,25 @@
  * to every browser in docusaurus.config.ts, so it grants nothing extra.
  */
 
-const DEFAULT_APP_ID = 'XWPHHV7XAR';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Vercel/CI inject the variables directly; for local CLI runs fall back to the
+// (gitignored) env files so `yarn search:push` works without exporting by hand.
+for (const envFile of ['.env.local', '.env']) {
+  const envPath = path.resolve(process.cwd(), envFile);
+  if (typeof process.loadEnvFile === 'function' && fs.existsSync(envPath)) {
+    try {
+      process.loadEnvFile(envPath);
+    } catch {
+      // Malformed env file: the explicit checks below will report what is missing.
+    }
+  }
+}
+
+const DEFAULT_APP_ID = 'NXFTTRZRN9';
 const DEFAULT_INDEX_NAME = 'ragflow-docs';
-const DEFAULT_SEARCH_KEY = 'd278212ab5a570179f9072f7792d7bb9';
+const DEFAULT_SEARCH_KEY = '12170a34d3bc7ad253ec94e1ac86b65b';
 const BATCH_SIZE = 500;
 
 export const searchConfig = {

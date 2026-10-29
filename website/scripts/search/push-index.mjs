@@ -181,7 +181,14 @@ async function main() {
   }
 
   const indexName = searchConfig.indexName;
-  const existing = await readAllObjects(indexName, {key: searchConfig.adminKey, attributesToRetrieve: ['objectID']});
+  // A fresh Algolia app has no index yet: reading it 404s, and that must mean
+  // "nothing to clean up", not a failed deployment.
+  let existing = [];
+  try {
+    existing = await readAllObjects(indexName, {key: searchConfig.adminKey, attributesToRetrieve: ['objectID']});
+  } catch (error) {
+    console.warn(`[search] index "${indexName}" is not readable yet (${error.message}) - starting from scratch`);
+  }
   const nextIds = new Set(records.map((record) => record.objectID));
   const staleIds = existing.map((object) => object.objectID).filter((objectID) => !nextIds.has(objectID));
 

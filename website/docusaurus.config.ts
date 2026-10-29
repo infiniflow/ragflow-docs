@@ -120,7 +120,6 @@ const ACTIVE_VERSION_PATH = /^\/docs\/v\d/;
 // left dead entries behind in search. `STRICT_LINKS=true` turns them into a
 // build error (used by the docs build check).
 const strictLinks = process.env.STRICT_LINKS === 'true';
-
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -146,7 +145,9 @@ const config: Config = {
   projectName: 'RAGFlow', // Usually your repo name.
 
   onBrokenLinks: strictLinks ? 'throw' : 'warn',
-  onBrokenAnchors: strictLinks ? 'throw' : 'warn',
+  // Anchors stay non-fatal: links to `/#pricing-plan` cannot be statically
+  // verified because that anchor lives in a React page, not in markdown.
+  onBrokenAnchors: 'warn',
   onDuplicateRoutes: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -434,7 +435,7 @@ const config: Config = {
       },
       {
         name: 'algolia-site-verification',
-        content: '02ADC03A2BCB8D0C',
+        content: 'B9FC8F233CF4B084',
       },
       {
         name: 'viewport',
@@ -442,11 +443,15 @@ const config: Config = {
       },
     ],
 
-    // Algolia search configuration
+    // Algolia search configuration.
+    // The three values can be overridden per environment (e.g. a new Algolia
+    // account) without touching the code. ALGOLIA_SEARCH_KEY is a public
+    // search-only key: it ends up in the client bundle by design. The write key
+    // (ALGOLIA_ADMIN_KEY) is only used by the build-time index sync.
     algolia: {
-      appId: 'XWPHHV7XAR',
-      apiKey: 'd278212ab5a570179f9072f7792d7bb9',
-      indexName: 'ragflow-docs',
+      appId: process.env.ALGOLIA_APP_ID ?? 'NXFTTRZRN9',
+      apiKey: process.env.ALGOLIA_SEARCH_KEY ?? '12170a34d3bc7ad253ec94e1ac86b65b',
+      indexName: process.env.ALGOLIA_INDEX_NAME ?? 'ragflow-docs',
       contextualSearch: true,
       insights: true,
     },
