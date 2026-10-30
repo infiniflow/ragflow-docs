@@ -1,0 +1,297 @@
+---
+sidebar_position: 2
+title: Deploy Local Models
+sidebar_label: Deploy Local Models
+slug: /deploy_local_llm
+sidebar_custom_props: {
+  categoryIcon: LucideMonitorCog
+}
+---
+
+# Deploy Local Models
+
+Deploy and run local models using Ollama or vLLM, then connect them to RAGFlow.
+
+---
+
+RAGFlow supports lightweight local inference with Ollama and GPU-accelerated serving with vLLM. This guide uses [MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B), a compact Apache-2.0-licensed chat model with Chinese and English support, for both deployment methods.
+
+## Before You Begin
+
+This guide provides simple Ollama and vLLM deployment examples for new RAGFlow users. It focuses on starting a local model and connecting it to RAGFlow rather than covering every installation or production deployment option. For complete setup, platform, and configuration instructions, see the [Ollama documentation](https://docs.ollama.com/) and the [vLLM documentation](https://docs.vllm.ai/).
+
+| Purpose | Ollama model name | vLLM source model ID | vLLM served model name |
+| --- | --- | --- | --- |
+| Chat | `openbmb/minicpm5-2b` | `openbmb/MiniCPM5-2B` | `MiniCPM5-2B` |
+
+Ollama uses its registry name. vLLM downloads the model using its Hugging Face repository ID, while RAGFlow and other API clients use the name assigned by `--served-model-name`.
+
+:::note
+MiniCPM5-2B is a chat model, not an embedding model. To create and parse a RAGFlow knowledge base, you must also configure an embedding model. The Ollama instructions below use `qwen3-embedding:0.6b` as a lightweight example.
+:::
+
+## Deploy MiniCPM5-2B Using Ollama
+
+[Ollama](https://github.com/ollama/ollama) packages model weights and configuration for straightforward local inference. See the [Ollama download page](https://ollama.com/download) for native installation options.
+
+### 1. Start Ollama Using Docker
+
+Run Ollama in the background and expose its default port:
+
+:::caution
+Before publishing port `11434`, confirm that the host firewall does not allow public inbound access to this port. Allow access only from the host or trusted private networks.
+:::
+
+```bash
+sudo docker run -d \
+  --name ollama \
+  --restart unless-stopped \
+  -p 11434:11434 \
+  -v ollama:/root/.ollama \
+  ollama/ollama
+```
+
+The `ollama` volume keeps downloaded models available if the container is removed and recreated.
+
+If the container already exists, start it with:
+
+```bash
+sudo docker start ollama
+```
+
+This reuses the container's existing storage configuration. If the container was originally created without the `ollama:/root/.ollama` volume, recreate it with the command above to enable model persistence.
+
+:::tip
+See the [Ollama Docker image documentation](https://hub.docker.com/r/ollama/ollama) to enable NVIDIA or AMD GPU acceleration.
+:::
+
+### 2. Pull MiniCPM5-2B
+
+Pull the chat model:
+
+```bash
+sudo docker exec ollama ollama pull openbmb/minicpm5-2b
+```
+
+If you intend to create a knowledge base, also pull a lightweight embedding model:
+
+```bash
+sudo docker exec ollama ollama pull qwen3-embedding:0.6b
+```
+
+List the downloaded models:
+
+```bash
+curl http://localhost:11434/api/tags
+```
+
+The response should list `openbmb/minicpm5-2b` and, if you pulled it, `qwen3-embedding:0.6b`.
+
+### 3. Test the Ollama Chat Model
+
+Send a test request directly to Ollama:
+
+```bash
+curl http://localhost:11434/api/chat \
+  -d '{
+    "model": "openbmb/minicpm5-2b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Briefly explain how retrieval-augmented generation reduces hallucinations."
+      }
+    ],
+    "stream": false
+  }'
+```
+
+A successful response contains an assistant message with generated content.
+
+### 4. Make Ollama Accessible to RAGFlow
+
+Use the URL that matches your deployment:
+
+| Deployment | Ollama base URL |
+| --- | --- |
+| RAGFlow runs in Docker and Ollama runs on the same host | `http://host.docker.internal:11434` |
+| RAGFlow and Ollama run directly on the same host | `http://localhost:11434` |
+| Ollama runs on another machine | `http://<OLLAMA_HOST_IP>:11434` |
+
+When RAGFlow runs in Docker, first find the actual RAGFlow container name:
+
+```bash
+sudo docker ps \
+  --filter "label=com.docker.compose.service=ragflow-cpu" \
+  --format '{{.Names}}'
+```
+
+Then replace `<RAGFLOW_CONTAINER>` below with the returned name and verify connectivity from that container:
+
+```bash
+sudo docker exec -it <RAGFLOW_CONTAINER> \
+  curl http://host.docker.internal:11434/api/tags
+```
+
+:::caution
+Do not expose port `11434` directly to the public internet. Restrict access with a firewall or private network.
+:::
+
+### 5. Add Ollama to RAGFlow
+
+1. In RAGFlow, click your avatar in the upper-right corner and select **Model providers**.
+2. Find **Ollama** and add a provider instance.
+3. Enter the accessible Ollama base URL from the previous step.
+4. Leave **API Key** empty.
+5. Add `openbmb/minicpm5-2b` as a **Chat** model.
+6. If you pulled the embedding model, add `qwen3-embedding:0.6b` as an **Embedding** model.
+7. Verify models individually, or click **Verify all models** to verify every model currently shown by the active search and type filters.
+8. Save the provider instance.
+
+The model names must exactly match the names returned by Ollama.
+
+Successful verification indicates that RAGFlow can reach Ollama and call the selected models.
+
+### 6. Use the Models in RAGFlow
+
+- Select `openbmb/minicpm5-2b` as the chat model in **Set default models** or your chat configuration.
+- Select `qwen3-embedding:0.6b` as the embedding model when creating a knowledge base.
+
+## Deploy MiniCPM5-2B Using vLLM
+
+[vLLM](https://docs.vllm.ai/) provides a high-throughput OpenAI-compatible server for GPU inference. This example serves MiniCPM5-2B as a chat model.
+
+### 1. Install vLLM
+
+Create and activate a dedicated Python environment, then install vLLM:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip vllm
+```
+
+For supported GPUs and platform-specific instructions, see the [official vLLM installation guide](https://docs.vllm.ai/en/latest/getting_started/installation/).
+
+### 2. Start MiniCPM5-2B
+
+Start the OpenAI-compatible API server:
+
+:::caution
+The following command listens on all network interfaces. Before starting it, confirm that the host firewall does not allow public inbound access to port `8000`. Allow access only from trusted hosts or private networks.
+:::
+
+```bash
+vllm serve openbmb/MiniCPM5-2B \
+  --served-model-name MiniCPM5-2B \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --dtype auto \
+  --max-model-len 8192
+```
+
+`--served-model-name` defines the model name that clients, including RAGFlow, must use. The example limits the context length to 8192 tokens to reduce GPU memory consumption.
+
+Keep this terminal running while vLLM serves the model, and open another terminal for the verification commands below.
+
+The example starts vLLM without authentication. To require an API key, add `--api-key <API_KEY>` to the `vllm serve` command. For example, an authenticated request to list the available models is:
+
+```bash
+curl http://localhost:8000/v1/models \
+  -H "Authorization: Bearer <API_KEY>"
+```
+
+When authentication is enabled, add this `Authorization` header to every vLLM verification request in this guide, including the chat request and the request run inside the RAGFlow container. Enter the same value in the RAGFlow **API Key** field when you configure the VLLM provider instance.
+
+### 3. Verify the vLLM Server
+
+Check that the model is available:
+
+```bash
+curl http://localhost:8000/v1/models
+```
+
+The response should contain a model whose ID is `MiniCPM5-2B`.
+
+Then send a chat request:
+
+```bash
+curl http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "MiniCPM5-2B",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Briefly explain how retrieval-augmented generation reduces hallucinations."
+      }
+    ]
+  }'
+```
+
+A successful response contains generated text in the assistant message under `choices`.
+
+If you enabled vLLM API key authentication, use the following authenticated chat request instead:
+
+```bash
+curl http://localhost:8000/v1/chat/completions \
+  -H "Authorization: Bearer <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "MiniCPM5-2B",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Briefly explain how retrieval-augmented generation reduces hallucinations."
+      }
+    ]
+  }'
+```
+
+### 4. Make vLLM Accessible to RAGFlow
+
+Use the URL that matches your deployment:
+
+| Deployment | vLLM base URL |
+| --- | --- |
+| RAGFlow runs in Docker and vLLM runs on the same host | `http://host.docker.internal:8000/v1` |
+| RAGFlow and vLLM run directly on the same host | `http://localhost:8000/v1` |
+| vLLM runs on another machine | `http://<VLLM_HOST_IP>:8000/v1` |
+
+When RAGFlow runs in Docker, find the actual container name as described in the Ollama section above. Then replace `<RAGFLOW_CONTAINER>` with that name and verify connectivity from the container:
+
+```bash
+sudo docker exec -it <RAGFLOW_CONTAINER> \
+  curl http://host.docker.internal:8000/v1/models
+```
+
+For a vLLM server without authentication, the response should contain a model whose ID is `MiniCPM5-2B`.
+
+For an authenticated vLLM server, use this complete container connectivity check:
+
+```bash
+sudo docker exec -it <RAGFLOW_CONTAINER> \
+  curl http://host.docker.internal:8000/v1/models \
+  -H "Authorization: Bearer <API_KEY>"
+```
+
+:::caution
+Do not expose port `8000` directly to the public internet unless you have configured authentication and network access controls.
+:::
+
+### 5. Add vLLM to RAGFlow
+
+1. In RAGFlow, click your avatar in the upper-right corner and select **Model providers**.
+2. Find **VLLM** and add a provider instance.
+3. Enter the accessible base URL from the previous step.
+4. Leave **API Key** empty unless you explicitly configured API key authentication for your vLLM server. If authentication is enabled, enter the actual API key.
+5. Add `MiniCPM5-2B` as a **Chat** model. This name must match the value passed to `--served-model-name`.
+6. Verify the added model.
+7. Save the provider instance.
+
+Select `MiniCPM5-2B` in **Set default models** or your chat configuration to start using it.
+
+Successful verification indicates that RAGFlow can reach the vLLM server and call `MiniCPM5-2B`.
+
+:::note
+You can use the vLLM chat model with an embedding model from another provider. For example, use `MiniCPM5-2B` from vLLM for chat and `qwen3-embedding:0.6b` from Ollama for knowledge-base embeddings.
+:::
