@@ -543,7 +543,7 @@ const config: Config = {
             },
             {
               label: 'Basics',
-              to: '/basics/what-is-rag',
+              to: '/basics/what-is-agent-native-database',
               icon: 'LucideBookOpen',
             },
             {
@@ -618,7 +618,7 @@ const config: Config = {
             },
             {
               label: 'Basics',
-              to: '/basics/what-is-rag',
+              to: '/basics/what-is-agent-native-database',
             },
             {
               label: 'Blog',
