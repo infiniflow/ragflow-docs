@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 940" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- 阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <!-- 箭头标记 -->
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1400" height="940" fill="#FAFBFC" />
+
+  <!-- 顶部标题 -->
+  <text x="700" y="45" text-anchor="middle" font-size="24" font-weight="800" fill="#1E293B">RAGFlow: Search Harness × Knowledge Compilation</text>
+  <text x="700" y="72" text-anchor="middle" font-size="14" fill="#64748B">Harness (Control) · Tools (Interface) · Compilation (Supply) · Raw Data (Source)</text>
+
+  <!-- ================= LAYER 1: HARNESS ================= -->
+  <rect x="40" y="100" width="1320" height="180" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+  
+  <circle cx="60" cy="130" r="5" fill="#3B82F6" />
+  <text x="75" y="135" font-size="16" font-weight="700" fill="#1E3A8A">Harness Layer</text>
+  <text x="75" y="155" font-size="13" fill="#64748B">Control / Orchestration</text>
+
+  <!-- Badge -->
+  <rect x="1240" y="115" width="90" height="28" rx="6" fill="#3B82F6" />
+  <text x="1285" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">CONTROL</text>
+
+  <!-- Harness Cards (3 cols) -->
+  <!-- Row 1 -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="120" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="650" y="120" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="940" y="120" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="490" y="149" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Tool Gating</text>
+  <text x="780" y="149" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Evidence Prefetch</text>
+  <text x="1070" y="149" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Evidence Gate</text>
+
+  <!-- Row 2 -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="190" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="650" y="190" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="940" y="190" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="490" y="219" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Tool Loop (Parallel, Budgeted)</text>
+  <text x="780" y="219" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Fallback Composition</text>
+  <text x="1070" y="219" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Citation Binding + Cost</text>
+
+  <!-- Connection 1 -->
+  <line x1="780" y1="280" x2="780" y2="340" stroke="#94A3B8" stroke-width="2" marker-start="url(#arrow-gray)" marker-end="url(#arrow-gray)"/>
+  <rect x="600" y="299" width="360" height="22" rx="4" fill="#FAFBFC"/>
+  <text x="780" y="315" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">tool calls &amp; candidates; never conclusions</text>
+
+
+  <!-- ================= LAYER 2: TOOLS ================= -->
+  <!-- 高度从 200 缩小为 150，使其底部留白与下方对齐 -->
+  <rect x="40" y="340" width="1320" height="150" rx="16" fill="#ECFEFF" stroke="#A5F3FC" stroke-width="1.5"/>
+  
+  <circle cx="60" cy="370" r="5" fill="#06B6D4" />
+  <text x="75" y="375" font-size="16" font-weight="700" fill="#164E63">Tools Layer</text>
+  <text x="75" y="395" font-size="13" fill="#64748B">Interface / Contract</text>
+
+  <!-- Badge -->
+  <rect x="1240" y="355" width="90" height="28" rx="6" fill="#06B6D4" />
+  <text x="1285" y="374" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">CONTRACT</text>
+
+  <!-- Tools Cards (4 cols x 2 rows) -->
+  <!-- Row 1 (y=360) -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="360" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="577" y="360" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="794" y="360" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="1011" y="360" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="454.5" y="387" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Regex Locate</text>
+  <text x="671.5" y="387" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Lexical Recall</text>
+  <text x="888.5" y="387" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Navigate + Drill</text>
+  <text x="1105.5" y="387" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Graph Explore</text>
+
+  <!-- Row 2 (y=420) -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="420" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="577" y="420" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="794" y="420" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="1011" y="420" width="189" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="454.5" y="447" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Metadata Scope</text>
+  <text x="671.5" y="447" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Claim Pre-Read</text>
+  <text x="888.5" y="447" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Anchored Deep Read</text>
+  <text x="1105.5" y="447" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Zero-Hit Diagnostics</text>
+
+  <!-- Connection 2 -->
+  <line x1="780" y1="490" x2="780" y2="550" stroke="#94A3B8" stroke-width="2" marker-start="url(#arrow-gray)" marker-end="url(#arrow-gray)"/>
+  <rect x="580" y="509" width="400" height="22" rx="4" fill="#FAFBFC"/>
+  <text x="780" y="525" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">read-only artifacts; typed, versioned, with lineage</text>
+
+
+  <!-- ================= LAYER 3: COMPILATION ================= -->
+  <!-- Y轴整体上移 50px -->
+  <rect x="40" y="550" width="1320" height="150" rx="16" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1.5"/>
+  
+  <circle cx="60" cy="580" r="5" fill="#9333EA" />
+  <text x="75" y="585" font-size="16" font-weight="700" fill="#4C1D95">Knowledge Compilation Layer</text>
+  <text x="75" y="605" font-size="13" fill="#64748B">Supply / Index-time</text>
+
+  <!-- Badge -->
+  <rect x="1240" y="565" width="90" height="28" rx="6" fill="#9333EA" />
+  <text x="1285" y="584" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">SUPPLY</text>
+
+  <!-- Compilation Cards (3 cols) -->
+  <!-- Row 1 -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="570" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="650" y="570" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="940" y="570" width="260" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="490" y="590" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">Navigation Tree</text>
+  <text x="490" y="607" text-anchor="middle" font-size="11" font-weight="500" fill="#64748B">(Claim-Evidence)</text>
+
+  <text x="780" y="599" text-anchor="middle" font-size="12.5" font-weight="600" fill="#334155">Entity-Relation Graph</text>
+  <text x="1070" y="599" text-anchor="middle" font-size="12.5" font-weight="600" fill="#334155">Timeline / Mind Map</text>
+
+  <!-- Row 2 -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="630" width="260" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="650" y="630" width="260" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="940" y="630" width="260" height="44" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="490" y="657" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Session Memory</text>
+  <text x="780" y="657" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">LLM Wiki</text>
+  <text x="1070" y="657" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">Ontology Templates</text>
+
+  <!-- Connection 3 -->
+  <line x1="780" y1="700" x2="780" y2="750" stroke="#94A3B8" stroke-width="2" marker-start="url(#arrow-gray)" marker-end="url(#arrow-gray)"/>
+  <rect x="580" y="715" width="400" height="22" rx="4" fill="#FAFBFC"/>
+  <text x="780" y="731" text-anchor="middle" font-size="12" font-weight="500" fill="#64748B">ingest: enrich, validate, assemble</text>
+
+
+  <!-- ================= LAYER 4: RAW DATA ================= -->
+  <!-- Y轴整体上移 50px -->
+  <rect x="40" y="770" width="1320" height="110" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  
+  <circle cx="60" cy="800" r="5" fill="#64748B" />
+  <text x="75" y="805" font-size="16" font-weight="700" fill="#1E293B">Raw Data Layer</text>
+  <text x="75" y="825" font-size="13" fill="#64748B">Source of truth / Read-only</text>
+
+  <!-- Badge -->
+  <rect x="1240" y="785" width="90" height="28" rx="6" fill="#64748B" />
+  <text x="1285" y="804" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">RAW DATA</text>
+
+  <!-- Raw Data Card (1 large box) -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="790" width="840" height="60" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  </g>
+  <text x="780" y="827" text-anchor="middle" font-size="14" font-weight="600" fill="#334155">PDF · Word · Markdown · Tables · Agent Sessions · Databases · APIs · Web</text>
+
+</svg>
