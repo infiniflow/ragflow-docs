@@ -1,15 +1,16 @@
 ---
-slug: context-as-infrastructure-knowledge-compilation-for-search-harness-at-the-RAG-crossroads
-title: 'Context as Infrastructure: Knowledge Compilation for the Search Harness at the RAG Crossroads'
+slug: context-as-infrastructure-knowledge-compilation-for-retrieval-harness-at-the-rag-crossroads
+title: 'Context as Infrastructure: Knowledge Compilation for the Retrieval Harness at the RAG Crossroads'
 tags: [Insights]
-draft: true
 ---
 
-## I. The RAG Crossroads
+![](./context.jpg)
+
+## I. RAG at a Crossroads
 
 Retrieval-augmented generation (RAG) has become the de facto standard for grounding large language models in enterprise knowledge over the past two years. By combining external knowledge retrieval with generative models, RAG significantly improves the timeliness and accuracy of generated content while substantially reducing hallucination rates. The logic sounds impeccable: when the model doesn't know something, look it up; once found, answer.
 
-But reality is far more complicated than logic.
+But reality is far more complicated than this simple logic suggests.
 
 As enterprises move RAG from prototypes into production, a frustrating consensus is forming: **RAG is good, but nowhere near good enough.** Naive RAG—the standard pipeline of "chunk documents, embed them, compute similarity"—fails repeatedly in real-world scenarios. How should you define chunking strategy? Which embedding model should you use? What similarity threshold should you set? Every step demands extensive tuning, and even after tuning, retrieval quality remains unpredictable. Retrieved chunks are often irrelevant to the answer, and distractor passages mixed into context disrupt the LLM's reasoning process.
 
@@ -25,23 +26,23 @@ Both events point to the same conclusion: the traditional RAG paradigm of "query
 
 But Harness + Grep, while constituting an extremely strong baseline, is not the endpoint. As data scales, relying entirely on the Harness's iterative exploration and Grep's exact matching forces the agent to search repeatedly to locate the answer region—high token consumption, slow response times, and every new context window must re-experience the exploration process from scratch.
 
-This is where knowledge compilation enters. The core thesis of this article is: **the Search Harness is the engine of Agentic Search; knowledge compilation is its context supply layer.** Knowledge compilation does not replace Search/Grep—it provides the Harness with richer, more compressed, more traceable knowledge artifacts, enabling the agent to locate answers with fewer iterations and lower token consumption.
+This is where knowledge compilation enters. The core thesis of this article is: **the Retrieval Harness is the engine of Agentic Search; knowledge compilation is its context supply layer.** Knowledge compilation does not replace Search/Grep—it provides the Harness with richer, more compressed, more traceable knowledge artifacts, enabling the agent to locate answers with fewer iterations and lower token consumption.
 
 ---
 
-## II. The Four Predicaments of RAG
+## II. Four Fundamental Challenges Facing RAG
 
-To understand the value of knowledge compilation, we must first see the real predicaments RAG faces today. These are not defects of any single product, but structural problems at the paradigm level.
+To understand the value of knowledge compilation, we must first see the real challenges facing RAG today. These are not defects of any single product, but structural problems at the paradigm level.
 
-### Predicament 1: Naive RAG—"Inaccurate Search" Is Inevitable
+### Challenge 1: Naive RAG—"Inaccurate Search" Is Inevitable
 
 Naive RAG's essence is a single pathway: "query → embed → similarity ranking." For raw documents, similarity is almost the only entry point. But the problem is: **similarity does not equal relevance, and relevance does not equal correctness.**
 
 For a precise date query (e.g., "What was Q3 2025 revenue?"), vector search only introduces noise—semantically similar but entirely irrelevant. For a fuzzy conceptual question (e.g., "What is the core idea of microservices architecture?"), Grep simply cannot find relevant passages—because no one writes the exact sentence you're querying in a document. Sometimes the answer isn't in any single chunk at all; you need to first locate a set of candidate documents, then read each one deeply.
 
-A single pathway cannot cover diverse query types. This is a structural defect of naive RAG, not something tuning can fix.
+A single pathway cannot cover diverse query types. This is a fundamental limitation of naive RAG, not something tuning can fix.
 
-### Predicament 2: Advanced RAG—"Complexity Does Not Buy Effectiveness"
+### Challenge 2: Advanced RAG—"Complexity Does Not Buy Effectiveness"
 
 Advanced RAG attempts to solve the above problems by introducing more complex architectures. GraphRAG augments retrieval with knowledge graphs; RAPTOR organizes documents with recursive summary trees; Contextual Retrieval uses context-aware chunking. Each has its own paper, its own benchmark, its own adherents.
 
@@ -49,7 +50,7 @@ But the problem is: **deployment and maintenance costs rise sharply, while effec
 
 A RAG system that requires an expert to tune is untenable in real enterprise production environments.
 
-### Predicament 3: The Challenge of Agent Harness + Grep
+### Challenge 3: The Challenge of Agent Harness + Grep
 
 PwC's research found that when an agent is equipped with both vector search and Grep, Grep often delivers higher accuracy than semantic search **[2]**. This finding was quickly simplified into a provocative conclusion: "Grep replaces RAG."
 
@@ -57,7 +58,7 @@ But comparison experiments with Vector RAG show that relying solely on Grep does
 
 However, Harness + Grep, while an extremely strong baseline, is not the endpoint. As data scales, relying entirely on the Harness's iterative exploration and Grep's exact matching forces the agent to search repeatedly to locate the answer region—iterations grow linearly, token consumption grows exponentially. This is precisely where knowledge compilation must step in.
 
-### Predicament 4: RAG's "Cold Start" Problem—The Deepest Issue
+### Challenge 4: RAG's "Cold Start" Problem—The Deepest Issue
 
 This is the deepest problem, and the one Karpathy's "LLM Wiki" concept precisely targets.
 
@@ -65,13 +66,13 @@ Traditional RAG starts from zero on every query. The user asks a question, the s
 
 Every query is a "cold start." Every time, the system must re-understand what's in the knowledge base, how documents relate to each other, which sources are authoritative. Run the same task against the same data twice, and the agent may return different answers—with no record explaining where the difference came from.
 
-Pinecone estimates that agents spend 85% of their computational effort on "rediscovery" loops rather than actual task completion **[7]**. This is not a bug in RAG; it is a paradigm flaw. Knowledge compilation is the systematic response: move part of the "understanding" work from query time to index time, so the Search Harness doesn't start from zero every time.
+Pinecone estimates that agents spend 85% of their computational effort on "rediscovery" loops rather than actual task completion **[7]**. This is not a bug in RAG; it is a paradigm flaw. Knowledge compilation is the systematic response: move part of the "understanding" work from query time to index time, so the Retrieval Harness doesn't start from zero every time.
 
 ---
 
 ## III. The Rise of Grep and the Boundaries of the Harness
 
-Chapter II revealed RAG's four predicaments, with the third being particularly thought-provoking: a simple Grep tool, under an agent's orchestration, can approach or even surpass complex RAG. This discovery overturns the industry's conventional wisdom that "retrieval must depend on semantic understanding," but it also raises new questions—where are the boundaries of Harness + Grep? This chapter analyzes why Grep works, what role the Harness plays, and how the limitations of this combination lead us toward knowledge compilation.
+Chapter II revealed RAG's four challenges, with the third being particularly thought-provoking: a simple Grep tool, under an agent's orchestration, can approach or even surpass complex RAG. This discovery overturns the industry's conventional wisdom that "retrieval must depend on semantic understanding," but it also raises new questions—where are the boundaries of Harness + Grep? This chapter analyzes why Grep works, what role the Harness plays, and how the limitations of this combination lead us toward knowledge compilation.
 
 ### 3.1 Why Can Grep Beat RAG?
 
@@ -86,9 +87,9 @@ This forces us to distinguish two fundamentally different types of problems:
 - **Semantic discovery problems**: answers hidden at the conceptual level, requiring semantic understanding to find
 - **Evidence localization problems**: answers existing in literal evidence—names, dates, file paths, function names, error strings
 
-For coding agents, much of the work falls precisely into evidence localization: finding symbols, tracing call chains, checking diffs, reading failed test cases, locating exact lines of code. In these cases, an exact string matching tool is far more directly effective than semantic search.
+For coding agents, much of the work falls precisely into evidence localization: finding symbols, tracing call chains, checking diffs, reading failed test cases, locating exact lines of code. In these cases, exact string matching is often far more direct and effective than semantic search.
 
-Notably, agents use Grep completely differently from humans. OpenAI's analysis of GPT-5's search behavior on BrowseComp-Plus shows: 98% of sessions use quoted search (far higher than human users), and median query length exceeds the human 99th percentile. AI is more "precise" and "structured" in exact matching—it can construct complex queries with multiple constraints that humans would be unlikely to type. Grep itself hasn't changed, but its user has shifted from human to agent, and the usage pattern has undergone a qualitative transformation.
+Notably, AI agents use Grep in ways that differ significantly from how humans search. An analysis of GPT-5's search behavior on BrowseComp-Plus found that 98% of sessions involved quoted searches—a much higher proportion than among human users—and that the median query length exceeded the 99th percentile of human search queries. AI is more "precise" and "structured" in exact matching—it can construct complex queries with multiple constraints that humans would be unlikely to type. Grep itself hasn't changed, but its user has shifted from human to agent, and the usage pattern has undergone a qualitative transformation.
 
 ### 3.2 The Limits of Harness + Grep: Exploration Cost and Token Overhead
 
@@ -96,12 +97,12 @@ But Harness + Grep, while an extremely strong baseline, is not the endpoint. The
 
 As data scales, relying entirely on the Harness's iterative exploration and Grep's exact matching greatly increases the cost of repeated exploration. The agent must Grep repeatedly to locate the answer region, causing two serious consequences:
 
-1. **Slow**: every Grep is an IO operation; linear growth in iterations causes response times to skyrocket
+1. **Slow**: each grep call involves I/O; linear growth in iterations causes response time to rise sharply
 2. **High token consumption**: every iteration loads search results into context; the cumulative tokens across multiple rounds are enormous
 
-Facing each new context window, Harness-centric Agentic retrieval wastes calls relearning what constitutes an effective search strategy—over and over again. This is both expensive and slow.
+With each new context window, Harness-centric Agentic retrieval wastes calls repeatedly rediscovering what constitutes an effective search strategy—over and over again. This is both expensive and slow.
 
-Thus a natural question emerges: **how can we preserve the Harness's orchestration capability while shortening its exploration path?**
+This raises a natural question: **how can we preserve the Harness's orchestration capability while shortening its exploration path?**
 
 ### 3.3 A Richer Tool System: Lessons from Microsoft's AgenticRAG
 
@@ -134,7 +135,7 @@ It's not just about "what tools to provide the agent," but encompasses the follo
 - When the agent decides it has enough information to answer
 - How the Harness routes and orchestrates across different tools
 
-In other words, **search is no longer an engine; it is an orchestration framework.** A well-designed Retrieval Harness, even equipped only with "simple" tools like BM25 and Grep, can through iterative orchestration approach or even surpass complex RAG in many scenarios.
+In other words, **search is no longer an engine; it is an orchestration framework.** A well-designed Retrieval Harness, even equipped only with "simple" tools like BM25 and Grep, can approach or even outperform more sophisticated RAG systems through iterative orchestration in many scenarios.
 
 But as noted, we cannot stop here. As data scales further, even the best Harness orchestration faces challenges in iteration count and token consumption. This leads to the next chapter's theme: how the knowledge compilation layer can provide the Harness with "higher-quality" tools—enabling each tool call to cover higher-quality context, thereby reducing iterations and lowering token consumption.
 
@@ -163,7 +164,7 @@ Generate appropriate hierarchical headings for massive document collections, usi
 
 Tree structures let the agent "expand layer by layer" like a file manager—from root to chapter to section to paragraph—until locating the leaf node containing the answer. This navigation approach is particularly effective when user intent is unclear.
 
-But in engineering practice, we discovered an important fact: **simply organizing documents into tree structures does not bring significant benefits to Agentic Search.** This directly contradicts conclusions from many similar open-source projects—for example, that providing navigation based solely on document chapter structures or hierarchically clustered semantic structures yields better results. These traditional tree structures, in a well-designed Agent Harness, are not just ineffective but negative assets: the agent still relies primarily on Search and Grep. What truly makes tree navigation valuable is the evidence-chain leaf nodes.
+But in engineering practice, we discovered an important fact: **simply organizing documents into tree structures does not bring significant benefits to Agentic Search.** This directly contradicts conclusions from many similar open-source projects—for example, that providing navigation based solely on document chapter structures or hierarchically clustered semantic structures yields better results. These traditional tree structures, in a well-designed Agent Harness, are not just ineffective but liabilities: the agent still relies primarily on Search and Grep. What truly makes tree navigation valuable is the evidence-chain leaf nodes.
 
 RAGFlow's current implementation works exactly this way: evidence chains hang on tree navigation leaf nodes. Claims and Evidence are extracted from source text to form retrievable, traceable evidence units that can exist as leaf nodes of the tree compilation structure:
 
@@ -183,7 +184,7 @@ Under a unified accounting, **when compilation artifacts hit, a single question 
 
 **Does not replace Search/Grep.** Search/Grep still handles finding candidate regions; tree navigation and evidence-chain leaf nodes help the Harness "use context sparingly" after localization.
 
-Thus, the value of tree navigation lies not in point recall but in organization and carriage. With evidence-chain leaf nodes loaded, token efficiency improves significantly.
+Thus, the value of tree navigation lies not in point recall but in organizing and carrying evidence. With evidence-chain leaf nodes loaded, token efficiency improves significantly.
 
 ### 4.2 Graph-Based Associative Exploration
 
@@ -243,7 +244,7 @@ Traditional RAG treats retrieval as a single function call: query once, get back
 
 But "process" itself is not the answer. An undisciplined loop degenerates into blind exploration: rewriting the same keywords, rereading the same document, piling dozens of irrelevant evidence pieces into context, finally betting on the model's patience for an answer.
 
-RAGFlow's Retrieval Harness is the discipline for this process. In this version, we made a subtraction: removing the multi-path router that split by latency, freshness, and query type, leaving only one loop—but redefining "who decides what."
+RAGFlow's Retrieval Harness brings structure and discipline to this process. In this version, we made a subtraction: removing the multi-path router that split by latency, freshness, and query type, leaving only one loop—but redefining "who decides what."
 
 ### 5.1 Putting Decision Rights Back Where They Belong
 
@@ -255,17 +256,17 @@ A loop contains three types of decisions, fundamentally different in nature:
 
 The conclusion: **do not pursue "letting the model freely choose tools"; pursue ensuring that evidence entering context is the minimal sufficient set for this moment.** The model only needs to answer "what am I still missing"; the framework guarantees it won't force an answer on wrong evidence because some type of evidence is absent.
 
-### 5.2 The Real Journey of a Query
+### 5.2 How a Query Moves Through the System
 
-**Station 1: Confirm whether this corpus is worth querying structurally.** If the dataset has never undergone knowledge compilation, navigation and graph exploration tools simply won't appear before the model—not even tool descriptions. No compilation, no payment for capabilities it can't use.
+**Step 1: Confirm whether this corpus is worth querying structurally.**  If the dataset has never undergone knowledge compilation, navigation and graph exploration tools simply won't appear before the model—not even tool descriptions. Without compiled knowledge, the system incurs no overhead for unavailable capabilities.
 
-**Station 2: Evidence first.** Before the model thinks about how to search, the framework performs one evidence recall across the entire corpus, directly retrieving compiled atomic propositions—each with verbatim citations to source text. This is a flat read, not document routing: navigation trees route questions with bias—a small tree sends every question to the same one or two documents, and prefetch degenerates into background noise.
+**Step 2: Evidence first.** Before the model thinks about how to search, the framework performs one evidence recall across the entire corpus, directly retrieving compiled atomic propositions—each with verbatim citations to source text. This is a flat read, not document routing: navigation trees route questions with bias—a small tree sends every question to the same one or two documents, and prefetch degenerates into background noise.
 
-**Station 3: Binary choice.** If evidence is sufficient (enough count, sufficient source diversity), one model call produces the answer directly—the entire round reads no raw text. If insufficient, the entire block is discarded—not written into the system prompt (which would be billed repeatedly on every model call in the loop), and no citation numbers assigned (the model never saw it). The default approach is "stuff whatever is retrieved into context first"—here we do the opposite: when evidence is insufficient, discard what was first obtained and let the loop continue with clean context. Only with uncontaminated context does the model have a chance to truly retrieve decisive facts.
+**Step 3: Binary choice.** If evidence is sufficient (enough count, sufficient source diversity), one model call produces the answer directly—the entire round reads no raw text. If insufficient, the entire block is discarded—not written into the system prompt (which would be billed repeatedly on every model call in the loop), and no citation numbers assigned (the model never saw it). The default approach is "stuff whatever is retrieved into context first"—here we do the opposite: when evidence is insufficient, discard what was first obtained and let the loop continue with clean context. Only with uncontaminated context does the model have a chance to truly retrieve decisive facts.
 
-**Station 4: Tool loop with tools.** Multiple retrieval actions in the same round execute in parallel; tool errors don't interrupt the round but become a result the model can understand—a badly written regex should not end the entire retrieval round. The loop has step limits and round time budgets, converging doubly.
+**Step 4: Iterative tool execution.** Multiple retrieval actions in the same round execute in parallel; tool errors don't interrupt the round but become a result the model can understand—a badly written regex should not end the entire retrieval round. The loop has step limits and round time budgets, converging doubly.
 
-**Station 5: Deterministic close.** When the loop ends abnormally (model only leaves narration, or times out), the framework has a fallback path: synthesize a real answer from the question and evidence already in hand. Asking a question should not yield "let me check again."
+**Step 5: Deterministic close.** When the loop ends abnormally (model only leaves narration, or times out), the framework has a fallback path: synthesize a real answer from the question and evidence already in hand. Asking a question should not yield "let me check again."
 
 ### 5.3 Tools as a Diagnostic Table for "Why Didn't We Find It"
 
@@ -277,7 +278,7 @@ Agentic retrieval tools on the market typically look similar: a vector search, a
 - **Relational questions** (who connects to whom, what's the relation between A and B): subgraph exploration along entity relations—see the entire document's entity-relation skeleton at once.
 - **Just want to scope first** (which documents meet criteria): metadata selector returns only documents, not content; this "document scope" handle can be passed across all subsequent retrieval actions, letting tools combine rather than being a series of independent calls.
 
-The most sophisticated part is how zero-hits are explained. Lexical search zero-hits don't mean the corpus lacks this thing—they mean "your phrasing isn't the corpus's phrasing"—two conclusions leading to completely opposite next steps. So at the moment results are returned, the tool directly tells the model the judgment and next step: try a different semantic description, or describe a different type of thing. Feedback is written at the moment evidence is returned, not in the system prompt waiting for the model to remember.
+A key design choice is how the system explains searches that return no results. Lexical search zero-hits don't mean the corpus lacks this thing—they mean "your phrasing isn't the corpus's phrasing"—two conclusions leading to completely opposite next steps. So at the moment results are returned, the tool directly tells the model the judgment and next step: try a different semantic description, or describe a different type of thing. Feedback is written at the moment evidence is returned, not in the system prompt waiting for the model to remember.
 
 ### 5.4 Deep Reading: "Locate First, Then Turn Pages" Like a Human
 
@@ -295,7 +296,7 @@ A deliverable answer must be traceable to the exact paragraph.
 
 RAGFlow does not gamble on this. Evidence receives its number at the moment of delivery to the model; the same snippet always has the same number throughout the session; citation markers in the answer are ultimately resolved one by one back to real snippets. The model cannot cite content it hasn't read—numbers are assigned at serving time, not reverse-engineered from similarity afterward.
 
-The approach of using prompt instructions to tell the model "don't fabricate citations" and then using vector similarity to reverse-engineer sentence sources is essentially still gambling on probability. Here, there is no gamble.
+The approach of using prompt instructions to tell the model "don't fabricate citations" and then using vector similarity to reverse-engineer sentence sources is essentially still gambling on probability. This approach does not rely on probabilistic citation matching.
 
 ### 5.6 Evidence Gate: The Same Question, Through Every Round
 
@@ -319,7 +320,7 @@ This diagram corresponds to the article's main thread: **the Harness layer is th
 
 Compilation is not summarizing documents—it translates the same source text into structures of several different dimensions: hierarchical navigation, entity relations, timelines, mind maps, page indexes, Wiki, and most critically, atomic propositions—one-sentence facts paired with verbatim citations that must be contiguous substrings of the source.
 
-Three structures correspond to three ways of asking: those who know the topic take navigation; those who care about relations take the graph; those who need precise facts take propositions. Propositions can be directly cited because they carry evidence, not because they were compressed.
+Three structures support three distinct retrieval needs: those who know the topic take navigation; those who care about relations take the graph; those who need precise facts take propositions. Propositions can be directly cited because they carry evidence, not because they were compressed.
 
 Compilation is template-driven: built-in templates provide baselines; users can customize what to extract, which fields to output, and which rules to follow for their domain. Every artifact carries lineage (which documents, which paragraphs), and when documents are deleted, related contributions are precisely removed; rebuilding is an idempotent full recomputation—better to recompute entirely than leave half-new, half-old structures. Ontology also resides in this layer as one template: configure TBox, compilation generates ABox assertions, which can be searched independently or used in the Harness to enhance and constrain Search/Grep.
 
@@ -343,7 +344,7 @@ The evidence gate sits between tool-result rendering and prompt assembly, withou
 
 Integration is progressive: first shadow comparison (gate judgments recorded in parallel with existing thresholds, not affecting production results), then replace by checkpoint one at a time. The reason is not conservatism—the gate's value must be validated by "how many tokens saved, whether evidence that should have been sent was blocked," not by "whether the model thinks it's good."
 
-The Harness's advancement lies not in a longer loop but in three things: **decision-right layering**—the framework guarantees what cannot be delegated; the model does only what it truly excels at; **minimal sufficient evidence set**—answer directly if possible, discard entirely if insufficient, rather than filling context with irrelevant evidence; **mechanical citation and cost**—numbers generated at evidence delivery, costs visible by stage, the evidence gate turning "whether to send" from an empirical threshold into a decidable, auditable, end-to-end decision.
+The Harness improves not by making the loop longer but in three things: **decision-right layering**—the framework guarantees what cannot be delegated; the model does only what it truly excels at; **minimal sufficient evidence set**—answer directly if possible, discard entirely if insufficient, rather than filling context with irrelevant evidence; **mechanical citation and cost**—numbers generated at evidence delivery, costs visible by stage, the evidence gate turning "whether to send" from an empirical threshold into a decidable, auditable, end-to-end decision.
 
 ### 6.6 Engineering Implementation and Product Positioning
 
@@ -357,13 +358,13 @@ With the 1.0 release, RAGFlow's positioning has upgraded from an end-to-end RAG 
 
 ## VII. Conclusion and Outlook
 
-The main thread of this article can be summarized in one sentence: **the Search Harness finds; knowledge compilation saves.**
+The main thread of this article can be summarized in one sentence: **The Retrieval Harness finds the evidence; knowledge compilation reduces the cost of using it.**
 
-Following this thread, Chapter II revealed RAG's four predicaments; Chapter III analyzed why Grep is so powerful in the agent's hands, the Harness's core role as an orchestration framework, and the fundamental limits of this combination at scale; Chapter IV demonstrated how knowledge compilation systematically responds to these limits—through tree navigation (with evidence-chain leaf nodes), graph-based associative exploration, timeline tracking, LLM Wiki, ontology templates, Memory templates—providing "high-density" context supply for the Harness, with a template system supporting continuous expansion; Chapter V explained how the Retrieval Harness centers on Search/Grep with knowledge compilation as the supply layer; Chapter VI presented the implementation architecture and product landing.
+Following this thread, Chapter II revealed RAG's four challenges; Chapter III analyzed why Grep is so powerful in the agent's hands, the Harness's core role as an orchestration framework, and the fundamental limits of this combination at scale; Chapter IV demonstrated how knowledge compilation systematically responds to these limits—through tree navigation (with evidence-chain leaf nodes), graph-based associative exploration, timeline tracking, LLM Wiki, ontology templates, Memory templates—providing "high-density" context supply for the Harness, with a template system supporting continuous expansion; Chapter V explained how the Retrieval Harness centers on Search/Grep with knowledge compilation as the supply layer; Chapter VI presented the implementation architecture and product landing.
 
 Our core propositions are:
 
-1. **The Search Harness is the engine of Agentic Search.** The core of retrieval is shifting from "designing a stronger recall algorithm" to "designing a decision framework that dynamically orchestrates across multiple tools."
+1. **The Retrieval Harness is the engine of Agentic Search.** The core of retrieval is shifting from "designing a stronger recall algorithm" to "designing a decision framework that dynamically orchestrates across multiple tools."
 
 2. **Knowledge compilation is the Harness's context supply layer.** Knowledge compilation encompasses tree navigation, graph exploration, timelines, LLM Wiki, ontology, Memory, and more—a customizable, extensible template system. The most effective validated form is the evidence chain—a flat structure usable as tree leaf nodes. When compilation artifacts hit, a single question saves over 90% of tokens; on misses, only about 2% is lost; on the FRAMES multi-hop dataset, evidence chains average over 30% token savings.
 
@@ -377,18 +378,26 @@ As knowledge compilation and Agentic Retrieval mature together, building enterpr
 
 The concepts, architectures, and empirical measurements discussed in this article are detailed in our recent research paper, ***Context as Infrastructure: Knowledge Compilation for Retrieval in Agentic Systems with Harnesses*** **[9]**. We invite readers to explore the full experimental results and methodology there.
 
-The RAG crossroads is not a crossroads of "whether to retrieve" but of "**how retrieval is orchestrated and how context is supplied.**" The Search Harness finds; knowledge compilation saves. Compile once, benefit many times—this is the starting point of context infrastructure in the Agentic era. And RAGFlow 1.0 is turning it into open-source reality: a Go-rewritten, extensible Agent Native Database.
+The RAG crossroads is not a crossroads of "whether to retrieve" but of "**how retrieval is orchestrated and how context is supplied.**" The Retrieval Harness finds; knowledge compilation saves. Compile once, benefit many times—this is the starting point of context infrastructure in the Agentic era. And RAGFlow 1.0 is turning it into open-source reality: a Go-rewritten, extensible Agent Native Database.
 
 ---
 
 **References**
 
 **[1]** Agentic search - retrieval, harness, or model? https://softwaredoug.com/blog/2026/06/08/three-kinds-of-agentic-search
+
 **[2]** Is Grep All You Need? How Agent Harnesses Reshape Agentic Search. arXiv:2605.15184
+
 **[3]** Vector RAG vs LLM-Compiled Wiki: A Preregistered Comparison on a Small Multi-Domain Research. arXiv:2605.18490
+
 **[4]** AgenticRAG: Agentic Retrieval for Enterprise Knowledge Bases. arXiv:2605.05538
+
 **[5]** Rethinking Agentic RAG: Toward LLM-Driven Logical Retrieval Beyond Embeddings. arXiv:2605.27123v1
+
 **[6]** The Enterprise Context Layer, Andy Chen. https://andychen32.substack.com/p/the-enterprise-context-layer
+
 **[7]** Pinecone Nexus Knowledge Engine. https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/
+
 **[8]** The RAG era is ending for agentic AI — a new compilation-stage knowledge layer is what comes next. VentureBeat, 2026.
+
 **[9]** Context as Infrastructure: Knowledge Compilation for Retrieval in Agentic Systems with Harnesses. arXiv:2610.41172. https://arxiv.org/abs/2610.41172
