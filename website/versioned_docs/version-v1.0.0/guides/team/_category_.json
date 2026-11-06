@@ -1,0 +1,11 @@
+{
+  "label": "Team",
+  "position": 8,
+  "link": {
+    "type": "doc",
+    "id": "guides/team/index"
+  },
+  "customProps": {
+    "categoryIcon": "LucideUsers"
+  }
+}
