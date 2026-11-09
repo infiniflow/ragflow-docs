@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFCF9"/>
+      <stop offset="100%" stop-color="#EEF8F1"/>
+    </linearGradient>
+    <linearGradient id="hitBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34A06A"/>
+      <stop offset="100%" stop-color="#1F7A4D"/>
+    </linearGradient>
+    <linearGradient id="missBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E06A5A"/>
+      <stop offset="100%" stop-color="#B9473A"/>
+    </linearGradient>
+    <linearGradient id="avgBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5B8DEF"/>
+      <stop offset="100%" stop-color="#3A66C4"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#1E3A5F" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="620" fill="url(#bg)" rx="20"/>
+
+  <!-- Title -->
+  <text x="480" y="58" text-anchor="middle" font-size="27" font-weight="800" fill="#1E3D2A">Compile Once, Save Every Query</text>
+  <text x="480" y="88" text-anchor="middle" font-size="14.5" fill="#5F7A6B">Evidence-chain compilation with a small, cheap model</text>
+
+  <!-- Three metric cards -->
+  <!-- HIT -->
+  <g filter="url(#softShadow)">
+    <rect x="55" y="120" width="270" height="210" rx="16" fill="#FFFFFF"/>
+  </g>
+  <rect x="55" y="120" width="270" height="7" rx="3.5" fill="url(#hitBar)"/>
+  <text x="190" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#1F7A4D" letter-spacing="1.2">EVIDENCE HIT</text>
+  <text x="190" y="252" text-anchor="middle" font-size="62" font-weight="800" fill="#1F7A4D">−91%</text>
+  <text x="190" y="288" text-anchor="middle" font-size="14" fill="#5F7A6B">total query tokens</text>
+  <text x="190" y="310" text-anchor="middle" font-size="11" fill="#8AA394">evidence is sufficient</text>
+
+  <!-- MISS -->
+  <g filter="url(#softShadow)">
+    <rect x="345" y="120" width="270" height="210" rx="16" fill="#FFFFFF"/>
+  </g>
+  <rect x="345" y="120" width="270" height="7" rx="3.5" fill="url(#missBar)"/>
+  <text x="480" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#B9473A" letter-spacing="1.2">EVIDENCE MISS</text>
+  <text x="480" y="252" text-anchor="middle" font-size="62" font-weight="800" fill="#B9473A">+2%</text>
+  <text x="480" y="288" text-anchor="middle" font-size="14" fill="#5F7A6B">extra tokens only</text>
+  <text x="480" y="310" text-anchor="middle" font-size="11" fill="#8AA394">fallback to raw chunk</text>
+
+  <!-- AVG -->
+  <g filter="url(#softShadow)">
+    <rect x="635" y="120" width="270" height="210" rx="16" fill="#FFFFFF"/>
+  </g>
+  <rect x="635" y="120" width="270" height="7" rx="3.5" fill="url(#avgBar)"/>
+  <text x="770" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#3A66C4" letter-spacing="1.2">FRAMES BENCHMARK AVERAGE</text>
+  <text x="770" y="252" text-anchor="middle" font-size="62" font-weight="800" fill="#3A66C4">−38%</text>
+  <text x="770" y="288" text-anchor="middle" font-size="14" fill="#5F7A6B">across the benchmark</text>
+  <text x="770" y="310" text-anchor="middle" font-size="11" fill="#8AA394">multi-hop, mixed hit rate</text>
+
+  <!-- Bottom panel: asymmetry + break-even -->
+  <g filter="url(#softShadow)">
+    <rect x="55" y="360" width="850" height="210" rx="16" fill="#FFFFFF"/>
+  </g>
+
+  <text x="85" y="395" font-size="13" font-weight="800" fill="#1E3D2A" letter-spacing="1">THE ASYMMETRY THAT MAKES IT WORK</text>
+
+  <!-- Two columns: break-even vs measured -->
+  <g>
+    <!-- Break-even -->
+    <rect x="85" y="418" width="380" height="120" rx="10" fill="#F7FBF8" stroke="#DCE6DF" stroke-width="1"/>
+    <text x="105" y="446" font-size="12" font-weight="700" fill="#5F7A6B" letter-spacing="0.8">BREAK-EVEN SUFFICIENCY RATE</text>
+    <text x="105" y="495" font-size="44" font-weight="800" fill="#1F7A4D">≈ 2%</text>
+    <text x="105" y="522" font-size="11.5" fill="#7A8F82">above this, compilation pays for itself in query tokens</text>
+
+    <!-- Measured -->
+    <rect x="495" y="418" width="380" height="120" rx="10" fill="#F7FBF8" stroke="#DCE6DF" stroke-width="1"/>
+    <text x="515" y="446" font-size="12" font-weight="700" fill="#5F7A6B" letter-spacing="0.8">MEASURED RATE ON FRAMES</text>
+    <text x="515" y="495" font-size="44" font-weight="800" fill="#3A66C4">≈ 43%</text>
+    <text x="515" y="522" font-size="11.5" fill="#7A8F82">20× above break-even, not a lucky hit</text>
+  </g>
+
+  <!-- Footnote -->
+  <text x="480" y="600" text-anchor="middle" font-size="11" fill="#8AA394">Token savings measured against an uncompiled BM25/grep harness; negative is a saving.</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'Inter', -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#ECFDF5" />
+    </linearGradient>
+    <linearGradient id="ringGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="barGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="420" fill="url(#bg2)" rx="16"/>
+
+  <!-- 标题 -->
+  <text x="450" y="60" text-anchor="middle" font-size="24" font-weight="800" fill="#0F172A">Retrieval Harness &amp; Knowledge Compilation</text>
+  <text x="450" y="88" text-anchor="middle" font-size="14" fill="#64748B">Higher Accuracy, Extreme Token Economics</text>
+
+  <!-- 左侧：FRAMES 准确率 -->
+  <g filter="url(#shadow2)">
+    <rect x="60" y="130" width="340" height="230" rx="16" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1"/>
+  </g>
+  
+  <!-- 环形进度条 -->
+  <circle cx="230" cy="225" r="70" fill="none" stroke="#F1F5F9" stroke-width="14"/>
+  <circle cx="230" cy="225" r="70" fill="none" stroke="url(#ringGreen)" stroke-width="14"
+          stroke-linecap="round" stroke-dasharray="440 440" transform="rotate(-90 230 225)"/>
+  
+  <text x="230" y="235" text-anchor="middle" font-size="48" font-weight="800" fill="#065F46">91%</text>
+  <text x="230" y="265" text-anchor="middle" font-size="14" font-weight="700" fill="#047857">Accuracy</text>
+  
+  <text x="230" y="330" text-anchor="middle" font-size="14" font-weight="800" fill="#1E293B">FRAMES Benchmark</text>
+  <text x="230" y="348" text-anchor="middle" font-size="12" fill="#64748B">Using only BM25 + Grep + MiniMax-M3</text>
+
+  <!-- 右侧：Token 经济学 -->
+  <g filter="url(#shadow2)">
+    <rect x="440" y="130" width="400" height="230" rx="16" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="1"/>
+  </g>
+
+  <text x="470" y="170" font-size="16" font-weight="800" fill="#1E293B">Token Economics</text>
+  <text x="470" y="192" font-size="12" fill="#64748B">Compile once, save every query.</text>
+
+  <!-- 进度条 1：命中时 -->
+  <text x="470" y="230" font-size="14" font-weight="700" fill="#334155">Savings on Hit</text>
+  <text x="810" y="230" text-anchor="end" font-size="20" font-weight="800" fill="#059669">91%</text>
+  
+  <rect x="470" y="245" width="340" height="12" rx="6" fill="#F1F5F9"/>
+  <rect x="470" y="245" width="309" height="12" rx="6" fill="url(#barGreen)"/>
+
+  <!-- 进度条 2：平均节省 -->
+  <text x="470" y="285" font-size="14" font-weight="700" fill="#334155">FRAMES Average Savings</text>
+  <text x="810" y="285" text-anchor="end" font-size="20" font-weight="800" fill="#10B981">38%</text>
+  
+  <rect x="470" y="300" width="340" height="12" rx="6" fill="#F1F5F9"/>
+  <rect x="470" y="300" width="129" height="12" rx="6" fill="url(#barGreen)"/>
+
+  <!-- 底部说明 -->
+  <text x="450" y="390" text-anchor="middle" font-size="13" fill="#94A3B8">Asymmetric economics: 91% saved on a hit, only 2% penalty on a miss.</text>
+</svg>

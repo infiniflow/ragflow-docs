@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1000" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3B8C5A"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="880" height="1000" fill="#FAFBFC" rx="16"/>
+
+  <!-- ================= Access Layer ================= -->
+  <rect x="40" y="25" width="800" height="90" rx="12" fill="#EEF4FF" stroke="#4A6FA5" stroke-width="1.2"/>
+  <text x="62" y="50" font-size="11" font-weight="700" fill="#4A6FA5" letter-spacing="1.2">ACCESS LAYER</text>
+  <g filter="url(#shadow-soft)">
+    <rect x="320" y="48" width="240" height="48" rx="9" fill="#FFFFFF" stroke="#4A6FA5" stroke-width="1.1"/>
+    <text x="440" y="78" font-size="13" font-weight="600" fill="#1A2B4C" text-anchor="middle">Upload / Parse Request</text>
+  </g>
+
+  <!-- Access → Orchestration -->
+  <path d="M440,115 L440,144" stroke="#94A3B8" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- ================= Orchestration ================= -->
+  <rect x="40" y="150" width="800" height="230" rx="12" fill="#FFF8EC" stroke="#D68B2C" stroke-width="1.2"/>
+  <text x="62" y="175" font-size="11" font-weight="700" fill="#D68B2C" letter-spacing="1.2">ORCHESTRATION</text>
+
+  <!-- Task State Machine -->
+  <g filter="url(#shadow-soft)">
+    <rect x="70" y="195" width="200" height="72" rx="9" fill="#FFFFFF" stroke="#D68B2C" stroke-width="1.1"/>
+    <g transform="translate(90, 216)">
+      <ellipse cx="14" cy="6" rx="14" ry="5" fill="none" stroke="#D68B2C" stroke-width="1.4"/>
+      <path d="M0,6 L0,22 A14,5 0 0,0 28,22 L28,6" fill="none" stroke="#D68B2C" stroke-width="1.4"/>
+      <ellipse cx="14" cy="22" rx="14" ry="5" fill="none" stroke="#D68B2C" stroke-width="1.4"/>
+    </g>
+    <text x="128" y="228" font-size="13" font-weight="600" fill="#1A2B4C">Task State Machine</text>
+    <text x="128" y="248" font-size="10.5" fill="#64748B">Relational Database</text>
+  </g>
+
+  <!-- Message Queue -->
+  <g filter="url(#shadow-soft)">
+    <rect x="310" y="195" width="200" height="72" rx="9" fill="#FFFFFF" stroke="#D68B2C" stroke-width="1.1"/>
+    <g transform="translate(330, 213)">
+      <rect x="0" y="10" width="28" height="18" rx="3" fill="none" stroke="#D68B2C" stroke-width="1.3"/>
+      <path d="M0,10 L14,20 L28,10" fill="none" stroke="#D68B2C" stroke-width="1.3"/>
+      <rect x="5" y="5" width="28" height="18" rx="3" fill="none" stroke="#D68B2C" stroke-width="1.3" opacity="0.55"/>
+      <rect x="10" y="0" width="28" height="18" rx="3" fill="none" stroke="#D68B2C" stroke-width="1.3" opacity="0.3"/>
+    </g>
+    <text x="368" y="228" font-size="13" font-weight="600" fill="#1A2B4C">Message Queue</text>
+    <text x="368" y="248" font-size="10.5" fill="#64748B">Async Task Delivery</text>
+  </g>
+
+  <!-- Workflow Definition -->
+  <g filter="url(#shadow-soft)">
+    <rect x="550" y="195" width="260" height="72" rx="9" fill="#FFFFFF" stroke="#D68B2C" stroke-width="1.1"/>
+    <g transform="translate(570, 213)">
+      <rect x="0" y="0" width="24" height="30" rx="3" fill="none" stroke="#D68B2C" stroke-width="1.3"/>
+      <line x1="5" y1="9" x2="19" y2="9" stroke="#D68B2C" stroke-width="1.2"/>
+      <line x1="5" y1="15" x2="19" y2="15" stroke="#D68B2C" stroke-width="1.2"/>
+      <line x1="5" y1="21" x2="14" y2="21" stroke="#D68B2C" stroke-width="1.2"/>
+    </g>
+    <text x="604" y="228" font-size="13" font-weight="600" fill="#1A2B4C">Workflow Definition</text>
+    <text x="604" y="248" font-size="10.5" fill="#64748B">DSL Compiler</text>
+  </g>
+
+  <!-- Task Graph -->
+  <g filter="url(#shadow-soft)">
+    <rect x="310" y="290" width="500" height="72" rx="9" fill="#FFFFFF" stroke="#D68B2C" stroke-width="1.1"/>
+    <g transform="translate(333, 305)">
+      <rect x="8" y="0" width="16" height="11" rx="2.5" fill="#D68B2C" opacity="0.9"/>
+      <rect x="0" y="22" width="16" height="11" rx="2.5" fill="#D68B2C" opacity="0.9"/>
+      <rect x="30" y="22" width="16" height="11" rx="2.5" fill="#D68B2C" opacity="0.9"/>
+      <line x1="16" y1="11" x2="8" y2="22" stroke="#D68B2C" stroke-width="1.3"/>
+      <line x1="16" y1="11" x2="38" y2="22" stroke="#D68B2C" stroke-width="1.3"/>
+    </g>
+    <text x="388" y="323" font-size="13" font-weight="600" fill="#1A2B4C">Task Graph</text>
+    <text x="388" y="343" font-size="10.5" fill="#64748B">DAG · Compiled from Workflow Definition</text>
+  </g>
+
+  <!-- Task State Machine → Message Queue -->
+  <path d="M270,231 L305,231" stroke="#94A3B8" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+  <!-- Workflow Definition → Task Graph -->
+  <path d="M680,267 L680,285" stroke="#94A3B8" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Orchestration → Data Plane -->
+  <path d="M440,380 L440,414" stroke="#94A3B8" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <rect x="392" y="388" width="96" height="18" rx="4" fill="#FFF8EC"/>
+  <text x="440" y="401" font-size="10" font-weight="600" fill="#B8741A" text-anchor="middle">EXECUTE</text>
+
+  <!-- ================= Data Plane ================= -->
+  <rect x="40" y="420" width="800" height="420" rx="12" fill="#EDF8F1" stroke="#3B8C5A" stroke-width="1.2"/>
+  <text x="62" y="445" font-size="11" font-weight="700" fill="#3B8C5A" letter-spacing="1.2">DATA PLANE — TWO-LEVEL PIPELINES</text>
+
+  <!-- Level 1 -->
+  <text x="62" y="480" font-size="12" font-weight="700" fill="#1E3D2A">Level 1 · Document Pipeline</text>
+
+  <!-- 6 nodes -->
+  <g filter="url(#shadow-soft)">
+    <rect x="70" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="117" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Parse</text>
+    <text x="117" y="540" font-size="10" fill="#64748B" text-anchor="middle">PDF · Office</text>
+
+    <path d="M165,527 L190,527" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="195" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="242" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Chunk</text>
+    <text x="242" y="540" font-size="10" fill="#64748B" text-anchor="middle">Split</text>
+
+    <path d="M290,527 L315,527" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="320" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="367" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Compile</text>
+    <text x="367" y="540" font-size="10" fill="#64748B" text-anchor="middle">Enrich</text>
+
+    <path d="M415,527 L440,527" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="445" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="492" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Embed</text>
+    <text x="492" y="540" font-size="10" fill="#64748B" text-anchor="middle">Vectorize</text>
+
+    <path d="M540,527 L565,527" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="570" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="617" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Extract</text>
+    <text x="617" y="540" font-size="10" fill="#64748B" text-anchor="middle">Claims · Entities</text>
+
+    <path d="M665,527 L690,527" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="695" y="498" width="95" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="742" y="522" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Persist</text>
+    <text x="742" y="540" font-size="10" fill="#64748B" text-anchor="middle">Batch Write</text>
+  </g>
+
+  <!-- Completed 事件 -->
+  <path d="M440,556 L440,604" stroke="#3B8C5A" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-green)"/>
+  <rect x="378" y="570" width="124" height="18" rx="4" fill="#EDF8F1"/>
+  <text x="440" y="583" font-size="10" font-weight="700" fill="#3B8C5A" text-anchor="middle">COMPLETED EVENT</text>
+
+  <!-- Level 2 -->
+  <text x="62" y="632" font-size="12" font-weight="700" fill="#1E3D2A">Level 2 · Dataset Compiler</text>
+
+  <g filter="url(#shadow-soft)">
+    <rect x="70" y="650" width="140" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="140" y="674" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Claim</text>
+    <text x="140" y="692" font-size="10" fill="#64748B" text-anchor="middle">Freeze Batch</text>
+
+    <path d="M210,679 L245,679" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="250" y="650" width="140" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="320" y="674" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Read</text>
+    <text x="320" y="692" font-size="10" fill="#64748B" text-anchor="middle">Candidate Lookup</text>
+
+    <path d="M390,679 L425,679" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="430" y="650" width="140" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="500" y="674" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Merge</text>
+    <text x="500" y="692" font-size="10" fill="#64748B" text-anchor="middle">Dedupe · LLM Judge</text>
+
+    <path d="M570,679 L605,679" stroke="#94A3B8" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+
+    <rect x="610" y="650" width="140" height="58" rx="8" fill="#FFFFFF" stroke="#3B8C5A" stroke-width="1.1"/>
+    <text x="680" y="674" font-size="12" font-weight="600" fill="#1E3D2A" text-anchor="middle">Write</text>
+    <text x="680" y="692" font-size="10" fill="#64748B" text-anchor="middle">Merged · Nav · Wiki</text>
+  </g>
+
+  <!-- 旁路说明 -->
+  <path d="M200,730 L200,710" stroke="#B8D9C4" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+  <rect x="70" y="730" width="320" height="46" rx="7" fill="#F7FBF8" stroke="#B8D9C4" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="86" y="750" font-size="10.5" fill="#5A7566" font-style="italic">Progress is a side channel</text>
+  <text x="86" y="766" font-size="10.5" fill="#5A7566" font-style="italic">DB outage does not stop the pipeline</text>
+
+  <!-- Data Plane → Storage -->
+  <path d="M440,840 L440,874" stroke="#94A3B8" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- ================= Storage ================= -->
+  <rect x="40" y="880" width="800" height="90" rx="12" fill="#F6EEFE" stroke="#7B4FA5" stroke-width="1.2"/>
+  <text x="62" y="905" font-size="11" font-weight="700" fill="#7B4FA5" letter-spacing="1.2">STORAGE</text>
+  <g filter="url(#shadow-soft)">
+    <rect x="320" y="918" width="240" height="46" rx="9" fill="#FFFFFF" stroke="#7B4FA5" stroke-width="1.1"/>
+    <g transform="translate(340, 929)">
+      <ellipse cx="12" cy="5" rx="12" ry="4" fill="none" stroke="#7B4FA5" stroke-width="1.3"/>
+      <path d="M0,5 L0,20 A12,4 0 0,0 24,20 L24,5" fill="none" stroke="#7B4FA5" stroke-width="1.3"/>
+      <ellipse cx="12" cy="20" rx="12" ry="4" fill="none" stroke="#7B4FA5" stroke-width="1.3"/>
+    </g>
+    <text x="372" y="938" font-size="12" font-weight="600" fill="#2E1A4C">Search Index</text>
+    <text x="372" y="954" font-size="10" fill="#64748B">Elasticsearch / Infinity</text>
+  </g>
+</svg>
