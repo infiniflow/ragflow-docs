@@ -23,7 +23,7 @@
     <rect x="50" y="100" width="360" height="340" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
   </g>
   <text x="230" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#64748B">Naive RAG</text>
-  <text x="230" y="165" text-anchor="middle" font-size="13" fill="#94A3B8">A gamble in the dark</text>
+  <text x="230" y="165" text-anchor="middle" font-size="13" fill="#94A3B8">A Shot in the Dark</text>
 
   <g>
     <!-- Node 1 -->
