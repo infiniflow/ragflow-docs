@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+    
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3B82F6"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#10B981"/>
+    </marker>
+    <marker id="arrow-gray-dashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="700" fill="#F8FAFC" rx="16" />
+
+  <!-- Title -->
+  <text x="480" y="45" text-anchor="middle" font-size="22" font-weight="800" fill="#0F172A">Agent Native Database Architecture</text>
+
+  <!-- ================= BRAIN LAYER ================= -->
+  <rect x="60" y="80" width="840" height="160" rx="16" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="6 4"/>
+  
+  <rect x="80" y="95" width="180" height="28" rx="6" fill="#3B82F6" />
+  <text x="170" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">BRAIN (Stateless)</text>
+
+  <!-- Model Layer -->
+  <g filter="url(#soft-shadow)">
+    <rect x="90" y="140" width="370" height="80" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  </g>
+  <g transform="translate(115, 160)">
+    <rect x="0" y="0" width="28" height="28" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+    <rect x="7" y="7" width="14" height="14" rx="2" fill="#3B82F6"/>
+    <line x1="10" y1="0" x2="10" y2="4" stroke="#3B82F6" stroke-width="1.5"/>
+    <line x1="18" y1="0" x2="18" y2="4" stroke="#3B82F6" stroke-width="1.5"/>
+    <line x1="10" y1="24" x2="10" y2="28" stroke="#3B82F6" stroke-width="1.5"/>
+    <line x1="18" y1="24" x2="18" y2="28" stroke="#3B82F6" stroke-width="1.5"/>
+  </g>
+  <text x="155" y="172" font-size="14" font-weight="700" fill="#1E3A8A">Model Layer</text>
+  <text x="155" y="195" font-size="11" fill="#64748B">Reasoning · Intent · Decision</text>
+
+  <!-- Harness Layer -->
+  <g filter="url(#soft-shadow)">
+    <rect x="500" y="140" width="370" height="80" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  </g>
+  <g transform="translate(525, 160)">
+    <rect x="0" y="0" width="28" height="28" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+    <path d="M 7 14 A 7 7 0 1 1 14 21" fill="none" stroke="#3B82F6" stroke-width="1.8"/>
+    <polygon points="14,18 14,24 18,21" fill="#3B82F6"/>
+  </g>
+  <text x="565" y="172" font-size="14" font-weight="700" fill="#1E3A8A">Harness Layer</text>
+  <text x="565" y="195" font-size="11" fill="#64748B">Loop · Skills · Orchestration</text>
+
+  <line x1="460" y1="180" x2="500" y2="180" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+
+  <!-- ================= 状态分离连接 ================= -->
+  <line x1="360" y1="240" x2="360" y2="300" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="280" y="258" width="160" height="24" rx="4" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="360" y="275" text-anchor="middle" font-size="11" font-weight="600" fill="#2563EB">Tool Calls / Query</text>
+
+  <line x1="600" y1="300" x2="600" y2="240" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="520" y="258" width="160" height="24" rx="4" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="600" y="275" text-anchor="middle" font-size="11" font-weight="600" fill="#059669">Candidates / Evidence</text>
+
+
+  <!-- ================= CONTEXT LAYER ================= -->
+  <rect x="60" y="300" width="840" height="210" rx="16" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5"/>
+  
+  <rect x="80" y="315" width="180" height="28" rx="6" fill="#10B981" />
+  <text x="170" y="334" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">CONTEXT (Stateful)</text>
+  
+  <rect x="760" y="315" width="120" height="28" rx="14" fill="#047857" />
+  <text x="820" y="334" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">RAGFlow</text>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="100" y="365" width="760" height="120" rx="10" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+  </g>
+  
+  <!-- Ingestion -->
+  <rect x="115" y="385" width="130" height="80" rx="6" fill="#F0FDF4" stroke="#D1FAE5" stroke-width="1"/>
+  <text x="180" y="415" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Ingestion</text>
+  <text x="180" y="435" text-anchor="middle" font-size="10" fill="#047857">Parsing &amp; Pipeline</text>
+  <text x="180" y="450" text-anchor="middle" font-size="9" fill="#059669">Fault tolerance</text>
+
+  <!-- Compilation -->
+  <rect x="260" y="385" width="130" height="80" rx="6" fill="#F0FDF4" stroke="#D1FAE5" stroke-width="1"/>
+  <text x="325" y="415" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Compilation</text>
+  <text x="325" y="435" text-anchor="middle" font-size="10" fill="#047857">LLM Enrichment</text>
+  <text x="325" y="450" text-anchor="middle" font-size="9" fill="#059669">High-density context</text>
+
+  <!-- Retrieval -->
+  <rect x="405" y="385" width="130" height="80" rx="6" fill="#F0FDF4" stroke="#D1FAE5" stroke-width="1"/>
+  <text x="470" y="415" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Retrieval</text>
+  <text x="470" y="435" text-anchor="middle" font-size="10" fill="#047857">Search / Grep /</text>
+  <text x="470" y="450" text-anchor="middle" font-size="10" fill="#047857">Navigate / Explorer</text>
+
+  <!-- Versioning -->
+  <rect x="550" y="385" width="130" height="80" rx="6" fill="#F0FDF4" stroke="#D1FAE5" stroke-width="1"/>
+  <text x="615" y="415" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Versioning</text>
+  <text x="615" y="435" text-anchor="middle" font-size="10" fill="#047857">Lineage &amp; Audit</text>
+  <text x="615" y="450" text-anchor="middle" font-size="9" fill="#059669">Traceability</text>
+
+  <!-- Storage -->
+  <rect x="695" y="385" width="150" height="80" rx="6" fill="#F0FDF4" stroke="#D1FAE5" stroke-width="1"/>
+  <text x="770" y="415" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">Storage &amp; Indexing</text>
+  <text x="770" y="435" text-anchor="middle" font-size="10" fill="#047857">Vector / Inverted /</text>
+  <text x="770" y="450" text-anchor="middle" font-size="10" fill="#047857">Graph</text>
+
+
+  <!-- ================= RAW DATA CONNECTION ================= -->
+  <line x1="480" y1="550" x2="480" y2="515" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-gray-dashed)"/>
+
+
+  <!-- ================= RAW DATA ================= -->
+  <rect x="60" y="550" width="840" height="110" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6 4"/>
+  
+  <rect x="80" y="565" width="180" height="28" rx="6" fill="#94A3B8" />
+  <text x="170" y="584" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">RAW DATA</text>
+
+  <g font-size="12" font-weight="600" fill="#334155" text-anchor="middle">
+    <rect x="100" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="152.5" y="628">Documents</text>
+
+    <rect x="225" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="277.5" y="628">Tables</text>
+
+    <rect x="350" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="402.5" y="628">Logs</text>
+
+    <rect x="475" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="527.5" y="628">Sessions</text>
+
+    <rect x="600" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="652.5" y="628">Databases</text>
+
+    <rect x="725" y="605" width="105" height="36" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="777.5" y="628">APIs</text>
+  </g>
+
+  <text x="480" y="685" text-anchor="middle" font-size="11" fill="#64748B">The Brain remains stateless. The Context layer owns storage, processing, and retrieval.</text>
+</svg>

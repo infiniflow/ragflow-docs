@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- 阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+    
+    <!-- 箭头定义 -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3B82F6"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#10B981"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="960" height="620" fill="#F8FAFC" rx="16" />
+
+  <!-- 顶部标题 -->
+  <text x="480" y="45" text-anchor="middle" font-size="22" font-weight="800" fill="#0F172A">The Minimal Contract: Complex Inside, Simple Outside</text>
+  <text x="480" y="72" text-anchor="middle" font-size="14" fill="#64748B">Harness orchestrates through simple tool primitives, while RAGFlow powers them with a heavy data engineering base.</text>
+
+  <!-- ================= 左侧：HARNESS ================= -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="160" width="200" height="320" rx="16" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Harness 图标 (循环) -->
+  <g transform="translate(120, 200)">
+    <rect x="0" y="0" width="60" height="60" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+    <path d="M 15 30 A 15 15 0 1 1 30 45" fill="none" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="30,39 30,51 39,45" fill="#3B82F6"/>
+  </g>
+
+  <text x="150" y="300" text-anchor="middle" font-size="18" font-weight="800" fill="#1E3A8A">Harness</text>
+  <text x="150" y="325" text-anchor="middle" font-size="12" font-weight="600" fill="#64748B">(Brain)</text>
+  
+  <rect x="70" y="360" width="160" height="80" rx="6" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="150" y="390" text-anchor="middle" font-size="12" font-weight="700" fill="#1E3A8A">Orchestration</text>
+  <text x="150" y="410" text-anchor="middle" font-size="11" fill="#64748B">Loop Control</text>
+  <text x="150" y="425" text-anchor="middle" font-size="11" fill="#64748B">Decision Making</text>
+
+
+  <!-- ================= 中间：工具契约 ================= -->
+  <!-- 箭头 1: search -->
+  <line x1="250" y1="220" x2="480" y2="220" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="280" y="200" width="170" height="28" rx="6" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="365" y="219" text-anchor="middle" font-size="12" font-weight="700" fill="#2563EB">search / grep</text>
+  <text x="365" y="245" text-anchor="middle" font-size="10" fill="#64748B">(Lexical &amp; Semantic Recall)</text>
+
+  <!-- 箭头 2: read -->
+  <line x1="250" y1="320" x2="480" y2="320" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="280" y="300" width="170" height="28" rx="6" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="365" y="319" text-anchor="middle" font-size="12" font-weight="700" fill="#2563EB">read</text>
+  <text x="365" y="345" text-anchor="middle" font-size="10" fill="#64748B">(Read Exact Context)</text>
+
+  <!-- 箭头 3: navigate -->
+  <line x1="250" y1="420" x2="480" y2="420" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <rect x="280" y="400" width="170" height="28" rx="6" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="365" y="419" text-anchor="middle" font-size="12" font-weight="700" fill="#2563EB">navigate / explorer</text>
+  <text x="365" y="445" text-anchor="middle" font-size="10" fill="#64748B">(Drill Down Structure)</text>
+
+
+  <!-- ================= 右侧：RAGFLOW 冰山底座 ================= -->
+  
+  <!-- 底层沉重基础 (冰山主体) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="120" width="430" height="400" rx="16" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5" stroke-dasharray="6 4"/>
+  </g>
+  
+  <text x="695" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#065F46">RAGFlow Heavy Data Engineering Base</text>
+  
+  <!-- 内部模块：Ingestion, Compilation, Versioning, Storage -->
+  <g>
+    <!-- Ingestion -->
+    <rect x="510" y="180" width="170" height="80" rx="8" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+    <text x="595" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Ingestion Pipeline</text>
+    <text x="595" y="230" text-anchor="middle" font-size="11" fill="#047857">Parsing &amp; Governance</text>
+    <text x="595" y="245" text-anchor="middle" font-size="10" fill="#059669">Fault Tolerance</text>
+
+    <!-- Compilation -->
+    <rect x="710" y="180" width="170" height="80" rx="8" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+    <text x="795" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Knowledge Compilation</text>
+    <text x="795" y="230" text-anchor="middle" font-size="11" fill="#047857">LLM Enrichment</text>
+    <text x="795" y="245" text-anchor="middle" font-size="10" fill="#059669">High-density Context</text>
+
+    <!-- Versioning -->
+    <rect x="510" y="280" width="170" height="80" rx="8" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+    <text x="595" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Versioning</text>
+    <text x="595" y="330" text-anchor="middle" font-size="11" fill="#047857">Lineage &amp; Audit</text>
+    <text x="595" y="345" text-anchor="middle" font-size="10" fill="#059669">Traceability</text>
+
+    <!-- Storage -->
+    <rect x="710" y="280" width="170" height="80" rx="8" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1"/>
+    <text x="795" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Storage &amp; Indexing</text>
+    <text x="795" y="330" text-anchor="middle" font-size="11" fill="#047857">Vector / Inverted / Graph</text>
+    <text x="795" y="345" text-anchor="middle" font-size="10" fill="#059669">Multi-modal Indexes</text>
+  </g>
+
+  <!-- 前沿接口层 (冰山露出水面的部分) -->
+  <g filter="url(#soft-shadow)">
+    <rect x="510" y="400" width="370" height="90" rx="12" fill="#10B981" />
+  </g>
+  <text x="695" y="435" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">RAGFlow Context Layer</text>
+  <text x="695" y="460" text-anchor="middle" font-size="12" font-weight="600" fill="#D1FAE5">Returns Candidates &amp; Evidence</text>
+  <text x="695" y="475" text-anchor="middle" font-size="11" fill="#A7F3D0">With precise metadata and lineage</text>
+
+  <!-- 从冰山内部指向接口层的箭头 (体现支撑关系) -->
+  <line x1="595" y1="360" x2="595" y2="400" stroke="#10B981" stroke-width="2" stroke-dasharray="4 2"/>
+  <line x1="795" y1="360" x2="795" y2="400" stroke="#10B981" stroke-width="2" stroke-dasharray="4 2"/>
+  <line x1="695" y1="260" x2="695" y2="400" stroke="#10B981" stroke-width="2" stroke-dasharray="4 2"/>
+
+  <!-- 接口调用映射 (从箭头指向接口层) -->
+  <line x1="480" y1="220" x2="510" y2="420" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+  <line x1="480" y1="320" x2="510" y2="440" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+  <line x1="480" y1="420" x2="510" y2="460" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+
+  <!-- 底部说明 -->
+  <text x="480" y="580" text-anchor="middle" font-size="12" fill="#64748B">The Harness only issues simple queries; the complexity of data engineering is entirely encapsulated within RAGFlow.</text>
+</svg>
