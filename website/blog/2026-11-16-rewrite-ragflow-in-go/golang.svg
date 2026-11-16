@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'Inter', -apple-system, sans-serif">
+  <defs>
+    <!-- 箭头定义 -->
+    <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="6" markerHeight="6">
+      <path d="M0,0 L10,0 L5,10 z" fill="#64748B"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="900" height="580" fill="#F8FAFC" rx="16"/>
+
+  <!-- 标题 -->
+  <text x="450" y="50" text-anchor="middle" font-size="24" font-weight="800" fill="#0F172A">The Layered Architecture of an Agent Native Database</text>
+  <text x="450" y="80" text-anchor="middle" font-size="14" fill="#64748B">Combining the Concurrency of Go with the Bare-Metal Performance of Rust/C++</text>
+
+  <!-- 外层大框：Agent Native Database -->
+  <rect x="50" y="120" width="800" height="400" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="8 4"/>
+  <rect x="50" y="105" width="260" height="30" rx="6" fill="#1E293B" />
+  <text x="180" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF" letter-spacing="1">AGENT NATIVE DATABASE</text>
+
+  <!-- 上层：Orchestration Layer (Go) -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="150" width="740" height="160" rx="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/>
+  </g>
+  <text x="100" y="180" font-size="14" font-weight="700" fill="#1E3A8A">Orchestration Layer (Go)</text>
+  <text x="100" y="200" font-size="12" fill="#64748B">High concurrency, rapid compilation, and complex workflow management.</text>
+
+  <!-- Go 内部组件 -->
+  <g>
+    <rect x="110" y="220" width="200" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="210" y="245" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A8A">Ingestion Pipeline</text>
+    <text x="210" y="265" text-anchor="middle" font-size="11" fill="#64748B">Parse, Chunk, Embed, Extract</text>
+
+    <rect x="350" y="220" width="200" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="450" y="245" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A8A">Knowledge Compilation</text>
+    <text x="450" y="265" text-anchor="middle" font-size="11" fill="#64748B">Claim-Evidence, Graph, Wiki</text>
+
+    <rect x="590" y="220" width="200" height="60" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5"/>
+    <text x="690" y="245" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3A8A">Retrieval Harness</text>
+    <text x="690" y="265" text-anchor="middle" font-size="11" fill="#64748B">Tool routing, Evidence Gate</text>
+  </g>
+
+  <!-- 箭头：向下调用（终点 y=410 贴合下层边框） -->
+  <line x1="450" y1="310" x2="450" y2="410" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-down)"/>
+  
+  <!-- 标签背景 -->
+  <rect x="410" y="345" width="80" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="450" y="359" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">QUERY</text>
+
+  <!-- 下层：Retrieval Engine (Rust/C++) -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="410" width="740" height="85" rx="12" fill="#FFF8EC" stroke="#D68B2C" stroke-width="1.5"/>
+  </g>
+  <text x="450" y="445" text-anchor="middle" font-size="16" font-weight="700" fill="#B8741A">Retrieval Engine (Rust / C++)</text>
+  <text x="450" y="470" text-anchor="middle" font-size="13" font-weight="500" fill="#9C4221">Bare-metal performance, zero-cost abstractions, and memory safety.</text>
+
+  <!-- 底部说明 -->
+  <text x="450" y="550" text-anchor="middle" font-size="13" fill="#94A3B8">
+    Go handles the heavy lifting of concurrency and orchestration; Rust handles the extreme demands of the engine.
+  </text>
+</svg>
