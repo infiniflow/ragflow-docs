@@ -62,7 +62,7 @@
   <line x1="250" y1="420" x2="480" y2="420" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
   <rect x="280" y="400" width="170" height="28" rx="6" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1"/>
   <text x="365" y="419" text-anchor="middle" font-size="12" font-weight="700" fill="#2563EB">navigate / explorer</text>
-  <text x="365" y="445" text-anchor="middle" font-size="10" fill="#64748B">(Drill Down Structure)</text>
+  <text x="365" y="445" text-anchor="middle" font-size="10" fill="#64748B">(Drill Down into Structures)</text>
 
 
   <!-- ================= 右侧：RAGFLOW 冰山底座 ================= -->
@@ -72,7 +72,7 @@
     <rect x="480" y="120" width="430" height="400" rx="16" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5" stroke-dasharray="6 4"/>
   </g>
   
-  <text x="695" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#065F46">RAGFlow Heavy Data Engineering Base</text>
+  <text x="695" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#065F46">RAGFlow's Data Engineering Foundation</text>
   
   <!-- 内部模块：Ingestion, Compilation, Versioning, Storage -->
   <g>
@@ -107,7 +107,7 @@
   </g>
   <text x="695" y="435" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">RAGFlow Context Layer</text>
   <text x="695" y="460" text-anchor="middle" font-size="12" font-weight="600" fill="#D1FAE5">Returns Candidates &amp; Evidence</text>
-  <text x="695" y="475" text-anchor="middle" font-size="11" fill="#A7F3D0">With precise metadata and lineage</text>
+  <text x="695" y="475" text-anchor="middle" font-size="11" fill="#A7F3D0">With Precise Metadata and Lineage</text>
 
   <!-- 从冰山内部指向接口层的箭头 (体现支撑关系) -->
   <line x1="595" y1="360" x2="595" y2="400" stroke="#10B981" stroke-width="2" stroke-dasharray="4 2"/>
